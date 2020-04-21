@@ -1,0 +1,43 @@
+{
+  "scope": "alibabacloud",
+  "name": "EcsDemo20190620",
+  "version": "1.0.0",
+  "main": "./main.tea",
+  "maintainers": [
+    {
+      "name": "Alibaba Cloud SDK",
+      "email": "sdk-team@alibabacloud.com"
+    }
+  ],
+  "java": {
+    "package": "com.aliyun.ecsdemo20190620"
+  },
+  "releases": {
+    "java": "com.aliyun:ecsdemo20190620:0.0.1",
+    "go": "github.com/alibabacloud-go/EcsDemo-20190620/client:v0.0.1",
+    "csharp": "AlibabaCloud.SDK.EcsDemo20190620:0.0.1",
+    "ts": "@alicloud/ecsdemo20190620:^1.0.0",
+    "php": "alibabacloud/ecsdemo-20190620:^0.1.0"
+  },
+  "libraries": {
+    "RPC": "alibabacloud:RPC:*",
+    "Util": "alibabacloud:Util:*",
+    "EndpointUtil": "alibabacloud:EndpointUtil:*"
+  },
+  "csharp": {
+    "className": "Client",
+    "namespace": "AlibabaCloud.SDK.EcsDemo20190620"
+  },
+  "php": {
+    "package": "AlibabaCloud.SDK.EcsDemo.V20190620",
+    "clientName": "EcsDemo",
+    "packageInfo": {
+      "name": "alibabacloud/ecsdemo-20190620",
+      "desc": "Alibaba Cloud EcsDemo SDK Library for PHP",
+      "github": "https://github.com/aliyun/alibabacloud-sdk",
+      "files": {
+        "LICENSE": "../LICENSE"
+      }
+    }
+  }
+}
