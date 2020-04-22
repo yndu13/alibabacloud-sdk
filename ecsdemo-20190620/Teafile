@@ -16,7 +16,7 @@
     "java": "com.aliyun:ecsdemo20190620:0.0.1",
     "go": "github.com/alibabacloud-go/EcsDemo-20190620/client:v0.0.1",
     "csharp": "AlibabaCloud.SDK.EcsDemo20190620:0.0.1",
-    "ts": "@alicloud/ecsdemo20190620:undefined",
+    "ts": "@alicloud/ecsdemo20190620:1.0.1",
     "php": "alibabacloud/ecsdemo-20190620:^0.1.0"
   },
   "libraries": {
