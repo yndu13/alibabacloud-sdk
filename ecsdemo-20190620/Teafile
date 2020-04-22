@@ -1,7 +1,7 @@
 {
   "scope": "alibabacloud",
   "name": "EcsDemo20190620",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "main": "./main.tea",
   "maintainers": [
     {
