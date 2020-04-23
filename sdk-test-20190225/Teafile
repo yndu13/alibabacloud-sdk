@@ -1,7 +1,7 @@
 {
   "scope": "alibabacloud",
   "name": "sdk-test20190225",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "./main.tea",
   "maintainers": [
     {
@@ -16,7 +16,7 @@
     "java": "com.aliyun:sdk-test20190225:0.0.1",
     "go": "github.com/alibabacloud-go/sdk-test-20190225/client:v0.0.1",
     "csharp": "AlibabaCloud.SDK.Sdk-test20190225:0.0.1",
-    "ts": "@alicloud/sdk-test20190225:1.1.1",
+    "ts": "@alicloud/sdk-test20190225:1.0.2",
     "php": "alibabacloud/sdk-test-20190225:^0.1.0"
   },
   "libraries": {
