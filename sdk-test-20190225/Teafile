@@ -1,0 +1,43 @@
+{
+  "scope": "alibabacloud",
+  "name": "sdk-test20190225",
+  "version": "1.0.0",
+  "main": "./main.tea",
+  "maintainers": [
+    {
+      "name": "Alibaba Cloud SDK",
+      "email": "sdk-team@alibabacloud.com"
+    }
+  ],
+  "java": {
+    "package": "com.aliyun.sdk-test20190225"
+  },
+  "releases": {
+    "java": "com.aliyun:sdk-test20190225:0.0.1",
+    "go": "github.com/alibabacloud-go/sdk-test-20190225/client:v0.0.1",
+    "csharp": "AlibabaCloud.SDK.Sdk-test20190225:0.0.1",
+    "ts": "@alicloud/sdk-test20190225:1.0.0",
+    "php": "alibabacloud/sdk-test-20190225:^0.1.0"
+  },
+  "libraries": {
+    "RPC": "alibabacloud:RPC:*",
+    "Util": "alibabacloud:Util:*",
+    "EndpointUtil": "alibabacloud:EndpointUtil:*"
+  },
+  "csharp": {
+    "className": "Client",
+    "namespace": "AlibabaCloud.SDK.Sdk-test20190225"
+  },
+  "php": {
+    "package": "AlibabaCloud.SDK.Sdk-test.V20190225",
+    "clientName": "Sdk-test",
+    "packageInfo": {
+      "name": "alibabacloud/sdk-test-20190225",
+      "desc": "Alibaba Cloud Sdk-test SDK Library for PHP",
+      "github": "https://github.com/aliyun/alibabacloud-sdk",
+      "files": {
+        "LICENSE": "../LICENSE"
+      }
+    }
+  }
+}

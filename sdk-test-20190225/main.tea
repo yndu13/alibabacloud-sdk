@@ -1,0 +1,42 @@
+import Util;
+import RPC;
+import EndpointUtil;
+
+extends RPC;
+
+init(config: RPC.Config){
+  super(config);
+  @endpointRule = '';
+  
+  checkConfig(config);
+  @endpoint = getEndpoint(@productId, @regionId, @endpointRule, @network, @suffix, @endpointMap, @endpoint);
+}
+
+model DescribeRegionsRequest = {
+  name?: string(name='Name', description='name'),
+}
+
+model DescribeRegionsResponse = {
+  requestId: string(name='RequestId', description='requestId'),
+}
+
+async function describeRegionsEx(request: DescribeRegionsRequest, runtime: Util.RuntimeOptions): DescribeRegionsResponse {
+  Util.validateModel(request);
+  return doRequest('DescribeRegions', 'HTTPS', 'POST', '2019-02-25', 'AK', request, null, runtime);
+}
+
+async function describeRegions(request: DescribeRegionsRequest): DescribeRegionsResponse {
+  var runtime = new Util.RuntimeOptions{};
+  return describeRegionsEx(request, runtime);
+}
+
+function getEndpoint(productId: string, regionId: string, endpointRule: string, network: string, suffix: string, endpointMap: map[string]string, endpoint: string) throws: string{
+  if (!Util.empty(endpoint)) {
+    return endpoint;
+  }
+
+  if (!Util.isUnset(endpointMap) && !Util.empty(endpointMap[regionId])) {
+    return endpointMap[regionId];
+  }
+  return EndpointUtil.getEndpointRules(productId, regionId, endpointRule, network, suffix);
+}
