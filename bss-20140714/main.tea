@@ -1,0 +1,292 @@
+import Util;
+import RPC;
+import EndpointUtil;
+
+extends RPC;
+
+init(config: RPC.Config){
+  super(config);
+  @endpointRule = '';
+  
+  checkConfig(config);
+  @endpoint = getEndpoint(@productId, @regionId, @endpointRule, @network, @suffix, @endpointMap, @endpoint);
+}
+
+model OpenCallbackRequest = {
+  paramStr: string(name='paramStr', description='paramStr'),
+}
+
+model OpenCallbackResponse = {
+  requestId: string(name='RequestId', description='requestId'),
+  success: boolean(name='Success', description='success'),
+  code: string(name='Code', description='code'),
+  message: string(name='Message', description='message'),
+  data: string(name='Data', description='data'),
+}
+
+async function openCallbackEx(request: OpenCallbackRequest, runtime: Util.RuntimeOptions): OpenCallbackResponse {
+  Util.validateModel(request);
+  return doRequest('OpenCallback', 'HTTPS', 'POST', '2014-07-14', 'AK', request, null, runtime);
+}
+
+async function openCallback(request: OpenCallbackRequest): OpenCallbackResponse {
+  var runtime = new Util.RuntimeOptions{};
+  return openCallbackEx(request, runtime);
+}
+
+model QueryForCssOrderRequest = {
+  paramStr: string(name='paramStr', description='paramStr'),
+}
+
+model QueryForCssOrderResponse = {
+  requestId: string(name='RequestId', description='requestId'),
+  success: boolean(name='Success', description='success'),
+  code: string(name='Code', description='code'),
+  message: string(name='Message', description='message'),
+  data: string(name='Data', description='data'),
+}
+
+async function queryForCssOrderEx(request: QueryForCssOrderRequest, runtime: Util.RuntimeOptions): QueryForCssOrderResponse {
+  Util.validateModel(request);
+  return doRequest('QueryForCssOrder', 'HTTPS', 'POST', '2014-07-14', 'AK', request, null, runtime);
+}
+
+async function queryForCssOrder(request: QueryForCssOrderRequest): QueryForCssOrderResponse {
+  var runtime = new Util.RuntimeOptions{};
+  return queryForCssOrderEx(request, runtime);
+}
+
+model CreateOrderRequest = {
+  paramStr: string(name='paramStr', description='paramStr'),
+}
+
+model CreateOrderResponse = {
+  requestId: string(name='RequestId', description='requestId'),
+  success: boolean(name='Success', description='success'),
+  code: string(name='Code', description='code'),
+  message: string(name='Message', description='message'),
+  data: string(name='Data', description='data'),
+}
+
+async function createOrderEx(request: CreateOrderRequest, runtime: Util.RuntimeOptions): CreateOrderResponse {
+  Util.validateModel(request);
+  return doRequest('CreateOrder', 'HTTPS', 'POST', '2014-07-14', 'AK', request, null, runtime);
+}
+
+async function createOrder(request: CreateOrderRequest): CreateOrderResponse {
+  var runtime = new Util.RuntimeOptions{};
+  return createOrderEx(request, runtime);
+}
+
+model vnoPayCallBackNotifyRequest = {
+  paramStr: string(name='paramStr', description='paramStr'),
+}
+
+model vnoPayCallBackNotifyResponse = {
+  requestId: string(name='RequestId', description='requestId'),
+  success: boolean(name='Success', description='success'),
+  code: string(name='Code', description='code'),
+  message: string(name='Message', description='message'),
+  data: string(name='Data', description='data'),
+}
+
+async function vnoPayCallBackNotifyEx(request: vnoPayCallBackNotifyRequest, runtime: Util.RuntimeOptions): vnoPayCallBackNotifyResponse {
+  Util.validateModel(request);
+  return doRequest('vnoPayCallBackNotify', 'HTTPS', 'POST', '2014-07-14', 'AK', request, null, runtime);
+}
+
+async function vnoPayCallBackNotify(request: vnoPayCallBackNotifyRequest): vnoPayCallBackNotifyResponse {
+  var runtime = new Util.RuntimeOptions{};
+  return vnoPayCallBackNotifyEx(request, runtime);
+}
+
+model vnoBatchRefundOrderRequest = {
+  paramStr: string(name='paramStr', description='paramStr'),
+}
+
+model vnoBatchRefundOrderResponse = {
+  requestId: string(name='RequestId', description='requestId'),
+  success: boolean(name='Success', description='success'),
+  code: string(name='Code', description='code'),
+  message: string(name='Message', description='message'),
+  data: string(name='Data', description='data'),
+}
+
+async function vnoBatchRefundOrderEx(request: vnoBatchRefundOrderRequest, runtime: Util.RuntimeOptions): vnoBatchRefundOrderResponse {
+  Util.validateModel(request);
+  return doRequest('vnoBatchRefundOrder', 'HTTPS', 'POST', '2014-07-14', 'AK', request, null, runtime);
+}
+
+async function vnoBatchRefundOrder(request: vnoBatchRefundOrderRequest): vnoBatchRefundOrderResponse {
+  var runtime = new Util.RuntimeOptions{};
+  return vnoBatchRefundOrderEx(request, runtime);
+}
+
+model SubscriptionCreateOrderApiRequest = {
+  ownerId: string(name='ownerId', description='ownerId'),
+  productCode: string(name='productCode', description='productCode'),
+}
+
+model SubscriptionCreateOrderApiResponse = {
+  requestId: string(name='RequestId', description='requestId'),
+  success: boolean(name='Success', description='success'),
+  code: string(name='Code', description='code'),
+  message: string(name='Message', description='message'),
+  data: string(name='Data', description='data'),
+}
+
+async function subscriptionCreateOrderApiEx(request: SubscriptionCreateOrderApiRequest, runtime: Util.RuntimeOptions): SubscriptionCreateOrderApiResponse {
+  Util.validateModel(request);
+  return doRequest('SubscriptionCreateOrderApi', 'HTTPS', 'POST', '2014-07-14', 'AK', request, null, runtime);
+}
+
+async function subscriptionCreateOrderApi(request: SubscriptionCreateOrderApiRequest): SubscriptionCreateOrderApiResponse {
+  var runtime = new Util.RuntimeOptions{};
+  return subscriptionCreateOrderApiEx(request, runtime);
+}
+
+model SetResourceBusinessStatusRequest = {
+  accessKeyId?: string(name='AccessKeyId', description='appKey'),
+  ownerId?: long(name='OwnerId', description='ownerId'),
+  resourceOwnerAccount?: string(name='ResourceOwnerAccount', description='resourceOwnerAccount'),
+  resourceOwnerId?: long(name='ResourceOwnerId', description='resourceOwnerId'),
+  resourceType: string(name='ResourceType', description='resourceType'),
+  resourceId: string(name='ResourceId', description='resourceId'),
+  businessStatus: string(name='BusinessStatus', description='businessStatus'),
+  ownerAccount?: string(name='OwnerAccount', description='ownerAccount'),
+}
+
+model SetResourceBusinessStatusResponse = {
+  requestId: string(name='RequestId', description='requestId'),
+}
+
+async function setResourceBusinessStatusEx(request: SetResourceBusinessStatusRequest, runtime: Util.RuntimeOptions): SetResourceBusinessStatusResponse {
+  Util.validateModel(request);
+  return doRequest('SetResourceBusinessStatus', 'HTTPS', 'POST', '2014-07-14', 'AK', request, null, runtime);
+}
+
+async function setResourceBusinessStatus(request: SetResourceBusinessStatusRequest): SetResourceBusinessStatusResponse {
+  var runtime = new Util.RuntimeOptions{};
+  return setResourceBusinessStatusEx(request, runtime);
+}
+
+model DescribeCouponListRequest = {
+  status?: string(name='Status', description='status'),
+  startDeliveryTime?: string(name='StartDeliveryTime', description='startDeliveryTime'),
+  endDeliveryTime?: string(name='EndDeliveryTime', description='endDeliveryTime'),
+  pageSize?: integer(name='PageSize', description='pageSize'),
+  pageNum?: integer(name='PageNum', description='pageNum'),
+}
+
+model DescribeCouponListResponse = {
+  requestId: string(name='RequestId', description='requestId'),
+  coupons: [
+    {
+      couponTemplateId: long(name='CouponTemplateId', description='couponTemplateId'),
+      totalAmount: string(name='TotalAmount', description='totalAmount'),
+      balanceAmount: string(name='BalanceAmount', description='balanceAmount'),
+      frozenAmount: string(name='FrozenAmount', description='frozenAmount'),
+      expiredAmount: string(name='ExpiredAmount', description='expiredAmount'),
+      deliveryTime: string(name='DeliveryTime', description='deliveryTime'),
+      expiredTime: string(name='ExpiredTime', description='expiredTime'),
+      couponNumber: string(name='CouponNumber', description='couponNumber'),
+      status: string(name='Status', description='status'),
+      description: string(name='Description', description='description'),
+      creationTime: string(name='CreationTime', description='gmtCreate'),
+      modificationTime: string(name='ModificationTime', description='gmtModify'),
+      priceLimit: string(name='PriceLimit', description='priceLimit'),
+      application: string(name='Application', description='application'),
+      productCodes: {
+        productCode: [ string ](name='ProductCode', description='ProductCode'),
+      }(name='ProductCodes', description='productCode'),
+      tradeTypes: {
+        tradeType: [ string ](name='TradeType', description='TradeType'),
+      }(name='TradeTypes', description='tradeType'),
+    }
+  ](name='Coupons', description='data'),
+}
+
+async function describeCouponListEx(request: DescribeCouponListRequest, runtime: Util.RuntimeOptions): DescribeCouponListResponse {
+  Util.validateModel(request);
+  return doRequest('DescribeCouponList', 'HTTPS', 'POST', '2014-07-14', 'AK', request, null, runtime);
+}
+
+async function describeCouponList(request: DescribeCouponListRequest): DescribeCouponListResponse {
+  var runtime = new Util.RuntimeOptions{};
+  return describeCouponListEx(request, runtime);
+}
+
+model DescribeCouponDetailRequest = {
+  couponNumber?: string(name='CouponNumber', description='couponNumber'),
+}
+
+model DescribeCouponDetailResponse = {
+  requestId: string(name='RequestId', description='requestId'),
+  couponTemplateId: long(name='CouponTemplateId', description='data.couponTemplateId'),
+  totalAmount: string(name='TotalAmount', description='data.totalAmount'),
+  balanceAmount: string(name='BalanceAmount', description='data.balanceAmount'),
+  frozenAmount: string(name='FrozenAmount', description='data.frozenAmount'),
+  expiredAmount: string(name='ExpiredAmount', description='data.expiredAmount'),
+  deliveryTime: string(name='DeliveryTime', description='data.deliveryTime'),
+  expiredTime: string(name='ExpiredTime', description='data.expiredTime'),
+  couponNumber: string(name='CouponNumber', description='data.couponNumber'),
+  status: string(name='Status', description='data.status'),
+  description: string(name='Description', description='data.description'),
+  creationTime: string(name='CreationTime', description='data.gmtCreate'),
+  modificationTime: string(name='ModificationTime', description='data.gmtModify'),
+  priceLimit: string(name='PriceLimit', description='data.priceLimit'),
+  application: string(name='Application', description='data.application'),
+  productCodes: {
+    productCode: [ string ](name='ProductCode', description='ProductCode'),
+  }(name='ProductCodes', description='data.productCode'),
+  tradeTypes: {
+    tradeType: [ string ](name='TradeType', description='TradeType'),
+  }(name='TradeTypes', description='data.tradeType'),
+}
+
+async function describeCouponDetailEx(request: DescribeCouponDetailRequest, runtime: Util.RuntimeOptions): DescribeCouponDetailResponse {
+  Util.validateModel(request);
+  return doRequest('DescribeCouponDetail', 'HTTPS', 'GET', '2014-07-14', 'AK', request, null, runtime);
+}
+
+async function describeCouponDetail(request: DescribeCouponDetailRequest): DescribeCouponDetailResponse {
+  var runtime = new Util.RuntimeOptions{};
+  return describeCouponDetailEx(request, runtime);
+}
+
+model DescribeCashDetailRequest = {
+}
+
+model DescribeCashDetailResponse = {
+  requestId: string(name='RequestId', description='requestId'),
+  balanceAmount: string(name='BalanceAmount', description='data.balanceAmount'),
+  amountOwed: string(name='AmountOwed', description='data.amountOwed'),
+  enableThresholdAlert: string(name='EnableThresholdAlert', description='data.enableThresholdAlert'),
+  miniAlertThreshold: long(name='MiniAlertThreshold', description='data.miniAlertThreshold'),
+  frozenAmount: string(name='FrozenAmount', description='data.depositAmount'),
+  creditCardAmount: string(name='CreditCardAmount', description='data.creditCardAmount'),
+  remmitanceAmount: string(name='RemmitanceAmount', description='data.remmitanceAmount'),
+  creditLimit: string(name='CreditLimit', description='data.creditLimit'),
+  availableCredit: string(name='AvailableCredit', description='data.availableCredit'),
+}
+
+async function describeCashDetailEx(request: DescribeCashDetailRequest, runtime: Util.RuntimeOptions): DescribeCashDetailResponse {
+  Util.validateModel(request);
+  return doRequest('DescribeCashDetail', 'HTTPS', 'POST', '2014-07-14', 'AK', null, request, runtime);
+}
+
+async function describeCashDetail(request: DescribeCashDetailRequest): DescribeCashDetailResponse {
+  var runtime = new Util.RuntimeOptions{};
+  return describeCashDetailEx(request, runtime);
+}
+
+function getEndpoint(productId: string, regionId: string, endpointRule: string, network: string, suffix: string, endpointMap: map[string]string, endpoint: string) throws: string{
+  if (!Util.empty(endpoint)) {
+    return endpoint;
+  }
+
+  if (!Util.isUnset(endpointMap) && !Util.empty(endpointMap[regionId])) {
+    return endpointMap[regionId];
+  }
+  return EndpointUtil.getEndpointRules(productId, regionId, endpointRule, network, suffix);
+}
