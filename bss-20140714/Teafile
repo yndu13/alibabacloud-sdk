@@ -17,7 +17,7 @@
     "go": "github.com/alibabacloud-go/Bss-20140714/client:v0.0.1",
     "csharp": "AlibabaCloud.SDK.Bss20140714:0.0.1",
     "ts": "@alicloud/bss20140714:^1.0.0",
-    "php": "alibabacloud/bss-20140714:1.0.0"
+    "php": "alibabacloud/bss-20140714:1.0.1"
   },
   "libraries": {
     "RPC": "alibabacloud:RPC:*",
