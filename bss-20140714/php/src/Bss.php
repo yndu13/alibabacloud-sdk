@@ -13,26 +13,26 @@ use AlibabaCloud\Tea\Rpc\Rpc;
 use AlibabaCloud\Endpoint\Endpoint;
 use AlibabaCloud\Tea\Utils\Utils\RuntimeOptions;
 
-use AlibabaCloud\SDK\Bss\V20140714\Bss\OpenCallbackRequest;
-use AlibabaCloud\SDK\Bss\V20140714\Bss\OpenCallbackResponse;
-use AlibabaCloud\SDK\Bss\V20140714\Bss\QueryForCssOrderRequest;
-use AlibabaCloud\SDK\Bss\V20140714\Bss\QueryForCssOrderResponse;
-use AlibabaCloud\SDK\Bss\V20140714\Bss\CreateOrderRequest;
-use AlibabaCloud\SDK\Bss\V20140714\Bss\CreateOrderResponse;
-use AlibabaCloud\SDK\Bss\V20140714\Bss\vnoPayCallBackNotifyRequest;
-use AlibabaCloud\SDK\Bss\V20140714\Bss\vnoPayCallBackNotifyResponse;
-use AlibabaCloud\SDK\Bss\V20140714\Bss\vnoBatchRefundOrderRequest;
-use AlibabaCloud\SDK\Bss\V20140714\Bss\vnoBatchRefundOrderResponse;
-use AlibabaCloud\SDK\Bss\V20140714\Bss\SubscriptionCreateOrderApiRequest;
-use AlibabaCloud\SDK\Bss\V20140714\Bss\SubscriptionCreateOrderApiResponse;
-use AlibabaCloud\SDK\Bss\V20140714\Bss\SetResourceBusinessStatusRequest;
-use AlibabaCloud\SDK\Bss\V20140714\Bss\SetResourceBusinessStatusResponse;
-use AlibabaCloud\SDK\Bss\V20140714\Bss\DescribeCouponListRequest;
-use AlibabaCloud\SDK\Bss\V20140714\Bss\DescribeCouponListResponse;
-use AlibabaCloud\SDK\Bss\V20140714\Bss\DescribeCouponDetailRequest;
-use AlibabaCloud\SDK\Bss\V20140714\Bss\DescribeCouponDetailResponse;
-use AlibabaCloud\SDK\Bss\V20140714\Bss\DescribeCashDetailRequest;
-use AlibabaCloud\SDK\Bss\V20140714\Bss\DescribeCashDetailResponse;
+use AlibabaCloud\SDK\Bss\V20140714\Models\OpenCallbackRequest;
+use AlibabaCloud\SDK\Bss\V20140714\Models\OpenCallbackResponse;
+use AlibabaCloud\SDK\Bss\V20140714\Models\QueryForCssOrderRequest;
+use AlibabaCloud\SDK\Bss\V20140714\Models\QueryForCssOrderResponse;
+use AlibabaCloud\SDK\Bss\V20140714\Models\CreateOrderRequest;
+use AlibabaCloud\SDK\Bss\V20140714\Models\CreateOrderResponse;
+use AlibabaCloud\SDK\Bss\V20140714\Models\vnoPayCallBackNotifyRequest;
+use AlibabaCloud\SDK\Bss\V20140714\Models\vnoPayCallBackNotifyResponse;
+use AlibabaCloud\SDK\Bss\V20140714\Models\vnoBatchRefundOrderRequest;
+use AlibabaCloud\SDK\Bss\V20140714\Models\vnoBatchRefundOrderResponse;
+use AlibabaCloud\SDK\Bss\V20140714\Models\SubscriptionCreateOrderApiRequest;
+use AlibabaCloud\SDK\Bss\V20140714\Models\SubscriptionCreateOrderApiResponse;
+use AlibabaCloud\SDK\Bss\V20140714\Models\SetResourceBusinessStatusRequest;
+use AlibabaCloud\SDK\Bss\V20140714\Models\SetResourceBusinessStatusResponse;
+use AlibabaCloud\SDK\Bss\V20140714\Models\DescribeCouponListRequest;
+use AlibabaCloud\SDK\Bss\V20140714\Models\DescribeCouponListResponse;
+use AlibabaCloud\SDK\Bss\V20140714\Models\DescribeCouponDetailRequest;
+use AlibabaCloud\SDK\Bss\V20140714\Models\DescribeCouponDetailResponse;
+use AlibabaCloud\SDK\Bss\V20140714\Models\DescribeCashDetailRequest;
+use AlibabaCloud\SDK\Bss\V20140714\Models\DescribeCashDetailResponse;
 
 class Bss {
     public function __construct($config){
