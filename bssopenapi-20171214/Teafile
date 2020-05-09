@@ -18,8 +18,7 @@
       "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
       "developerId": "aliyunproducts",
       "developerName": "Aliyun SDK",
-      "developerEmail": "aliyunsdk@aliyun.com",
-      "version": "1.0.0"
+      "developerEmail": "aliyunsdk@aliyun.com"
     }
   },
   "releases": {
@@ -27,7 +26,7 @@
     "go": "github.com/alibabacloud-go/BssOpenApi-20171214/client:v0.0.1",
     "csharp": "AlibabaCloud.SDK.BssOpenApi20171214:0.0.1",
     "ts": "@alicloud/bssopenapi20171214:^1.0.0",
-    "php": "alibabacloud/bssopenapi-20171214:^0.1.0"
+    "php": "alibabacloud/bssopenapi-20171214:1.0.1"
   },
   "libraries": {
     "RPC": "alibabacloud:RPC:*",
