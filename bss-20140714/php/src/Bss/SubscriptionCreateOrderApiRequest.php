@@ -39,11 +39,9 @@ class SubscriptionCreateOrderApiRequest extends Model{
      * @var string
      */
     public $ownerId;
-
     /**
      * @description productCode
      * @var string
      */
     public $productCode;
-
 }

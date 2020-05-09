@@ -57,29 +57,24 @@ class OpenCallbackResponse extends Model{
      * @var string
      */
     public $requestId;
-
     /**
      * @description success
      * @var bool
      */
     public $success;
-
     /**
      * @description code
      * @var string
      */
     public $code;
-
     /**
      * @description message
      * @var string
      */
     public $message;
-
     /**
      * @description data
      * @var string
      */
     public $data;
-
 }

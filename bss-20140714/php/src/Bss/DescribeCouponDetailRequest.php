@@ -9,7 +9,8 @@ class DescribeCouponDetailRequest extends Model{
     protected $_name = [
         'couponNumber' => 'CouponNumber',
     ];
-    public function validate() {}
+    public function validate() {
+    }
     public function toMap() {
         $res = [];
         $res['CouponNumber'] = $this->couponNumber;
@@ -31,5 +32,4 @@ class DescribeCouponDetailRequest extends Model{
      * @var string
      */
     public $couponNumber;
-
 }

@@ -33,5 +33,4 @@ class CreateOrderRequest extends Model{
      * @var string
      */
     public $paramStr;
-
 }

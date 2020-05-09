@@ -13,7 +13,8 @@ class DescribeCouponListRequest extends Model{
         'pageSize' => 'PageSize',
         'pageNum' => 'PageNum',
     ];
-    public function validate() {}
+    public function validate() {
+    }
     public function toMap() {
         $res = [];
         $res['Status'] = $this->status;
@@ -51,29 +52,24 @@ class DescribeCouponListRequest extends Model{
      * @var string
      */
     public $status;
-
     /**
      * @description startDeliveryTime
      * @var string
      */
     public $startDeliveryTime;
-
     /**
      * @description endDeliveryTime
      * @var string
      */
     public $endDeliveryTime;
-
     /**
      * @description pageSize
      * @var integer
      */
     public $pageSize;
-
     /**
      * @description pageNum
      * @var integer
      */
     public $pageNum;
-
 }

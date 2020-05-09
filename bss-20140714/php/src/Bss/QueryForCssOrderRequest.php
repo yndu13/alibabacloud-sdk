@@ -33,5 +33,4 @@ class QueryForCssOrderRequest extends Model{
      * @var string
      */
     public $paramStr;
-
 }

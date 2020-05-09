@@ -39,5 +39,4 @@ class productCodes extends Model{
      * @var array
      */
     public $productCode;
-
 }

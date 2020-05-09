@@ -33,5 +33,4 @@ class OpenCallbackRequest extends Model{
      * @var string
      */
     public $paramStr;
-
 }

@@ -51,11 +51,9 @@ class DescribeCouponListResponse extends Model{
      * @var string
      */
     public $requestId;
-
     /**
      * @description data
      * @var array
      */
     public $coupons;
-
 }

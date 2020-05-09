@@ -39,5 +39,4 @@ class tradeTypes extends Model{
      * @var array
      */
     public $tradeType;
-
 }

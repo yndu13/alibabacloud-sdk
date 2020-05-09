@@ -33,5 +33,4 @@ class vnoPayCallBackNotifyRequest extends Model{
      * @var string
      */
     public $paramStr;
-
 }

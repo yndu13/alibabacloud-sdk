@@ -33,5 +33,4 @@ class SetResourceBusinessStatusResponse extends Model{
      * @var string
      */
     public $requestId;
-
 }

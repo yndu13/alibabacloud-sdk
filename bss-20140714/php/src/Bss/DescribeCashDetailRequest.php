@@ -6,7 +6,8 @@ namespace AlibabaCloud\SDK\Bss\V20140714\Bss;
 use AlibabaCloud\Tea\Model;
 
 class DescribeCashDetailRequest extends Model{
-    public function validate() {}
+    public function validate() {
+    }
     public function toMap() {
         $res = [];
         return $res;

@@ -13,26 +13,26 @@ use AlibabaCloud\Tea\Rpc\Rpc;
 use AlibabaCloud\Endpoint\Endpoint;
 use AlibabaCloud\Tea\Utils\Utils\RuntimeOptions;
 
-use AlibabaCloud\SDK\Bss\V20140714\Models\OpenCallbackRequest;
-use AlibabaCloud\SDK\Bss\V20140714\Models\OpenCallbackResponse;
-use AlibabaCloud\SDK\Bss\V20140714\Models\QueryForCssOrderRequest;
-use AlibabaCloud\SDK\Bss\V20140714\Models\QueryForCssOrderResponse;
-use AlibabaCloud\SDK\Bss\V20140714\Models\CreateOrderRequest;
-use AlibabaCloud\SDK\Bss\V20140714\Models\CreateOrderResponse;
-use AlibabaCloud\SDK\Bss\V20140714\Models\vnoPayCallBackNotifyRequest;
-use AlibabaCloud\SDK\Bss\V20140714\Models\vnoPayCallBackNotifyResponse;
-use AlibabaCloud\SDK\Bss\V20140714\Models\vnoBatchRefundOrderRequest;
-use AlibabaCloud\SDK\Bss\V20140714\Models\vnoBatchRefundOrderResponse;
-use AlibabaCloud\SDK\Bss\V20140714\Models\SubscriptionCreateOrderApiRequest;
-use AlibabaCloud\SDK\Bss\V20140714\Models\SubscriptionCreateOrderApiResponse;
-use AlibabaCloud\SDK\Bss\V20140714\Models\SetResourceBusinessStatusRequest;
-use AlibabaCloud\SDK\Bss\V20140714\Models\SetResourceBusinessStatusResponse;
-use AlibabaCloud\SDK\Bss\V20140714\Models\DescribeCouponListRequest;
-use AlibabaCloud\SDK\Bss\V20140714\Models\DescribeCouponListResponse;
-use AlibabaCloud\SDK\Bss\V20140714\Models\DescribeCouponDetailRequest;
-use AlibabaCloud\SDK\Bss\V20140714\Models\DescribeCouponDetailResponse;
-use AlibabaCloud\SDK\Bss\V20140714\Models\DescribeCashDetailRequest;
-use AlibabaCloud\SDK\Bss\V20140714\Models\DescribeCashDetailResponse;
+use AlibabaCloud\SDK\Bss\V20140714\Bss\OpenCallbackRequest;
+use AlibabaCloud\SDK\Bss\V20140714\Bss\OpenCallbackResponse;
+use AlibabaCloud\SDK\Bss\V20140714\Bss\QueryForCssOrderRequest;
+use AlibabaCloud\SDK\Bss\V20140714\Bss\QueryForCssOrderResponse;
+use AlibabaCloud\SDK\Bss\V20140714\Bss\CreateOrderRequest;
+use AlibabaCloud\SDK\Bss\V20140714\Bss\CreateOrderResponse;
+use AlibabaCloud\SDK\Bss\V20140714\Bss\vnoPayCallBackNotifyRequest;
+use AlibabaCloud\SDK\Bss\V20140714\Bss\vnoPayCallBackNotifyResponse;
+use AlibabaCloud\SDK\Bss\V20140714\Bss\vnoBatchRefundOrderRequest;
+use AlibabaCloud\SDK\Bss\V20140714\Bss\vnoBatchRefundOrderResponse;
+use AlibabaCloud\SDK\Bss\V20140714\Bss\SubscriptionCreateOrderApiRequest;
+use AlibabaCloud\SDK\Bss\V20140714\Bss\SubscriptionCreateOrderApiResponse;
+use AlibabaCloud\SDK\Bss\V20140714\Bss\SetResourceBusinessStatusRequest;
+use AlibabaCloud\SDK\Bss\V20140714\Bss\SetResourceBusinessStatusResponse;
+use AlibabaCloud\SDK\Bss\V20140714\Bss\DescribeCouponListRequest;
+use AlibabaCloud\SDK\Bss\V20140714\Bss\DescribeCouponListResponse;
+use AlibabaCloud\SDK\Bss\V20140714\Bss\DescribeCouponDetailRequest;
+use AlibabaCloud\SDK\Bss\V20140714\Bss\DescribeCouponDetailResponse;
+use AlibabaCloud\SDK\Bss\V20140714\Bss\DescribeCashDetailRequest;
+use AlibabaCloud\SDK\Bss\V20140714\Bss\DescribeCashDetailResponse;
 
 class Bss {
     public function __construct($config){
@@ -50,8 +50,7 @@ class Bss {
      */
     public function openCallbackEx(OpenCallbackRequest $request, RuntimeOptions $runtime){
         Utils::validateModel($request);
-        return OpenCallbackResponse::fromMap($this->doRequest("OpenCallback", "HTTPS", "POST", "2014-07-14", "AK", $request, null, $runtime))
-;
+        return Model::toModel($this->doRequest("OpenCallback", "HTTPS", "POST", "2014-07-14", "AK", $request, null, $runtime), new OpenCallbackResponse());
     }
 
     /**
@@ -72,8 +71,7 @@ class Bss {
      */
     public function queryForCssOrderEx(QueryForCssOrderRequest $request, RuntimeOptions $runtime){
         Utils::validateModel($request);
-        return QueryForCssOrderResponse::fromMap($this->doRequest("QueryForCssOrder", "HTTPS", "POST", "2014-07-14", "AK", $request, null, $runtime))
-;
+        return Model::toModel($this->doRequest("QueryForCssOrder", "HTTPS", "POST", "2014-07-14", "AK", $request, null, $runtime), new QueryForCssOrderResponse());
     }
 
     /**
@@ -94,8 +92,7 @@ class Bss {
      */
     public function createOrderEx(CreateOrderRequest $request, RuntimeOptions $runtime){
         Utils::validateModel($request);
-        return CreateOrderResponse::fromMap($this->doRequest("CreateOrder", "HTTPS", "POST", "2014-07-14", "AK", $request, null, $runtime))
-;
+        return Model::toModel($this->doRequest("CreateOrder", "HTTPS", "POST", "2014-07-14", "AK", $request, null, $runtime), new CreateOrderResponse());
     }
 
     /**
@@ -116,8 +113,7 @@ class Bss {
      */
     public function vnoPayCallBackNotifyEx(vnoPayCallBackNotifyRequest $request, RuntimeOptions $runtime){
         Utils::validateModel($request);
-        return vnoPayCallBackNotifyResponse::fromMap($this->doRequest("vnoPayCallBackNotify", "HTTPS", "POST", "2014-07-14", "AK", $request, null, $runtime))
-;
+        return Model::toModel($this->doRequest("vnoPayCallBackNotify", "HTTPS", "POST", "2014-07-14", "AK", $request, null, $runtime), new vnoPayCallBackNotifyResponse());
     }
 
     /**
@@ -138,8 +134,7 @@ class Bss {
      */
     public function vnoBatchRefundOrderEx(vnoBatchRefundOrderRequest $request, RuntimeOptions $runtime){
         Utils::validateModel($request);
-        return vnoBatchRefundOrderResponse::fromMap($this->doRequest("vnoBatchRefundOrder", "HTTPS", "POST", "2014-07-14", "AK", $request, null, $runtime))
-;
+        return Model::toModel($this->doRequest("vnoBatchRefundOrder", "HTTPS", "POST", "2014-07-14", "AK", $request, null, $runtime), new vnoBatchRefundOrderResponse());
     }
 
     /**
@@ -160,8 +155,7 @@ class Bss {
      */
     public function subscriptionCreateOrderApiEx(SubscriptionCreateOrderApiRequest $request, RuntimeOptions $runtime){
         Utils::validateModel($request);
-        return SubscriptionCreateOrderApiResponse::fromMap($this->doRequest("SubscriptionCreateOrderApi", "HTTPS", "POST", "2014-07-14", "AK", $request, null, $runtime))
-;
+        return Model::toModel($this->doRequest("SubscriptionCreateOrderApi", "HTTPS", "POST", "2014-07-14", "AK", $request, null, $runtime), new SubscriptionCreateOrderApiResponse());
     }
 
     /**
@@ -182,8 +176,7 @@ class Bss {
      */
     public function setResourceBusinessStatusEx(SetResourceBusinessStatusRequest $request, RuntimeOptions $runtime){
         Utils::validateModel($request);
-        return SetResourceBusinessStatusResponse::fromMap($this->doRequest("SetResourceBusinessStatus", "HTTPS", "POST", "2014-07-14", "AK", $request, null, $runtime))
-;
+        return Model::toModel($this->doRequest("SetResourceBusinessStatus", "HTTPS", "POST", "2014-07-14", "AK", $request, null, $runtime), new SetResourceBusinessStatusResponse());
     }
 
     /**
@@ -204,8 +197,7 @@ class Bss {
      */
     public function describeCouponListEx(DescribeCouponListRequest $request, RuntimeOptions $runtime){
         Utils::validateModel($request);
-        return DescribeCouponListResponse::fromMap($this->doRequest("DescribeCouponList", "HTTPS", "POST", "2014-07-14", "AK", $request, null, $runtime))
-;
+        return Model::toModel($this->doRequest("DescribeCouponList", "HTTPS", "POST", "2014-07-14", "AK", $request, null, $runtime), new DescribeCouponListResponse());
     }
 
     /**
@@ -226,8 +218,7 @@ class Bss {
      */
     public function describeCouponDetailEx(DescribeCouponDetailRequest $request, RuntimeOptions $runtime){
         Utils::validateModel($request);
-        return DescribeCouponDetailResponse::fromMap($this->doRequest("DescribeCouponDetail", "HTTPS", "GET", "2014-07-14", "AK", $request, null, $runtime))
-;
+        return Model::toModel($this->doRequest("DescribeCouponDetail", "HTTPS", "GET", "2014-07-14", "AK", $request, null, $runtime), new DescribeCouponDetailResponse());
     }
 
     /**
@@ -248,8 +239,7 @@ class Bss {
      */
     public function describeCashDetailEx(DescribeCashDetailRequest $request, RuntimeOptions $runtime){
         Utils::validateModel($request);
-        return DescribeCashDetailResponse::fromMap($this->doRequest("DescribeCashDetail", "HTTPS", "POST", "2014-07-14", "AK", null, $request, $runtime))
-;
+        return Model::toModel($this->doRequest("DescribeCashDetail", "HTTPS", "POST", "2014-07-14", "AK", null, $request, $runtime), new DescribeCashDetailResponse());
     }
 
     /**
@@ -274,10 +264,10 @@ class Bss {
      * @throws \Exception
      */
     public function getEndpoint($productId, $regionId, $endpointRule, $network, $suffix, $endpointMap, $endpoint){
-        if (!Utils::empty_($endpoint)) {
+        if (!Utils::emptyWithSuffix($endpoint)) {
             return $endpoint;
         }
-        if (!Utils::isUnset($endpointMap) && !Utils::empty_($endpointMap["regionId"])) {
+        if (!Utils::isUnset($endpointMap) && !Utils::emptyWithSuffix($endpointMap["regionId"])) {
             return $endpointMap["regionId"];
         }
         return Endpoint::getEndpointRules($productId, $regionId, $endpointRule, $network, $suffix);

@@ -70,47 +70,39 @@ class SetResourceBusinessStatusRequest extends Model{
      * @var string
      */
     public $accessKeyId;
-
     /**
      * @description ownerId
      * @var integer
      */
     public $ownerId;
-
     /**
      * @description resourceOwnerAccount
      * @var string
      */
     public $resourceOwnerAccount;
-
     /**
      * @description resourceOwnerId
      * @var integer
      */
     public $resourceOwnerId;
-
     /**
      * @description resourceType
      * @var string
      */
     public $resourceType;
-
     /**
      * @description resourceId
      * @var string
      */
     public $resourceId;
-
     /**
      * @description businessStatus
      * @var string
      */
     public $businessStatus;
-
     /**
      * @description ownerAccount
      * @var string
      */
     public $ownerAccount;
-
 }

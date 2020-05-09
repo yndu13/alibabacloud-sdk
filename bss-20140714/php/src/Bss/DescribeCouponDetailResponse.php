@@ -132,101 +132,84 @@ class DescribeCouponDetailResponse extends Model{
      * @var string
      */
     public $requestId;
-
     /**
      * @description data.couponTemplateId
      * @var integer
      */
     public $couponTemplateId;
-
     /**
      * @description data.totalAmount
      * @var string
      */
     public $totalAmount;
-
     /**
      * @description data.balanceAmount
      * @var string
      */
     public $balanceAmount;
-
     /**
      * @description data.frozenAmount
      * @var string
      */
     public $frozenAmount;
-
     /**
      * @description data.expiredAmount
      * @var string
      */
     public $expiredAmount;
-
     /**
      * @description data.deliveryTime
      * @var string
      */
     public $deliveryTime;
-
     /**
      * @description data.expiredTime
      * @var string
      */
     public $expiredTime;
-
     /**
      * @description data.couponNumber
      * @var string
      */
     public $couponNumber;
-
     /**
      * @description data.status
      * @var string
      */
     public $status;
-
     /**
      * @description data.description
      * @var string
      */
     public $description;
-
     /**
      * @description data.gmtCreate
      * @var string
      */
     public $creationTime;
-
     /**
      * @description data.gmtModify
      * @var string
      */
     public $modificationTime;
-
     /**
      * @description data.priceLimit
      * @var string
      */
     public $priceLimit;
-
     /**
      * @description data.application
      * @var string
      */
     public $application;
-
     /**
      * @description data.productCode
      * @var DescribeCouponDetailResponse.productCodes
      */
     public $productCodes;
-
     /**
      * @description data.tradeType
      * @var DescribeCouponDetailResponse.tradeTypes
      */
     public $tradeTypes;
-
 }
