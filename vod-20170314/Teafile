@@ -26,7 +26,7 @@
     "go": "github.com/alibabacloud-go/Vod-20170314/client:v0.0.1",
     "csharp": "AlibabaCloud.SDK.Vod20170314:0.0.1",
     "ts": "@alicloud/vod20170314:^1.0.0",
-    "php": "alibabacloud/vod-20170314:1.0.0"
+    "php": "alibabacloud/vod-20170314:^0.1.0"
   },
   "libraries": {
     "RPC": "alibabacloud:RPC:*",
