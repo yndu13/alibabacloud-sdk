@@ -1,0 +1,58 @@
+{
+  "scope": "alibabacloud",
+  "name": "vod20170314",
+  "version": "1.0.0",
+  "main": "./main.tea",
+  "maintainers": [
+    {
+      "name": "Alibaba Cloud SDK",
+      "email": "sdk-team@alibabacloud.com"
+    }
+  ],
+  "java": {
+    "package": "com.aliyun.vod20170314",
+    "packageInfo": {
+      "description": "Alibaba Cloud vod20170314 SDK for Java",
+      "url": "https://github.com/aliyun/alibabacloud-sdk",
+      "licenseNmae": "The Apache License, Version 2.0",
+      "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+      "developerId": "aliyunproducts",
+      "developerName": "Aliyun SDK",
+      "developerEmail": "aliyunsdk@aliyun.com"
+    }
+  },
+  "releases": {
+    "java": "com.aliyun:vod20170314:0.0.1",
+    "go": "github.com/alibabacloud-go/Vod-20170314/client:v0.0.1",
+    "csharp": "AlibabaCloud.SDK.Vod20170314:0.0.1",
+    "ts": "@alicloud/vod20170314:^1.0.0",
+    "php": "alibabacloud/vod-20170314:1.0.0"
+  },
+  "libraries": {
+    "RPC": "alibabacloud:RPC:*",
+    "Util": "alibabacloud:Util:*",
+    "EndpointUtil": "alibabacloud:EndpointUtil:*"
+  },
+  "csharp": {
+    "className": "Client",
+    "namespace": "AlibabaCloud.SDK.vod20170314",
+    "packageInfo": {
+      "name": "vod",
+      "title": "alibabacloud-vod",
+      "description": "Alibaba Cloud Vod SDK Library for .NET",
+      "company": "Alibaba Cloud, Inc"
+    }
+  },
+  "php": {
+    "package": "AlibabaCloud.SDK.vod.V20170314",
+    "clientName": "vod",
+    "packageInfo": {
+      "name": "alibabacloud/vod-20170314",
+      "desc": "Alibaba Cloud Vod SDK Library for PHP",
+      "github": "https://github.com/aliyun/alibabacloud-sdk",
+      "files": {
+        "LICENSE": "../LICENSE"
+      }
+    }
+  }
+}
