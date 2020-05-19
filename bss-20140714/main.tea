@@ -24,14 +24,14 @@ model OpenCallbackResponse = {
   data: string(name='Data', description='data'),
 }
 
-async function openCallbackEx(request: OpenCallbackRequest, runtime: Util.RuntimeOptions): OpenCallbackResponse {
+async function openCallbackWithOptions(request: OpenCallbackRequest, runtime: Util.RuntimeOptions): OpenCallbackResponse {
   Util.validateModel(request);
-  return doRequest('OpenCallback', 'HTTPS', 'POST', '2014-07-14', 'AK', request, null, runtime);
+  return doRequest('OpenCallback', 'HTTPS', 'POST', '2014-07-14', 'AK', null, request, runtime);
 }
 
 async function openCallback(request: OpenCallbackRequest): OpenCallbackResponse {
   var runtime = new Util.RuntimeOptions{};
-  return openCallbackEx(request, runtime);
+  return openCallbackWithOptions(request, runtime);
 }
 
 model QueryForCssOrderRequest = {
@@ -46,14 +46,14 @@ model QueryForCssOrderResponse = {
   data: string(name='Data', description='data'),
 }
 
-async function queryForCssOrderEx(request: QueryForCssOrderRequest, runtime: Util.RuntimeOptions): QueryForCssOrderResponse {
+async function queryForCssOrderWithOptions(request: QueryForCssOrderRequest, runtime: Util.RuntimeOptions): QueryForCssOrderResponse {
   Util.validateModel(request);
-  return doRequest('QueryForCssOrder', 'HTTPS', 'POST', '2014-07-14', 'AK', request, null, runtime);
+  return doRequest('QueryForCssOrder', 'HTTPS', 'POST', '2014-07-14', 'AK', null, request, runtime);
 }
 
 async function queryForCssOrder(request: QueryForCssOrderRequest): QueryForCssOrderResponse {
   var runtime = new Util.RuntimeOptions{};
-  return queryForCssOrderEx(request, runtime);
+  return queryForCssOrderWithOptions(request, runtime);
 }
 
 model CreateOrderRequest = {
@@ -68,14 +68,14 @@ model CreateOrderResponse = {
   data: string(name='Data', description='data'),
 }
 
-async function createOrderEx(request: CreateOrderRequest, runtime: Util.RuntimeOptions): CreateOrderResponse {
+async function createOrderWithOptions(request: CreateOrderRequest, runtime: Util.RuntimeOptions): CreateOrderResponse {
   Util.validateModel(request);
-  return doRequest('CreateOrder', 'HTTPS', 'POST', '2014-07-14', 'AK', request, null, runtime);
+  return doRequest('CreateOrder', 'HTTPS', 'POST', '2014-07-14', 'AK', null, request, runtime);
 }
 
 async function createOrder(request: CreateOrderRequest): CreateOrderResponse {
   var runtime = new Util.RuntimeOptions{};
-  return createOrderEx(request, runtime);
+  return createOrderWithOptions(request, runtime);
 }
 
 model vnoPayCallBackNotifyRequest = {
@@ -90,14 +90,14 @@ model vnoPayCallBackNotifyResponse = {
   data: string(name='Data', description='data'),
 }
 
-async function vnoPayCallBackNotifyEx(request: vnoPayCallBackNotifyRequest, runtime: Util.RuntimeOptions): vnoPayCallBackNotifyResponse {
+async function vnoPayCallBackNotifyWithOptions(request: vnoPayCallBackNotifyRequest, runtime: Util.RuntimeOptions): vnoPayCallBackNotifyResponse {
   Util.validateModel(request);
-  return doRequest('vnoPayCallBackNotify', 'HTTPS', 'POST', '2014-07-14', 'AK', request, null, runtime);
+  return doRequest('vnoPayCallBackNotify', 'HTTPS', 'POST', '2014-07-14', 'AK', null, request, runtime);
 }
 
 async function vnoPayCallBackNotify(request: vnoPayCallBackNotifyRequest): vnoPayCallBackNotifyResponse {
   var runtime = new Util.RuntimeOptions{};
-  return vnoPayCallBackNotifyEx(request, runtime);
+  return vnoPayCallBackNotifyWithOptions(request, runtime);
 }
 
 model vnoBatchRefundOrderRequest = {
@@ -112,14 +112,14 @@ model vnoBatchRefundOrderResponse = {
   data: string(name='Data', description='data'),
 }
 
-async function vnoBatchRefundOrderEx(request: vnoBatchRefundOrderRequest, runtime: Util.RuntimeOptions): vnoBatchRefundOrderResponse {
+async function vnoBatchRefundOrderWithOptions(request: vnoBatchRefundOrderRequest, runtime: Util.RuntimeOptions): vnoBatchRefundOrderResponse {
   Util.validateModel(request);
-  return doRequest('vnoBatchRefundOrder', 'HTTPS', 'POST', '2014-07-14', 'AK', request, null, runtime);
+  return doRequest('vnoBatchRefundOrder', 'HTTPS', 'POST', '2014-07-14', 'AK', null, request, runtime);
 }
 
 async function vnoBatchRefundOrder(request: vnoBatchRefundOrderRequest): vnoBatchRefundOrderResponse {
   var runtime = new Util.RuntimeOptions{};
-  return vnoBatchRefundOrderEx(request, runtime);
+  return vnoBatchRefundOrderWithOptions(request, runtime);
 }
 
 model SubscriptionCreateOrderApiRequest = {
@@ -135,14 +135,14 @@ model SubscriptionCreateOrderApiResponse = {
   data: string(name='Data', description='data'),
 }
 
-async function subscriptionCreateOrderApiEx(request: SubscriptionCreateOrderApiRequest, runtime: Util.RuntimeOptions): SubscriptionCreateOrderApiResponse {
+async function subscriptionCreateOrderApiWithOptions(request: SubscriptionCreateOrderApiRequest, runtime: Util.RuntimeOptions): SubscriptionCreateOrderApiResponse {
   Util.validateModel(request);
-  return doRequest('SubscriptionCreateOrderApi', 'HTTPS', 'POST', '2014-07-14', 'AK', request, null, runtime);
+  return doRequest('SubscriptionCreateOrderApi', 'HTTPS', 'POST', '2014-07-14', 'AK', null, request, runtime);
 }
 
 async function subscriptionCreateOrderApi(request: SubscriptionCreateOrderApiRequest): SubscriptionCreateOrderApiResponse {
   var runtime = new Util.RuntimeOptions{};
-  return subscriptionCreateOrderApiEx(request, runtime);
+  return subscriptionCreateOrderApiWithOptions(request, runtime);
 }
 
 model SetResourceBusinessStatusRequest = {
@@ -160,14 +160,14 @@ model SetResourceBusinessStatusResponse = {
   requestId: string(name='RequestId', description='requestId'),
 }
 
-async function setResourceBusinessStatusEx(request: SetResourceBusinessStatusRequest, runtime: Util.RuntimeOptions): SetResourceBusinessStatusResponse {
+async function setResourceBusinessStatusWithOptions(request: SetResourceBusinessStatusRequest, runtime: Util.RuntimeOptions): SetResourceBusinessStatusResponse {
   Util.validateModel(request);
-  return doRequest('SetResourceBusinessStatus', 'HTTPS', 'POST', '2014-07-14', 'AK', request, null, runtime);
+  return doRequest('SetResourceBusinessStatus', 'HTTPS', 'POST', '2014-07-14', 'AK', null, request, runtime);
 }
 
 async function setResourceBusinessStatus(request: SetResourceBusinessStatusRequest): SetResourceBusinessStatusResponse {
   var runtime = new Util.RuntimeOptions{};
-  return setResourceBusinessStatusEx(request, runtime);
+  return setResourceBusinessStatusWithOptions(request, runtime);
 }
 
 model DescribeCouponListRequest = {
@@ -206,14 +206,14 @@ model DescribeCouponListResponse = {
   ](name='Coupons', description='data'),
 }
 
-async function describeCouponListEx(request: DescribeCouponListRequest, runtime: Util.RuntimeOptions): DescribeCouponListResponse {
+async function describeCouponListWithOptions(request: DescribeCouponListRequest, runtime: Util.RuntimeOptions): DescribeCouponListResponse {
   Util.validateModel(request);
-  return doRequest('DescribeCouponList', 'HTTPS', 'POST', '2014-07-14', 'AK', request, null, runtime);
+  return doRequest('DescribeCouponList', 'HTTPS', 'POST', '2014-07-14', 'AK', null, request, runtime);
 }
 
 async function describeCouponList(request: DescribeCouponListRequest): DescribeCouponListResponse {
   var runtime = new Util.RuntimeOptions{};
-  return describeCouponListEx(request, runtime);
+  return describeCouponListWithOptions(request, runtime);
 }
 
 model DescribeCouponDetailRequest = {
@@ -244,14 +244,14 @@ model DescribeCouponDetailResponse = {
   }(name='TradeTypes', description='data.tradeType'),
 }
 
-async function describeCouponDetailEx(request: DescribeCouponDetailRequest, runtime: Util.RuntimeOptions): DescribeCouponDetailResponse {
+async function describeCouponDetailWithOptions(request: DescribeCouponDetailRequest, runtime: Util.RuntimeOptions): DescribeCouponDetailResponse {
   Util.validateModel(request);
-  return doRequest('DescribeCouponDetail', 'HTTPS', 'GET', '2014-07-14', 'AK', request, null, runtime);
+  return doRequest('DescribeCouponDetail', 'HTTPS', 'GET', '2014-07-14', 'AK', null, request, runtime);
 }
 
 async function describeCouponDetail(request: DescribeCouponDetailRequest): DescribeCouponDetailResponse {
   var runtime = new Util.RuntimeOptions{};
-  return describeCouponDetailEx(request, runtime);
+  return describeCouponDetailWithOptions(request, runtime);
 }
 
 model DescribeCashDetailRequest = {
@@ -270,14 +270,14 @@ model DescribeCashDetailResponse = {
   availableCredit: string(name='AvailableCredit', description='data.availableCredit'),
 }
 
-async function describeCashDetailEx(request: DescribeCashDetailRequest, runtime: Util.RuntimeOptions): DescribeCashDetailResponse {
+async function describeCashDetailWithOptions(request: DescribeCashDetailRequest, runtime: Util.RuntimeOptions): DescribeCashDetailResponse {
   Util.validateModel(request);
   return doRequest('DescribeCashDetail', 'HTTPS', 'POST', '2014-07-14', 'AK', null, request, runtime);
 }
 
 async function describeCashDetail(request: DescribeCashDetailRequest): DescribeCashDetailResponse {
   var runtime = new Util.RuntimeOptions{};
-  return describeCashDetailEx(request, runtime);
+  return describeCashDetailWithOptions(request, runtime);
 }
 
 function getEndpoint(productId: string, regionId: string, endpointRule: string, network: string, suffix: string, endpointMap: map[string]string, endpoint: string) throws: string{

@@ -18,8 +18,7 @@
       "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
       "developerId": "aliyunproducts",
       "developerName": "Aliyun SDK",
-      "developerEmail": "aliyunsdk@aliyun.com",
-      "version": "1.0.0"
+      "developerEmail": "aliyunsdk@aliyun.com"
     }
   },
   "releases": {
@@ -55,5 +54,9 @@
         "LICENSE": "../LICENSE"
       }
     }
+  },
+  "python": {
+    "package": "alibabacloud_sdk_bss20140714",
+    "clientName": "bss"
   }
 }
