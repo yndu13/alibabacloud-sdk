@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId></groupId>
-  <artifactId></artifactId>
-  <version>1.0.0</version>
+  <groupId>com.aliyun</groupId>
+  <artifactId>bss20140714</artifactId>
+  <version>1.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
-  <name></name>
+  <name/>
   <description>Alibaba Cloud Bss20140714 SDK for Java
     </description>
   <url>https://github.com/aliyun/alibabacloud-sdk</url>
@@ -33,9 +33,9 @@
     </repository>
   </distributionManagement>
   <scm>
-    <connection></connection>
-    <developerConnection></developerConnection>
-    <url></url>
+    <connection/>
+    <developerConnection/>
+    <url/>
   </scm>
   <dependencies>
     <dependency>

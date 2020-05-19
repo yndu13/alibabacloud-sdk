@@ -13,104 +13,104 @@ public class Client extends com.aliyun.tearpc.Client {
     }
 
 
-    public OpenCallbackResponse openCallbackEx(OpenCallbackRequest request, com.aliyun.teautil.models.RuntimeOptions runtime) throws Exception {
+    public OpenCallbackResponse openCallbackWithOptions(OpenCallbackRequest request, com.aliyun.teautil.models.RuntimeOptions runtime) throws Exception {
         com.aliyun.teautil.Common.validateModel(request);
-        return TeaModel.toModel(this.doRequest("OpenCallback", "HTTPS", "POST", "2014-07-14", "AK", TeaModel.buildMap(request), null, runtime), new OpenCallbackResponse());
+        return TeaModel.toModel(this.doRequest("OpenCallback", "HTTPS", "POST", "2014-07-14", "AK", null, TeaModel.buildMap(request), runtime), new OpenCallbackResponse());
     }
 
     public OpenCallbackResponse openCallback(OpenCallbackRequest request) throws Exception {
         com.aliyun.teautil.models.RuntimeOptions runtime = new com.aliyun.teautil.models.RuntimeOptions();
-        return this.openCallbackEx(request, runtime);
+        return this.openCallbackWithOptions(request, runtime);
     }
 
-    public QueryForCssOrderResponse queryForCssOrderEx(QueryForCssOrderRequest request, com.aliyun.teautil.models.RuntimeOptions runtime) throws Exception {
+    public QueryForCssOrderResponse queryForCssOrderWithOptions(QueryForCssOrderRequest request, com.aliyun.teautil.models.RuntimeOptions runtime) throws Exception {
         com.aliyun.teautil.Common.validateModel(request);
-        return TeaModel.toModel(this.doRequest("QueryForCssOrder", "HTTPS", "POST", "2014-07-14", "AK", TeaModel.buildMap(request), null, runtime), new QueryForCssOrderResponse());
+        return TeaModel.toModel(this.doRequest("QueryForCssOrder", "HTTPS", "POST", "2014-07-14", "AK", null, TeaModel.buildMap(request), runtime), new QueryForCssOrderResponse());
     }
 
     public QueryForCssOrderResponse queryForCssOrder(QueryForCssOrderRequest request) throws Exception {
         com.aliyun.teautil.models.RuntimeOptions runtime = new com.aliyun.teautil.models.RuntimeOptions();
-        return this.queryForCssOrderEx(request, runtime);
+        return this.queryForCssOrderWithOptions(request, runtime);
     }
 
-    public CreateOrderResponse createOrderEx(CreateOrderRequest request, com.aliyun.teautil.models.RuntimeOptions runtime) throws Exception {
+    public CreateOrderResponse createOrderWithOptions(CreateOrderRequest request, com.aliyun.teautil.models.RuntimeOptions runtime) throws Exception {
         com.aliyun.teautil.Common.validateModel(request);
-        return TeaModel.toModel(this.doRequest("CreateOrder", "HTTPS", "POST", "2014-07-14", "AK", TeaModel.buildMap(request), null, runtime), new CreateOrderResponse());
+        return TeaModel.toModel(this.doRequest("CreateOrder", "HTTPS", "POST", "2014-07-14", "AK", null, TeaModel.buildMap(request), runtime), new CreateOrderResponse());
     }
 
     public CreateOrderResponse createOrder(CreateOrderRequest request) throws Exception {
         com.aliyun.teautil.models.RuntimeOptions runtime = new com.aliyun.teautil.models.RuntimeOptions();
-        return this.createOrderEx(request, runtime);
+        return this.createOrderWithOptions(request, runtime);
     }
 
-    public vnoPayCallBackNotifyResponse vnoPayCallBackNotifyEx(vnoPayCallBackNotifyRequest request, com.aliyun.teautil.models.RuntimeOptions runtime) throws Exception {
+    public vnoPayCallBackNotifyResponse vnoPayCallBackNotifyWithOptions(vnoPayCallBackNotifyRequest request, com.aliyun.teautil.models.RuntimeOptions runtime) throws Exception {
         com.aliyun.teautil.Common.validateModel(request);
-        return TeaModel.toModel(this.doRequest("vnoPayCallBackNotify", "HTTPS", "POST", "2014-07-14", "AK", TeaModel.buildMap(request), null, runtime), new vnoPayCallBackNotifyResponse());
+        return TeaModel.toModel(this.doRequest("vnoPayCallBackNotify", "HTTPS", "POST", "2014-07-14", "AK", null, TeaModel.buildMap(request), runtime), new vnoPayCallBackNotifyResponse());
     }
 
     public vnoPayCallBackNotifyResponse vnoPayCallBackNotify(vnoPayCallBackNotifyRequest request) throws Exception {
         com.aliyun.teautil.models.RuntimeOptions runtime = new com.aliyun.teautil.models.RuntimeOptions();
-        return this.vnoPayCallBackNotifyEx(request, runtime);
+        return this.vnoPayCallBackNotifyWithOptions(request, runtime);
     }
 
-    public vnoBatchRefundOrderResponse vnoBatchRefundOrderEx(vnoBatchRefundOrderRequest request, com.aliyun.teautil.models.RuntimeOptions runtime) throws Exception {
+    public vnoBatchRefundOrderResponse vnoBatchRefundOrderWithOptions(vnoBatchRefundOrderRequest request, com.aliyun.teautil.models.RuntimeOptions runtime) throws Exception {
         com.aliyun.teautil.Common.validateModel(request);
-        return TeaModel.toModel(this.doRequest("vnoBatchRefundOrder", "HTTPS", "POST", "2014-07-14", "AK", TeaModel.buildMap(request), null, runtime), new vnoBatchRefundOrderResponse());
+        return TeaModel.toModel(this.doRequest("vnoBatchRefundOrder", "HTTPS", "POST", "2014-07-14", "AK", null, TeaModel.buildMap(request), runtime), new vnoBatchRefundOrderResponse());
     }
 
     public vnoBatchRefundOrderResponse vnoBatchRefundOrder(vnoBatchRefundOrderRequest request) throws Exception {
         com.aliyun.teautil.models.RuntimeOptions runtime = new com.aliyun.teautil.models.RuntimeOptions();
-        return this.vnoBatchRefundOrderEx(request, runtime);
+        return this.vnoBatchRefundOrderWithOptions(request, runtime);
     }
 
-    public SubscriptionCreateOrderApiResponse subscriptionCreateOrderApiEx(SubscriptionCreateOrderApiRequest request, com.aliyun.teautil.models.RuntimeOptions runtime) throws Exception {
+    public SubscriptionCreateOrderApiResponse subscriptionCreateOrderApiWithOptions(SubscriptionCreateOrderApiRequest request, com.aliyun.teautil.models.RuntimeOptions runtime) throws Exception {
         com.aliyun.teautil.Common.validateModel(request);
-        return TeaModel.toModel(this.doRequest("SubscriptionCreateOrderApi", "HTTPS", "POST", "2014-07-14", "AK", TeaModel.buildMap(request), null, runtime), new SubscriptionCreateOrderApiResponse());
+        return TeaModel.toModel(this.doRequest("SubscriptionCreateOrderApi", "HTTPS", "POST", "2014-07-14", "AK", null, TeaModel.buildMap(request), runtime), new SubscriptionCreateOrderApiResponse());
     }
 
     public SubscriptionCreateOrderApiResponse subscriptionCreateOrderApi(SubscriptionCreateOrderApiRequest request) throws Exception {
         com.aliyun.teautil.models.RuntimeOptions runtime = new com.aliyun.teautil.models.RuntimeOptions();
-        return this.subscriptionCreateOrderApiEx(request, runtime);
+        return this.subscriptionCreateOrderApiWithOptions(request, runtime);
     }
 
-    public SetResourceBusinessStatusResponse setResourceBusinessStatusEx(SetResourceBusinessStatusRequest request, com.aliyun.teautil.models.RuntimeOptions runtime) throws Exception {
+    public SetResourceBusinessStatusResponse setResourceBusinessStatusWithOptions(SetResourceBusinessStatusRequest request, com.aliyun.teautil.models.RuntimeOptions runtime) throws Exception {
         com.aliyun.teautil.Common.validateModel(request);
-        return TeaModel.toModel(this.doRequest("SetResourceBusinessStatus", "HTTPS", "POST", "2014-07-14", "AK", TeaModel.buildMap(request), null, runtime), new SetResourceBusinessStatusResponse());
+        return TeaModel.toModel(this.doRequest("SetResourceBusinessStatus", "HTTPS", "POST", "2014-07-14", "AK", null, TeaModel.buildMap(request), runtime), new SetResourceBusinessStatusResponse());
     }
 
     public SetResourceBusinessStatusResponse setResourceBusinessStatus(SetResourceBusinessStatusRequest request) throws Exception {
         com.aliyun.teautil.models.RuntimeOptions runtime = new com.aliyun.teautil.models.RuntimeOptions();
-        return this.setResourceBusinessStatusEx(request, runtime);
+        return this.setResourceBusinessStatusWithOptions(request, runtime);
     }
 
-    public DescribeCouponListResponse describeCouponListEx(DescribeCouponListRequest request, com.aliyun.teautil.models.RuntimeOptions runtime) throws Exception {
+    public DescribeCouponListResponse describeCouponListWithOptions(DescribeCouponListRequest request, com.aliyun.teautil.models.RuntimeOptions runtime) throws Exception {
         com.aliyun.teautil.Common.validateModel(request);
-        return TeaModel.toModel(this.doRequest("DescribeCouponList", "HTTPS", "POST", "2014-07-14", "AK", TeaModel.buildMap(request), null, runtime), new DescribeCouponListResponse());
+        return TeaModel.toModel(this.doRequest("DescribeCouponList", "HTTPS", "POST", "2014-07-14", "AK", null, TeaModel.buildMap(request), runtime), new DescribeCouponListResponse());
     }
 
     public DescribeCouponListResponse describeCouponList(DescribeCouponListRequest request) throws Exception {
         com.aliyun.teautil.models.RuntimeOptions runtime = new com.aliyun.teautil.models.RuntimeOptions();
-        return this.describeCouponListEx(request, runtime);
+        return this.describeCouponListWithOptions(request, runtime);
     }
 
-    public DescribeCouponDetailResponse describeCouponDetailEx(DescribeCouponDetailRequest request, com.aliyun.teautil.models.RuntimeOptions runtime) throws Exception {
+    public DescribeCouponDetailResponse describeCouponDetailWithOptions(DescribeCouponDetailRequest request, com.aliyun.teautil.models.RuntimeOptions runtime) throws Exception {
         com.aliyun.teautil.Common.validateModel(request);
-        return TeaModel.toModel(this.doRequest("DescribeCouponDetail", "HTTPS", "GET", "2014-07-14", "AK", TeaModel.buildMap(request), null, runtime), new DescribeCouponDetailResponse());
+        return TeaModel.toModel(this.doRequest("DescribeCouponDetail", "HTTPS", "GET", "2014-07-14", "AK", null, TeaModel.buildMap(request), runtime), new DescribeCouponDetailResponse());
     }
 
     public DescribeCouponDetailResponse describeCouponDetail(DescribeCouponDetailRequest request) throws Exception {
         com.aliyun.teautil.models.RuntimeOptions runtime = new com.aliyun.teautil.models.RuntimeOptions();
-        return this.describeCouponDetailEx(request, runtime);
+        return this.describeCouponDetailWithOptions(request, runtime);
     }
 
-    public DescribeCashDetailResponse describeCashDetailEx(DescribeCashDetailRequest request, com.aliyun.teautil.models.RuntimeOptions runtime) throws Exception {
+    public DescribeCashDetailResponse describeCashDetailWithOptions(DescribeCashDetailRequest request, com.aliyun.teautil.models.RuntimeOptions runtime) throws Exception {
         com.aliyun.teautil.Common.validateModel(request);
         return TeaModel.toModel(this.doRequest("DescribeCashDetail", "HTTPS", "POST", "2014-07-14", "AK", null, TeaModel.buildMap(request), runtime), new DescribeCashDetailResponse());
     }
 
     public DescribeCashDetailResponse describeCashDetail(DescribeCashDetailRequest request) throws Exception {
         com.aliyun.teautil.models.RuntimeOptions runtime = new com.aliyun.teautil.models.RuntimeOptions();
-        return this.describeCashDetailEx(request, runtime);
+        return this.describeCashDetailWithOptions(request, runtime);
     }
 
     public String getEndpoint(String productId, String regionId, String endpointRule, String network, String suffix, java.util.Map<String, String> endpointMap, String endpoint) throws Exception {
