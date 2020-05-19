@@ -30,8 +30,8 @@ Created on 2020-05-19
 @author: alex
 """
 
-PACKAGE = "alibabacloud_sdk_vod1.0.1"
-NAME = "alibabacloud_sdk_vod1.0.1"
+PACKAGE = "alibabacloud_sdk_vod20170321"
+NAME = "alibabacloud_sdk_vod20170321"
 DESCRIPTION = "Alibaba Cloud vod SDK for Python"
 AUTHOR = "Alibaba Cloud SDK"
 AUTHOR_EMAIL = "sdk-team@alibabacloud.com"
