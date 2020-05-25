@@ -443,7 +443,7 @@ model DescribeVodDomainUsageDataRequest = {
   domainName?: string(name='DomainName', description='domainName'),
   startTime: string(name='StartTime', description='startTime'),
   endTime: string(name='EndTime', description='endTime'),
-  type?: string(name='Type', description='type'),
+  type_?: string(name='Type', description='type'),
   area?: string(name='Area', description='area'),
   field: string(name='Field', description='field'),
 }
@@ -453,7 +453,7 @@ model DescribeVodDomainUsageDataResponse = {
   domainName: string(name='DomainName', description='data.domainName'),
   startTime: string(name='StartTime', description='data.startTime'),
   endTime: string(name='EndTime', description='data.endTime'),
-  type: string(name='Type', description='data.field'),
+  type_: string(name='Type', description='data.field'),
   area: string(name='Area', description='data.area'),
   dataInterval: string(name='DataInterval', description='data.content.interval'),
   usageDataPerInterval: {
@@ -896,7 +896,7 @@ model DescribeVodDomainDetailResponse = {
       source: [
         {
           content: string(name='Content', description='content'),
-          type: string(name='Type', description='type'),
+          type_: string(name='Type', description='type'),
           port: integer(name='Port', description='port'),
           enabled: string(name='Enabled', description='enabled'),
           priority: string(name='Priority', description='priority'),
@@ -951,7 +951,7 @@ model DescribeVodUserDomainsResponse = {
         sources: {
           source: [
             {
-              type: string(name='Type', description='type'),
+              type_: string(name='Type', description='type'),
               content: string(name='Content', description='content'),
               port: integer(name='Port', description='port'),
               priority: string(name='Priority', description='priority'),
@@ -988,7 +988,7 @@ model GetAppInfosResponse = {
     {
       appId: string(name='AppId', description='appId'),
       appName: string(name='AppName', description='appName'),
-      type: string(name='Type', description='type'),
+      type_: string(name='Type', description='type'),
       description: string(name='Description', description='description'),
       status: string(name='Status', description='status'),
       creationTime: string(name='CreationTime', description='utcCreate'),
@@ -1051,7 +1051,7 @@ model ListAppInfoResponse = {
     {
       appId: string(name='AppId', description='appId'),
       appName: string(name='AppName', description='appName'),
-      type: string(name='Type', description='type'),
+      type_: string(name='Type', description='type'),
       description: string(name='Description', description='description'),
       status: string(name='Status', description='status'),
       creationTime: string(name='CreationTime', description='utcCreate'),
@@ -1567,7 +1567,7 @@ model GetWatermarkResponse = {
   requestId: string(name='RequestId', description='requestId'),
   watermarkInfo: {
     creationTime: string(name='CreationTime', description='creationTime'),
-    type: string(name='Type', description='type'),
+    type_: string(name='Type', description='type'),
     isDefault: string(name='IsDefault', description='isDefault'),
     watermarkId: string(name='WatermarkId', description='watermarkId'),
     name: string(name='Name', description='name'),
@@ -1602,7 +1602,7 @@ model ListWatermarkResponse = {
   watermarkInfos: [
     {
       creationTime: string(name='CreationTime', description='creationTime'),
-      type: string(name='Type', description='type'),
+      type_: string(name='Type', description='type'),
       isDefault: string(name='IsDefault', description='isDefault'),
       watermarkId: string(name='WatermarkId', description='watermarkId'),
       name: string(name='Name', description='name'),
@@ -1637,7 +1637,7 @@ model UpdateWatermarkResponse = {
   requestId: string(name='RequestId', description='requestId'),
   watermarkInfo: {
     creationTime: string(name='CreationTime', description='creationTime'),
-    type: string(name='Type', description='type'),
+    type_: string(name='Type', description='type'),
     isDefault: string(name='IsDefault', description='isDefault'),
     watermarkId: string(name='WatermarkId', description='watermarkId'),
     name: string(name='Name', description='name'),
@@ -1661,7 +1661,7 @@ model AddWatermarkRequest = {
   ownerId?: long(name='OwnerId', description='ownerId'),
   resourceOwnerAccount?: string(name='ResourceOwnerAccount', description='resourceOwnerAccount'),
   resourceOwnerId?: long(name='ResourceOwnerId', description='resourceOwnerId'),
-  type: string(name='Type', description='type'),
+  type_: string(name='Type', description='type'),
   name: string(name='Name', description='name'),
   watermarkConfig: string(name='WatermarkConfig', description='watermarkConfig'),
   fileUrl?: string(name='FileUrl', description='fileUrl'),
@@ -1672,7 +1672,7 @@ model AddWatermarkResponse = {
   requestId: string(name='RequestId', description='requestId'),
   watermarkInfo: {
     creationTime: string(name='CreationTime', description='creationTime'),
-    type: string(name='Type', description='type'),
+    type_: string(name='Type', description='type'),
     isDefault: string(name='IsDefault', description='isDefault'),
     watermarkId: string(name='WatermarkId', description='watermarkId'),
     name: string(name='Name', description='name'),
@@ -1896,7 +1896,7 @@ model GetAttachedMediaInfoResponse = {
     {
       mediaId: string(name='MediaId', description='mediaId'),
       title: string(name='Title', description='title'),
-      type: string(name='Type', description='type'),
+      type_: string(name='Type', description='type'),
       tags: string(name='Tags', description='tags'),
       URL: string(name='URL', description='url'),
       description: string(name='Description', description='description'),
@@ -2452,7 +2452,7 @@ model SearchMediaResponse = {
         creationTime: string(name='CreationTime', description='ct'),
         modificationTime: string(name='ModificationTime', description='mt'),
         tags: string(name='Tags', description='tags'),
-        type: string(name='Type', description='type'),
+        type_: string(name='Type', description='type'),
         URL: string(name='URL', description='url'),
         status: string(name='Status', description='status'),
         description: string(name='Description', description='desc'),
@@ -2505,7 +2505,7 @@ model AddCategoryRequest = {
   resourceOwnerAccount?: string(name='ResourceOwnerAccount', description='resourceOwnerAccount'),
   cateName: string(name='CateName', description='cateName'),
   parentId?: long(name='ParentId', description='parentId'),
-  type?: string(name='Type', description='type'),
+  type_?: string(name='Type', description='type'),
 }
 
 model AddCategoryResponse = {
@@ -2515,7 +2515,7 @@ model AddCategoryResponse = {
     cateName: string(name='CateName', description='cateName'),
     parentId: long(name='ParentId', description='parentId'),
     level: long(name='Level', description='level'),
-    type: string(name='Type', description='type'),
+    type_: string(name='Type', description='type'),
   }(name='Category', description='data.category'),
 }
 
@@ -2559,7 +2559,7 @@ model GetCategoriesRequest = {
   pageNo?: long(name='PageNo', description='pageNo'),
   pageSize?: long(name='PageSize', description='pageSize'),
   sortBy?: string(name='SortBy', description='sortBy'),
-  type?: string(name='Type', description='type'),
+  type_?: string(name='Type', description='type'),
 }
 
 model GetCategoriesResponse = {
@@ -2573,7 +2573,7 @@ model GetCategoriesResponse = {
         level: long(name='Level', description='level'),
         parentId: long(name='ParentId', description='parentId'),
         subTotal: long(name='SubTotal', description='subTotal'),
-        type: string(name='Type', description='type'),
+        type_: string(name='Type', description='type'),
       }
     ](name='Category', description='Category'),
   }(name='SubCategories', description='data.subCategories'),
@@ -2582,7 +2582,7 @@ model GetCategoriesResponse = {
     cateName: string(name='CateName', description='cateName'),
     level: long(name='Level', description='level'),
     parentId: long(name='ParentId', description='parentId'),
-    type: string(name='Type', description='type'),
+    type_: string(name='Type', description='type'),
   }(name='Category', description='data.category'),
 }
 
