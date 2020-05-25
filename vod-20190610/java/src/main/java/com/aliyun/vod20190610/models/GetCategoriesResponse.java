@@ -48,7 +48,7 @@ public class GetCategoriesResponse extends TeaModel {
 
         @NameInMap("Type")
         @Validation(required = true)
-        public String type;
+        public String type_;
 
         public static GetCategoriesResponseSubCategoriesCategory build(java.util.Map<String, ?> map) throws Exception {
             GetCategoriesResponseSubCategoriesCategory self = new GetCategoriesResponseSubCategoriesCategory();
@@ -88,7 +88,7 @@ public class GetCategoriesResponse extends TeaModel {
 
         @NameInMap("Type")
         @Validation(required = true)
-        public String type;
+        public String type_;
 
         public static GetCategoriesResponseCategory build(java.util.Map<String, ?> map) throws Exception {
             GetCategoriesResponseCategory self = new GetCategoriesResponseCategory();

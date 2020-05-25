@@ -18,7 +18,7 @@ public class AddWatermarkRequest extends TeaModel {
 
     @NameInMap("Type")
     @Validation(required = true)
-    public String type;
+    public String type_;
 
     @NameInMap("Name")
     @Validation(required = true)

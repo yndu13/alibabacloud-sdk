@@ -296,7 +296,7 @@ public class SearchMediaResponse extends TeaModel {
 
         @NameInMap("Type")
         @Validation(required = true)
-        public String type;
+        public String type_;
 
         @NameInMap("URL")
         @Validation(required = true)

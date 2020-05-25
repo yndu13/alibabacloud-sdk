@@ -32,7 +32,7 @@ public class DescribeVodUserDomainsResponse extends TeaModel {
     public static class DescribeVodUserDomainsResponseDomainsPageDataSourcesSource extends TeaModel {
         @NameInMap("Type")
         @Validation(required = true)
-        public String type;
+        public String type_;
 
         @NameInMap("Content")
         @Validation(required = true)

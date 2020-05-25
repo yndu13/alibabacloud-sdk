@@ -26,7 +26,7 @@ public class GetCategoriesRequest extends TeaModel {
     public String sortBy;
 
     @NameInMap("Type")
-    public String type;
+    public String type_;
 
     public static GetCategoriesRequest build(java.util.Map<String, ?> map) throws Exception {
         GetCategoriesRequest self = new GetCategoriesRequest();

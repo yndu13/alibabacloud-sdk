@@ -22,7 +22,7 @@ public class DescribeVodDomainUsageDataResponse extends TeaModel {
 
     @NameInMap("Type")
     @Validation(required = true)
-    public String type;
+    public String type_;
 
     @NameInMap("Area")
     @Validation(required = true)

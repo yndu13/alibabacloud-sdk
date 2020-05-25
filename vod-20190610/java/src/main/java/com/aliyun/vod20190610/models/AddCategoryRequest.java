@@ -21,7 +21,7 @@ public class AddCategoryRequest extends TeaModel {
     public Long parentId;
 
     @NameInMap("Type")
-    public String type;
+    public String type_;
 
     public static AddCategoryRequest build(java.util.Map<String, ?> map) throws Exception {
         AddCategoryRequest self = new AddCategoryRequest();

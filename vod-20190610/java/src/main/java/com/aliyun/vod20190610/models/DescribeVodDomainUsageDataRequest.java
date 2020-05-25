@@ -19,7 +19,7 @@ public class DescribeVodDomainUsageDataRequest extends TeaModel {
     public String endTime;
 
     @NameInMap("Type")
-    public String type;
+    public String type_;
 
     @NameInMap("Area")
     public String area;

@@ -56,7 +56,7 @@ public class GetAttachedMediaInfoResponse extends TeaModel {
 
         @NameInMap("Type")
         @Validation(required = true)
-        public String type;
+        public String type_;
 
         @NameInMap("Tags")
         @Validation(required = true)

@@ -36,7 +36,7 @@ public class AddCategoryResponse extends TeaModel {
 
         @NameInMap("Type")
         @Validation(required = true)
-        public String type;
+        public String type_;
 
         public static AddCategoryResponseCategory build(java.util.Map<String, ?> map) throws Exception {
             AddCategoryResponseCategory self = new AddCategoryResponseCategory();

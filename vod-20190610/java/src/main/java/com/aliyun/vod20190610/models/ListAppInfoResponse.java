@@ -28,7 +28,7 @@ public class ListAppInfoResponse extends TeaModel {
 
         @NameInMap("Type")
         @Validation(required = true)
-        public String type;
+        public String type_;
 
         @NameInMap("Description")
         @Validation(required = true)
