@@ -26,7 +26,7 @@
     "go": "github.com/alibabacloud-go/Vod-20190610/client:v0.0.1",
     "csharp": "AlibabaCloud.SDK.Vod20190610:0.0.1",
     "ts": "@alicloud/vod20190610:^1.0.0",
-    "php": "alibabacloud/vod-20190610:0.0.4",
+    "php": "alibabacloud/vod-20190610:0.0.5",
     "python": "alibabacloud_sdk_vod20190610:0.0.1"
   },
   "libraries": {
