@@ -14,6 +14,207 @@ import (
 	"io"
 )
 
+type DetectVideoLivingFaceRequest struct {
+	VideoUrl *string `json:"VideoUrl" xml:"VideoUrl" require:"true"`
+}
+
+func (s DetectVideoLivingFaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectVideoLivingFaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectVideoLivingFaceRequest) SetVideoUrl(v string) *DetectVideoLivingFaceRequest {
+	s.VideoUrl = &v
+	return s
+}
+
+type DetectVideoLivingFaceResponse struct {
+	RequestId *string                            `json:"RequestId" xml:"RequestId" require:"true"`
+	Data      *DetectVideoLivingFaceResponseData `json:"Data" xml:"Data" require:"true" type:"Struct"`
+}
+
+func (s DetectVideoLivingFaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectVideoLivingFaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetectVideoLivingFaceResponse) SetRequestId(v string) *DetectVideoLivingFaceResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DetectVideoLivingFaceResponse) SetData(v *DetectVideoLivingFaceResponseData) *DetectVideoLivingFaceResponse {
+	s.Data = v
+	return s
+}
+
+type DetectVideoLivingFaceResponseData struct {
+	Elements []*DetectVideoLivingFaceResponseDataElements `json:"Elements" xml:"Elements" require:"true" type:"Repeated"`
+}
+
+func (s DetectVideoLivingFaceResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectVideoLivingFaceResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *DetectVideoLivingFaceResponseData) SetElements(v []*DetectVideoLivingFaceResponseDataElements) *DetectVideoLivingFaceResponseData {
+	s.Elements = v
+	return s
+}
+
+type DetectVideoLivingFaceResponseDataElements struct {
+	LiveConfidence *float32 `json:"LiveConfidence" xml:"LiveConfidence" require:"true"`
+	FaceConfidence *float32 `json:"FaceConfidence" xml:"FaceConfidence" require:"true"`
+	Rect           []*int   `json:"Rect" xml:"Rect" require:"true" type:"Repeated"`
+}
+
+func (s DetectVideoLivingFaceResponseDataElements) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectVideoLivingFaceResponseDataElements) GoString() string {
+	return s.String()
+}
+
+func (s *DetectVideoLivingFaceResponseDataElements) SetLiveConfidence(v float32) *DetectVideoLivingFaceResponseDataElements {
+	s.LiveConfidence = &v
+	return s
+}
+
+func (s *DetectVideoLivingFaceResponseDataElements) SetFaceConfidence(v float32) *DetectVideoLivingFaceResponseDataElements {
+	s.FaceConfidence = &v
+	return s
+}
+
+func (s *DetectVideoLivingFaceResponseDataElements) SetRect(v []*int) *DetectVideoLivingFaceResponseDataElements {
+	s.Rect = v
+	return s
+}
+
+type DetectVideoLivingFaceAdvanceRequest struct {
+	VideoUrlObject io.Reader `json:"VideoUrlObject" xml:"VideoUrlObject" require:"true"`
+}
+
+func (s DetectVideoLivingFaceAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectVideoLivingFaceAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectVideoLivingFaceAdvanceRequest) SetVideoUrlObject(v io.Reader) *DetectVideoLivingFaceAdvanceRequest {
+	s.VideoUrlObject = v
+	return s
+}
+
+type SwapFacialFeaturesRequest struct {
+	SourceImageURL *string `json:"SourceImageURL" xml:"SourceImageURL" require:"true"`
+	EditPart       *string `json:"EditPart" xml:"EditPart" require:"true"`
+	TargetImageURL *string `json:"TargetImageURL" xml:"TargetImageURL" require:"true"`
+}
+
+func (s SwapFacialFeaturesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwapFacialFeaturesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SwapFacialFeaturesRequest) SetSourceImageURL(v string) *SwapFacialFeaturesRequest {
+	s.SourceImageURL = &v
+	return s
+}
+
+func (s *SwapFacialFeaturesRequest) SetEditPart(v string) *SwapFacialFeaturesRequest {
+	s.EditPart = &v
+	return s
+}
+
+func (s *SwapFacialFeaturesRequest) SetTargetImageURL(v string) *SwapFacialFeaturesRequest {
+	s.TargetImageURL = &v
+	return s
+}
+
+type SwapFacialFeaturesResponse struct {
+	RequestId *string                         `json:"RequestId" xml:"RequestId" require:"true"`
+	Data      *SwapFacialFeaturesResponseData `json:"Data" xml:"Data" require:"true" type:"Struct"`
+}
+
+func (s SwapFacialFeaturesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwapFacialFeaturesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SwapFacialFeaturesResponse) SetRequestId(v string) *SwapFacialFeaturesResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SwapFacialFeaturesResponse) SetData(v *SwapFacialFeaturesResponseData) *SwapFacialFeaturesResponse {
+	s.Data = v
+	return s
+}
+
+type SwapFacialFeaturesResponseData struct {
+	ImageURL *string `json:"ImageURL" xml:"ImageURL" require:"true"`
+}
+
+func (s SwapFacialFeaturesResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwapFacialFeaturesResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *SwapFacialFeaturesResponseData) SetImageURL(v string) *SwapFacialFeaturesResponseData {
+	s.ImageURL = &v
+	return s
+}
+
+type SwapFacialFeaturesAdvanceRequest struct {
+	SourceImageURLObject io.Reader `json:"SourceImageURLObject" xml:"SourceImageURLObject" require:"true"`
+	EditPart             *string   `json:"EditPart" xml:"EditPart" require:"true"`
+	TargetImageURL       *string   `json:"TargetImageURL" xml:"TargetImageURL" require:"true"`
+}
+
+func (s SwapFacialFeaturesAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwapFacialFeaturesAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SwapFacialFeaturesAdvanceRequest) SetSourceImageURLObject(v io.Reader) *SwapFacialFeaturesAdvanceRequest {
+	s.SourceImageURLObject = v
+	return s
+}
+
+func (s *SwapFacialFeaturesAdvanceRequest) SetEditPart(v string) *SwapFacialFeaturesAdvanceRequest {
+	s.EditPart = &v
+	return s
+}
+
+func (s *SwapFacialFeaturesAdvanceRequest) SetTargetImageURL(v string) *SwapFacialFeaturesAdvanceRequest {
+	s.TargetImageURL = &v
+	return s
+}
+
 type AddFaceEntityRequest struct {
 	DbName   *string `json:"DbName" xml:"DbName" require:"true"`
 	EntityId *string `json:"EntityId" xml:"EntityId" require:"true"`
@@ -2932,10 +3133,10 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = "regional"
+	client.EndpointRule = tea.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
-		return
+		return _err
 	}
 	client.Endpoint, _err = client.GetEndpoint(client.ProductId, client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
 	if _err != nil {
@@ -2945,15 +3146,211 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 	return nil
 }
 
+func (client *Client) DetectVideoLivingFace(request *DetectVideoLivingFaceRequest, runtime *util.RuntimeOptions) (_result *DetectVideoLivingFaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DetectVideoLivingFaceResponse{}
+	_body, _err := client.DoRequest(tea.String("DetectVideoLivingFace"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetectVideoLivingFaceAdvance(request *DetectVideoLivingFaceAdvanceRequest, runtime *util.RuntimeOptions) (_result *DetectVideoLivingFaceResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("facebody"),
+		RegionId: client.RegionId,
+	}
+	authResponse, _err := authClient.AuthorizeFileUpload(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	// Step 1: request OSS api to upload file
+	ossConfig := &oss.Config{
+		AccessKeyId:     authResponse.AccessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj := &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.VideoUrlObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader := &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest := &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	rpcutil.Convert(runtime, ossRuntime)
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	// Step 2: request final api
+	detectVideoLivingFacereq := &DetectVideoLivingFaceRequest{}
+	rpcutil.Convert(request, detectVideoLivingFacereq)
+	detectVideoLivingFacereq.VideoUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	detectVideoLivingFaceResp, _err := client.DetectVideoLivingFace(detectVideoLivingFacereq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = detectVideoLivingFaceResp
+	return _result, _err
+}
+
+func (client *Client) SwapFacialFeatures(request *SwapFacialFeaturesRequest, runtime *util.RuntimeOptions) (_result *SwapFacialFeaturesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &SwapFacialFeaturesResponse{}
+	_body, _err := client.DoRequest(tea.String("SwapFacialFeatures"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SwapFacialFeaturesAdvance(request *SwapFacialFeaturesAdvanceRequest, runtime *util.RuntimeOptions) (_result *SwapFacialFeaturesResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("facebody"),
+		RegionId: client.RegionId,
+	}
+	authResponse, _err := authClient.AuthorizeFileUpload(authRequest, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	// Step 1: request OSS api to upload file
+	ossConfig := &oss.Config{
+		AccessKeyId:     authResponse.AccessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Endpoint:        rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj := &fileform.FileField{
+		Filename:    authResponse.ObjectKey,
+		Content:     request.SourceImageURLObject,
+		ContentType: tea.String(""),
+	}
+	ossHeader := &oss.PostObjectRequestHeader{
+		AccessKeyId:         authResponse.AccessKeyId,
+		Policy:              authResponse.EncodedPolicy,
+		Signature:           authResponse.Signature,
+		Key:                 authResponse.ObjectKey,
+		File:                fileObj,
+		SuccessActionStatus: tea.String("201"),
+	}
+	uploadRequest := &oss.PostObjectRequest{
+		BucketName: authResponse.Bucket,
+		Header:     ossHeader,
+	}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	rpcutil.Convert(runtime, ossRuntime)
+	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+	if _err != nil {
+		return _result, _err
+	}
+	// Step 2: request final api
+	swapFacialFeaturesreq := &SwapFacialFeaturesRequest{}
+	rpcutil.Convert(request, swapFacialFeaturesreq)
+	swapFacialFeaturesreq.SourceImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	swapFacialFeaturesResp, _err := client.SwapFacialFeatures(swapFacialFeaturesreq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = swapFacialFeaturesResp
+	return _result, _err
+}
+
 func (client *Client) AddFaceEntity(request *AddFaceEntityRequest, runtime *util.RuntimeOptions) (_result *AddFaceEntityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	_result = &AddFaceEntityResponse{}
-	_body, _err := client.DoRequest("AddFaceEntity", "HTTPS", "POST", "2019-12-30", "AK", nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRequest(tea.String("AddFaceEntity"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
 	return _result, _err
@@ -2962,12 +3359,12 @@ func (client *Client) AddFaceEntity(request *AddFaceEntityRequest, runtime *util
 func (client *Client) DeleteFaceEntity(request *DeleteFaceEntityRequest, runtime *util.RuntimeOptions) (_result *DeleteFaceEntityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	_result = &DeleteFaceEntityResponse{}
-	_body, _err := client.DoRequest("DeleteFaceEntity", "HTTPS", "POST", "2019-12-30", "AK", nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRequest(tea.String("DeleteFaceEntity"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
 	return _result, _err
@@ -2976,12 +3373,12 @@ func (client *Client) DeleteFaceEntity(request *DeleteFaceEntityRequest, runtime
 func (client *Client) ListFaceEntities(request *ListFaceEntitiesRequest, runtime *util.RuntimeOptions) (_result *ListFaceEntitiesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	_result = &ListFaceEntitiesResponse{}
-	_body, _err := client.DoRequest("ListFaceEntities", "HTTPS", "POST", "2019-12-30", "AK", nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRequest(tea.String("ListFaceEntities"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
 	return _result, _err
@@ -2990,12 +3387,12 @@ func (client *Client) ListFaceEntities(request *ListFaceEntitiesRequest, runtime
 func (client *Client) GetFaceEntity(request *GetFaceEntityRequest, runtime *util.RuntimeOptions) (_result *GetFaceEntityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	_result = &GetFaceEntityResponse{}
-	_body, _err := client.DoRequest("GetFaceEntity", "HTTPS", "POST", "2019-12-30", "AK", nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRequest(tea.String("GetFaceEntity"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
 	return _result, _err
@@ -3004,12 +3401,12 @@ func (client *Client) GetFaceEntity(request *GetFaceEntityRequest, runtime *util
 func (client *Client) UpdateFaceEntity(request *UpdateFaceEntityRequest, runtime *util.RuntimeOptions) (_result *UpdateFaceEntityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	_result = &UpdateFaceEntityResponse{}
-	_body, _err := client.DoRequest("UpdateFaceEntity", "HTTPS", "POST", "2019-12-30", "AK", nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRequest(tea.String("UpdateFaceEntity"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
 	return _result, _err
@@ -3018,12 +3415,12 @@ func (client *Client) UpdateFaceEntity(request *UpdateFaceEntityRequest, runtime
 func (client *Client) FaceMakeup(request *FaceMakeupRequest, runtime *util.RuntimeOptions) (_result *FaceMakeupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	_result = &FaceMakeupResponse{}
-	_body, _err := client.DoRequest("FaceMakeup", "HTTPS", "POST", "2019-12-30", "AK", nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRequest(tea.String("FaceMakeup"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
 	return _result, _err
@@ -3033,48 +3430,48 @@ func (client *Client) FaceMakeupAdvance(request *FaceMakeupAdvanceRequest, runti
 	// Step 0: init client
 	accessKeyId, _err := client.Credential.GetAccessKeyId()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authConfig := &rpc.Config{
-		AccessKeyId:     tea.String(accessKeyId),
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Endpoint:        tea.String("openplatform.aliyuncs.com"),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	authClient, _err := openplatform.NewClient(authConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authRequest := &openplatform.AuthorizeFileUploadRequest{
 		Product:  tea.String("facebody"),
-		RegionId: tea.String(client.RegionId),
+		RegionId: client.RegionId,
 	}
 	authResponse, _err := authClient.AuthorizeFileUpload(authRequest, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	// Step 1: request OSS api to upload file
 	ossConfig := &oss.Config{
 		AccessKeyId:     authResponse.AccessKeyId,
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String(rpcutil.GetEndpoint(tea.StringValue(authResponse.Endpoint), tea.BoolValue(authResponse.UseAccelerate), client.EndpointType)),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Endpoint:        rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	ossClient, _err := oss.NewClient(ossConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	fileObj := &fileform.FileField{
@@ -3098,7 +3495,7 @@ func (client *Client) FaceMakeupAdvance(request *FaceMakeupAdvanceRequest, runti
 	rpcutil.Convert(runtime, ossRuntime)
 	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	// Step 2: request final api
 	faceMakeupreq := &FaceMakeupRequest{}
@@ -3106,7 +3503,7 @@ func (client *Client) FaceMakeupAdvance(request *FaceMakeupAdvanceRequest, runti
 	faceMakeupreq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	faceMakeupResp, _err := client.FaceMakeup(faceMakeupreq, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	_result = faceMakeupResp
@@ -3116,12 +3513,12 @@ func (client *Client) FaceMakeupAdvance(request *FaceMakeupAdvanceRequest, runti
 func (client *Client) HandPosture(request *HandPostureRequest, runtime *util.RuntimeOptions) (_result *HandPostureResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	_result = &HandPostureResponse{}
-	_body, _err := client.DoRequest("HandPosture", "HTTPS", "POST", "2019-12-30", "AK", nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRequest(tea.String("HandPosture"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
 	return _result, _err
@@ -3131,48 +3528,48 @@ func (client *Client) HandPostureAdvance(request *HandPostureAdvanceRequest, run
 	// Step 0: init client
 	accessKeyId, _err := client.Credential.GetAccessKeyId()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authConfig := &rpc.Config{
-		AccessKeyId:     tea.String(accessKeyId),
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Endpoint:        tea.String("openplatform.aliyuncs.com"),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	authClient, _err := openplatform.NewClient(authConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authRequest := &openplatform.AuthorizeFileUploadRequest{
 		Product:  tea.String("facebody"),
-		RegionId: tea.String(client.RegionId),
+		RegionId: client.RegionId,
 	}
 	authResponse, _err := authClient.AuthorizeFileUpload(authRequest, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	// Step 1: request OSS api to upload file
 	ossConfig := &oss.Config{
 		AccessKeyId:     authResponse.AccessKeyId,
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String(rpcutil.GetEndpoint(tea.StringValue(authResponse.Endpoint), tea.BoolValue(authResponse.UseAccelerate), client.EndpointType)),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Endpoint:        rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	ossClient, _err := oss.NewClient(ossConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	fileObj := &fileform.FileField{
@@ -3196,7 +3593,7 @@ func (client *Client) HandPostureAdvance(request *HandPostureAdvanceRequest, run
 	rpcutil.Convert(runtime, ossRuntime)
 	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	// Step 2: request final api
 	handPosturereq := &HandPostureRequest{}
@@ -3204,7 +3601,7 @@ func (client *Client) HandPostureAdvance(request *HandPostureAdvanceRequest, run
 	handPosturereq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	handPostureResp, _err := client.HandPosture(handPosturereq, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	_result = handPostureResp
@@ -3214,12 +3611,12 @@ func (client *Client) HandPostureAdvance(request *HandPostureAdvanceRequest, run
 func (client *Client) BodyPosture(request *BodyPostureRequest, runtime *util.RuntimeOptions) (_result *BodyPostureResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	_result = &BodyPostureResponse{}
-	_body, _err := client.DoRequest("BodyPosture", "HTTPS", "POST", "2019-12-30", "AK", nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRequest(tea.String("BodyPosture"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
 	return _result, _err
@@ -3229,48 +3626,48 @@ func (client *Client) BodyPostureAdvance(request *BodyPostureAdvanceRequest, run
 	// Step 0: init client
 	accessKeyId, _err := client.Credential.GetAccessKeyId()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authConfig := &rpc.Config{
-		AccessKeyId:     tea.String(accessKeyId),
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Endpoint:        tea.String("openplatform.aliyuncs.com"),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	authClient, _err := openplatform.NewClient(authConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authRequest := &openplatform.AuthorizeFileUploadRequest{
 		Product:  tea.String("facebody"),
-		RegionId: tea.String(client.RegionId),
+		RegionId: client.RegionId,
 	}
 	authResponse, _err := authClient.AuthorizeFileUpload(authRequest, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	// Step 1: request OSS api to upload file
 	ossConfig := &oss.Config{
 		AccessKeyId:     authResponse.AccessKeyId,
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String(rpcutil.GetEndpoint(tea.StringValue(authResponse.Endpoint), tea.BoolValue(authResponse.UseAccelerate), client.EndpointType)),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Endpoint:        rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	ossClient, _err := oss.NewClient(ossConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	fileObj := &fileform.FileField{
@@ -3294,7 +3691,7 @@ func (client *Client) BodyPostureAdvance(request *BodyPostureAdvanceRequest, run
 	rpcutil.Convert(runtime, ossRuntime)
 	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	// Step 2: request final api
 	bodyPosturereq := &BodyPostureRequest{}
@@ -3302,7 +3699,7 @@ func (client *Client) BodyPostureAdvance(request *BodyPostureAdvanceRequest, run
 	bodyPosturereq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	bodyPostureResp, _err := client.BodyPosture(bodyPosturereq, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	_result = bodyPostureResp
@@ -3312,12 +3709,12 @@ func (client *Client) BodyPostureAdvance(request *BodyPostureAdvanceRequest, run
 func (client *Client) DetectPedestrian(request *DetectPedestrianRequest, runtime *util.RuntimeOptions) (_result *DetectPedestrianResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	_result = &DetectPedestrianResponse{}
-	_body, _err := client.DoRequest("DetectPedestrian", "HTTPS", "POST", "2019-12-30", "AK", nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRequest(tea.String("DetectPedestrian"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
 	return _result, _err
@@ -3327,48 +3724,48 @@ func (client *Client) DetectPedestrianAdvance(request *DetectPedestrianAdvanceRe
 	// Step 0: init client
 	accessKeyId, _err := client.Credential.GetAccessKeyId()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authConfig := &rpc.Config{
-		AccessKeyId:     tea.String(accessKeyId),
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Endpoint:        tea.String("openplatform.aliyuncs.com"),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	authClient, _err := openplatform.NewClient(authConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authRequest := &openplatform.AuthorizeFileUploadRequest{
 		Product:  tea.String("facebody"),
-		RegionId: tea.String(client.RegionId),
+		RegionId: client.RegionId,
 	}
 	authResponse, _err := authClient.AuthorizeFileUpload(authRequest, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	// Step 1: request OSS api to upload file
 	ossConfig := &oss.Config{
 		AccessKeyId:     authResponse.AccessKeyId,
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String(rpcutil.GetEndpoint(tea.StringValue(authResponse.Endpoint), tea.BoolValue(authResponse.UseAccelerate), client.EndpointType)),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Endpoint:        rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	ossClient, _err := oss.NewClient(ossConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	fileObj := &fileform.FileField{
@@ -3392,7 +3789,7 @@ func (client *Client) DetectPedestrianAdvance(request *DetectPedestrianAdvanceRe
 	rpcutil.Convert(runtime, ossRuntime)
 	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	// Step 2: request final api
 	detectPedestrianreq := &DetectPedestrianRequest{}
@@ -3400,7 +3797,7 @@ func (client *Client) DetectPedestrianAdvance(request *DetectPedestrianAdvanceRe
 	detectPedestrianreq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	detectPedestrianResp, _err := client.DetectPedestrian(detectPedestrianreq, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	_result = detectPedestrianResp
@@ -3410,12 +3807,12 @@ func (client *Client) DetectPedestrianAdvance(request *DetectPedestrianAdvanceRe
 func (client *Client) FaceBeauty(request *FaceBeautyRequest, runtime *util.RuntimeOptions) (_result *FaceBeautyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	_result = &FaceBeautyResponse{}
-	_body, _err := client.DoRequest("FaceBeauty", "HTTPS", "POST", "2019-12-30", "AK", nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRequest(tea.String("FaceBeauty"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
 	return _result, _err
@@ -3425,48 +3822,48 @@ func (client *Client) FaceBeautyAdvance(request *FaceBeautyAdvanceRequest, runti
 	// Step 0: init client
 	accessKeyId, _err := client.Credential.GetAccessKeyId()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authConfig := &rpc.Config{
-		AccessKeyId:     tea.String(accessKeyId),
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Endpoint:        tea.String("openplatform.aliyuncs.com"),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	authClient, _err := openplatform.NewClient(authConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authRequest := &openplatform.AuthorizeFileUploadRequest{
 		Product:  tea.String("facebody"),
-		RegionId: tea.String(client.RegionId),
+		RegionId: client.RegionId,
 	}
 	authResponse, _err := authClient.AuthorizeFileUpload(authRequest, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	// Step 1: request OSS api to upload file
 	ossConfig := &oss.Config{
 		AccessKeyId:     authResponse.AccessKeyId,
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String(rpcutil.GetEndpoint(tea.StringValue(authResponse.Endpoint), tea.BoolValue(authResponse.UseAccelerate), client.EndpointType)),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Endpoint:        rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	ossClient, _err := oss.NewClient(ossConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	fileObj := &fileform.FileField{
@@ -3490,7 +3887,7 @@ func (client *Client) FaceBeautyAdvance(request *FaceBeautyAdvanceRequest, runti
 	rpcutil.Convert(runtime, ossRuntime)
 	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	// Step 2: request final api
 	faceBeautyreq := &FaceBeautyRequest{}
@@ -3498,7 +3895,7 @@ func (client *Client) FaceBeautyAdvance(request *FaceBeautyAdvanceRequest, runti
 	faceBeautyreq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	faceBeautyResp, _err := client.FaceBeauty(faceBeautyreq, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	_result = faceBeautyResp
@@ -3508,12 +3905,12 @@ func (client *Client) FaceBeautyAdvance(request *FaceBeautyAdvanceRequest, runti
 func (client *Client) FaceFilter(request *FaceFilterRequest, runtime *util.RuntimeOptions) (_result *FaceFilterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	_result = &FaceFilterResponse{}
-	_body, _err := client.DoRequest("FaceFilter", "HTTPS", "POST", "2019-12-30", "AK", nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRequest(tea.String("FaceFilter"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
 	return _result, _err
@@ -3523,48 +3920,48 @@ func (client *Client) FaceFilterAdvance(request *FaceFilterAdvanceRequest, runti
 	// Step 0: init client
 	accessKeyId, _err := client.Credential.GetAccessKeyId()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authConfig := &rpc.Config{
-		AccessKeyId:     tea.String(accessKeyId),
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Endpoint:        tea.String("openplatform.aliyuncs.com"),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	authClient, _err := openplatform.NewClient(authConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authRequest := &openplatform.AuthorizeFileUploadRequest{
 		Product:  tea.String("facebody"),
-		RegionId: tea.String(client.RegionId),
+		RegionId: client.RegionId,
 	}
 	authResponse, _err := authClient.AuthorizeFileUpload(authRequest, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	// Step 1: request OSS api to upload file
 	ossConfig := &oss.Config{
 		AccessKeyId:     authResponse.AccessKeyId,
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String(rpcutil.GetEndpoint(tea.StringValue(authResponse.Endpoint), tea.BoolValue(authResponse.UseAccelerate), client.EndpointType)),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Endpoint:        rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	ossClient, _err := oss.NewClient(ossConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	fileObj := &fileform.FileField{
@@ -3588,7 +3985,7 @@ func (client *Client) FaceFilterAdvance(request *FaceFilterAdvanceRequest, runti
 	rpcutil.Convert(runtime, ossRuntime)
 	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	// Step 2: request final api
 	faceFilterreq := &FaceFilterRequest{}
@@ -3596,7 +3993,7 @@ func (client *Client) FaceFilterAdvance(request *FaceFilterAdvanceRequest, runti
 	faceFilterreq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	faceFilterResp, _err := client.FaceFilter(faceFilterreq, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	_result = faceFilterResp
@@ -3606,12 +4003,12 @@ func (client *Client) FaceFilterAdvance(request *FaceFilterAdvanceRequest, runti
 func (client *Client) EnhanceFace(request *EnhanceFaceRequest, runtime *util.RuntimeOptions) (_result *EnhanceFaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	_result = &EnhanceFaceResponse{}
-	_body, _err := client.DoRequest("EnhanceFace", "HTTPS", "POST", "2019-12-30", "AK", nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRequest(tea.String("EnhanceFace"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
 	return _result, _err
@@ -3621,48 +4018,48 @@ func (client *Client) EnhanceFaceAdvance(request *EnhanceFaceAdvanceRequest, run
 	// Step 0: init client
 	accessKeyId, _err := client.Credential.GetAccessKeyId()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authConfig := &rpc.Config{
-		AccessKeyId:     tea.String(accessKeyId),
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Endpoint:        tea.String("openplatform.aliyuncs.com"),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	authClient, _err := openplatform.NewClient(authConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authRequest := &openplatform.AuthorizeFileUploadRequest{
 		Product:  tea.String("facebody"),
-		RegionId: tea.String(client.RegionId),
+		RegionId: client.RegionId,
 	}
 	authResponse, _err := authClient.AuthorizeFileUpload(authRequest, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	// Step 1: request OSS api to upload file
 	ossConfig := &oss.Config{
 		AccessKeyId:     authResponse.AccessKeyId,
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String(rpcutil.GetEndpoint(tea.StringValue(authResponse.Endpoint), tea.BoolValue(authResponse.UseAccelerate), client.EndpointType)),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Endpoint:        rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	ossClient, _err := oss.NewClient(ossConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	fileObj := &fileform.FileField{
@@ -3686,7 +4083,7 @@ func (client *Client) EnhanceFaceAdvance(request *EnhanceFaceAdvanceRequest, run
 	rpcutil.Convert(runtime, ossRuntime)
 	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	// Step 2: request final api
 	enhanceFacereq := &EnhanceFaceRequest{}
@@ -3694,7 +4091,7 @@ func (client *Client) EnhanceFaceAdvance(request *EnhanceFaceAdvanceRequest, run
 	enhanceFacereq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	enhanceFaceResp, _err := client.EnhanceFace(enhanceFacereq, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	_result = enhanceFaceResp
@@ -3704,12 +4101,12 @@ func (client *Client) EnhanceFaceAdvance(request *EnhanceFaceAdvanceRequest, run
 func (client *Client) FaceTidyup(request *FaceTidyupRequest, runtime *util.RuntimeOptions) (_result *FaceTidyupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	_result = &FaceTidyupResponse{}
-	_body, _err := client.DoRequest("FaceTidyup", "HTTPS", "POST", "2019-12-30", "AK", nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRequest(tea.String("FaceTidyup"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
 	return _result, _err
@@ -3719,48 +4116,48 @@ func (client *Client) FaceTidyupAdvance(request *FaceTidyupAdvanceRequest, runti
 	// Step 0: init client
 	accessKeyId, _err := client.Credential.GetAccessKeyId()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authConfig := &rpc.Config{
-		AccessKeyId:     tea.String(accessKeyId),
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Endpoint:        tea.String("openplatform.aliyuncs.com"),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	authClient, _err := openplatform.NewClient(authConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authRequest := &openplatform.AuthorizeFileUploadRequest{
 		Product:  tea.String("facebody"),
-		RegionId: tea.String(client.RegionId),
+		RegionId: client.RegionId,
 	}
 	authResponse, _err := authClient.AuthorizeFileUpload(authRequest, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	// Step 1: request OSS api to upload file
 	ossConfig := &oss.Config{
 		AccessKeyId:     authResponse.AccessKeyId,
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String(rpcutil.GetEndpoint(tea.StringValue(authResponse.Endpoint), tea.BoolValue(authResponse.UseAccelerate), client.EndpointType)),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Endpoint:        rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	ossClient, _err := oss.NewClient(ossConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	fileObj := &fileform.FileField{
@@ -3784,7 +4181,7 @@ func (client *Client) FaceTidyupAdvance(request *FaceTidyupAdvanceRequest, runti
 	rpcutil.Convert(runtime, ossRuntime)
 	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	// Step 2: request final api
 	faceTidyupreq := &FaceTidyupRequest{}
@@ -3792,7 +4189,7 @@ func (client *Client) FaceTidyupAdvance(request *FaceTidyupAdvanceRequest, runti
 	faceTidyupreq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	faceTidyupResp, _err := client.FaceTidyup(faceTidyupreq, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	_result = faceTidyupResp
@@ -3802,12 +4199,12 @@ func (client *Client) FaceTidyupAdvance(request *FaceTidyupAdvanceRequest, runti
 func (client *Client) SearchFace(request *SearchFaceRequest, runtime *util.RuntimeOptions) (_result *SearchFaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	_result = &SearchFaceResponse{}
-	_body, _err := client.DoRequest("SearchFace", "HTTPS", "POST", "2019-12-30", "AK", nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRequest(tea.String("SearchFace"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
 	return _result, _err
@@ -3817,48 +4214,48 @@ func (client *Client) SearchFaceAdvance(request *SearchFaceAdvanceRequest, runti
 	// Step 0: init client
 	accessKeyId, _err := client.Credential.GetAccessKeyId()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authConfig := &rpc.Config{
-		AccessKeyId:     tea.String(accessKeyId),
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Endpoint:        tea.String("openplatform.aliyuncs.com"),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	authClient, _err := openplatform.NewClient(authConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authRequest := &openplatform.AuthorizeFileUploadRequest{
 		Product:  tea.String("facebody"),
-		RegionId: tea.String(client.RegionId),
+		RegionId: client.RegionId,
 	}
 	authResponse, _err := authClient.AuthorizeFileUpload(authRequest, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	// Step 1: request OSS api to upload file
 	ossConfig := &oss.Config{
 		AccessKeyId:     authResponse.AccessKeyId,
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String(rpcutil.GetEndpoint(tea.StringValue(authResponse.Endpoint), tea.BoolValue(authResponse.UseAccelerate), client.EndpointType)),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Endpoint:        rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	ossClient, _err := oss.NewClient(ossConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	fileObj := &fileform.FileField{
@@ -3882,7 +4279,7 @@ func (client *Client) SearchFaceAdvance(request *SearchFaceAdvanceRequest, runti
 	rpcutil.Convert(runtime, ossRuntime)
 	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	// Step 2: request final api
 	searchFacereq := &SearchFaceRequest{}
@@ -3890,7 +4287,7 @@ func (client *Client) SearchFaceAdvance(request *SearchFaceAdvanceRequest, runti
 	searchFacereq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	searchFaceResp, _err := client.SearchFace(searchFacereq, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	_result = searchFaceResp
@@ -3900,12 +4297,12 @@ func (client *Client) SearchFaceAdvance(request *SearchFaceAdvanceRequest, runti
 func (client *Client) ListFaceDbs(request *ListFaceDbsRequest, runtime *util.RuntimeOptions) (_result *ListFaceDbsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	_result = &ListFaceDbsResponse{}
-	_body, _err := client.DoRequest("ListFaceDbs", "HTTPS", "POST", "2019-12-30", "AK", nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRequest(tea.String("ListFaceDbs"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
 	return _result, _err
@@ -3914,12 +4311,12 @@ func (client *Client) ListFaceDbs(request *ListFaceDbsRequest, runtime *util.Run
 func (client *Client) CreateFaceDb(request *CreateFaceDbRequest, runtime *util.RuntimeOptions) (_result *CreateFaceDbResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	_result = &CreateFaceDbResponse{}
-	_body, _err := client.DoRequest("CreateFaceDb", "HTTPS", "POST", "2019-12-30", "AK", nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRequest(tea.String("CreateFaceDb"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
 	return _result, _err
@@ -3928,12 +4325,12 @@ func (client *Client) CreateFaceDb(request *CreateFaceDbRequest, runtime *util.R
 func (client *Client) DeleteFace(request *DeleteFaceRequest, runtime *util.RuntimeOptions) (_result *DeleteFaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	_result = &DeleteFaceResponse{}
-	_body, _err := client.DoRequest("DeleteFace", "HTTPS", "POST", "2019-12-30", "AK", nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRequest(tea.String("DeleteFace"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
 	return _result, _err
@@ -3942,12 +4339,12 @@ func (client *Client) DeleteFace(request *DeleteFaceRequest, runtime *util.Runti
 func (client *Client) DeleteFaceDb(request *DeleteFaceDbRequest, runtime *util.RuntimeOptions) (_result *DeleteFaceDbResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	_result = &DeleteFaceDbResponse{}
-	_body, _err := client.DoRequest("DeleteFaceDb", "HTTPS", "POST", "2019-12-30", "AK", nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRequest(tea.String("DeleteFaceDb"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
 	return _result, _err
@@ -3956,12 +4353,12 @@ func (client *Client) DeleteFaceDb(request *DeleteFaceDbRequest, runtime *util.R
 func (client *Client) AddFace(request *AddFaceRequest, runtime *util.RuntimeOptions) (_result *AddFaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	_result = &AddFaceResponse{}
-	_body, _err := client.DoRequest("AddFace", "HTTPS", "POST", "2019-12-30", "AK", nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRequest(tea.String("AddFace"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
 	return _result, _err
@@ -3971,48 +4368,48 @@ func (client *Client) AddFaceAdvance(request *AddFaceAdvanceRequest, runtime *ut
 	// Step 0: init client
 	accessKeyId, _err := client.Credential.GetAccessKeyId()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authConfig := &rpc.Config{
-		AccessKeyId:     tea.String(accessKeyId),
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Endpoint:        tea.String("openplatform.aliyuncs.com"),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	authClient, _err := openplatform.NewClient(authConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authRequest := &openplatform.AuthorizeFileUploadRequest{
 		Product:  tea.String("facebody"),
-		RegionId: tea.String(client.RegionId),
+		RegionId: client.RegionId,
 	}
 	authResponse, _err := authClient.AuthorizeFileUpload(authRequest, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	// Step 1: request OSS api to upload file
 	ossConfig := &oss.Config{
 		AccessKeyId:     authResponse.AccessKeyId,
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String(rpcutil.GetEndpoint(tea.StringValue(authResponse.Endpoint), tea.BoolValue(authResponse.UseAccelerate), client.EndpointType)),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Endpoint:        rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	ossClient, _err := oss.NewClient(ossConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	fileObj := &fileform.FileField{
@@ -4036,7 +4433,7 @@ func (client *Client) AddFaceAdvance(request *AddFaceAdvanceRequest, runtime *ut
 	rpcutil.Convert(runtime, ossRuntime)
 	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	// Step 2: request final api
 	addFacereq := &AddFaceRequest{}
@@ -4044,7 +4441,7 @@ func (client *Client) AddFaceAdvance(request *AddFaceAdvanceRequest, runtime *ut
 	addFacereq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	addFaceResp, _err := client.AddFace(addFacereq, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	_result = addFaceResp
@@ -4054,12 +4451,12 @@ func (client *Client) AddFaceAdvance(request *AddFaceAdvanceRequest, runtime *ut
 func (client *Client) RecognizeExpression(request *RecognizeExpressionRequest, runtime *util.RuntimeOptions) (_result *RecognizeExpressionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	_result = &RecognizeExpressionResponse{}
-	_body, _err := client.DoRequest("RecognizeExpression", "HTTPS", "POST", "2019-12-30", "AK", nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRequest(tea.String("RecognizeExpression"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
 	return _result, _err
@@ -4069,48 +4466,48 @@ func (client *Client) RecognizeExpressionAdvance(request *RecognizeExpressionAdv
 	// Step 0: init client
 	accessKeyId, _err := client.Credential.GetAccessKeyId()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authConfig := &rpc.Config{
-		AccessKeyId:     tea.String(accessKeyId),
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Endpoint:        tea.String("openplatform.aliyuncs.com"),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	authClient, _err := openplatform.NewClient(authConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authRequest := &openplatform.AuthorizeFileUploadRequest{
 		Product:  tea.String("facebody"),
-		RegionId: tea.String(client.RegionId),
+		RegionId: client.RegionId,
 	}
 	authResponse, _err := authClient.AuthorizeFileUpload(authRequest, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	// Step 1: request OSS api to upload file
 	ossConfig := &oss.Config{
 		AccessKeyId:     authResponse.AccessKeyId,
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String(rpcutil.GetEndpoint(tea.StringValue(authResponse.Endpoint), tea.BoolValue(authResponse.UseAccelerate), client.EndpointType)),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Endpoint:        rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	ossClient, _err := oss.NewClient(ossConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	fileObj := &fileform.FileField{
@@ -4134,7 +4531,7 @@ func (client *Client) RecognizeExpressionAdvance(request *RecognizeExpressionAdv
 	rpcutil.Convert(runtime, ossRuntime)
 	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	// Step 2: request final api
 	recognizeExpressionreq := &RecognizeExpressionRequest{}
@@ -4142,7 +4539,7 @@ func (client *Client) RecognizeExpressionAdvance(request *RecognizeExpressionAdv
 	recognizeExpressionreq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	recognizeExpressionResp, _err := client.RecognizeExpression(recognizeExpressionreq, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	_result = recognizeExpressionResp
@@ -4152,12 +4549,12 @@ func (client *Client) RecognizeExpressionAdvance(request *RecognizeExpressionAdv
 func (client *Client) RecognizePublicFace(request *RecognizePublicFaceRequest, runtime *util.RuntimeOptions) (_result *RecognizePublicFaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	_result = &RecognizePublicFaceResponse{}
-	_body, _err := client.DoRequest("RecognizePublicFace", "HTTPS", "POST", "2019-12-30", "AK", nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRequest(tea.String("RecognizePublicFace"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
 	return _result, _err
@@ -4166,12 +4563,12 @@ func (client *Client) RecognizePublicFace(request *RecognizePublicFaceRequest, r
 func (client *Client) DetectLivingFace(request *DetectLivingFaceRequest, runtime *util.RuntimeOptions) (_result *DetectLivingFaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	_result = &DetectLivingFaceResponse{}
-	_body, _err := client.DoRequest("DetectLivingFace", "HTTPS", "POST", "2019-12-30", "AK", nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRequest(tea.String("DetectLivingFace"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
 	return _result, _err
@@ -4180,12 +4577,12 @@ func (client *Client) DetectLivingFace(request *DetectLivingFaceRequest, runtime
 func (client *Client) DetectBodyCount(request *DetectBodyCountRequest, runtime *util.RuntimeOptions) (_result *DetectBodyCountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	_result = &DetectBodyCountResponse{}
-	_body, _err := client.DoRequest("DetectBodyCount", "HTTPS", "POST", "2019-12-30", "AK", nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRequest(tea.String("DetectBodyCount"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
 	return _result, _err
@@ -4195,48 +4592,48 @@ func (client *Client) DetectBodyCountAdvance(request *DetectBodyCountAdvanceRequ
 	// Step 0: init client
 	accessKeyId, _err := client.Credential.GetAccessKeyId()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authConfig := &rpc.Config{
-		AccessKeyId:     tea.String(accessKeyId),
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Endpoint:        tea.String("openplatform.aliyuncs.com"),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	authClient, _err := openplatform.NewClient(authConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authRequest := &openplatform.AuthorizeFileUploadRequest{
 		Product:  tea.String("facebody"),
-		RegionId: tea.String(client.RegionId),
+		RegionId: client.RegionId,
 	}
 	authResponse, _err := authClient.AuthorizeFileUpload(authRequest, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	// Step 1: request OSS api to upload file
 	ossConfig := &oss.Config{
 		AccessKeyId:     authResponse.AccessKeyId,
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String(rpcutil.GetEndpoint(tea.StringValue(authResponse.Endpoint), tea.BoolValue(authResponse.UseAccelerate), client.EndpointType)),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Endpoint:        rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	ossClient, _err := oss.NewClient(ossConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	fileObj := &fileform.FileField{
@@ -4260,7 +4657,7 @@ func (client *Client) DetectBodyCountAdvance(request *DetectBodyCountAdvanceRequ
 	rpcutil.Convert(runtime, ossRuntime)
 	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	// Step 2: request final api
 	detectBodyCountreq := &DetectBodyCountRequest{}
@@ -4268,7 +4665,7 @@ func (client *Client) DetectBodyCountAdvance(request *DetectBodyCountAdvanceRequ
 	detectBodyCountreq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	detectBodyCountResp, _err := client.DetectBodyCount(detectBodyCountreq, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	_result = detectBodyCountResp
@@ -4278,12 +4675,12 @@ func (client *Client) DetectBodyCountAdvance(request *DetectBodyCountAdvanceRequ
 func (client *Client) DetectMask(request *DetectMaskRequest, runtime *util.RuntimeOptions) (_result *DetectMaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	_result = &DetectMaskResponse{}
-	_body, _err := client.DoRequest("DetectMask", "HTTPS", "POST", "2019-12-30", "AK", nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRequest(tea.String("DetectMask"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
 	return _result, _err
@@ -4293,48 +4690,48 @@ func (client *Client) DetectMaskAdvance(request *DetectMaskAdvanceRequest, runti
 	// Step 0: init client
 	accessKeyId, _err := client.Credential.GetAccessKeyId()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authConfig := &rpc.Config{
-		AccessKeyId:     tea.String(accessKeyId),
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Endpoint:        tea.String("openplatform.aliyuncs.com"),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	authClient, _err := openplatform.NewClient(authConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authRequest := &openplatform.AuthorizeFileUploadRequest{
 		Product:  tea.String("facebody"),
-		RegionId: tea.String(client.RegionId),
+		RegionId: client.RegionId,
 	}
 	authResponse, _err := authClient.AuthorizeFileUpload(authRequest, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	// Step 1: request OSS api to upload file
 	ossConfig := &oss.Config{
 		AccessKeyId:     authResponse.AccessKeyId,
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String(rpcutil.GetEndpoint(tea.StringValue(authResponse.Endpoint), tea.BoolValue(authResponse.UseAccelerate), client.EndpointType)),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Endpoint:        rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	ossClient, _err := oss.NewClient(ossConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	fileObj := &fileform.FileField{
@@ -4358,7 +4755,7 @@ func (client *Client) DetectMaskAdvance(request *DetectMaskAdvanceRequest, runti
 	rpcutil.Convert(runtime, ossRuntime)
 	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	// Step 2: request final api
 	detectMaskreq := &DetectMaskRequest{}
@@ -4366,7 +4763,7 @@ func (client *Client) DetectMaskAdvance(request *DetectMaskAdvanceRequest, runti
 	detectMaskreq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	detectMaskResp, _err := client.DetectMask(detectMaskreq, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	_result = detectMaskResp
@@ -4376,12 +4773,12 @@ func (client *Client) DetectMaskAdvance(request *DetectMaskAdvanceRequest, runti
 func (client *Client) RecognizeFace(request *RecognizeFaceRequest, runtime *util.RuntimeOptions) (_result *RecognizeFaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	_result = &RecognizeFaceResponse{}
-	_body, _err := client.DoRequest("RecognizeFace", "HTTPS", "POST", "2019-12-30", "AK", nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRequest(tea.String("RecognizeFace"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
 	return _result, _err
@@ -4391,48 +4788,48 @@ func (client *Client) RecognizeFaceAdvance(request *RecognizeFaceAdvanceRequest,
 	// Step 0: init client
 	accessKeyId, _err := client.Credential.GetAccessKeyId()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authConfig := &rpc.Config{
-		AccessKeyId:     tea.String(accessKeyId),
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Endpoint:        tea.String("openplatform.aliyuncs.com"),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	authClient, _err := openplatform.NewClient(authConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authRequest := &openplatform.AuthorizeFileUploadRequest{
 		Product:  tea.String("facebody"),
-		RegionId: tea.String(client.RegionId),
+		RegionId: client.RegionId,
 	}
 	authResponse, _err := authClient.AuthorizeFileUpload(authRequest, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	// Step 1: request OSS api to upload file
 	ossConfig := &oss.Config{
 		AccessKeyId:     authResponse.AccessKeyId,
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String(rpcutil.GetEndpoint(tea.StringValue(authResponse.Endpoint), tea.BoolValue(authResponse.UseAccelerate), client.EndpointType)),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Endpoint:        rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	ossClient, _err := oss.NewClient(ossConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	fileObj := &fileform.FileField{
@@ -4456,7 +4853,7 @@ func (client *Client) RecognizeFaceAdvance(request *RecognizeFaceAdvanceRequest,
 	rpcutil.Convert(runtime, ossRuntime)
 	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	// Step 2: request final api
 	recognizeFacereq := &RecognizeFaceRequest{}
@@ -4464,7 +4861,7 @@ func (client *Client) RecognizeFaceAdvance(request *RecognizeFaceAdvanceRequest,
 	recognizeFacereq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	recognizeFaceResp, _err := client.RecognizeFace(recognizeFacereq, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	_result = recognizeFaceResp
@@ -4474,12 +4871,12 @@ func (client *Client) RecognizeFaceAdvance(request *RecognizeFaceAdvanceRequest,
 func (client *Client) CompareFace(request *CompareFaceRequest, runtime *util.RuntimeOptions) (_result *CompareFaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	_result = &CompareFaceResponse{}
-	_body, _err := client.DoRequest("CompareFace", "HTTPS", "POST", "2019-12-30", "AK", nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRequest(tea.String("CompareFace"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
 	return _result, _err
@@ -4488,12 +4885,12 @@ func (client *Client) CompareFace(request *CompareFaceRequest, runtime *util.Run
 func (client *Client) DetectFace(request *DetectFaceRequest, runtime *util.RuntimeOptions) (_result *DetectFaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	_result = &DetectFaceResponse{}
-	_body, _err := client.DoRequest("DetectFace", "HTTPS", "POST", "2019-12-30", "AK", nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRequest(tea.String("DetectFace"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-12-30"), tea.String("AK"), nil, tea.ToMap(request), runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
 	return _result, _err
@@ -4503,48 +4900,48 @@ func (client *Client) DetectFaceAdvance(request *DetectFaceAdvanceRequest, runti
 	// Step 0: init client
 	accessKeyId, _err := client.Credential.GetAccessKeyId()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authConfig := &rpc.Config{
-		AccessKeyId:     tea.String(accessKeyId),
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Endpoint:        tea.String("openplatform.aliyuncs.com"),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	authClient, _err := openplatform.NewClient(authConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	authRequest := &openplatform.AuthorizeFileUploadRequest{
 		Product:  tea.String("facebody"),
-		RegionId: tea.String(client.RegionId),
+		RegionId: client.RegionId,
 	}
 	authResponse, _err := authClient.AuthorizeFileUpload(authRequest, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	// Step 1: request OSS api to upload file
 	ossConfig := &oss.Config{
 		AccessKeyId:     authResponse.AccessKeyId,
-		AccessKeySecret: tea.String(accessKeySecret),
+		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
-		Endpoint:        tea.String(rpcutil.GetEndpoint(tea.StringValue(authResponse.Endpoint), tea.BoolValue(authResponse.UseAccelerate), client.EndpointType)),
-		Protocol:        tea.String(client.Protocol),
-		RegionId:        tea.String(client.RegionId),
+		Endpoint:        rpcutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
 	}
 	ossClient, _err := oss.NewClient(ossConfig)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	fileObj := &fileform.FileField{
@@ -4568,7 +4965,7 @@ func (client *Client) DetectFaceAdvance(request *DetectFaceAdvanceRequest, runti
 	rpcutil.Convert(runtime, ossRuntime)
 	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 	if _err != nil {
-		return
+		return _result, _err
 	}
 	// Step 2: request final api
 	detectFacereq := &DetectFaceRequest{}
@@ -4576,26 +4973,27 @@ func (client *Client) DetectFaceAdvance(request *DetectFaceAdvanceRequest, runti
 	detectFacereq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	detectFaceResp, _err := client.DetectFace(detectFacereq, runtime)
 	if _err != nil {
-		return nil, _err
+		return _result, _err
 	}
 
 	_result = detectFaceResp
 	return _result, _err
 }
 
-func (client *Client) GetEndpoint(productId string, regionId string, endpointRule string, network string, suffix string, endpointMap map[string]string, endpoint string) (_result string, _err error) {
-	if !util.Empty(endpoint) {
+func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
+	if !tea.BoolValue(util.Empty(endpoint)) {
 		_result = endpoint
 		return _result, _err
 	}
 
-	if !util.IsUnset(endpointMap) && !util.Empty(endpointMap[regionId]) {
+	if !tea.BoolValue(util.IsUnset(endpointMap)) && !tea.BoolValue(util.Empty(endpointMap[tea.StringValue(regionId)])) {
+		_result = endpointMap[tea.StringValue(regionId)]
 		return _result, _err
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
 	if _err != nil {
-		return "", _err
+		return _result, _err
 	}
 	_result = _body
 	return _result, _err
