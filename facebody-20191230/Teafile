@@ -1,51 +1,53 @@
 {
-	"scope": "alibabacloud",
-	"name": "facebody20191230",
-	"version": "0.1.1",
-	"main": "./main.tea",
-	"releases": {
-		"java": "com.aliyun:facebody20191230:0.2.3",
-		"go": "github.com/alibabacloud-go/Facebody-20191230/client:v0.0.2",
-		"csharp": "AlibabaCloud.SDK.Facebody20191230:0.0.2",
-		"ts": "@alicloud/facebody20191230:^1.0.0",
-		"php": "alibabacloud/facebody-20191230:^0.1.2"
-	},
-	"maintainers": [{
-		"name": "Alibaba Cloud SDK",
-		"email": "sdk-team@alibabacloud.com"
-	}],
-	"libraries": {
-		"OSS": "alibabacloud:OSS:*",
-		"OpenPlatform": "alibabacloud:OpenPlatform20191219:*",
-		"RPCUtil": "alibabacloud:RPCUtil:*",
-		"RPC": "alibabacloud:RPC:*",
-		"Util": "alibabacloud:Util:*",
-		"EndpointUtil": "alibabacloud:EndpointUtil:*",
-		"FileForm": "alibabacloud:FileForm:*",
-		"OSSUtil": "alibabacloud:OSSUtil:*"
-	},
-	"go": {
-		"package": [
-			"io"
-		]
-	},
-	"java": {
-		"package": "com.aliyun.facebody20191230"
-	},
-	"csharp": {
-		"className": "Client",
-		"namespace": "AlibabaCloud.Facebody20191230"
-	},
-	"php": {
-		"package": "AlibabaCloud.SDK.Facebody.V20191230",
-		"clientName": "Facebody",
-		"packageInfo": {
-			"name": "alibabacloud/facebody-20191230",
-			"desc": "Alibaba Cloud Facebody SDK Library for PHP",
-			"github": "https://github.com/aliyun/alibabacloud-sdk",
-			"files": {
-				"LICENSE": "../LICENSE"
-			}
-		}
-	}
+  "scope": "alibabacloud",
+  "name": "facebody20191230",
+  "version": "0.1.1",
+  "main": "./main.tea",
+  "releases": {
+    "java": "com.aliyun:facebody20191230:0.2.3",
+    "go": "github.com/alibabacloud-go/Facebody-20191230/client:v0.0.2",
+    "csharp": "AlibabaCloud.SDK.Facebody20191230:0.0.2",
+    "ts": "@alicloud/facebody20191230:1.2.1",
+    "php": "alibabacloud/facebody-20191230:^0.1.2"
+  },
+  "maintainers": [
+    {
+      "name": "Alibaba Cloud SDK",
+      "email": "sdk-team@alibabacloud.com"
+    }
+  ],
+  "libraries": {
+    "OSS": "alibabacloud:OSS:*",
+    "OpenPlatform": "alibabacloud:OpenPlatform20191219:*",
+    "RPCUtil": "alibabacloud:RPCUtil:*",
+    "RPC": "alibabacloud:RPC:*",
+    "Util": "alibabacloud:Util:*",
+    "EndpointUtil": "alibabacloud:EndpointUtil:*",
+    "FileForm": "alibabacloud:FileForm:*",
+    "OSSUtil": "alibabacloud:OSSUtil:*"
+  },
+  "go": {
+    "package": [
+      "io"
+    ]
+  },
+  "java": {
+    "package": "com.aliyun.facebody20191230"
+  },
+  "csharp": {
+    "className": "Client",
+    "namespace": "AlibabaCloud.Facebody20191230"
+  },
+  "php": {
+    "package": "AlibabaCloud.SDK.Facebody.V20191230",
+    "clientName": "Facebody",
+    "packageInfo": {
+      "name": "alibabacloud/facebody-20191230",
+      "desc": "Alibaba Cloud Facebody SDK Library for PHP",
+      "github": "https://github.com/aliyun/alibabacloud-sdk",
+      "files": {
+        "LICENSE": "../LICENSE"
+      }
+    }
+  }
 }

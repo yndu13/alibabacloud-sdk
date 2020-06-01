@@ -2745,27 +2745,27 @@ export default class Client extends RPC {
 
   async addFaceEntity(request: AddFaceEntityRequest, runtime: $Util.RuntimeOptions): Promise<AddFaceEntityResponse> {
     Util.validateModel(request);
-    return $tea.cast<AddFaceEntityResponse>(await this.doRequest("AddFaceEntity", "HTTPS", "GET", "2019-12-30", "AK", null, $tea.toMap(request), runtime), new AddFaceEntityResponse({}));
+    return $tea.cast<AddFaceEntityResponse>(await this.doRequest("AddFaceEntity", "HTTPS", "POST", "2019-12-30", "AK", null, $tea.toMap(request), runtime), new AddFaceEntityResponse({}));
   }
 
   async deleteFaceEntity(request: DeleteFaceEntityRequest, runtime: $Util.RuntimeOptions): Promise<DeleteFaceEntityResponse> {
     Util.validateModel(request);
-    return $tea.cast<DeleteFaceEntityResponse>(await this.doRequest("DeleteFaceEntity", "HTTPS", "GET", "2019-12-30", "AK", null, $tea.toMap(request), runtime), new DeleteFaceEntityResponse({}));
+    return $tea.cast<DeleteFaceEntityResponse>(await this.doRequest("DeleteFaceEntity", "HTTPS", "POST", "2019-12-30", "AK", null, $tea.toMap(request), runtime), new DeleteFaceEntityResponse({}));
   }
 
   async listFaceEntities(request: ListFaceEntitiesRequest, runtime: $Util.RuntimeOptions): Promise<ListFaceEntitiesResponse> {
     Util.validateModel(request);
-    return $tea.cast<ListFaceEntitiesResponse>(await this.doRequest("ListFaceEntities", "HTTPS", "GET", "2019-12-30", "AK", null, $tea.toMap(request), runtime), new ListFaceEntitiesResponse({}));
+    return $tea.cast<ListFaceEntitiesResponse>(await this.doRequest("ListFaceEntities", "HTTPS", "POST", "2019-12-30", "AK", null, $tea.toMap(request), runtime), new ListFaceEntitiesResponse({}));
   }
 
   async getFaceEntity(request: GetFaceEntityRequest, runtime: $Util.RuntimeOptions): Promise<GetFaceEntityResponse> {
     Util.validateModel(request);
-    return $tea.cast<GetFaceEntityResponse>(await this.doRequest("GetFaceEntity", "HTTPS", "GET", "2019-12-30", "AK", null, $tea.toMap(request), runtime), new GetFaceEntityResponse({}));
+    return $tea.cast<GetFaceEntityResponse>(await this.doRequest("GetFaceEntity", "HTTPS", "POST", "2019-12-30", "AK", null, $tea.toMap(request), runtime), new GetFaceEntityResponse({}));
   }
 
   async updateFaceEntity(request: UpdateFaceEntityRequest, runtime: $Util.RuntimeOptions): Promise<UpdateFaceEntityResponse> {
     Util.validateModel(request);
-    return $tea.cast<UpdateFaceEntityResponse>(await this.doRequest("UpdateFaceEntity", "HTTPS", "GET", "2019-12-30", "AK", null, $tea.toMap(request), runtime), new UpdateFaceEntityResponse({}));
+    return $tea.cast<UpdateFaceEntityResponse>(await this.doRequest("UpdateFaceEntity", "HTTPS", "POST", "2019-12-30", "AK", null, $tea.toMap(request), runtime), new UpdateFaceEntityResponse({}));
   }
 
   async faceMakeup(request: FaceMakeupRequest, runtime: $Util.RuntimeOptions): Promise<FaceMakeupResponse> {
@@ -3258,7 +3258,7 @@ export default class Client extends RPC {
 
   async searchFace(request: SearchFaceRequest, runtime: $Util.RuntimeOptions): Promise<SearchFaceResponse> {
     Util.validateModel(request);
-    return $tea.cast<SearchFaceResponse>(await this.doRequest("SearchFace", "HTTPS", "GET", "2019-12-30", "AK", null, $tea.toMap(request), runtime), new SearchFaceResponse({}));
+    return $tea.cast<SearchFaceResponse>(await this.doRequest("SearchFace", "HTTPS", "POST", "2019-12-30", "AK", null, $tea.toMap(request), runtime), new SearchFaceResponse({}));
   }
 
   async searchFaceAdvance(request: SearchFaceAdvanceRequest, runtime: $Util.RuntimeOptions): Promise<SearchFaceResponse> {
@@ -3319,27 +3319,27 @@ export default class Client extends RPC {
 
   async listFaceDbs(request: ListFaceDbsRequest, runtime: $Util.RuntimeOptions): Promise<ListFaceDbsResponse> {
     Util.validateModel(request);
-    return $tea.cast<ListFaceDbsResponse>(await this.doRequest("ListFaceDbs", "HTTPS", "GET", "2019-12-30", "AK", null, $tea.toMap(request), runtime), new ListFaceDbsResponse({}));
+    return $tea.cast<ListFaceDbsResponse>(await this.doRequest("ListFaceDbs", "HTTPS", "POST", "2019-12-30", "AK", null, $tea.toMap(request), runtime), new ListFaceDbsResponse({}));
   }
 
   async createFaceDb(request: CreateFaceDbRequest, runtime: $Util.RuntimeOptions): Promise<CreateFaceDbResponse> {
     Util.validateModel(request);
-    return $tea.cast<CreateFaceDbResponse>(await this.doRequest("CreateFaceDb", "HTTPS", "GET", "2019-12-30", "AK", null, $tea.toMap(request), runtime), new CreateFaceDbResponse({}));
+    return $tea.cast<CreateFaceDbResponse>(await this.doRequest("CreateFaceDb", "HTTPS", "POST", "2019-12-30", "AK", null, $tea.toMap(request), runtime), new CreateFaceDbResponse({}));
   }
 
   async deleteFace(request: DeleteFaceRequest, runtime: $Util.RuntimeOptions): Promise<DeleteFaceResponse> {
     Util.validateModel(request);
-    return $tea.cast<DeleteFaceResponse>(await this.doRequest("DeleteFace", "HTTPS", "GET", "2019-12-30", "AK", null, $tea.toMap(request), runtime), new DeleteFaceResponse({}));
+    return $tea.cast<DeleteFaceResponse>(await this.doRequest("DeleteFace", "HTTPS", "POST", "2019-12-30", "AK", null, $tea.toMap(request), runtime), new DeleteFaceResponse({}));
   }
 
   async deleteFaceDb(request: DeleteFaceDbRequest, runtime: $Util.RuntimeOptions): Promise<DeleteFaceDbResponse> {
     Util.validateModel(request);
-    return $tea.cast<DeleteFaceDbResponse>(await this.doRequest("DeleteFaceDb", "HTTPS", "GET", "2019-12-30", "AK", null, $tea.toMap(request), runtime), new DeleteFaceDbResponse({}));
+    return $tea.cast<DeleteFaceDbResponse>(await this.doRequest("DeleteFaceDb", "HTTPS", "POST", "2019-12-30", "AK", null, $tea.toMap(request), runtime), new DeleteFaceDbResponse({}));
   }
 
   async addFace(request: AddFaceRequest, runtime: $Util.RuntimeOptions): Promise<AddFaceResponse> {
     Util.validateModel(request);
-    return $tea.cast<AddFaceResponse>(await this.doRequest("AddFace", "HTTPS", "GET", "2019-12-30", "AK", null, $tea.toMap(request), runtime), new AddFaceResponse({}));
+    return $tea.cast<AddFaceResponse>(await this.doRequest("AddFace", "HTTPS", "POST", "2019-12-30", "AK", null, $tea.toMap(request), runtime), new AddFaceResponse({}));
   }
 
   async addFaceAdvance(request: AddFaceAdvanceRequest, runtime: $Util.RuntimeOptions): Promise<AddFaceResponse> {
@@ -3723,7 +3723,7 @@ export default class Client extends RPC {
       return endpoint;
     }
 
-    if (!Util.empty(endpointMap[regionId])) {
+    if (!Util.isUnset(endpointMap) && !Util.empty(endpointMap[regionId])) {
       return endpointMap[regionId];
     }
 
