@@ -1,3 +1,3 @@
-2020-06-02 Version: 1.0.59
+2020-06-02 Version: 1.0.60
 - Generated python 2018-07-13 for Ft.
 
