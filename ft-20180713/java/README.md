@@ -1,16 +1,16 @@
 English | [简体中文](README-CN.md)
 ![](https://aliyunsdk-pages.alicdn.com/icons/AlibabaCloud.svg)
 
-# Alibaba Cloud Ft SDK for Go
-
-## Requirements
-- It's necessary for you to make sure your system have installed a Go environment which is new than 1.12.0.
+## Alibaba Cloud Ft SDK for Java
 
 ## Installation
-If you use `go mod` to manage your dependence, you can use the following command:
 
-```sh
-$ go get github.com/alibabacloud-go/Ft-20180713
+```xml
+<dependency>
+   <groupId>com.aliyun</groupId>
+   <artifactId>ft20180713</artifactId>
+   <version>Use the version shown in the maven badge</version>
+</dependency>
 ```
 
 ## Issues
@@ -20,7 +20,7 @@ $ go get github.com/alibabacloud-go/Ft-20180713
 Detailed changes for each release are documented in the [release notes](./ChangeLog.txt).
 
 ## References
-* [Latest Release](https://github.com/aliyun/alibabacloud-sdk/)
+* [Latest Release](https://github.com/aliyun/alibabacloud-sdk/tree/master/java)
 
 ## License
 [Apache-2.0](http://www.apache.org/licenses/LICENSE-2.0)
