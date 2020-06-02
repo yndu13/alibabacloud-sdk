@@ -1,0 +1,13 @@
+/Users/page/alicloud/portal/output/28119d2d-e79b-4782-b0f4-673896562c47/tea/ft-20180713/csharp/core/bin/Debug/net45/AlibabaCloud.SDK.Ft20180713-test.dll
+/Users/page/alicloud/portal/output/28119d2d-e79b-4782-b0f4-673896562c47/tea/ft-20180713/csharp/core/bin/Debug/net45/AlibabaCloud.SDK.Ft20180713-test.pdb
+/Users/page/alicloud/portal/output/28119d2d-e79b-4782-b0f4-673896562c47/tea/ft-20180713/csharp/core/bin/Debug/net45/AlibabaCloud.EndpointUtil.dll
+/Users/page/alicloud/portal/output/28119d2d-e79b-4782-b0f4-673896562c47/tea/ft-20180713/csharp/core/bin/Debug/net45/AlibabaCloud.RPCClient.dll
+/Users/page/alicloud/portal/output/28119d2d-e79b-4782-b0f4-673896562c47/tea/ft-20180713/csharp/core/bin/Debug/net45/AlibabaCloud.SDK.Common.dll
+/Users/page/alicloud/portal/output/28119d2d-e79b-4782-b0f4-673896562c47/tea/ft-20180713/csharp/core/bin/Debug/net45/AlibabaCloud.TeaUtil.dll
+/Users/page/alicloud/portal/output/28119d2d-e79b-4782-b0f4-673896562c47/tea/ft-20180713/csharp/core/bin/Debug/net45/Aliyun.Credentials.dll
+/Users/page/alicloud/portal/output/28119d2d-e79b-4782-b0f4-673896562c47/tea/ft-20180713/csharp/core/bin/Debug/net45/Newtonsoft.Json.dll
+/Users/page/alicloud/portal/output/28119d2d-e79b-4782-b0f4-673896562c47/tea/ft-20180713/csharp/core/bin/Debug/net45/Tea.dll
+/Users/page/alicloud/portal/output/28119d2d-e79b-4782-b0f4-673896562c47/tea/ft-20180713/csharp/core/obj/Debug/net45/ft.csproj.CoreCompileInputs.cache
+/Users/page/alicloud/portal/output/28119d2d-e79b-4782-b0f4-673896562c47/tea/ft-20180713/csharp/core/obj/Debug/net45/ft.csproj.CopyComplete
+/Users/page/alicloud/portal/output/28119d2d-e79b-4782-b0f4-673896562c47/tea/ft-20180713/csharp/core/obj/Debug/net45/AlibabaCloud.SDK.Ft20180713-test.dll
+/Users/page/alicloud/portal/output/28119d2d-e79b-4782-b0f4-673896562c47/tea/ft-20180713/csharp/core/obj/Debug/net45/AlibabaCloud.SDK.Ft20180713-test.pdb
