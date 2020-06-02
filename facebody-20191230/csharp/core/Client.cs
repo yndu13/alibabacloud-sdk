@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using Tea;
 using Tea.Utils;
 
-using AlibabaCloud.SDK.Facebody20191230.Models;
+using AlibabaCloud.SDK.facebody20191230.Models;
 
-namespace AlibabaCloud.SDK.Facebody20191230
+namespace AlibabaCloud.SDK.facebody20191230
 {
     public class Client : AlibabaCloud.RPCClient.Client
     {

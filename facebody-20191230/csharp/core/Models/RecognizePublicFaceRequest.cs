@@ -6,7 +6,7 @@ using System.IO;
 
 using Tea;
 
-namespace AlibabaCloud.SDK.Facebody20191230.Models
+namespace AlibabaCloud.SDK.facebody20191230.Models
 {
     public class RecognizePublicFaceRequest : TeaModel {
         [NameInMap("Task")]
