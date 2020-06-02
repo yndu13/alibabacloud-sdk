@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>AlibabaCloud.SDK.Ft20180713-test</id>
+    <version>1.0.0</version>
+    <authors>AlibabaCloud.SDK.Ft20180713-test</authors>
+    <owners>AlibabaCloud.SDK.Ft20180713-test</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="AlibabaCloud.EndpointUtil" version="0.1.1" exclude="Build,Analyzers" />
+        <dependency id="AlibabaCloud.RPCClient" version="0.0.7" exclude="Build,Analyzers" />
+        <dependency id="AlibabaCloud.TeaUtil" version="0.1.3" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="AlibabaCloud.EndpointUtil" version="0.1.1" exclude="Build,Analyzers" />
+        <dependency id="AlibabaCloud.RPCClient" version="0.0.7" exclude="Build,Analyzers" />
+        <dependency id="AlibabaCloud.TeaUtil" version="0.1.3" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="/Users/page/alicloud/portal/output/03a6223f-f6a8-43bc-a4ee-62f6a38d2bc8/tea/ft-20180713/csharp/core/bin/Release/net45/AlibabaCloud.SDK.Ft20180713-test.dll" target="lib/net45/AlibabaCloud.SDK.Ft20180713-test.dll" />
+    <file src="/Users/page/alicloud/portal/output/03a6223f-f6a8-43bc-a4ee-62f6a38d2bc8/tea/ft-20180713/csharp/core/bin/Release/netstandard2.0/AlibabaCloud.SDK.Ft20180713-test.dll" target="lib/netstandard2.0/AlibabaCloud.SDK.Ft20180713-test.dll" />
+  </files>
+</package>
