@@ -1,0 +1,7 @@
+/Users/page/alicloud/portal/output/d82db773-1212-45f1-84fa-ad611f7d300d/tea/ft-20180713/csharp/core/bin/Debug/netstandard2.0/AlibabaCloud.SDK.Ft20180713-test.deps.json
+/Users/page/alicloud/portal/output/d82db773-1212-45f1-84fa-ad611f7d300d/tea/ft-20180713/csharp/core/bin/Debug/netstandard2.0/AlibabaCloud.SDK.Ft20180713-test.dll
+/Users/page/alicloud/portal/output/d82db773-1212-45f1-84fa-ad611f7d300d/tea/ft-20180713/csharp/core/bin/Debug/netstandard2.0/AlibabaCloud.SDK.Ft20180713-test.pdb
+/Users/page/alicloud/portal/output/d82db773-1212-45f1-84fa-ad611f7d300d/tea/ft-20180713/csharp/core/obj/Debug/netstandard2.0/ft.csprojAssemblyReference.cache
+/Users/page/alicloud/portal/output/d82db773-1212-45f1-84fa-ad611f7d300d/tea/ft-20180713/csharp/core/obj/Debug/netstandard2.0/ft.csproj.CoreCompileInputs.cache
+/Users/page/alicloud/portal/output/d82db773-1212-45f1-84fa-ad611f7d300d/tea/ft-20180713/csharp/core/obj/Debug/netstandard2.0/AlibabaCloud.SDK.Ft20180713-test.dll
+/Users/page/alicloud/portal/output/d82db773-1212-45f1-84fa-ad611f7d300d/tea/ft-20180713/csharp/core/obj/Debug/netstandard2.0/AlibabaCloud.SDK.Ft20180713-test.pdb
