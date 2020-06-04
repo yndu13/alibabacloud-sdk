@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("alibabacloud-ft")]
-[assembly: AssemblyDescription("Alibaba Cloud Ft (20180713) SDK Library for .NET")]
+[assembly: AssemblyDescription("Alibaba Cloud Ft(v20180713) SDK Library for .NET")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Alibaba Cloud, Inc")]
 [assembly: AssemblyProduct("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("c9c00f40-a616-11ea-b73c-a1cf95e20a52")]
+[assembly: Guid("cfa56390-a618-11ea-98c9-15054c454589")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("0.0.1.0")]
+[assembly: AssemblyFileVersion("0.0.1.0")]
