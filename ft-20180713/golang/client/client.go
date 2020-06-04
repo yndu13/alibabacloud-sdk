@@ -598,53 +598,53 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = tea.String("regional")
-	client.EndpointMap = map[string]string{
-		"ap-northeast-2-pop":          "ft.aliyuncs.com",
-		"ap-south-1":                  "ft.aliyuncs.com",
-		"ap-southeast-1":              "ft.aliyuncs.com",
-		"ap-southeast-2":              "ft.aliyuncs.com",
-		"ap-southeast-3":              "ft.aliyuncs.com",
-		"ap-southeast-5":              "ft.aliyuncs.com",
-		"cn-beijing":                  "ft.aliyuncs.com",
-		"cn-beijing-finance-1":        "ft.aliyuncs.com",
-		"cn-beijing-finance-pop":      "ft.aliyuncs.com",
-		"cn-beijing-gov-1":            "ft.aliyuncs.com",
-		"cn-beijing-nu16-b01":         "ft.aliyuncs.com",
-		"cn-chengdu":                  "ft.aliyuncs.com",
-		"cn-edge-1":                   "ft.aliyuncs.com",
-		"cn-fujian":                   "ft.aliyuncs.com",
-		"cn-haidian-cm12-c01":         "ft.aliyuncs.com",
-		"cn-hangzhou-bj-b01":          "ft.aliyuncs.com",
-		"cn-hangzhou-finance":         "ft.aliyuncs.com",
-		"cn-hangzhou-internal-prod-1": "ft.aliyuncs.com",
-		"cn-hangzhou-internal-test-1": "ft.aliyuncs.com",
-		"cn-hangzhou-internal-test-2": "ft.aliyuncs.com",
-		"cn-hangzhou-internal-test-3": "ft.aliyuncs.com",
-		"cn-hangzhou-test-306":        "ft.aliyuncs.com",
-		"cn-hongkong-finance-pop":     "ft.aliyuncs.com",
-		"cn-huhehaote":                "ft.aliyuncs.com",
-		"cn-qingdao":                  "ft.aliyuncs.com",
-		"cn-qingdao-nebula":           "ft.aliyuncs.com",
-		"cn-shanghai-et15-b01":        "ft.aliyuncs.com",
-		"cn-shanghai-et2-b01":         "ft.aliyuncs.com",
-		"cn-shanghai-finance-1":       "ft.aliyuncs.com",
-		"cn-shanghai-inner":           "ft.aliyuncs.com",
-		"cn-shanghai-internal-test-1": "ft.aliyuncs.com",
-		"cn-shenzhen-finance-1":       "ft.aliyuncs.com",
-		"cn-shenzhen-inner":           "ft.aliyuncs.com",
-		"cn-shenzhen-st4-d01":         "ft.aliyuncs.com",
-		"cn-shenzhen-su18-b01":        "ft.aliyuncs.com",
-		"cn-wuhan":                    "ft.aliyuncs.com",
-		"cn-yushanfang":               "ft.aliyuncs.com",
-		"cn-zhangbei-na61-b01":        "ft.aliyuncs.com",
-		"cn-zhangjiakou-na62-a01":     "ft.aliyuncs.com",
-		"cn-zhengzhou-nebula-1":       "ft.aliyuncs.com",
-		"eu-central-1":                "ft.aliyuncs.com",
-		"eu-west-1":                   "ft.aliyuncs.com",
-		"eu-west-1-oxs":               "ft.aliyuncs.com",
-		"me-east-1":                   "ft.aliyuncs.com",
-		"rus-west-1-pop":              "ft.aliyuncs.com",
-		"us-west-1":                   "ft.aliyuncs.com",
+	client.EndpointMap = map[string]*string{
+		"ap-northeast-2-pop":          tea.String("ft.aliyuncs.com"),
+		"ap-south-1":                  tea.String("ft.aliyuncs.com"),
+		"ap-southeast-1":              tea.String("ft.aliyuncs.com"),
+		"ap-southeast-2":              tea.String("ft.aliyuncs.com"),
+		"ap-southeast-3":              tea.String("ft.aliyuncs.com"),
+		"ap-southeast-5":              tea.String("ft.aliyuncs.com"),
+		"cn-beijing":                  tea.String("ft.aliyuncs.com"),
+		"cn-beijing-finance-1":        tea.String("ft.aliyuncs.com"),
+		"cn-beijing-finance-pop":      tea.String("ft.aliyuncs.com"),
+		"cn-beijing-gov-1":            tea.String("ft.aliyuncs.com"),
+		"cn-beijing-nu16-b01":         tea.String("ft.aliyuncs.com"),
+		"cn-chengdu":                  tea.String("ft.aliyuncs.com"),
+		"cn-edge-1":                   tea.String("ft.aliyuncs.com"),
+		"cn-fujian":                   tea.String("ft.aliyuncs.com"),
+		"cn-haidian-cm12-c01":         tea.String("ft.aliyuncs.com"),
+		"cn-hangzhou-bj-b01":          tea.String("ft.aliyuncs.com"),
+		"cn-hangzhou-finance":         tea.String("ft.aliyuncs.com"),
+		"cn-hangzhou-internal-prod-1": tea.String("ft.aliyuncs.com"),
+		"cn-hangzhou-internal-test-1": tea.String("ft.aliyuncs.com"),
+		"cn-hangzhou-internal-test-2": tea.String("ft.aliyuncs.com"),
+		"cn-hangzhou-internal-test-3": tea.String("ft.aliyuncs.com"),
+		"cn-hangzhou-test-306":        tea.String("ft.aliyuncs.com"),
+		"cn-hongkong-finance-pop":     tea.String("ft.aliyuncs.com"),
+		"cn-huhehaote":                tea.String("ft.aliyuncs.com"),
+		"cn-qingdao":                  tea.String("ft.aliyuncs.com"),
+		"cn-qingdao-nebula":           tea.String("ft.aliyuncs.com"),
+		"cn-shanghai-et15-b01":        tea.String("ft.aliyuncs.com"),
+		"cn-shanghai-et2-b01":         tea.String("ft.aliyuncs.com"),
+		"cn-shanghai-finance-1":       tea.String("ft.aliyuncs.com"),
+		"cn-shanghai-inner":           tea.String("ft.aliyuncs.com"),
+		"cn-shanghai-internal-test-1": tea.String("ft.aliyuncs.com"),
+		"cn-shenzhen-finance-1":       tea.String("ft.aliyuncs.com"),
+		"cn-shenzhen-inner":           tea.String("ft.aliyuncs.com"),
+		"cn-shenzhen-st4-d01":         tea.String("ft.aliyuncs.com"),
+		"cn-shenzhen-su18-b01":        tea.String("ft.aliyuncs.com"),
+		"cn-wuhan":                    tea.String("ft.aliyuncs.com"),
+		"cn-yushanfang":               tea.String("ft.aliyuncs.com"),
+		"cn-zhangbei-na61-b01":        tea.String("ft.aliyuncs.com"),
+		"cn-zhangjiakou-na62-a01":     tea.String("ft.aliyuncs.com"),
+		"cn-zhengzhou-nebula-1":       tea.String("ft.aliyuncs.com"),
+		"eu-central-1":                tea.String("ft.aliyuncs.com"),
+		"eu-west-1":                   tea.String("ft.aliyuncs.com"),
+		"eu-west-1-oxs":               tea.String("ft.aliyuncs.com"),
+		"me-east-1":                   tea.String("ft.aliyuncs.com"),
+		"rus-west-1-pop":              tea.String("ft.aliyuncs.com"),
+		"us-west-1":                   tea.String("ft.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -933,14 +933,14 @@ func (client *Client) FtGatedLaunchPolicy4(request *FtGatedLaunchPolicy4Request)
 	return _result, _err
 }
 
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]string, endpoint *string) (_result *string, _err error) {
+func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
 	if !tea.BoolValue(util.Empty(endpoint)) {
 		_result = endpoint
 		return _result, _err
 	}
 
-	if !tea.BoolValue(util.IsUnset(endpointMap)) && !tea.BoolValue(util.Empty(tea.String(endpointMap[tea.StringValue(regionId)]))) {
-		_result = tea.String(endpointMap[tea.StringValue(regionId)])
+	if !tea.BoolValue(util.IsUnset(endpointMap)) && !tea.BoolValue(util.Empty(endpointMap[tea.StringValue(regionId)])) {
+		_result = endpointMap[tea.StringValue(regionId)]
 		return _result, _err
 	}
 
