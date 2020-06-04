@@ -12,7 +12,7 @@
   "java": {
     "package": "com.aliyun.ft20180713",
     "packageInfo": {
-      "description": "Alibaba Cloud Ft(v20180713) SDK for Java",
+      "description": "Alibaba Cloud Ft (20180713) SDK for Java",
       "url": "https://github.com/aliyun/alibabacloud-sdk",
       "licenseNmae": "The Apache License, Version 2.0",
       "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
@@ -26,8 +26,8 @@
     "go": "github.com/alibabacloud-go/Ft-20180713/client:v0.0.1",
     "csharp": "AlibabaCloud.SDK.Ft20180713:1.0.0",
     "ts": "@alicloud/ft20180713:1.0.0",
-    "php": "alibabacloud/ft-20180713:1.0.0",
-    "python": "alibabacloud_sdk_ft20180713:0.0.1"
+    "php": "alibabacloud/ft-20180713:1.0.1",
+    "python": "alibabacloud_sdk_ft20180713:1.0.0"
   },
   "libraries": {
     "RPC": "alibabacloud:RPC:*",
@@ -40,7 +40,7 @@
     "packageInfo": {
       "name": "ft",
       "title": "alibabacloud-ft",
-      "description": "Alibaba Cloud Ft(v20180713) SDK Library for .NET",
+      "description": "Alibaba Cloud Ft (20180713) SDK Library for .NET",
       "company": "Alibaba Cloud, Inc"
     }
   },
@@ -49,7 +49,7 @@
     "clientName": "Ft",
     "packageInfo": {
       "name": "alibabacloud/ft-20180713",
-      "desc": "Alibaba Cloud Ft(v20180713) SDK Library for PHP",
+      "desc": "Alibaba Cloud Ft (20180713) SDK Library for PHP",
       "github": "https://github.com/aliyun/alibabacloud-sdk",
       "files": {
         "LICENSE": "../LICENSE"
@@ -57,7 +57,7 @@
     }
   },
   "python": {
-    "package": "alibabacloud_sdk_Ft20180713",
+    "package": "alibabacloud_ft20180713",
     "clientName": "client"
   }
 }
