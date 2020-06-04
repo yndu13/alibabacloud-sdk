@@ -5,7 +5,7 @@ import com.aliyun.tea.*;
 
 public class TestFlowStrategy01Request extends TeaModel {
     @NameInMap("Names")
-    public java.util.Map<String, ?> names;
+    public java.util.Map<String, Object> names;
 
     public static TestFlowStrategy01Request build(java.util.Map<String, ?> map) throws Exception {
         TestFlowStrategy01Request self = new TestFlowStrategy01Request();
