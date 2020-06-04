@@ -68,7 +68,7 @@ class SearchBodyResponse extends Model {
 
     /**
      * @description data
-     * @var SearchBodyResponse.data
+     * @var data
      */
     public $data;
 

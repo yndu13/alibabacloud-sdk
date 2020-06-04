@@ -68,7 +68,7 @@ class SearchFaceResponse extends Model {
 
     /**
      * @description data
-     * @var SearchFaceResponse.data
+     * @var data
      */
     public $data;
 

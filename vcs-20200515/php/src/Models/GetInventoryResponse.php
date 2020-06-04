@@ -44,7 +44,7 @@ class GetInventoryResponse extends Model {
 
     /**
      * @description Data
-     * @var GetInventoryResponse.data
+     * @var data
      */
     public $data;
 

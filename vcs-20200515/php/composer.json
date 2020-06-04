@@ -1,6 +1,6 @@
 {
   "name": "alibabacloud/vcs-20200515-test",
-  "description": "Alibaba Cloud Vcs(v20200515) SDK Library for PHP",
+  "description": "Alibaba Cloud Visual Compute Service (20200515) SDK Library for PHP",
   "type": "library",
   "license": "Apache-2.0",
   "authors": [
@@ -12,6 +12,7 @@
   "require": {
     "php": ">5.5",
     "alibabacloud/tea-utils": "^0.2.0",
+    "alibabacloud/tea-rpc": "^0.1.5",
     "alibabacloud/endpoint-util": "^0.1.0"
   },
   "autoload": {

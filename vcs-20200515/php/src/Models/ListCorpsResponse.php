@@ -68,7 +68,7 @@ class ListCorpsResponse extends Model {
 
     /**
      * @description data
-     * @var ListCorpsResponse.data
+     * @var data
      */
     public $data;
 

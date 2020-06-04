@@ -68,7 +68,7 @@ class RecognizeImageResponse extends Model {
 
     /**
      * @description data
-     * @var RecognizeImageResponse.data
+     * @var data
      */
     public $data;
 

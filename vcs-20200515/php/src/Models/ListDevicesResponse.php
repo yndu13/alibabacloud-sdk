@@ -68,7 +68,7 @@ class ListDevicesResponse extends Model {
 
     /**
      * @description data
-     * @var ListDevicesResponse.data
+     * @var data
      */
     public $data;
 

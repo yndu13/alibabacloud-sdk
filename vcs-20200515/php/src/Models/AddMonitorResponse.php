@@ -68,7 +68,7 @@ class AddMonitorResponse extends Model {
 
     /**
      * @description data
-     * @var AddMonitorResponse.data
+     * @var data
      */
     public $data;
 

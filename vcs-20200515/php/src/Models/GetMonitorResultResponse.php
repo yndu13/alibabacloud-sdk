@@ -68,7 +68,7 @@ class GetMonitorResultResponse extends Model {
 
     /**
      * @description data
-     * @var GetMonitorResultResponse.data
+     * @var data
      */
     public $data;
 
