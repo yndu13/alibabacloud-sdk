@@ -28,7 +28,7 @@ public class SearchBodyRequest extends TeaModel {
     public Integer pageSize;
 
     @NameInMap("OptionList")
-    public java.util.Map<String, Object> optionList;
+    public java.util.Map<String, ?> optionList;
 
     public static SearchBodyRequest build(java.util.Map<String, ?> map) throws Exception {
         SearchBodyRequest self = new SearchBodyRequest();

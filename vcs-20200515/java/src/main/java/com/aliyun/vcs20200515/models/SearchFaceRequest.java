@@ -28,7 +28,7 @@ public class SearchFaceRequest extends TeaModel {
     public Integer pageSize;
 
     @NameInMap("OptionList")
-    public java.util.Map<String, Object> optionList;
+    public java.util.Map<String, ?> optionList;
 
     public static SearchFaceRequest build(java.util.Map<String, ?> map) throws Exception {
         SearchFaceRequest self = new SearchFaceRequest();
