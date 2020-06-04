@@ -1,11 +1,9 @@
 # This file is auto-generated, don't edit it. Thanks.
-from Tea.model import TeaModel as Tea_model_TeaModel
-from alibabacloud_sdk_Ft20180713 import models as alibabacloud_sdk_Ft20180713_models
+from Tea.model import TeaModel
 
 
-
-class TestFlowStrategy01Request(Tea_model_TeaModel):
-    def __init__(self, names = None):
+class TestFlowStrategy01Request(TeaModel):
+    def __init__(self, names=None):
         self.names = {}
 
     def validate(self):
@@ -16,28 +14,28 @@ class TestFlowStrategy01Request(Tea_model_TeaModel):
         result['Names'] = self.names
         return result
 
-    def from_map(self, map = {}):
+    def from_map(self, map={}):
         self.names = map.get('Names')
         return self
 
 
-class TestFlowStrategy01Response(Tea_model_TeaModel):
-    def __init__(self, request_id = "", list = None, names = None):
+class TestFlowStrategy01Response(TeaModel):
+    def __init__(self, request_id=None, list_=None, names=None):
         self.request_id = request_id
-        self.list = []
+        self.list_ = []
         self.names = []
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.list, 'list')
+        self.validate_required(self.list_, 'list_')
         self.validate_required(self.names, 'names')
 
     def to_map(self):
         result = {}
         result['RequestId'] = self.request_id
         result['List'] = []
-        if self.list is not None:
-            for k in self.list:
+        if self.list_ is not None:
+            for k in self.list_:
                 result['List'].append(k)
         else:
             result['List'] = None
@@ -49,14 +47,14 @@ class TestFlowStrategy01Response(Tea_model_TeaModel):
             result['Names'] = None
         return result
 
-    def from_map(self, map = {}):
+    def from_map(self, map={}):
         self.request_id = map.get('RequestId')
-        self.list = []
+        self.list_ = []
         if map.get('List') is not None:
             for k in map.get('List'):
-                self.list.append(k)
+                self.list_.append(k)
         else:
-            self.list = None
+            self.list_ = None
         self.names = []
         if map.get('Names') is not None:
             for k in map.get('Names'):
@@ -66,8 +64,8 @@ class TestFlowStrategy01Response(Tea_model_TeaModel):
         return self
 
 
-class TestHttpApiRequest(Tea_model_TeaModel):
-    def __init__(self, string_value = None, default_value = None, other_param = None, boolean_param = False):
+class TestHttpApiRequest(TeaModel):
+    def __init__(self, string_value=None, default_value=None, other_param=None, boolean_param=None):
         self.string_value = {}
         self.default_value = {}
         self.other_param = {}
@@ -84,7 +82,7 @@ class TestHttpApiRequest(Tea_model_TeaModel):
         result['BooleanParam'] = self.boolean_param
         return result
 
-    def from_map(self, map = {}):
+    def from_map(self, map={}):
         self.string_value = map.get('StringValue')
         self.default_value = map.get('DefaultValue')
         self.other_param = map.get('OtherParam')
@@ -92,8 +90,8 @@ class TestHttpApiRequest(Tea_model_TeaModel):
         return self
 
 
-class TestHttpApiResponse(Tea_model_TeaModel):
-    def __init__(self, params = "", service_rpc_sign = ""):
+class TestHttpApiResponse(TeaModel):
+    def __init__(self, params=None, service_rpc_sign=None):
         self.params = params
         self.service_rpc_sign = service_rpc_sign
 
@@ -107,14 +105,14 @@ class TestHttpApiResponse(Tea_model_TeaModel):
         result['ServiceRpcSign'] = self.service_rpc_sign
         return result
 
-    def from_map(self, map = {}):
+    def from_map(self, map={}):
         self.params = map.get('Params')
         self.service_rpc_sign = map.get('ServiceRpcSign')
         return self
 
 
-class BatchAuditTest01Request(Tea_model_TeaModel):
-    def __init__(self, name = "", batch_audit_test_01 = "", demo_01 = "", test_010101 = False):
+class BatchAuditTest01Request(TeaModel):
+    def __init__(self, name=None, batch_audit_test_01=None, demo_01=None, test_010101=None):
         self.name = name
         self.batch_audit_test_01 = batch_audit_test_01
         self.demo_01 = demo_01
@@ -131,7 +129,7 @@ class BatchAuditTest01Request(Tea_model_TeaModel):
         result['Test010101'] = self.test_010101
         return result
 
-    def from_map(self, map = {}):
+    def from_map(self, map={}):
         self.name = map.get('Name')
         self.batch_audit_test_01 = map.get('BatchAuditTest01')
         self.demo_01 = map.get('Demo01')
@@ -139,8 +137,8 @@ class BatchAuditTest01Request(Tea_model_TeaModel):
         return self
 
 
-class BatchAuditTest01Response(Tea_model_TeaModel):
-    def __init__(self, request_id = "", name = "", demo_01 = None):
+class BatchAuditTest01Response(TeaModel):
+    def __init__(self, request_id=None, name=None, demo_01=None):
         self.request_id = request_id
         self.name = name
         self.demo_01 = demo_01
@@ -162,7 +160,7 @@ class BatchAuditTest01Response(Tea_model_TeaModel):
             result['Demo01'] = None
         return result
 
-    def from_map(self, map = {}):
+    def from_map(self, map={}):
         self.request_id = map.get('RequestId')
         self.name = map.get('Name')
         if map.get('Demo01') is not None:
@@ -173,8 +171,8 @@ class BatchAuditTest01Response(Tea_model_TeaModel):
         return self
 
 
-class BatchAuditTest01ResponseDemo01Demo011Demo011(Tea_model_TeaModel):
-    def __init__(self, demo_0111 = ""):
+class BatchAuditTest01ResponseDemo01Demo011Demo011(TeaModel):
+    def __init__(self, demo_0111=None):
         self.demo_0111 = demo_0111
 
     def validate(self):
@@ -185,13 +183,13 @@ class BatchAuditTest01ResponseDemo01Demo011Demo011(Tea_model_TeaModel):
         result['Demo0111'] = self.demo_0111
         return result
 
-    def from_map(self, map = {}):
+    def from_map(self, map={}):
         self.demo_0111 = map.get('Demo0111')
         return self
 
 
-class BatchAuditTest01ResponseDemo01Demo011(Tea_model_TeaModel):
-    def __init__(self, demo_011 = None):
+class BatchAuditTest01ResponseDemo01Demo011(TeaModel):
+    def __init__(self, demo_011=None):
         self.demo_011 = []
 
     def validate(self):
@@ -211,7 +209,7 @@ class BatchAuditTest01ResponseDemo01Demo011(Tea_model_TeaModel):
             result['Demo011'] = None
         return result
 
-    def from_map(self, map = {}):
+    def from_map(self, map={}):
         self.demo_011 = []
         if map.get('Demo011') is not None:
             for k in map.get('Demo011'):
@@ -223,8 +221,8 @@ class BatchAuditTest01ResponseDemo01Demo011(Tea_model_TeaModel):
         return self
 
 
-class BatchAuditTest01ResponseDemo01(Tea_model_TeaModel):
-    def __init__(self, demo_011 = None):
+class BatchAuditTest01ResponseDemo01(TeaModel):
+    def __init__(self, demo_011=None):
         self.demo_011 = demo_011
 
     def validate(self):
@@ -240,17 +238,17 @@ class BatchAuditTest01ResponseDemo01(Tea_model_TeaModel):
             result['Demo011'] = None
         return result
 
-    def from_map(self, map = {}):
+    def from_map(self, map={}):
         if map.get('Demo011') is not None:
-            temp_model = Demo01Demo011()
+            temp_model = BatchAuditTest01ResponseDemo01Demo011()
             self.demo_011 = temp_model.from_map(map['Demo011'])
         else:
             self.demo_011 = None
         return self
 
 
-class FtIpFlowControlRequest(Tea_model_TeaModel):
-    def __init__(self, name = ""):
+class FtIpFlowControlRequest(TeaModel):
+    def __init__(self, name=None):
         self.name = name
 
     def validate(self):
@@ -261,13 +259,13 @@ class FtIpFlowControlRequest(Tea_model_TeaModel):
         result['Name'] = self.name
         return result
 
-    def from_map(self, map = {}):
+    def from_map(self, map={}):
         self.name = map.get('Name')
         return self
 
 
-class FtIpFlowControlResponse(Tea_model_TeaModel):
-    def __init__(self, request_id = "", name = ""):
+class FtIpFlowControlResponse(TeaModel):
+    def __init__(self, request_id=None, name=None):
         self.request_id = request_id
         self.name = name
 
@@ -281,14 +279,14 @@ class FtIpFlowControlResponse(Tea_model_TeaModel):
         result['Name'] = self.name
         return result
 
-    def from_map(self, map = {}):
+    def from_map(self, map={}):
         self.request_id = map.get('RequestId')
         self.name = map.get('Name')
         return self
 
 
-class FtDynamicAddressDubboRequest(Tea_model_TeaModel):
-    def __init__(self, int_value = 0, string_value = ""):
+class FtDynamicAddressDubboRequest(TeaModel):
+    def __init__(self, int_value=None, string_value=None):
         self.int_value = int_value
         self.string_value = string_value
 
@@ -301,14 +299,14 @@ class FtDynamicAddressDubboRequest(Tea_model_TeaModel):
         result['StringValue'] = self.string_value
         return result
 
-    def from_map(self, map = {}):
+    def from_map(self, map={}):
         self.int_value = map.get('IntValue')
         self.string_value = map.get('StringValue')
         return self
 
 
-class FtDynamicAddressDubboResponse(Tea_model_TeaModel):
-    def __init__(self, request_id = "", string_value = "", int_value = 0):
+class FtDynamicAddressDubboResponse(TeaModel):
+    def __init__(self, request_id=None, string_value=None, int_value=None):
         self.request_id = request_id
         self.string_value = string_value
         self.int_value = int_value
@@ -325,14 +323,14 @@ class FtDynamicAddressDubboResponse(Tea_model_TeaModel):
         result['IntValue'] = self.int_value
         return result
 
-    def from_map(self, map = {}):
+    def from_map(self, map={}):
         self.request_id = map.get('RequestId')
         self.string_value = map.get('StringValue')
         self.int_value = map.get('IntValue')
         return self
 
 
-class FtDynamicAddressHsfRequest(Tea_model_TeaModel):
+class FtDynamicAddressHsfRequest(TeaModel):
     def __init__(self):
         pass
 
@@ -343,12 +341,12 @@ class FtDynamicAddressHsfRequest(Tea_model_TeaModel):
         result = {}
         return result
 
-    def from_map(self, map = {}):
+    def from_map(self, map={}):
         return self
 
 
-class FtDynamicAddressHsfResponse(Tea_model_TeaModel):
-    def __init__(self, request_id = ""):
+class FtDynamicAddressHsfResponse(TeaModel):
+    def __init__(self, request_id=None):
         self.request_id = request_id
 
     def validate(self):
@@ -359,13 +357,13 @@ class FtDynamicAddressHsfResponse(Tea_model_TeaModel):
         result['RequestId'] = self.request_id
         return result
 
-    def from_map(self, map = {}):
+    def from_map(self, map={}):
         self.request_id = map.get('RequestId')
         return self
 
 
-class FtFlowSpecialRequest(Tea_model_TeaModel):
-    def __init__(self, name = ""):
+class FtFlowSpecialRequest(TeaModel):
+    def __init__(self, name=None):
         self.name = name
 
     def validate(self):
@@ -376,51 +374,13 @@ class FtFlowSpecialRequest(Tea_model_TeaModel):
         result['Name'] = self.name
         return result
 
-    def from_map(self, map = {}):
+    def from_map(self, map={}):
         self.name = map.get('Name')
         return self
 
 
-class FtFlowSpecialResponse(Tea_model_TeaModel):
-    def __init__(self, request_id = "", name = ""):
-        self.request_id = request_id
-        self.name = name
-
-    def validate(self):
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.name, 'name')
-
-    def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Name'] = self.name
-        return result
-
-    def from_map(self, map = {}):
-        self.request_id = map.get('RequestId')
-        self.name = map.get('Name')
-        return self
-
-
-class FTApiAliasApiRequest(Tea_model_TeaModel):
-    def __init__(self, name = ""):
-        self.name = name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        result['Name'] = self.name
-        return result
-
-    def from_map(self, map = {}):
-        self.name = map.get('Name')
-        return self
-
-
-class FTApiAliasApiResponse(Tea_model_TeaModel):
-    def __init__(self, request_id = "", name = ""):
+class FtFlowSpecialResponse(TeaModel):
+    def __init__(self, request_id=None, name=None):
         self.request_id = request_id
         self.name = name
 
@@ -434,14 +394,14 @@ class FTApiAliasApiResponse(Tea_model_TeaModel):
         result['Name'] = self.name
         return result
 
-    def from_map(self, map = {}):
+    def from_map(self, map={}):
         self.request_id = map.get('RequestId')
         self.name = map.get('Name')
         return self
 
 
-class FtEagleEyeRequest(Tea_model_TeaModel):
-    def __init__(self, name = ""):
+class FTApiAliasApiRequest(TeaModel):
+    def __init__(self, name=None):
         self.name = name
 
     def validate(self):
@@ -452,13 +412,51 @@ class FtEagleEyeRequest(Tea_model_TeaModel):
         result['Name'] = self.name
         return result
 
-    def from_map(self, map = {}):
+    def from_map(self, map={}):
         self.name = map.get('Name')
         return self
 
 
-class FtEagleEyeResponse(Tea_model_TeaModel):
-    def __init__(self, request_id = "", name = "", eagle_eye_trace_id = ""):
+class FTApiAliasApiResponse(TeaModel):
+    def __init__(self, request_id=None, name=None):
+        self.request_id = request_id
+        self.name = name
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.name, 'name')
+
+    def to_map(self):
+        result = {}
+        result['RequestId'] = self.request_id
+        result['Name'] = self.name
+        return result
+
+    def from_map(self, map={}):
+        self.request_id = map.get('RequestId')
+        self.name = map.get('Name')
+        return self
+
+
+class FtEagleEyeRequest(TeaModel):
+    def __init__(self, name=None):
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = {}
+        result['Name'] = self.name
+        return result
+
+    def from_map(self, map={}):
+        self.name = map.get('Name')
+        return self
+
+
+class FtEagleEyeResponse(TeaModel):
+    def __init__(self, request_id=None, name=None, eagle_eye_trace_id=None):
         self.request_id = request_id
         self.name = name
         self.eagle_eye_trace_id = eagle_eye_trace_id
@@ -475,15 +473,15 @@ class FtEagleEyeResponse(Tea_model_TeaModel):
         result['eagleEyeTraceId'] = self.eagle_eye_trace_id
         return result
 
-    def from_map(self, map = {}):
+    def from_map(self, map={}):
         self.request_id = map.get('RequestId')
         self.name = map.get('Name')
         self.eagle_eye_trace_id = map.get('eagleEyeTraceId')
         return self
 
 
-class FtParamListRequest(Tea_model_TeaModel):
-    def __init__(self, name = "", disk = None):
+class FtParamListRequest(TeaModel):
+    def __init__(self, name=None, disk=None):
         self.name = name
         self.disk = []
 
@@ -504,7 +502,7 @@ class FtParamListRequest(Tea_model_TeaModel):
             result['Disk'] = None
         return result
 
-    def from_map(self, map = {}):
+    def from_map(self, map={}):
         self.name = map.get('Name')
         self.disk = []
         if map.get('Disk') is not None:
@@ -517,8 +515,8 @@ class FtParamListRequest(Tea_model_TeaModel):
         return self
 
 
-class FtParamListRequestDisk(Tea_model_TeaModel):
-    def __init__(self, size = None, type = None):
+class FtParamListRequestDisk(TeaModel):
+    def __init__(self, size=None, type=None):
         self.size = []
         self.type = []
 
@@ -542,7 +540,7 @@ class FtParamListRequestDisk(Tea_model_TeaModel):
             result['Type'] = None
         return result
 
-    def from_map(self, map = {}):
+    def from_map(self, map={}):
         self.size = []
         if map.get('Size') is not None:
             for k in map.get('Size'):
@@ -558,8 +556,8 @@ class FtParamListRequestDisk(Tea_model_TeaModel):
         return self
 
 
-class FtParamListResponse(Tea_model_TeaModel):
-    def __init__(self, request_id = "", name = ""):
+class FtParamListResponse(TeaModel):
+    def __init__(self, request_id=None, name=None):
         self.request_id = request_id
         self.name = name
 
@@ -573,14 +571,14 @@ class FtParamListResponse(Tea_model_TeaModel):
         result['Name'] = self.name
         return result
 
-    def from_map(self, map = {}):
+    def from_map(self, map={}):
         self.request_id = map.get('RequestId')
         self.name = map.get('Name')
         return self
 
 
-class FtGatedLaunchPolicy4Request(Tea_model_TeaModel):
-    def __init__(self, is_gated_launch = ""):
+class FtGatedLaunchPolicy4Request(TeaModel):
+    def __init__(self, is_gated_launch=None):
         self.is_gated_launch = is_gated_launch
 
     def validate(self):
@@ -591,13 +589,13 @@ class FtGatedLaunchPolicy4Request(Tea_model_TeaModel):
         result['IsGatedLaunch'] = self.is_gated_launch
         return result
 
-    def from_map(self, map = {}):
+    def from_map(self, map={}):
         self.is_gated_launch = map.get('IsGatedLaunch')
         return self
 
 
-class FtGatedLaunchPolicy4Response(Tea_model_TeaModel):
-    def __init__(self, request_id = "", is_gated_launch = ""):
+class FtGatedLaunchPolicy4Response(TeaModel):
+    def __init__(self, request_id=None, is_gated_launch=None):
         self.request_id = request_id
         self.is_gated_launch = is_gated_launch
 
@@ -611,8 +609,7 @@ class FtGatedLaunchPolicy4Response(Tea_model_TeaModel):
         result['IsGatedLaunch'] = self.is_gated_launch
         return result
 
-    def from_map(self, map = {}):
+    def from_map(self, map={}):
         self.request_id = map.get('RequestId')
         self.is_gated_launch = map.get('IsGatedLaunch')
         return self
-

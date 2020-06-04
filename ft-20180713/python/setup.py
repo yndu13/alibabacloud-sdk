@@ -25,13 +25,13 @@ import sys
 """
 setup module for aas.
 
-Created on 2020-06-02
+Created on 2020-06-04
 
 @author: alex
 """
 
-PACKAGE = "alibabacloud_sdk_ft20180713"
-NAME = "alibabacloud_sdk_ft20180713"
+PACKAGE = "alibabacloud_ft20180713"
+NAME = "alibabacloud_ft20180713"
 DESCRIPTION = "Alibaba Cloud Ft SDK for Python"
 AUTHOR = "Alibaba Cloud SDK"
 AUTHOR_EMAIL = "sdk-team@alibabacloud.com"
