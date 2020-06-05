@@ -5,13 +5,13 @@ import com.aliyun.tea.*;
 
 public class TestHttpApiRequest extends TeaModel {
     @NameInMap("StringValue")
-    public java.util.Map<String, Object> stringValue;
+    public java.util.Map<String, ?> stringValue;
 
     @NameInMap("DefaultValue")
-    public java.util.Map<String, Object> defaultValue;
+    public java.util.Map<String, ?> defaultValue;
 
     @NameInMap("OtherParam")
-    public java.util.Map<String, Object> otherParam;
+    public java.util.Map<String, ?> otherParam;
 
     @NameInMap("BooleanParam")
     public Boolean booleanParam;
