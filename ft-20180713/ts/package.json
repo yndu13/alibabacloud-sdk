@@ -1,5 +1,5 @@
 {
-  "name": "ft-20180713-test",
+  "name": "@alicloud/ft20180713-test",
   "version": "1.0.0",
   "description": "",
   "main": "dist/client.js",
@@ -9,8 +9,8 @@
     "build": "tsc",
     "prepublishOnly": "tsc"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Alibaba Cloud SDK",
+  "license": "Apache-2.0",
   "devDependencies": {
     "@types/node": "^12.12.26",
     "nyc": "^15.0.0",
