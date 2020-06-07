@@ -1,6 +1,6 @@
 {
-  "name": "@alicloud/ft20180713-test",
-  "version": "1.0.0",
+  "name": "@alicloud/ft20180713-test-test",
+  "version": "1.0.1",
   "description": "",
   "main": "dist/client.js",
   "scripts": {
