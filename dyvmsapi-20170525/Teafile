@@ -12,7 +12,7 @@
   "java": {
     "package": "com.aliyun.dyvmsapi20170525",
     "packageInfo": {
-      "description": "Alibaba Cloud Dyvmsapi (20170525) SDK for Java",
+      "description": "Alibaba Cloud Dyvmsapi(v20170525) SDK for Java",
       "url": "https://github.com/aliyun/alibabacloud-sdk",
       "licenseNmae": "The Apache License, Version 2.0",
       "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
@@ -22,12 +22,12 @@
     }
   },
   "releases": {
-    "java": "com.aliyun:dyvmsapi20170525:1.0.0",
-    "go": "github.com/alibabacloud-go/Dyvmsapi-20170525/client:v1.0.0",
+    "java": "com.aliyun:dyvmsapi20170525:1.0.1",
+    "go": "github.com/alibabacloud-go/Dyvmsapi-20170525/client:v1.0.1",
     "csharp": "AlibabaCloud.SDK.Dyvmsapi20170525:1.0.0",
     "ts": "@alicloud/dyvmsapi20170525:1.0.0",
-    "php": "alibabacloud/dyvmsapi-20170525:1.0.0",
-    "python": "alibabacloud_sdk_dyvmsapi20170525:1.0.0"
+    "php": "alibabacloud/dyvmsapi-20170525:1.0.1",
+    "python": "alibabacloud_sdk_dyvmsapi20170525:0.0.1"
   },
   "libraries": {
     "RPC": "alibabacloud:RPC:*",
@@ -40,7 +40,7 @@
     "packageInfo": {
       "name": "dyvmsapi",
       "title": "alibabacloud-dyvmsapi",
-      "description": "Alibaba Cloud Dyvmsapi (20170525) SDK Library for .NET",
+      "description": "Alibaba Cloud Dyvmsapi(v20170525) SDK Library for .NET",
       "company": "Alibaba Cloud, Inc"
     }
   },
@@ -49,7 +49,7 @@
     "clientName": "Dyvmsapi",
     "packageInfo": {
       "name": "alibabacloud/dyvmsapi-20170525",
-      "desc": "Alibaba Cloud Dyvmsapi (20170525) SDK Library for PHP",
+      "desc": "Alibaba Cloud Dyvmsapi(v20170525) SDK Library for PHP",
       "github": "https://github.com/aliyun/alibabacloud-sdk",
       "files": {
         "LICENSE": "../LICENSE"
@@ -57,7 +57,7 @@
     }
   },
   "python": {
-    "package": "alibabacloud_dyvmsapi20170525",
+    "package": "alibabacloud_sdk_Dyvmsapi20170525",
     "clientName": "client"
   }
 }
