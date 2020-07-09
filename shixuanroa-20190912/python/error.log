@@ -1,0 +1,15 @@
+- PublishError: 2dd51b7e-a762-43bc-95d8-fd7f5cd96a3a python-tea pypi:
+
+[message] Command failed: python3 setup.py sdist 2>&1
+
+
+[stdout] Traceback (most recent call last):
+  File "setup.py", line 39, in <module>
+    VERSION = __import__(PACKAGE).__version__
+ModuleNotFoundError: No module named 'alibabacloud_shixuanroa20190912'
+
+
+[stderr] 
+
+-----------------
+
