@@ -1,0 +1,70 @@
+{
+  "scope": "alibabacloud",
+  "name": "ShixuanROA20190912",
+  "version": "1.0.0",
+  "main": "./main.tea",
+  "maintainers": [
+    {
+      "name": "Alibaba Cloud SDK",
+      "email": "sdk-team@alibabacloud.com"
+    }
+  ],
+  "java": {
+    "package": "com.aliyun.shixuanroa20190912",
+    "packageInfo": {
+      "description": "Alibaba Cloud ShixuanROA (20190912) SDK for Java",
+      "url": "https://github.com/aliyun/alibabacloud-sdk",
+      "licenseNmae": "The Apache License, Version 2.0",
+      "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+      "developerId": "aliyunproducts",
+      "developerName": "Aliyun SDK",
+      "developerEmail": "aliyunsdk@aliyun.com"
+    }
+  },
+  "releases": {
+    "java": "com.aliyun:shixuanroa20190912:1.0.1",
+    "go": "github.com/alibabacloud-go/ShixuanROA-20190912/client:v3.0.1",
+    "csharp": "AlibabaCloud.SDK.ShixuanROA20190912:4.0.1",
+    "ts": "@alicloud/shixuanroa20190912:6.0.1",
+    "php": "alibabacloud/shixuanroa-20190912:5.0.1",
+    "python": "alibabacloud_shixuanroa20190912:2.0.1"
+  },
+  "libraries": {
+    "ROA": "alibabacloud:ROA:*",
+    "Util": "alibabacloud:Util:*",
+    "EndpointUtil": "alibabacloud:EndpointUtil:*"
+  },
+  "python": {
+    "package": "alibabacloud_shixuanroa20190912",
+    "clientName": "client",
+    "packageInfo": {
+      "name": "alibabacloud_shixuanroa20190912",
+      "desc": "Alibaba Cloud ShixuanROA (20190912) SDK Library for Python",
+      "github": "https://github.com/aliyun/alibabacloud-sdk",
+      "author": "Alibaba Cloud SDK",
+      "email": "sdk-team@alibabacloud.com"
+    }
+  },
+  "csharp": {
+    "className": "Client",
+    "namespace": "AlibabaCloud.SDK.ShixuanROA20190912",
+    "packageInfo": {
+      "name": "shixuanroa",
+      "title": "alibabacloud-shixuanroa",
+      "description": "Alibaba Cloud ShixuanROA (20190912) SDK Library for .NET",
+      "company": "Alibaba Cloud, Inc"
+    }
+  },
+  "php": {
+    "package": "AlibabaCloud.SDK.ShixuanROA.V20190912",
+    "clientName": "ShixuanROA",
+    "packageInfo": {
+      "name": "alibabacloud/shixuanroa-20190912",
+      "desc": "Alibaba Cloud ShixuanROA (20190912) SDK Library for PHP",
+      "github": "https://github.com/aliyun/alibabacloud-sdk",
+      "files": {
+        "LICENSE": "../LICENSE"
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+/**
+ *
+ */
+import Util;
+import ROA;
+import EndpointUtil;
+
+extends ROA;
+
+init(config: ROA.Config){
+  super(config);
+  @endpointRule = '';
+  
+
+  checkConfig(config);
+  @endpointHost = getEndpoint('shixuanroa', @regionId, @endpointRule, @network, @suffix, @endpointMap, @endpointHost);
+}
+
+function getEndpoint(productId: string, regionId: string, endpointRule: string, network: string, suffix: string, endpointMap: map[string]string, endpoint: string) throws: string{
+  if (!Util.empty(endpoint)) {
+    return endpoint;
+  }
+
+  if (!Util.isUnset(endpointMap) && !Util.empty(endpointMap[regionId])) {
+    return endpointMap[regionId];
+  }
+  return EndpointUtil.getEndpointRules(productId, regionId, endpointRule, network, suffix);
+}
+model CreateClusterBakBody {
+}
+
+model CreateClusterBakRequest {
+  headers?: map[string]string(name='headers', description='headers'),
+  body?: CreateClusterBakBody(name='body', description='body')
+}
+
+model CreateClusterBakResponseBody = {
+  clusterId?: string(name='cluster_id', description='cluster_id'),
+  requestId?: string(name='request_id', description='request_id'),
+  taskId?: string(name='task_id', description='task_id'),
+}
+
+model CreateClusterBakResponse = {
+  headers: map[string]string(name='headers', description='headers'),
+  body: CreateClusterBakResponseBody(name='body', description='body'),
+}
+
+/**
+ * CreateClusterBakCreateClusterBak
+ */
+async function CreateClusterBak(request: CreateClusterBakRequest): CreateClusterBakResponse {
+  var runtime = new Util.RuntimeOptions{};
+  return CreateClusterBakWithOptions(request, runtime);
+}
+
+async function CreateClusterBakWithOptions(request: CreateClusterBakRequest, runtime: Util.RuntimeOptions): CreateClusterBakResponse {
+  Util.validateModel(request);
+  return doRequest('2019-09-12', 'https', 'get', 'Anonymous', `/`, request.headers, null, request.body, runtime);
+}
+
