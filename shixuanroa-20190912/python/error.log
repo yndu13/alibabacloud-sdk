@@ -28,3 +28,18 @@ ModuleNotFoundError: No module named 'alibabacloud_shixuanroa20190912'
 
 -----------------
 
+- PublishError: 6a277590-890f-44a9-8f84-e03028746e27 python-tea pypi:
+
+[message] Command failed: python3 setup.py sdist 2>&1
+
+
+[stdout] Traceback (most recent call last):
+  File "setup.py", line 39, in <module>
+    VERSION = __import__(PACKAGE).__version__
+ModuleNotFoundError: No module named 'alibabacloud_shixuanroa20190912'
+
+
+[stderr] 
+
+-----------------
+
