@@ -1,0 +1,310 @@
+import OSS;
+import OpenPlatform;
+import RPCUtil;
+import RPC;
+import OSSUtil;
+import Util;
+import FileForm;
+import EndpointUtil;
+
+extends RPC;
+
+init(config: RPC.Config){
+  super(config);
+  @endpointRule = '';
+  
+  checkConfig(config);
+  @endpoint = getEndpoint('imagesearch', @regionId, @endpointRule, @network, @suffix, @endpointMap, @endpoint);
+}
+
+model SearchImageByNameRequest = {
+  categoryId?: integer(name='CategoryId'),
+  instanceName: string(name='InstanceName'),
+  productId: string(name='ProductId'),
+  picName: string(name='PicName'),
+  num?: integer(name='Num'),
+  start?: integer(name='Start'),
+}
+
+model SearchImageByNameResponse = {
+  requestId: string(name='RequestId'),
+  success: boolean(name='Success'),
+  code: integer(name='Code'),
+  msg: string(name='Msg'),
+  auctions: [
+    {
+      categoryId: integer(name='CategoryId'),
+      productId: string(name='ProductId'),
+      picName: string(name='PicName'),
+      customContent: string(name='CustomContent'),
+      sortExprValues: string(name='SortExprValues'),
+      intAttr: integer(name='IntAttr'),
+      strAttr: string(name='StrAttr'),
+    }
+  ](name='Auctions'),
+  head: {
+    docsReturn: integer(name='DocsReturn'),
+    docsFound: integer(name='DocsFound'),
+    searchTime: integer(name='SearchTime'),
+  }(name='Head'),
+  picInfo: {
+    categoryId: integer(name='CategoryId'),
+    region: string(name='Region'),
+    allCategories: [
+      {
+        id: integer(name='Id'),
+        name: string(name='Name'),
+      }
+    ](name='AllCategories'),
+  }(name='PicInfo'),
+}
+
+async function searchImageByName(request: SearchImageByNameRequest, runtime: Util.RuntimeOptions): SearchImageByNameResponse {
+  Util.validateModel(request);
+  return doRequest('SearchImageByName', 'HTTPS', 'POST' , '2020-02-12', 'AK', null, request, runtime);
+}
+
+model SearchImageByPicRequest = {
+  categoryId?: integer(name='CategoryId'),
+  instanceName: string(name='InstanceName'),
+  picContent: string(name='PicContent'),
+  crop?: boolean(name='Crop'),
+  region?: string(name='Region'),
+  num?: integer(name='Num'),
+  start?: integer(name='Start'),
+}
+
+model SearchImageByPicResponse = {
+  requestId: string(name='RequestId'),
+  success: boolean(name='Success'),
+  code: integer(name='Code'),
+  msg: string(name='Msg'),
+  auctions: [
+    {
+      categoryId: integer(name='CategoryId'),
+      productId: string(name='ProductId'),
+      picName: string(name='PicName'),
+      customContent: string(name='CustomContent'),
+      sortExprValues: string(name='SortExprValues'),
+      intAttr: integer(name='IntAttr'),
+      strAttr: string(name='StrAttr'),
+    }
+  ](name='Auctions'),
+  head: {
+    docsReturn: integer(name='DocsReturn'),
+    docsFound: integer(name='DocsFound'),
+    searchTime: integer(name='SearchTime'),
+  }(name='Head'),
+  picInfo: {
+    categoryId: integer(name='CategoryId'),
+    region: string(name='Region'),
+    allCategories: [
+      {
+        id: integer(name='Id'),
+        name: string(name='Name'),
+      }
+    ](name='AllCategories'),
+  }(name='PicInfo'),
+}
+
+async function searchImageByPic(request: SearchImageByPicRequest, runtime: Util.RuntimeOptions): SearchImageByPicResponse {
+  Util.validateModel(request);
+  return doRequest('SearchImageByPic', 'HTTPS', 'POST' , '2020-02-12', 'AK', null, request, runtime);
+}
+
+model SearchImageByPicAdvanceRequest = {
+  picContentObject: readable(name='PicContentObject'),
+  categoryId?: integer(name='CategoryId'),
+  instanceName: string(name='InstanceName'),
+  crop?: boolean(name='Crop'),
+  region?: string(name='Region'),
+  num?: integer(name='Num'),
+  start?: integer(name='Start'),
+}
+
+async function searchImageByPicAdvance(request: SearchImageByPicAdvanceRequest, runtime: Util.RuntimeOptions): SearchImageByPicResponse {
+  // Step 0: init client
+  var accessKeyId = @credential.getAccessKeyId();
+  var accessKeySecret = @credential.getAccessKeySecret();
+  var authConfig = new RPC.Config{
+    accessKeyId = accessKeyId,
+    accessKeySecret = accessKeySecret,
+    type = 'access_key',
+    endpoint = 'openplatform.aliyuncs.com',
+    protocol = @protocol,
+    regionId = @regionId,
+  };
+  var authClient = new OpenPlatform(authConfig);
+
+  var authRequest = new OpenPlatform.AuthorizeFileUploadRequest{
+    product = 'ImageSearch',
+    regionId = @regionId,
+  };
+  var authResponse = authClient.authorizeFileUploadWithOptions(authRequest, runtime);
+  // Step 1: request OSS api to upload file
+  var ossConfig = new OSS.Config{
+    accessKeyId = authResponse.accessKeyId,
+    accessKeySecret = accessKeySecret,
+    type = 'access_key',
+    endpoint = RPCUtil.getEndpoint(authResponse.endpoint, authResponse.useAccelerate, @endpointType),
+    protocol = @protocol,
+    regionId = @regionId,
+  };
+  var ossClient = new OSS(ossConfig);
+
+  var fileObj = new FileForm.FileField{
+    filename = authResponse.objectKey,
+    content = request.picContentObject,
+    contentType = '',
+  };
+  var ossHeader = new OSS.PostObjectRequest.header{
+    accessKeyId = authResponse.accessKeyId,
+    policy = authResponse.encodedPolicy,
+    signature = authResponse.signature,
+    key = authResponse.objectKey,
+    file = fileObj,
+    successActionStatus = '201',
+  };
+  var uploadRequest = new OSS.PostObjectRequest{
+    bucketName = authResponse.bucket,
+    header = ossHeader,
+  };
+  var ossRuntime = new OSSUtil.RuntimeOptions{};
+  RPCUtil.convert(runtime, ossRuntime);
+  ossClient.postObject(uploadRequest, ossRuntime);
+  // Step 2: request final api
+  var searchImageByPicreq = new SearchImageByPicRequest{};
+  RPCUtil.convert(request, searchImageByPicreq);
+  searchImageByPicreq.picContent = `http://${authResponse.bucket}.${authResponse.endpoint}/${authResponse.objectKey}`;
+  var searchImageByPicResp = searchImageByPic(searchImageByPicreq, runtime);
+  return searchImageByPicResp;
+}
+
+model DeleteImageRequest = {
+  instanceName: string(name='InstanceName'),
+  productId: string(name='ProductId'),
+  picName?: string(name='PicName'),
+}
+
+model DeleteImageResponse = {
+  requestId: string(name='RequestId'),
+  success: boolean(name='Success'),
+  message: string(name='Message'),
+  code: integer(name='Code'),
+}
+
+async function deleteImage(request: DeleteImageRequest, runtime: Util.RuntimeOptions): DeleteImageResponse {
+  Util.validateModel(request);
+  return doRequest('DeleteImage', 'HTTPS', 'POST' , '2020-02-12', 'AK', null, request, runtime);
+}
+
+model AddImageRequest = {
+  instanceName: string(name='InstanceName'),
+  categoryId?: integer(name='CategoryId'),
+  productId: string(name='ProductId'),
+  picName: string(name='PicName'),
+  picContent: string(name='PicContent'),
+  crop?: boolean(name='Crop'),
+  region?: string(name='Region'),
+  customContent?: string(name='CustomContent'),
+  intAttr?: integer(name='IntAttr'),
+  strAttr?: string(name='StrAttr'),
+}
+
+model AddImageResponse = {
+  requestId: string(name='RequestId'),
+  success: boolean(name='Success'),
+  message: string(name='Message'),
+  code: integer(name='Code'),
+  picInfo: {
+    categoryId: integer(name='CategoryId'),
+    region: string(name='Region'),
+  }(name='PicInfo'),
+}
+
+async function addImage(request: AddImageRequest, runtime: Util.RuntimeOptions): AddImageResponse {
+  Util.validateModel(request);
+  return doRequest('AddImage', 'HTTPS', 'POST' , '2020-02-12', 'AK', null, request, runtime);
+}
+
+model AddImageAdvanceRequest = {
+  picContentObject: readable(name='PicContentObject'),
+  instanceName: string(name='InstanceName'),
+  categoryId?: integer(name='CategoryId'),
+  productId: string(name='ProductId'),
+  picName: string(name='PicName'),
+  crop?: boolean(name='Crop'),
+  region?: string(name='Region'),
+  customContent?: string(name='CustomContent'),
+  intAttr?: integer(name='IntAttr'),
+  strAttr?: string(name='StrAttr'),
+}
+
+async function addImageAdvance(request: AddImageAdvanceRequest, runtime: Util.RuntimeOptions): AddImageResponse {
+  // Step 0: init client
+  var accessKeyId = @credential.getAccessKeyId();
+  var accessKeySecret = @credential.getAccessKeySecret();
+  var authConfig = new RPC.Config{
+    accessKeyId = accessKeyId,
+    accessKeySecret = accessKeySecret,
+    type = 'access_key',
+    endpoint = 'openplatform.aliyuncs.com',
+    protocol = @protocol,
+    regionId = @regionId,
+  };
+  var authClient = new OpenPlatform(authConfig);
+
+  var authRequest = new OpenPlatform.AuthorizeFileUploadRequest{
+    product = 'ImageSearch',
+    regionId = @regionId,
+  };
+  var authResponse = authClient.authorizeFileUploadWithOptions(authRequest, runtime);
+  // Step 1: request OSS api to upload file
+  var ossConfig = new OSS.Config{
+    accessKeyId = authResponse.accessKeyId,
+    accessKeySecret = accessKeySecret,
+    type = 'access_key',
+    endpoint = RPCUtil.getEndpoint(authResponse.endpoint, authResponse.useAccelerate, @endpointType),
+    protocol = @protocol,
+    regionId = @regionId,
+  };
+  var ossClient = new OSS(ossConfig);
+
+  var fileObj = new FileForm.FileField{
+    filename = authResponse.objectKey,
+    content = request.picContentObject,
+    contentType = '',
+  };
+  var ossHeader = new OSS.PostObjectRequest.header{
+    accessKeyId = authResponse.accessKeyId,
+    policy = authResponse.encodedPolicy,
+    signature = authResponse.signature,
+    key = authResponse.objectKey,
+    file = fileObj,
+    successActionStatus = '201',
+  };
+  var uploadRequest = new OSS.PostObjectRequest{
+    bucketName = authResponse.bucket,
+    header = ossHeader,
+  };
+  var ossRuntime = new OSSUtil.RuntimeOptions{};
+  RPCUtil.convert(runtime, ossRuntime);
+  ossClient.postObject(uploadRequest, ossRuntime);
+  // Step 2: request final api
+  var addImagereq = new AddImageRequest{};
+  RPCUtil.convert(request, addImagereq);
+  addImagereq.picContent = `http://${authResponse.bucket}.${authResponse.endpoint}/${authResponse.objectKey}`;
+  var addImageResp = addImage(addImagereq, runtime);
+  return addImageResp;
+}
+
+function getEndpoint(productId: string, regionId: string, endpointRule: string, network: string, suffix: string, endpointMap: map[string]string, endpoint: string) throws: string{
+  if (!Util.empty(endpoint)) {
+    return endpoint;
+  }
+
+  if (!Util.isUnset(endpointMap) && !Util.empty(endpointMap[regionId])) {
+    return endpointMap[regionId];
+  }
+  return EndpointUtil.getEndpointRules(productId, regionId, endpointRule, network, suffix);
+}
