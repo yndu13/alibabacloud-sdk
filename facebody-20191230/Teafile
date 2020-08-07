@@ -22,9 +22,9 @@
     "OpenPlatform": "alibabacloud:OpenPlatform20191219:*",
     "RPCUtil": "alibabacloud:RPCUtil:*",
     "RPC": "alibabacloud:RPC:*",
-    "Util": "alibabacloud:Util:*",
+    "Util": "darabonba:Util:*",
     "EndpointUtil": "alibabacloud:EndpointUtil:*",
-    "FileForm": "alibabacloud:FileForm:*",
+    "FileForm": "darabonba:FileForm:*",
     "OSSUtil": "alibabacloud:OSSUtil:*"
   },
   "go": {
@@ -33,13 +33,20 @@
     ]
   },
   "python": {
-    "package": "alibabacloud_sdk_facebody20191230",
-    "clientName": "client"
+    "package": "alibabacloud_facebody20191230",
+    "clientName": "client",
+    "packageInfo": {
+      "name": "alibabacloud_facebody20191230",
+      "desc": "Alibaba Cloud facebody (20191230) SDK Library for Python",
+      "github": "https://github.com/aliyun/alibabacloud-sdk",
+      "author": "Alibaba Cloud SDK",
+      "email": "sdk-team@alibabacloud.com"
+    }
   },
   "java": {
     "package": "com.aliyun.facebody20191230",
     "packageInfo": {
-      "description": "Alibaba Cloud facebody(v20191230) SDK for Java",
+      "description": "Alibaba Cloud facebody (20191230) SDK for Java",
       "url": "https://github.com/aliyun/alibabacloud-sdk",
       "licenseNmae": "The Apache License, Version 2.0",
       "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
@@ -50,11 +57,11 @@
   },
   "csharp": {
     "className": "Client",
-    "namespace": "AlibabaCloud.SDK.facebody20191230",
+    "namespace": "AlibabaCloud.SDK.Facebody20191230",
     "packageInfo": {
       "name": "facebody",
       "title": "alibabacloud-facebody",
-      "description": "Alibaba Cloud Facebody(v20191230) SDK Library for .NET",
+      "description": "Alibaba Cloud facebody (20191230) SDK Library for .NET",
       "company": "Alibaba Cloud, Inc"
     }
   },
