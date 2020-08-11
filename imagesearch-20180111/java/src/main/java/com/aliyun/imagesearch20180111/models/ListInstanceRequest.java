@@ -4,27 +4,22 @@ package com.aliyun.imagesearch20180111.models;
 import com.aliyun.tea.*;
 
 public class ListInstanceRequest extends TeaModel {
-    // serviceType
     @NameInMap("ServiceType")
     @Validation(required = true)
     public Integer serviceType;
 
-    // name
     @NameInMap("Name")
     @Validation(required = true)
     public String name;
 
-    // pageSize
     @NameInMap("PageSize")
     @Validation(required = true)
     public Integer pageSize;
 
-    // pageNumber
     @NameInMap("PageNumber")
     @Validation(required = true)
     public Integer pageNumber;
 
-    // tags
     @NameInMap("Tag")
     public java.util.List<ListInstanceRequestTag> tag;
 
@@ -34,11 +29,9 @@ public class ListInstanceRequest extends TeaModel {
     }
 
     public static class ListInstanceRequestTag extends TeaModel {
-        // key
         @NameInMap("Key")
         public String key;
 
-        // value
         @NameInMap("Value")
         public String value;
 

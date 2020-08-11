@@ -4,7 +4,6 @@ package com.aliyun.imagesearch20180111.models;
 import com.aliyun.tea.*;
 
 public class UntagResourcesResponse extends TeaModel {
-    // requestId
     @NameInMap("RequestId")
     @Validation(required = true)
     public String requestId;

@@ -4,7 +4,6 @@ package com.aliyun.imagesearch20180111.models;
 import com.aliyun.tea.*;
 
 public class DescribeInstanceRequest extends TeaModel {
-    // instanceId
     @NameInMap("InstanceId")
     @Validation(required = true)
     public Long instanceId;

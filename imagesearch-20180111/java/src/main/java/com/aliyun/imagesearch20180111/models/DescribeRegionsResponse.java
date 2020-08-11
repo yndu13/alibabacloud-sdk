@@ -4,12 +4,10 @@ package com.aliyun.imagesearch20180111.models;
 import com.aliyun.tea.*;
 
 public class DescribeRegionsResponse extends TeaModel {
-    // requestId
     @NameInMap("RequestId")
     @Validation(required = true)
     public String requestId;
 
-    // data
     @NameInMap("Regions")
     @Validation(required = true)
     public DescribeRegionsResponseRegions regions;
@@ -20,12 +18,10 @@ public class DescribeRegionsResponse extends TeaModel {
     }
 
     public static class DescribeRegionsResponseRegionsRegion extends TeaModel {
-        // regionId
         @NameInMap("RegionId")
         @Validation(required = true)
         public String regionId;
 
-        // localName
         @NameInMap("LocalName")
         @Validation(required = true)
         public String localName;
@@ -38,7 +34,6 @@ public class DescribeRegionsResponse extends TeaModel {
     }
 
     public static class DescribeRegionsResponseRegions extends TeaModel {
-        // Region
         @NameInMap("Region")
         @Validation(required = true)
         public java.util.List<DescribeRegionsResponseRegionsRegion> region;

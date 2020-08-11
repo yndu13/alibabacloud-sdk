@@ -4,12 +4,10 @@ package com.aliyun.imagesearch20180111.models;
 import com.aliyun.tea.*;
 
 public class InitInstanceResponse extends TeaModel {
-    // requestId
     @NameInMap("RequestId")
     @Validation(required = true)
     public String requestId;
 
-    // data
     @NameInMap("data")
     @Validation(required = true)
     public InitInstanceResponseData data;
@@ -20,12 +18,10 @@ public class InitInstanceResponse extends TeaModel {
     }
 
     public static class InitInstanceResponseData extends TeaModel {
-        // id
         @NameInMap("InstacneId")
         @Validation(required = true)
         public Long instacneId;
 
-        // status
         @NameInMap("Status")
         @Validation(required = true)
         public String status;
