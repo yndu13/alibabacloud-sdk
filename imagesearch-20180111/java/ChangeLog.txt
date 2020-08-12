@@ -1,6 +1,9 @@
 2020-08-12 Version: 1.0.11
 - Generated java 2018-01-11 for ImageSearch.
 
+2020-08-12 Version: 1.0.11
+- Generated java 2018-01-11 for ImageSearch.
+
 2020-08-12 Version: 1.0.10
 - Generated java 2018-01-11 for ImageSearch.
 

@@ -124,7 +124,7 @@ public class DescribeInstanceResponse extends TeaModel {
 
         @NameInMap("IncrementProgress")
         @Validation(required = true)
-        public Double incrementProgress;
+        public Float incrementProgress;
 
         @NameInMap("FullUpdateStatus")
         @Validation(required = true)
@@ -132,7 +132,7 @@ public class DescribeInstanceResponse extends TeaModel {
 
         @NameInMap("FullUpdatePullProgress")
         @Validation(required = true)
-        public Double fullUpdatePullProgress;
+        public Float fullUpdatePullProgress;
 
         @NameInMap("Version")
         @Validation(required = true)
