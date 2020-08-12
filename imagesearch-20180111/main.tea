@@ -1,0 +1,381 @@
+import Util;
+import RPC;
+import EndpointUtil;
+
+extends RPC;
+
+init(config: RPC.Config){
+  super(config);
+  @endpointRule = '';
+  
+  checkConfig(config);
+  @endpoint = getEndpoint('imagesearch', @regionId, @endpointRule, @network, @suffix, @endpointMap, @endpoint);
+}
+
+model TagResourcesRequest = {
+  tag: [
+    {
+      key: string(name='Key'),
+      value: string(name='Value'),
+    }
+  ](name='Tag'),
+  resourceId: [ string ](name='ResourceId'),
+  resourceType: string(name='ResourceType'),
+}
+
+model TagResourcesResponse = {
+  requestId: string(name='RequestId'),
+}
+
+async function tagResourcesWithOptions(request: TagResourcesRequest, runtime: Util.RuntimeOptions): TagResourcesResponse {
+  Util.validateModel(request);
+  return doRequest('TagResources', 'HTTPS', 'POST', '2018-01-11', 'AK', null, request, runtime);
+}
+
+async function tagResources(request: TagResourcesRequest): TagResourcesResponse {
+  var runtime = new Util.RuntimeOptions{};
+  return tagResourcesWithOptions(request, runtime);
+}
+
+model UntagResourcesRequest = {
+  tagKey?: [ string ](name='TagKey'),
+  resourceId: [ string ](name='ResourceId'),
+  all?: string(name='All'),
+  resourceType: string(name='ResourceType'),
+}
+
+model UntagResourcesResponse = {
+  requestId: string(name='RequestId'),
+}
+
+async function untagResourcesWithOptions(request: UntagResourcesRequest, runtime: Util.RuntimeOptions): UntagResourcesResponse {
+  Util.validateModel(request);
+  return doRequest('UntagResources', 'HTTPS', 'POST', '2018-01-11', 'AK', null, request, runtime);
+}
+
+async function untagResources(request: UntagResourcesRequest): UntagResourcesResponse {
+  var runtime = new Util.RuntimeOptions{};
+  return untagResourcesWithOptions(request, runtime);
+}
+
+model ListTagResourcesRequest = {
+  tag?: [
+    {
+      key: string(name='Key'),
+      value?: string(name='Value'),
+    }
+  ](name='Tag'),
+  resourceId?: [ string ](name='ResourceId'),
+  nextToken?: string(name='NextToken'),
+  resourceType: string(name='ResourceType'),
+}
+
+model ListTagResourcesResponse = {
+  requestId: string(name='RequestId'),
+  nextToken: string(name='NextToken'),
+  tagResources: {
+    tagResource: [
+      {
+        resourceId: string(name='ResourceId'),
+        resourceType: string(name='ResourceType'),
+        tagKey: string(name='TagKey'),
+        tagValue: string(name='TagValue'),
+      }
+    ](name='TagResource'),
+  }(name='TagResources'),
+}
+
+async function listTagResourcesWithOptions(request: ListTagResourcesRequest, runtime: Util.RuntimeOptions): ListTagResourcesResponse {
+  Util.validateModel(request);
+  return doRequest('ListTagResources', 'HTTPS', 'POST', '2018-01-11', 'AK', null, request, runtime);
+}
+
+async function listTagResources(request: ListTagResourcesRequest): ListTagResourcesResponse {
+  var runtime = new Util.RuntimeOptions{};
+  return listTagResourcesWithOptions(request, runtime);
+}
+
+model ListIncrementRequest = {
+  instanceId: long(name='InstanceId'),
+  pageSize: integer(name='PageSize'),
+  pageNumber: integer(name='PageNumber'),
+  taskType: integer(name='TaskType'),
+}
+
+model ListIncrementResponse = {
+  requestId: string(name='RequestId'),
+  data: {
+    pageSize: integer(name='PageSize'),
+    pageNumber: integer(name='PageNumber'),
+    totalCount: long(name='TotalCount'),
+    increments: {
+      instance: [
+        {
+          id: long(name='Id'),
+          utcCreate: string(name='UtcCreate'),
+          utcModified: long(name='UtcModified'),
+          instanceId: string(name='InstanceId'),
+          arn: string(name='Arn'),
+          bucketName: string(name='BucketName'),
+          path: string(name='Path'),
+          status: string(name='Status'),
+          msg: string(name='Msg'),
+          code: string(name='Code'),
+          errorUrl: string(name='ErrorUrl'),
+        }
+      ](name='Instance'),
+    }(name='Increments'),
+  }(name='data'),
+}
+
+async function listIncrementWithOptions(request: ListIncrementRequest, runtime: Util.RuntimeOptions): ListIncrementResponse {
+  Util.validateModel(request);
+  return doRequest('ListIncrement', 'HTTPS', 'POST', '2018-01-11', 'AK', null, request, runtime);
+}
+
+async function listIncrement(request: ListIncrementRequest): ListIncrementResponse {
+  var runtime = new Util.RuntimeOptions{};
+  return listIncrementWithOptions(request, runtime);
+}
+
+model CountInstanceRequest = {
+  instanceId: long(name='InstanceId'),
+}
+
+model CountInstanceResponse = {
+  requestId: string(name='RequestId'),
+  data: {
+    instacneId: long(name='InstacneId'),
+    totalCount: long(name='TotalCount'),
+  }(name='data'),
+}
+
+async function countInstanceWithOptions(request: CountInstanceRequest, runtime: Util.RuntimeOptions): CountInstanceResponse {
+  Util.validateModel(request);
+  return doRequest('CountInstance', 'HTTPS', 'POST', '2018-01-11', 'AK', null, request, runtime);
+}
+
+async function countInstance(request: CountInstanceRequest): CountInstanceResponse {
+  var runtime = new Util.RuntimeOptions{};
+  return countInstanceWithOptions(request, runtime);
+}
+
+model ListInstanceRequest = {
+  serviceType: integer(name='ServiceType'),
+  name: string(name='Name'),
+  pageSize: integer(name='PageSize'),
+  pageNumber: integer(name='PageNumber'),
+  tag?: [
+    {
+      key?: string(name='Key'),
+      value?: string(name='Value'),
+    }
+  ](name='Tag'),
+}
+
+model ListInstanceResponse = {
+  requestId: string(name='RequestId'),
+  data: {
+    pageSize: integer(name='PageSize'),
+    pageNumber: integer(name='PageNumber'),
+    totalCount: long(name='TotalCount'),
+    instances: {
+      instance: [
+        {
+          id: long(name='Id'),
+          utcCreate: string(name='UtcCreate'),
+          utcModified: string(name='UtcModified'),
+          name: string(name='Name'),
+          status: string(name='Status'),
+          orderStatus: string(name='OrderStatus'),
+          updateStatus: string(name='UpdateStatus'),
+          serviceType: integer(name='ServiceType'),
+          dataplusInstanceId: string(name='DataplusInstanceId'),
+          version: string(name='Version'),
+          freeTrial: boolean(name='FreeTrial'),
+          utcExpireTime: string(name='UtcExpireTime'),
+          tags: {
+            tag: [
+              {
+                key: string(name='Key'),
+                value: string(name='Value'),
+              }
+            ](name='Tag'),
+          }(name='Tags'),
+        }
+      ](name='Instance'),
+    }(name='Instances'),
+  }(name='data'),
+}
+
+async function listInstanceWithOptions(request: ListInstanceRequest, runtime: Util.RuntimeOptions): ListInstanceResponse {
+  Util.validateModel(request);
+  return doRequest('ListInstance', 'HTTPS', 'POST', '2018-01-11', 'AK', null, request, runtime);
+}
+
+async function listInstance(request: ListInstanceRequest): ListInstanceResponse {
+  var runtime = new Util.RuntimeOptions{};
+  return listInstanceWithOptions(request, runtime);
+}
+
+model InitInstanceRequest = {
+  instanceId: long(name='InstanceId'),
+}
+
+model InitInstanceResponse = {
+  requestId: string(name='RequestId'),
+  data: {
+    instacneId: long(name='InstacneId'),
+    status: string(name='Status'),
+  }(name='data'),
+}
+
+async function initInstanceWithOptions(request: InitInstanceRequest, runtime: Util.RuntimeOptions): InitInstanceResponse {
+  Util.validateModel(request);
+  return doRequest('InitInstance', 'HTTPS', 'POST', '2018-01-11', 'AK', null, request, runtime);
+}
+
+async function initInstance(request: InitInstanceRequest): InitInstanceResponse {
+  var runtime = new Util.RuntimeOptions{};
+  return initInstanceWithOptions(request, runtime);
+}
+
+model IncreaseInstanceRequest = {
+  instanceId: long(name='InstanceId'),
+  arn: string(name='Arn'),
+  bucketName: string(name='BucketName'),
+  path: string(name='Path'),
+  taskType?: integer(name='TaskType'),
+}
+
+model IncreaseInstanceResponse = {
+  requestId: string(name='RequestId'),
+  data: {
+    instacneId: long(name='InstacneId'),
+    incrementStatus: string(name='IncrementStatus'),
+  }(name='data'),
+}
+
+async function increaseInstanceWithOptions(request: IncreaseInstanceRequest, runtime: Util.RuntimeOptions): IncreaseInstanceResponse {
+  Util.validateModel(request);
+  return doRequest('IncreaseInstance', 'HTTPS', 'POST', '2018-01-11', 'AK', null, request, runtime);
+}
+
+async function increaseInstance(request: IncreaseInstanceRequest): IncreaseInstanceResponse {
+  var runtime = new Util.RuntimeOptions{};
+  return increaseInstanceWithOptions(request, runtime);
+}
+
+model DescribeInstanceRequest = {
+  instanceId: long(name='InstanceId'),
+}
+
+model DescribeInstanceResponse = {
+  requestId: string(name='RequestId'),
+  instance: {
+    id: long(name='Id'),
+    utcCreate: string(name='UtcCreate'),
+    utcModified: string(name='UtcModified'),
+    name: string(name='Name'),
+    status: string(name='Status'),
+    orderStatus: string(name='OrderStatus'),
+    updateStatus: string(name='UpdateStatus'),
+    totalCount: long(name='TotalCount'),
+    orderId: string(name='OrderId'),
+    serviceType: integer(name='ServiceType'),
+    region: string(name='Region'),
+    dataplusInstanceId: string(name='DataplusInstanceId'),
+    incrementStatus: string(name='IncrementStatus'),
+    incrementProgress: float(name='IncrementProgress'),
+    fullUpdateStatus: string(name='FullUpdateStatus'),
+    fullUpdatePullProgress: float(name='FullUpdatePullProgress'),
+    version: integer(name='Version'),
+    utcExpireTime: string(name='UtcExpireTime'),
+    freeAddAmount: string(name='FreeAddAmount'),
+    freeAddUsed: string(name='FreeAddUsed'),
+    qps: integer(name='Qps'),
+    capacity: integer(name='Capacity'),
+    freeTrial: boolean(name='FreeTrial'),
+    measure: {
+      billingCycleStart: string(name='BillingCycleStart'),
+      billingCycleEnd: string(name='BillingCycleEnd'),
+      packetCapacity: long(name='PacketCapacity'),
+      packetType: string(name='PacketType'),
+      packetUsed: long(name='PacketUsed'),
+      excessAmount: long(name='ExcessAmount'),
+      lastPostTime: string(name='LastPostTime'),
+      packetUsedBySearch: long(name='PacketUsedBySearch'),
+      packetUsedByAdd: long(name='PacketUsedByAdd'),
+      excessAmountBySearch: long(name='ExcessAmountBySearch'),
+      excessAmountByAdd: long(name='ExcessAmountByAdd'),
+    }(name='Measure'),
+  }(name='Instance'),
+}
+
+async function describeInstanceWithOptions(request: DescribeInstanceRequest, runtime: Util.RuntimeOptions): DescribeInstanceResponse {
+  Util.validateModel(request);
+  return doRequest('DescribeInstance', 'HTTPS', 'POST', '2018-01-11', 'AK', null, request, runtime);
+}
+
+async function describeInstance(request: DescribeInstanceRequest): DescribeInstanceResponse {
+  var runtime = new Util.RuntimeOptions{};
+  return describeInstanceWithOptions(request, runtime);
+}
+
+model ClearInstanceRequest = {
+  instanceId: long(name='InstanceId'),
+}
+
+model ClearInstanceResponse = {
+  requestId: string(name='RequestId'),
+  data: {
+    instacneId: long(name='InstacneId'),
+    status: string(name='Status'),
+  }(name='data'),
+}
+
+async function clearInstanceWithOptions(request: ClearInstanceRequest, runtime: Util.RuntimeOptions): ClearInstanceResponse {
+  Util.validateModel(request);
+  return doRequest('ClearInstance', 'HTTPS', 'POST', '2018-01-11', 'AK', null, request, runtime);
+}
+
+async function clearInstance(request: ClearInstanceRequest): ClearInstanceResponse {
+  var runtime = new Util.RuntimeOptions{};
+  return clearInstanceWithOptions(request, runtime);
+}
+
+model DescribeRegionsRequest = {
+}
+
+model DescribeRegionsResponse = {
+  requestId: string(name='RequestId'),
+  regions: {
+    region: [
+      {
+        regionId: string(name='RegionId'),
+        localName: string(name='LocalName'),
+      }
+    ](name='Region'),
+  }(name='Regions'),
+}
+
+async function describeRegionsWithOptions(request: DescribeRegionsRequest, runtime: Util.RuntimeOptions): DescribeRegionsResponse {
+  Util.validateModel(request);
+  return doRequest('DescribeRegions', 'HTTPS', 'POST', '2018-01-11', 'AK', null, request, runtime);
+}
+
+async function describeRegions(request: DescribeRegionsRequest): DescribeRegionsResponse {
+  var runtime = new Util.RuntimeOptions{};
+  return describeRegionsWithOptions(request, runtime);
+}
+
+function getEndpoint(productId: string, regionId: string, endpointRule: string, network: string, suffix: string, endpointMap: map[string]string, endpoint: string) throws: string{
+  if (!Util.empty(endpoint)) {
+    return endpoint;
+  }
+
+  if (!Util.isUnset(endpointMap) && !Util.empty(endpointMap[regionId])) {
+    return endpointMap[regionId];
+  }
+  return EndpointUtil.getEndpointRules(productId, regionId, endpointRule, network, suffix);
+}
