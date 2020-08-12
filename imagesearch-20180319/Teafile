@@ -1,0 +1,70 @@
+{
+  "scope": "alibabacloud",
+  "name": "ImageSearch20180319",
+  "version": "1.0.0",
+  "main": "./main.tea",
+  "maintainers": [
+    {
+      "name": "Alibaba Cloud SDK",
+      "email": "sdk-team@alibabacloud.com"
+    }
+  ],
+  "java": {
+    "package": "com.aliyun.imagesearch20180319",
+    "packageInfo": {
+      "description": "Alibaba Cloud image search (20180319) SDK for Java",
+      "url": "https://github.com/aliyun/alibabacloud-sdk",
+      "licenseNmae": "The Apache License, Version 2.0",
+      "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+      "developerId": "aliyunproducts",
+      "developerName": "Aliyun SDK",
+      "developerEmail": "aliyunsdk@aliyun.com"
+    }
+  },
+  "releases": {
+    "java": "com.aliyun:imagesearch20180319:1.0.0",
+    "go": "github.com/alibabacloud-go/imagesearch-20180319/client:v1.0.0",
+    "csharp": "AlibabaCloud.SDK.ImageSearch20180319:0.0.1",
+    "ts": "@alicloud/imagesearch20180319:1.0.0",
+    "php": "alibabacloud/imagesearch-20180319:^0.1.0",
+    "python": "alibabacloud_imagesearch20180319:0.0.1"
+  },
+  "libraries": {
+    "ROA": "alibabacloud:ROA:*",
+    "Util": "darabonba:Util:*",
+    "EndpointUtil": "alibabacloud:EndpointUtil:*"
+  },
+  "python": {
+    "package": "alibabacloud_imagesearch20180319",
+    "clientName": "client",
+    "packageInfo": {
+      "name": "alibabacloud_imagesearch20180319",
+      "desc": "Alibaba Cloud image search (20180319) SDK Library for Python",
+      "github": "https://github.com/aliyun/alibabacloud-sdk",
+      "author": "Alibaba Cloud SDK",
+      "email": "sdk-team@alibabacloud.com"
+    }
+  },
+  "csharp": {
+    "className": "Client",
+    "namespace": "AlibabaCloud.SDK.ImageSearch20180319",
+    "packageInfo": {
+      "name": "imagesearch",
+      "title": "alibabacloud-imagesearch",
+      "description": "Alibaba Cloud image search (20180319) SDK Library for .NET",
+      "company": "Alibaba Cloud, Inc"
+    }
+  },
+  "php": {
+    "package": "AlibabaCloud.SDK.ImageSearch.V20180319",
+    "clientName": "ImageSearch",
+    "packageInfo": {
+      "name": "alibabacloud/imagesearch-20180319",
+      "desc": "Alibaba Cloud image search (20180319) SDK Library for PHP",
+      "github": "https://github.com/aliyun/alibabacloud-sdk",
+      "files": {
+        "LICENSE": "../LICENSE"
+      }
+    }
+  }
+}

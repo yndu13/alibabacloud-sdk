@@ -1,0 +1,148 @@
+import Util;
+import ROA;
+import EndpointUtil;
+
+extends ROA;
+
+const version = '2018-03-19';
+
+init(config: ROA.Config){
+  super(config);
+  @endpointRule = '';
+  
+  checkConfig(config);
+  @endpointHost = getEndpoint('imagesearch', @regionId, @endpointRule, @network, @suffix, @endpointMap, @endpointHost);
+}
+
+
+model SearchItemQuery = {
+  instanceName: string(name='instanceName'),
+}
+
+model SearchItemRequest = {
+  headers?: map[string]string(name='headers'),
+  query: SearchItemQuery(name='query'),
+}
+
+model SearchItemResponseBody = {
+  requestId: string(name='RequestId'),
+  success: boolean(name='Success'),
+  message: string(name='Message'),
+  code: integer(name='Code'),
+  auctions: {
+    auction: [
+      {
+        custContent: string(name='CustContent'),
+        itemId: string(name='ItemId'),
+        sortExprValues: string(name='SortExprValues'),
+        catId: string(name='CatId'),
+        picName: string(name='PicName'),
+      }
+    ](name='Auction'),
+  }(name='Auctions'),
+  head: {
+    searchTime: integer(name='SearchTime'),
+    docsFound: integer(name='DocsFound'),
+    docsReturn: integer(name='DocsReturn'),
+  }(name='Head'),
+  picInfo: {
+    category: string(name='Category'),
+    region: string(name='Region'),
+    allCategory: {
+      category: [
+        {
+          name: string(name='Name'),
+          id: string(name='Id'),
+        }
+      ](name='Category'),
+    }(name='AllCategory'),
+  }(name='PicInfo'),
+}
+
+model SearchItemResponse = {
+  headers: map[string]string(name='headers'),
+  body: SearchItemResponseBody(name='body'),
+}
+
+async function searchItemWithOptions(request: SearchItemRequest, runtime: Util.RuntimeOptions): SearchItemResponse {
+  Util.validateModel(request);
+  return doRequestWithAction('SearchItem', '2018-03-19', 'HTTPS', 'POST', 'AK', `/item/search`, Util.stringifyMapValue(request.query), request.headers, null, runtime);
+}
+
+async function searchItem(request: SearchItemRequest): SearchItemResponse {
+  var runtime = new Util.RuntimeOptions{};
+  return searchItemWithOptions(request, runtime);
+}
+
+model DeleteItemQuery = {
+  instanceName: string(name='instanceName'),
+}
+
+model DeleteItemRequest = {
+  headers?: map[string]string(name='headers'),
+  query: DeleteItemQuery(name='query'),
+}
+
+model DeleteItemResponseBody = {
+  requestId: string(name='RequestId'),
+  success: boolean(name='Success'),
+  message: string(name='Message'),
+  code: integer(name='Code'),
+}
+
+model DeleteItemResponse = {
+  headers: map[string]string(name='headers'),
+  body: DeleteItemResponseBody(name='body'),
+}
+
+async function deleteItemWithOptions(request: DeleteItemRequest, runtime: Util.RuntimeOptions): DeleteItemResponse {
+  Util.validateModel(request);
+  return doRequestWithAction('DeleteItem', '2018-03-19', 'HTTPS', 'POST', 'AK', `/item/delete`, Util.stringifyMapValue(request.query), request.headers, null, runtime);
+}
+
+async function deleteItem(request: DeleteItemRequest): DeleteItemResponse {
+  var runtime = new Util.RuntimeOptions{};
+  return deleteItemWithOptions(request, runtime);
+}
+
+model AddItemQuery = {
+  instanceName: string(name='instanceName'),
+}
+
+model AddItemRequest = {
+  headers?: map[string]string(name='headers'),
+  query: AddItemQuery(name='query'),
+}
+
+model AddItemResponseBody = {
+  requestId: string(name='RequestId'),
+  success: boolean(name='Success'),
+  message: string(name='Message'),
+  code: integer(name='Code'),
+}
+
+model AddItemResponse = {
+  headers: map[string]string(name='headers'),
+  body: AddItemResponseBody(name='body'),
+}
+
+async function addItemWithOptions(request: AddItemRequest, runtime: Util.RuntimeOptions): AddItemResponse {
+  Util.validateModel(request);
+  return doRequestWithAction('AddItem', '2018-03-19', 'HTTPS', 'POST', 'AK', `/item/add`, Util.stringifyMapValue(request.query), request.headers, null, runtime);
+}
+
+async function addItem(request: AddItemRequest): AddItemResponse {
+  var runtime = new Util.RuntimeOptions{};
+  return addItemWithOptions(request, runtime);
+}
+
+function getEndpoint(productId: string, regionId: string, endpointRule: string, network: string, suffix: string, endpointMap: map[string]string, endpoint: string) throws: string{
+  if (!Util.empty(endpoint)) {
+    return endpoint;
+  }
+
+  if (!Util.isUnset(endpointMap) && !Util.empty(endpointMap[regionId])) {
+    return endpointMap[regionId];
+  }
+  return EndpointUtil.getEndpointRules(productId, regionId, endpointRule, network, suffix);
+}
