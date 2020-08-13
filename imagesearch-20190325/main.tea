@@ -1,0 +1,171 @@
+import Util;
+import ROA;
+import EndpointUtil;
+
+extends ROA;
+
+const version = '2019-03-25';
+
+init(config: ROA.Config){
+  super(config);
+  @endpointRule = '';
+  
+  checkConfig(config);
+  @endpointHost = getEndpoint('imagesearch', @regionId, @endpointRule, @network, @suffix, @endpointMap, @endpointHost);
+}
+
+
+model AddImageBody = {
+  instanceName: string(name='InstanceName'),
+  categoryId?: integer(name='CategoryId'),
+  productId: string(name='ProductId'),
+  picName: string(name='PicName'),
+  picContent: string(name='PicContent'),
+  crop?: boolean(name='Crop'),
+  region?: string(name='Region'),
+  customContent?: string(name='CustomContent'),
+  intAttr?: integer(name='IntAttr'),
+  strAttr?: string(name='StrAttr'),
+}
+
+model AddImageRequest = {
+  headers?: map[string]string(name='headers'),
+  body: AddImageBody(name='body'),
+}
+
+model AddImageResponseBody = {
+  requestId: string(name='RequestId'),
+  success: boolean(name='Success'),
+  message: string(name='Message'),
+  code: integer(name='Code'),
+  picInfo: {
+    categoryId: integer(name='CategoryId'),
+    region: string(name='Region'),
+  }(name='PicInfo'),
+}
+
+model AddImageResponse = {
+  headers: map[string]string(name='headers'),
+  body: AddImageResponseBody(name='body'),
+}
+
+async function addImageWithOptions(request: AddImageRequest, runtime: Util.RuntimeOptions): AddImageResponse {
+  Util.validateModel(request);
+  return doRequestWithAction('AddImage', '2019-03-25', 'HTTPS', 'POST', 'AK', `/v2/image/add`, null, request.headers, request.body, runtime);
+}
+
+async function addImage(request: AddImageRequest): AddImageResponse {
+  var runtime = new Util.RuntimeOptions{};
+  return addImageWithOptions(request, runtime);
+}
+
+model DeleteImageBody = {
+  instanceName: string(name='InstanceName'),
+  productId: string(name='ProductId'),
+  picName?: string(name='PicName'),
+}
+
+model DeleteImageRequest = {
+  headers?: map[string]string(name='headers'),
+  body: DeleteImageBody(name='body'),
+}
+
+model DeleteImageResponseBody = {
+  requestId: string(name='RequestId'),
+  success: boolean(name='Success'),
+  message: string(name='Message'),
+  code: integer(name='Code'),
+}
+
+model DeleteImageResponse = {
+  headers: map[string]string(name='headers'),
+  body: DeleteImageResponseBody(name='body'),
+}
+
+async function deleteImageWithOptions(request: DeleteImageRequest, runtime: Util.RuntimeOptions): DeleteImageResponse {
+  Util.validateModel(request);
+  return doRequestWithAction('DeleteImage', '2019-03-25', 'HTTPS', 'POST', 'AK', `/v2/image/delete`, null, request.headers, request.body, runtime);
+}
+
+async function deleteImage(request: DeleteImageRequest): DeleteImageResponse {
+  var runtime = new Util.RuntimeOptions{};
+  return deleteImageWithOptions(request, runtime);
+}
+
+model SearchImageBody = {
+  categoryId?: integer(name='CategoryId'),
+  instanceName: string(name='InstanceName'),
+  productId?: string(name='ProductId'),
+  picName?: string(name='PicName'),
+  picContent?: string(name='PicContent'),
+  crop?: boolean(name='Crop'),
+  region?: string(name='Region'),
+  num?: integer(name='Num'),
+  start?: integer(name='Start'),
+  type?: string(name='Type'),
+  filter?: string(name='Filter'),
+}
+
+model SearchImageRequest = {
+  headers?: map[string]string(name='headers'),
+  body: SearchImageBody(name='body'),
+}
+
+model SearchImageResponseBody = {
+  requestId: string(name='RequestId'),
+  success: boolean(name='Success'),
+  code: integer(name='Code'),
+  msg: string(name='Msg'),
+  auctions: [
+    {
+      categoryId: integer(name='CategoryId'),
+      productId: string(name='ProductId'),
+      picName: string(name='PicName'),
+      customContent: string(name='CustomContent'),
+      sortExprValues: string(name='SortExprValues'),
+      intAttr: integer(name='IntAttr'),
+      strAttr: string(name='StrAttr'),
+    }
+  ](name='Auctions'),
+  head: {
+    docsReturn: integer(name='DocsReturn'),
+    docsFound: integer(name='DocsFound'),
+    searchTime: integer(name='SearchTime'),
+  }(name='Head'),
+  picInfo: {
+    categoryId: integer(name='CategoryId'),
+    region: string(name='Region'),
+    allCategories: [
+      {
+        id: integer(name='Id'),
+        name: string(name='Name'),
+      }
+    ](name='AllCategories'),
+  }(name='PicInfo'),
+}
+
+model SearchImageResponse = {
+  headers: map[string]string(name='headers'),
+  body: SearchImageResponseBody(name='body'),
+}
+
+async function searchImageWithOptions(request: SearchImageRequest, runtime: Util.RuntimeOptions): SearchImageResponse {
+  Util.validateModel(request);
+  return doRequestWithAction('SearchImage', '2019-03-25', 'HTTPS', 'POST', 'AK', `/v2/image/search`, null, request.headers, request.body, runtime);
+}
+
+async function searchImage(request: SearchImageRequest): SearchImageResponse {
+  var runtime = new Util.RuntimeOptions{};
+  return searchImageWithOptions(request, runtime);
+}
+
+function getEndpoint(productId: string, regionId: string, endpointRule: string, network: string, suffix: string, endpointMap: map[string]string, endpoint: string) throws: string{
+  if (!Util.empty(endpoint)) {
+    return endpoint;
+  }
+
+  if (!Util.isUnset(endpointMap) && !Util.empty(endpointMap[regionId])) {
+    return endpointMap[regionId];
+  }
+  return EndpointUtil.getEndpointRules(productId, regionId, endpointRule, network, suffix);
+}
