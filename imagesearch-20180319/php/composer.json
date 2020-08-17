@@ -1,5 +1,5 @@
 {
-  "name": "alibabacloud/imagesearch-20180319-test",
+  "name": "alibabacloud/imagesearch-20180319",
   "description": "Alibaba Cloud image search (20180319) SDK Library for PHP",
   "type": "library",
   "license": "Apache-2.0",
