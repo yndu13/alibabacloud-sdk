@@ -22,11 +22,11 @@
     }
   },
   "releases": {
-    "java": "com.aliyun:imagesearch20190325:0.0.1",
+    "java": "com.aliyun:imagesearch20190325:1.0.0",
     "go": "github.com/alibabacloud-go/imagesearch-20190325/client:vpatch",
     "csharp": "AlibabaCloud.SDK.ImageSearch20190325:0.0.1",
-    "ts": "@alicloud/imagesearch20190325:^1.0.0",
-    "php": "alibabacloud/imagesearch-20190325:^0.1.0",
+    "ts": "@alicloud/imagesearch20190325:1.0.0",
+    "php": "alibabacloud/imagesearch-20190325:1.0.0",
     "python": "alibabacloud_imagesearch20190325:0.0.1"
   },
   "libraries": {
