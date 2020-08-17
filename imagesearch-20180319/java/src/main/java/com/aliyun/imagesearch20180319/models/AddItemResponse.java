@@ -17,4 +17,20 @@ public class AddItemResponse extends TeaModel {
         return TeaModel.build(map, self);
     }
 
+    public AddItemResponse setHeaders(java.util.Map<String, String> headers) {
+        this.headers = headers;
+        return this;
+    }
+    public java.util.Map<String, String> getHeaders() {
+        return this.headers;
+    }
+
+    public AddItemResponse setBody(AddItemResponseBody body) {
+        this.body = body;
+        return this;
+    }
+    public AddItemResponseBody getBody() {
+        return this.body;
+    }
+
 }

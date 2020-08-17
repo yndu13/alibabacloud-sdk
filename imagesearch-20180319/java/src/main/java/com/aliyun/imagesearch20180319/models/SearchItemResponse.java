@@ -17,4 +17,20 @@ public class SearchItemResponse extends TeaModel {
         return TeaModel.build(map, self);
     }
 
+    public SearchItemResponse setHeaders(java.util.Map<String, String> headers) {
+        this.headers = headers;
+        return this;
+    }
+    public java.util.Map<String, String> getHeaders() {
+        return this.headers;
+    }
+
+    public SearchItemResponse setBody(SearchItemResponseBody body) {
+        this.body = body;
+        return this;
+    }
+    public SearchItemResponseBody getBody() {
+        return this.body;
+    }
+
 }

@@ -16,4 +16,20 @@ public class AddItemRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
+    public AddItemRequest setHeaders(java.util.Map<String, String> headers) {
+        this.headers = headers;
+        return this;
+    }
+    public java.util.Map<String, String> getHeaders() {
+        return this.headers;
+    }
+
+    public AddItemRequest setQuery(AddItemQuery query) {
+        this.query = query;
+        return this;
+    }
+    public AddItemQuery getQuery() {
+        return this.query;
+    }
+
 }

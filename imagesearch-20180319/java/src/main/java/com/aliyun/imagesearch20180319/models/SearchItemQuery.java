@@ -13,4 +13,12 @@ public class SearchItemQuery extends TeaModel {
         return TeaModel.build(map, self);
     }
 
+    public SearchItemQuery setInstanceName(String instanceName) {
+        this.instanceName = instanceName;
+        return this;
+    }
+    public String getInstanceName() {
+        return this.instanceName;
+    }
+
 }

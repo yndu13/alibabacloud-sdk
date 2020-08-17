@@ -16,4 +16,20 @@ public class DeleteItemRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
+    public DeleteItemRequest setHeaders(java.util.Map<String, String> headers) {
+        this.headers = headers;
+        return this;
+    }
+    public java.util.Map<String, String> getHeaders() {
+        return this.headers;
+    }
+
+    public DeleteItemRequest setQuery(DeleteItemQuery query) {
+        this.query = query;
+        return this;
+    }
+    public DeleteItemQuery getQuery() {
+        return this.query;
+    }
+
 }

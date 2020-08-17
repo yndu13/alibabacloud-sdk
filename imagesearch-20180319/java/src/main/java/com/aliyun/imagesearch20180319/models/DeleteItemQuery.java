@@ -13,4 +13,12 @@ public class DeleteItemQuery extends TeaModel {
         return TeaModel.build(map, self);
     }
 
+    public DeleteItemQuery setInstanceName(String instanceName) {
+        this.instanceName = instanceName;
+        return this;
+    }
+    public String getInstanceName() {
+        return this.instanceName;
+    }
+
 }

@@ -17,4 +17,20 @@ public class DeleteItemResponse extends TeaModel {
         return TeaModel.build(map, self);
     }
 
+    public DeleteItemResponse setHeaders(java.util.Map<String, String> headers) {
+        this.headers = headers;
+        return this;
+    }
+    public java.util.Map<String, String> getHeaders() {
+        return this.headers;
+    }
+
+    public DeleteItemResponse setBody(DeleteItemResponseBody body) {
+        this.body = body;
+        return this;
+    }
+    public DeleteItemResponseBody getBody() {
+        return this.body;
+    }
+
 }
