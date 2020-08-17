@@ -1,10 +1,11 @@
+# -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
 
 
 class TestFlowStrategy01Request(TeaModel):
     def __init__(self, names=None):
-        self.names = {}
+        self.names = names
 
     def validate(self):
         pass
@@ -22,8 +23,8 @@ class TestFlowStrategy01Request(TeaModel):
 class TestFlowStrategy01Response(TeaModel):
     def __init__(self, request_id=None, list_=None, names=None):
         self.request_id = request_id
-        self.list_ = []
-        self.names = []
+        self.list_ = list_
+        self.names = names
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -66,9 +67,9 @@ class TestFlowStrategy01Response(TeaModel):
 
 class TestHttpApiRequest(TeaModel):
     def __init__(self, string_value=None, default_value=None, other_param=None, boolean_param=None):
-        self.string_value = {}
-        self.default_value = {}
-        self.other_param = {}
+        self.string_value = string_value
+        self.default_value = default_value
+        self.other_param = other_param
         self.boolean_param = boolean_param
 
     def validate(self):
@@ -190,13 +191,13 @@ class BatchAuditTest01ResponseDemo01Demo011Demo011(TeaModel):
 
 class BatchAuditTest01ResponseDemo01Demo011(TeaModel):
     def __init__(self, demo_011=None):
-        self.demo_011 = []
+        self.demo_011 = demo_011
 
     def validate(self):
         self.validate_required(self.demo_011, 'demo_011')
         if self.demo_011:
             for k in self.demo_011:
-                if k :
+                if k:
                     k.validate()
 
     def to_map(self):
@@ -245,8 +246,6 @@ class BatchAuditTest01ResponseDemo01(TeaModel):
         else:
             self.demo_011 = None
         return self
-
-
 class FtIpFlowControlRequest(TeaModel):
     def __init__(self, name=None):
         self.name = name
@@ -483,12 +482,12 @@ class FtEagleEyeResponse(TeaModel):
 class FtParamListRequest(TeaModel):
     def __init__(self, name=None, disk=None):
         self.name = name
-        self.disk = []
+        self.disk = disk
 
     def validate(self):
         if self.disk:
             for k in self.disk:
-                if k :
+                if k:
                     k.validate()
 
     def to_map(self):
@@ -517,8 +516,8 @@ class FtParamListRequest(TeaModel):
 
 class FtParamListRequestDisk(TeaModel):
     def __init__(self, size=None, type=None):
-        self.size = []
-        self.type = []
+        self.size = size
+        self.type = type
 
     def validate(self):
         self.validate_required(self.size, 'size')
@@ -554,8 +553,6 @@ class FtParamListRequestDisk(TeaModel):
         else:
             self.type = None
         return self
-
-
 class FtParamListResponse(TeaModel):
     def __init__(self, request_id=None, name=None):
         self.request_id = request_id

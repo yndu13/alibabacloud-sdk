@@ -1,5 +1,5 @@
-#!/usr/bin/python
-'''
+# -*- coding: utf-8 -*-
+"""
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements.  See the NOTICE file
  distributed with this work for additional information
@@ -16,35 +16,37 @@
  KIND, either express or implied.  See the License for the
  specific language governing permissions and limitations
  under the License.
-'''
+"""
 
-from setuptools import setup, find_packages
-import os
 import sys
+import os
+from setuptools import setup, find_packages
 
 """
-setup module for aas.
+setup module for alibabacloud_ft20180713.
 
-Created on 2020-06-04
+Created on 17/08/2020
 
-@author: alex
+@author: Alibaba Cloud SDK
 """
 
 PACKAGE = "alibabacloud_ft20180713"
 NAME = "alibabacloud_ft20180713"
-DESCRIPTION = "Alibaba Cloud Ft SDK for Python"
+DESCRIPTION = "Alibaba Cloud Ft (20180713) SDK Library for Python"
 AUTHOR = "Alibaba Cloud SDK"
 AUTHOR_EMAIL = "sdk-team@alibabacloud.com"
 URL = "https://github.com/aliyun/alibabacloud-sdk"
 
 TOPDIR = os.path.dirname(__file__) or "."
 VERSION = __import__(PACKAGE).__version__
+REQUIRES = ["alibabacloud_tea_util==0.1.2","alibabacloud_tea_rpc==0.0.4","alibabacloud_endpoint_util==0.0.2"]
 
-desc_file = open("README.md")
-try:
-	LONG_DESCRIPTION = desc_file.read()
-finally:
-	desc_file.close()
+if sys.version_info[0] == 2:
+    with open("README.md") as fp:
+        LONG_DESCRIPTION = fp.read()
+else:
+    with open("README.md", encoding='utf-8') as fp:
+        LONG_DESCRIPTION = fp.read()
 
 setup(
     name=NAME,
@@ -53,24 +55,26 @@ setup(
     long_description=LONG_DESCRIPTION,
     author=AUTHOR,
     author_email=AUTHOR_EMAIL,
-    license="Apache",
+    license="Apache License 2.0",
     url=URL,
-    keywords=["${name}"],
+    keywords=["alibabacloud_ft20180713"],
     packages=find_packages(exclude=["tests*"]),
     include_package_data=True,
     platforms="any",
-    install_requires=["Tea>=0.0.1",],
+    install_requires=REQUIRES,
     classifiers=(
-                "Development Status :: 4 - Beta",
-                "Intended Audience :: Developers",
-                "License :: OSI Approved :: Apache Software License",
-                "Programming Language :: Python",
-                "Programming Language :: Python :: 3",
-                "Programming Language :: Python :: 3.3",
-                "Programming Language :: Python :: 3.4",
-                "Programming Language :: Python :: 3.5",
-                "Programming Language :: Python :: 3.6",
-                "Topic :: Software Development",
-              )
-
+        "Development Status :: 4 - Beta",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: Apache Software License",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 2",
+        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.4",
+        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3.6",
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        "Topic :: Software Development"
+    )
 )
