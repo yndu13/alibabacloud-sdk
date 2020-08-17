@@ -1,3 +1,6 @@
+2020-08-17 Version: v1.0.1
+- Generated golang 2019-03-25 for ImageSearch.
+
 2020-08-13 Version: v1.0.0
 - Generated golang 2019-03-25 for ImageSearch.
 
