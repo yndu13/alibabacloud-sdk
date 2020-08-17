@@ -9,7 +9,7 @@ import (
 )
 
 type TestFlowStrategy01Request struct {
-	Names map[string]interface{} `json:"Names" xml:"Names"`
+	Names map[string]interface{} `json:"Names,omitempty" xml:"Names,omitempty"`
 }
 
 func (s TestFlowStrategy01Request) String() string {
@@ -26,9 +26,9 @@ func (s *TestFlowStrategy01Request) SetNames(v map[string]interface{}) *TestFlow
 }
 
 type TestFlowStrategy01Response struct {
-	RequestId *string   `json:"RequestId" xml:"RequestId" require:"true"`
-	List      []*string `json:"List" xml:"List" require:"true" type:"Repeated"`
-	Names     []*string `json:"Names" xml:"Names" require:"true" type:"Repeated"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	List      []*string `json:"List,omitempty" xml:"List,omitempty" require:"true" type:"Repeated"`
+	Names     []*string `json:"Names,omitempty" xml:"Names,omitempty" require:"true" type:"Repeated"`
 }
 
 func (s TestFlowStrategy01Response) String() string {
@@ -55,10 +55,10 @@ func (s *TestFlowStrategy01Response) SetNames(v []*string) *TestFlowStrategy01Re
 }
 
 type TestHttpApiRequest struct {
-	StringValue  map[string]interface{} `json:"StringValue" xml:"StringValue"`
-	DefaultValue map[string]interface{} `json:"DefaultValue" xml:"DefaultValue"`
-	OtherParam   map[string]interface{} `json:"OtherParam" xml:"OtherParam"`
-	BooleanParam *bool                  `json:"BooleanParam" xml:"BooleanParam"`
+	StringValue  map[string]interface{} `json:"StringValue,omitempty" xml:"StringValue,omitempty"`
+	DefaultValue map[string]interface{} `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	OtherParam   map[string]interface{} `json:"OtherParam,omitempty" xml:"OtherParam,omitempty"`
+	BooleanParam *bool                  `json:"BooleanParam,omitempty" xml:"BooleanParam,omitempty"`
 }
 
 func (s TestHttpApiRequest) String() string {
@@ -90,8 +90,8 @@ func (s *TestHttpApiRequest) SetBooleanParam(v bool) *TestHttpApiRequest {
 }
 
 type TestHttpApiResponse struct {
-	Params         *string `json:"Params" xml:"Params" require:"true"`
-	ServiceRpcSign *string `json:"ServiceRpcSign" xml:"ServiceRpcSign" require:"true"`
+	Params         *string `json:"Params,omitempty" xml:"Params,omitempty" require:"true"`
+	ServiceRpcSign *string `json:"ServiceRpcSign,omitempty" xml:"ServiceRpcSign,omitempty" require:"true"`
 }
 
 func (s TestHttpApiResponse) String() string {
@@ -113,10 +113,10 @@ func (s *TestHttpApiResponse) SetServiceRpcSign(v string) *TestHttpApiResponse {
 }
 
 type BatchAuditTest01Request struct {
-	Name             *string `json:"Name" xml:"Name"`
-	BatchAuditTest01 *string `json:"BatchAuditTest01" xml:"BatchAuditTest01"`
-	Demo01           *string `json:"Demo01" xml:"Demo01"`
-	Test010101       *bool   `json:"Test010101" xml:"Test010101"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	BatchAuditTest01 *string `json:"BatchAuditTest01,omitempty" xml:"BatchAuditTest01,omitempty"`
+	Demo01           *string `json:"Demo01,omitempty" xml:"Demo01,omitempty"`
+	Test010101       *bool   `json:"Test010101,omitempty" xml:"Test010101,omitempty"`
 }
 
 func (s BatchAuditTest01Request) String() string {
@@ -148,9 +148,9 @@ func (s *BatchAuditTest01Request) SetTest010101(v bool) *BatchAuditTest01Request
 }
 
 type BatchAuditTest01Response struct {
-	RequestId *string                         `json:"RequestId" xml:"RequestId" require:"true"`
-	Name      *string                         `json:"Name" xml:"Name" require:"true"`
-	Demo01    *BatchAuditTest01ResponseDemo01 `json:"Demo01" xml:"Demo01" require:"true" type:"Struct"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Name      *string                         `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
+	Demo01    *BatchAuditTest01ResponseDemo01 `json:"Demo01,omitempty" xml:"Demo01,omitempty" require:"true" type:"Struct"`
 }
 
 func (s BatchAuditTest01Response) String() string {
@@ -177,7 +177,7 @@ func (s *BatchAuditTest01Response) SetDemo01(v *BatchAuditTest01ResponseDemo01) 
 }
 
 type BatchAuditTest01ResponseDemo01 struct {
-	Demo011 *BatchAuditTest01ResponseDemo01Demo011 `json:"Demo011" xml:"Demo011" require:"true" type:"Struct"`
+	Demo011 *BatchAuditTest01ResponseDemo01Demo011 `json:"Demo011,omitempty" xml:"Demo011,omitempty" require:"true" type:"Struct"`
 }
 
 func (s BatchAuditTest01ResponseDemo01) String() string {
@@ -194,7 +194,7 @@ func (s *BatchAuditTest01ResponseDemo01) SetDemo011(v *BatchAuditTest01ResponseD
 }
 
 type BatchAuditTest01ResponseDemo01Demo011 struct {
-	Demo011 []*BatchAuditTest01ResponseDemo01Demo011Demo011 `json:"Demo011" xml:"Demo011" require:"true" type:"Repeated"`
+	Demo011 []*BatchAuditTest01ResponseDemo01Demo011Demo011 `json:"Demo011,omitempty" xml:"Demo011,omitempty" require:"true" type:"Repeated"`
 }
 
 func (s BatchAuditTest01ResponseDemo01Demo011) String() string {
@@ -211,7 +211,7 @@ func (s *BatchAuditTest01ResponseDemo01Demo011) SetDemo011(v []*BatchAuditTest01
 }
 
 type BatchAuditTest01ResponseDemo01Demo011Demo011 struct {
-	Demo0111 *string `json:"Demo0111" xml:"Demo0111" require:"true"`
+	Demo0111 *string `json:"Demo0111,omitempty" xml:"Demo0111,omitempty" require:"true"`
 }
 
 func (s BatchAuditTest01ResponseDemo01Demo011Demo011) String() string {
@@ -228,7 +228,7 @@ func (s *BatchAuditTest01ResponseDemo01Demo011Demo011) SetDemo0111(v string) *Ba
 }
 
 type FtIpFlowControlRequest struct {
-	Name *string `json:"Name" xml:"Name"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s FtIpFlowControlRequest) String() string {
@@ -245,8 +245,8 @@ func (s *FtIpFlowControlRequest) SetName(v string) *FtIpFlowControlRequest {
 }
 
 type FtIpFlowControlResponse struct {
-	RequestId *string `json:"RequestId" xml:"RequestId" require:"true"`
-	Name      *string `json:"Name" xml:"Name" require:"true"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
 }
 
 func (s FtIpFlowControlResponse) String() string {
@@ -268,8 +268,8 @@ func (s *FtIpFlowControlResponse) SetName(v string) *FtIpFlowControlResponse {
 }
 
 type FtDynamicAddressDubboRequest struct {
-	IntValue    *int    `json:"IntValue" xml:"IntValue"`
-	StringValue *string `json:"StringValue" xml:"StringValue"`
+	IntValue    *int    `json:"IntValue,omitempty" xml:"IntValue,omitempty"`
+	StringValue *string `json:"StringValue,omitempty" xml:"StringValue,omitempty"`
 }
 
 func (s FtDynamicAddressDubboRequest) String() string {
@@ -291,9 +291,9 @@ func (s *FtDynamicAddressDubboRequest) SetStringValue(v string) *FtDynamicAddres
 }
 
 type FtDynamicAddressDubboResponse struct {
-	RequestId   *string `json:"RequestId" xml:"RequestId" require:"true"`
-	StringValue *string `json:"StringValue" xml:"StringValue" require:"true"`
-	IntValue    *int    `json:"IntValue" xml:"IntValue" require:"true"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	StringValue *string `json:"StringValue,omitempty" xml:"StringValue,omitempty" require:"true"`
+	IntValue    *int    `json:"IntValue,omitempty" xml:"IntValue,omitempty" require:"true"`
 }
 
 func (s FtDynamicAddressDubboResponse) String() string {
@@ -331,7 +331,7 @@ func (s FtDynamicAddressHsfRequest) GoString() string {
 }
 
 type FtDynamicAddressHsfResponse struct {
-	RequestId *string `json:"RequestId" xml:"RequestId" require:"true"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
 }
 
 func (s FtDynamicAddressHsfResponse) String() string {
@@ -348,7 +348,7 @@ func (s *FtDynamicAddressHsfResponse) SetRequestId(v string) *FtDynamicAddressHs
 }
 
 type FtFlowSpecialRequest struct {
-	Name *string `json:"Name" xml:"Name"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s FtFlowSpecialRequest) String() string {
@@ -365,8 +365,8 @@ func (s *FtFlowSpecialRequest) SetName(v string) *FtFlowSpecialRequest {
 }
 
 type FtFlowSpecialResponse struct {
-	RequestId *string `json:"RequestId" xml:"RequestId" require:"true"`
-	Name      *string `json:"Name" xml:"Name" require:"true"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
 }
 
 func (s FtFlowSpecialResponse) String() string {
@@ -388,7 +388,7 @@ func (s *FtFlowSpecialResponse) SetName(v string) *FtFlowSpecialResponse {
 }
 
 type FTApiAliasApiRequest struct {
-	Name *string `json:"Name" xml:"Name"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s FTApiAliasApiRequest) String() string {
@@ -405,8 +405,8 @@ func (s *FTApiAliasApiRequest) SetName(v string) *FTApiAliasApiRequest {
 }
 
 type FTApiAliasApiResponse struct {
-	RequestId *string `json:"RequestId" xml:"RequestId" require:"true"`
-	Name      *string `json:"Name" xml:"Name" require:"true"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
 }
 
 func (s FTApiAliasApiResponse) String() string {
@@ -428,7 +428,7 @@ func (s *FTApiAliasApiResponse) SetName(v string) *FTApiAliasApiResponse {
 }
 
 type FtEagleEyeRequest struct {
-	Name *string `json:"Name" xml:"Name"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s FtEagleEyeRequest) String() string {
@@ -445,9 +445,9 @@ func (s *FtEagleEyeRequest) SetName(v string) *FtEagleEyeRequest {
 }
 
 type FtEagleEyeResponse struct {
-	RequestId       *string `json:"RequestId" xml:"RequestId" require:"true"`
-	Name            *string `json:"Name" xml:"Name" require:"true"`
-	EagleEyeTraceId *string `json:"eagleEyeTraceId" xml:"eagleEyeTraceId" require:"true"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
+	EagleEyeTraceId *string `json:"eagleEyeTraceId,omitempty" xml:"eagleEyeTraceId,omitempty" require:"true"`
 }
 
 func (s FtEagleEyeResponse) String() string {
@@ -474,8 +474,8 @@ func (s *FtEagleEyeResponse) SetEagleEyeTraceId(v string) *FtEagleEyeResponse {
 }
 
 type FtParamListRequest struct {
-	Name *string                   `json:"Name" xml:"Name"`
-	Disk []*FtParamListRequestDisk `json:"Disk" xml:"Disk" type:"Repeated"`
+	Name *string                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Disk []*FtParamListRequestDisk `json:"Disk,omitempty" xml:"Disk,omitempty" type:"Repeated"`
 }
 
 func (s FtParamListRequest) String() string {
@@ -497,8 +497,8 @@ func (s *FtParamListRequest) SetDisk(v []*FtParamListRequestDisk) *FtParamListRe
 }
 
 type FtParamListRequestDisk struct {
-	Size []*string `json:"Size" xml:"Size" require:"true" type:"Repeated"`
-	Type []*string `json:"Type" xml:"Type" require:"true" type:"Repeated"`
+	Size []*string `json:"Size,omitempty" xml:"Size,omitempty" require:"true" type:"Repeated"`
+	Type []*string `json:"Type,omitempty" xml:"Type,omitempty" require:"true" type:"Repeated"`
 }
 
 func (s FtParamListRequestDisk) String() string {
@@ -520,8 +520,8 @@ func (s *FtParamListRequestDisk) SetType(v []*string) *FtParamListRequestDisk {
 }
 
 type FtParamListResponse struct {
-	RequestId *string `json:"RequestId" xml:"RequestId" require:"true"`
-	Name      *string `json:"Name" xml:"Name" require:"true"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
 }
 
 func (s FtParamListResponse) String() string {
@@ -543,7 +543,7 @@ func (s *FtParamListResponse) SetName(v string) *FtParamListResponse {
 }
 
 type FtGatedLaunchPolicy4Request struct {
-	IsGatedLaunch *string `json:"IsGatedLaunch" xml:"IsGatedLaunch"`
+	IsGatedLaunch *string `json:"IsGatedLaunch,omitempty" xml:"IsGatedLaunch,omitempty"`
 }
 
 func (s FtGatedLaunchPolicy4Request) String() string {
@@ -560,8 +560,8 @@ func (s *FtGatedLaunchPolicy4Request) SetIsGatedLaunch(v string) *FtGatedLaunchP
 }
 
 type FtGatedLaunchPolicy4Response struct {
-	RequestId     *string `json:"RequestId" xml:"RequestId" require:"true"`
-	IsGatedLaunch *string `json:"IsGatedLaunch" xml:"IsGatedLaunch" require:"true"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	IsGatedLaunch *string `json:"IsGatedLaunch,omitempty" xml:"IsGatedLaunch,omitempty" require:"true"`
 }
 
 func (s FtGatedLaunchPolicy4Response) String() string {
@@ -598,59 +598,59 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = tea.String("regional")
-	client.EndpointMap = map[string]string{
-		"ap-northeast-2-pop":          "ft.aliyuncs.com",
-		"ap-south-1":                  "ft.aliyuncs.com",
-		"ap-southeast-1":              "ft.aliyuncs.com",
-		"ap-southeast-2":              "ft.aliyuncs.com",
-		"ap-southeast-3":              "ft.aliyuncs.com",
-		"ap-southeast-5":              "ft.aliyuncs.com",
-		"cn-beijing":                  "ft.aliyuncs.com",
-		"cn-beijing-finance-1":        "ft.aliyuncs.com",
-		"cn-beijing-finance-pop":      "ft.aliyuncs.com",
-		"cn-beijing-gov-1":            "ft.aliyuncs.com",
-		"cn-beijing-nu16-b01":         "ft.aliyuncs.com",
-		"cn-chengdu":                  "ft.aliyuncs.com",
-		"cn-edge-1":                   "ft.aliyuncs.com",
-		"cn-fujian":                   "ft.aliyuncs.com",
-		"cn-haidian-cm12-c01":         "ft.aliyuncs.com",
-		"cn-hangzhou-bj-b01":          "ft.aliyuncs.com",
-		"cn-hangzhou-finance":         "ft.aliyuncs.com",
-		"cn-hangzhou-internal-prod-1": "ft.aliyuncs.com",
-		"cn-hangzhou-internal-test-1": "ft.aliyuncs.com",
-		"cn-hangzhou-internal-test-2": "ft.aliyuncs.com",
-		"cn-hangzhou-internal-test-3": "ft.aliyuncs.com",
-		"cn-hangzhou-test-306":        "ft.aliyuncs.com",
-		"cn-hongkong-finance-pop":     "ft.aliyuncs.com",
-		"cn-huhehaote":                "ft.aliyuncs.com",
-		"cn-qingdao":                  "ft.aliyuncs.com",
-		"cn-qingdao-nebula":           "ft.aliyuncs.com",
-		"cn-shanghai-et15-b01":        "ft.aliyuncs.com",
-		"cn-shanghai-et2-b01":         "ft.aliyuncs.com",
-		"cn-shanghai-finance-1":       "ft.aliyuncs.com",
-		"cn-shanghai-inner":           "ft.aliyuncs.com",
-		"cn-shanghai-internal-test-1": "ft.aliyuncs.com",
-		"cn-shenzhen-finance-1":       "ft.aliyuncs.com",
-		"cn-shenzhen-inner":           "ft.aliyuncs.com",
-		"cn-shenzhen-st4-d01":         "ft.aliyuncs.com",
-		"cn-shenzhen-su18-b01":        "ft.aliyuncs.com",
-		"cn-wuhan":                    "ft.aliyuncs.com",
-		"cn-yushanfang":               "ft.aliyuncs.com",
-		"cn-zhangbei-na61-b01":        "ft.aliyuncs.com",
-		"cn-zhangjiakou-na62-a01":     "ft.aliyuncs.com",
-		"cn-zhengzhou-nebula-1":       "ft.aliyuncs.com",
-		"eu-central-1":                "ft.aliyuncs.com",
-		"eu-west-1":                   "ft.aliyuncs.com",
-		"eu-west-1-oxs":               "ft.aliyuncs.com",
-		"me-east-1":                   "ft.aliyuncs.com",
-		"rus-west-1-pop":              "ft.aliyuncs.com",
-		"us-west-1":                   "ft.aliyuncs.com",
+	client.EndpointMap = map[string]*string{
+		"ap-northeast-2-pop":          tea.String("ft.aliyuncs.com"),
+		"ap-south-1":                  tea.String("ft.aliyuncs.com"),
+		"ap-southeast-1":              tea.String("ft.aliyuncs.com"),
+		"ap-southeast-2":              tea.String("ft.aliyuncs.com"),
+		"ap-southeast-3":              tea.String("ft.aliyuncs.com"),
+		"ap-southeast-5":              tea.String("ft.aliyuncs.com"),
+		"cn-beijing":                  tea.String("ft.aliyuncs.com"),
+		"cn-beijing-finance-1":        tea.String("ft.aliyuncs.com"),
+		"cn-beijing-finance-pop":      tea.String("ft.aliyuncs.com"),
+		"cn-beijing-gov-1":            tea.String("ft.aliyuncs.com"),
+		"cn-beijing-nu16-b01":         tea.String("ft.aliyuncs.com"),
+		"cn-chengdu":                  tea.String("ft.aliyuncs.com"),
+		"cn-edge-1":                   tea.String("ft.aliyuncs.com"),
+		"cn-fujian":                   tea.String("ft.aliyuncs.com"),
+		"cn-haidian-cm12-c01":         tea.String("ft.aliyuncs.com"),
+		"cn-hangzhou-bj-b01":          tea.String("ft.aliyuncs.com"),
+		"cn-hangzhou-finance":         tea.String("ft.aliyuncs.com"),
+		"cn-hangzhou-internal-prod-1": tea.String("ft.aliyuncs.com"),
+		"cn-hangzhou-internal-test-1": tea.String("ft.aliyuncs.com"),
+		"cn-hangzhou-internal-test-2": tea.String("ft.aliyuncs.com"),
+		"cn-hangzhou-internal-test-3": tea.String("ft.aliyuncs.com"),
+		"cn-hangzhou-test-306":        tea.String("ft.aliyuncs.com"),
+		"cn-hongkong-finance-pop":     tea.String("ft.aliyuncs.com"),
+		"cn-huhehaote":                tea.String("ft.aliyuncs.com"),
+		"cn-qingdao":                  tea.String("ft.aliyuncs.com"),
+		"cn-qingdao-nebula":           tea.String("ft.aliyuncs.com"),
+		"cn-shanghai-et15-b01":        tea.String("ft.aliyuncs.com"),
+		"cn-shanghai-et2-b01":         tea.String("ft.aliyuncs.com"),
+		"cn-shanghai-finance-1":       tea.String("ft.aliyuncs.com"),
+		"cn-shanghai-inner":           tea.String("ft.aliyuncs.com"),
+		"cn-shanghai-internal-test-1": tea.String("ft.aliyuncs.com"),
+		"cn-shenzhen-finance-1":       tea.String("ft.aliyuncs.com"),
+		"cn-shenzhen-inner":           tea.String("ft.aliyuncs.com"),
+		"cn-shenzhen-st4-d01":         tea.String("ft.aliyuncs.com"),
+		"cn-shenzhen-su18-b01":        tea.String("ft.aliyuncs.com"),
+		"cn-wuhan":                    tea.String("ft.aliyuncs.com"),
+		"cn-yushanfang":               tea.String("ft.aliyuncs.com"),
+		"cn-zhangbei-na61-b01":        tea.String("ft.aliyuncs.com"),
+		"cn-zhangjiakou-na62-a01":     tea.String("ft.aliyuncs.com"),
+		"cn-zhengzhou-nebula-1":       tea.String("ft.aliyuncs.com"),
+		"eu-central-1":                tea.String("ft.aliyuncs.com"),
+		"eu-west-1":                   tea.String("ft.aliyuncs.com"),
+		"eu-west-1-oxs":               tea.String("ft.aliyuncs.com"),
+		"me-east-1":                   tea.String("ft.aliyuncs.com"),
+		"rus-west-1-pop":              tea.String("ft.aliyuncs.com"),
+		"us-west-1":                   tea.String("ft.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
 	}
-	client.Endpoint, _err = client.GetEndpoint(client.ProductId, client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
+	client.Endpoint, _err = client.GetEndpoint(tea.String("ft"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
 	if _err != nil {
 		return _err
 	}
@@ -933,14 +933,14 @@ func (client *Client) FtGatedLaunchPolicy4(request *FtGatedLaunchPolicy4Request)
 	return _result, _err
 }
 
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]string, endpoint *string) (_result *string, _err error) {
+func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
 	if !tea.BoolValue(util.Empty(endpoint)) {
 		_result = endpoint
 		return _result, _err
 	}
 
-	if !tea.BoolValue(util.IsUnset(endpointMap)) && !tea.BoolValue(util.Empty(tea.String(endpointMap[tea.StringValue(regionId)]))) {
-		_result = tea.String(endpointMap[tea.StringValue(regionId)])
+	if !tea.BoolValue(util.IsUnset(endpointMap)) && !tea.BoolValue(util.Empty(endpointMap[tea.StringValue(regionId)])) {
+		_result = endpointMap[tea.StringValue(regionId)]
 		return _result, _err
 	}
 
