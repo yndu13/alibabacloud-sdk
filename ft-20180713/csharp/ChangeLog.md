@@ -1,3 +1,6 @@
+2020-08-17 Version: 1.0.10
+- Generated csharp 2018-07-13 for Ft.
+
 2020-06-11 Version: 1.0.0
 - Generated csharp 2018-07-13 for Ft.
 
