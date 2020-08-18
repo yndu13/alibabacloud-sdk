@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.aliyun</groupId>
   <artifactId>imagesearch20180111</artifactId>
-  <version>1.0.12-SNAPSHOT</version>
+  <version>1.0.6-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>imagesearch20180111</name>
   <description>Alibaba Cloud image search (20180111) SDK for Java
