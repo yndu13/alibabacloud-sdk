@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from alibabacloud_tea_rpc.client import Client as RPCClient
 from alibabacloud_ft20180713 import models as ft_20180713_models
@@ -9,7 +8,7 @@ from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 
 class Client(RPCClient):
     def __init__(self, config):
-        super(Client, self).__init__(config)
+        super().__init__(config)
         self._endpoint_rule = "regional"
         self._endpoint_map = {
             "ap-northeast-2-pop": "ft.aliyuncs.com",
