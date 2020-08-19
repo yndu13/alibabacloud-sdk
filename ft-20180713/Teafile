@@ -27,7 +27,7 @@
     "csharp": "AlibabaCloud.SDK.Ft20180713:1.0.0",
     "ts": "@alicloud/ft20180713:1.0.2",
     "php": "alibabacloud/ft-20180713:1.0.0",
-    "python": "alibabacloud_sdk_ft20180713:1.0.15"
+    "python": "alibabacloud_sdk_ft20180713:1.0.0"
   },
   "libraries": {
     "RPC": "alibabacloud:RPC:*",
