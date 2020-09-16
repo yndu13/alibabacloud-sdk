@@ -28,7 +28,7 @@
 >>>>>>> Stashed changes
     "go": "github.com/alibabacloud-go/ft-20180713/client:v1.0.0",
     "csharp": "AlibabaCloud.SDK.Ft20180713:1.0.11",
-    "ts": "@alicloud/ft20180713:1.0.13",
+    "ts": "@alicloud/ft20180713:1.0.5",
     "php": "alibabacloud/ft-20180713:^0.1.0",
     "python": "alibabacloud_ft20180713:1.0.15"
   },
