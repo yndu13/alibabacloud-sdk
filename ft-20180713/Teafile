@@ -21,7 +21,11 @@
     }
   },
   "releases": {
+<<<<<<< Updated upstream
     "java": "com.aliyun:ft20180713:1.0.5",
+=======
+    "java": "com.aliyun:ft20180713:1.0.1",
+>>>>>>> Stashed changes
     "go": "github.com/alibabacloud-go/ft-20180713/client:v1.0.0",
     "csharp": "AlibabaCloud.SDK.Ft20180713:1.0.11",
     "ts": "@alicloud/ft20180713:1.0.13",
@@ -66,5 +70,9 @@
       "email": "sdk-team@alibabacloud.com"
     }
   },
+<<<<<<< Updated upstream
   "version": "1.0.1"
+=======
+  "version": "patch"
+>>>>>>> Stashed changes
 }
