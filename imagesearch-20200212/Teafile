@@ -1,7 +1,6 @@
 {
   "scope": "alibabacloud",
   "name": "ImageSearch20200212",
-  "version": "1.0.0",
   "main": "./main.tea",
   "releases": {
     "java": "com.aliyun:imagesearch20200212:0.0.1",
