@@ -75,5 +75,7 @@
         "LICENSE": "../LICENSE"
       }
     }
-  }
+  },
+  "productId": "imageenhan",
+  "apiVersions": "20190930"
 }
