@@ -3,12 +3,46 @@
   "name": "Vcs20200515",
   "version": "1.0.0",
   "main": "./main.tea",
+  "releases": {
+    "java": "com.aliyun:vcs20200515:0.0.1",
+    "go": "github.com/alibabacloud-go/vcs-20200515/client:v1.0.0",
+    "csharp": "AlibabaCloud.SDK.Vcs20200515:0.0.1",
+    "ts": "@alicloud/vcs20200515:^1.0.0",
+    "php": "alibabacloud/vcs-20200515:^0.1.0",
+    "python": "alibabacloud_vcs20200515:0.0.1"
+  },
   "maintainers": [
     {
       "name": "Alibaba Cloud SDK",
       "email": "sdk-team@alibabacloud.com"
     }
   ],
+  "libraries": {
+    "OSS": "alibabacloud:OSS:*",
+    "OpenPlatform": "alibabacloud:OpenPlatform20191219:*",
+    "RPCUtil": "alibabacloud:RPCUtil:*",
+    "RPC": "alibabacloud:RPC:*",
+    "Util": "darabonba:Util:*",
+    "EndpointUtil": "alibabacloud:EndpointUtil:*",
+    "FileForm": "darabonba:FileForm:*",
+    "OSSUtil": "alibabacloud:OSSUtil:*"
+  },
+  "go": {
+    "package": [
+      "io"
+    ]
+  },
+  "python": {
+    "package": "alibabacloud_vcs20200515",
+    "clientName": "client",
+    "packageInfo": {
+      "name": "alibabacloud_vcs20200515",
+      "desc": "Alibaba Cloud Visual Compute Service (20200515) SDK Library for Python",
+      "github": "https://github.com/aliyun/alibabacloud-sdk",
+      "author": "Alibaba Cloud SDK",
+      "email": "sdk-team@alibabacloud.com"
+    }
+  },
   "java": {
     "package": "com.aliyun.vcs20200515",
     "packageInfo": {
@@ -20,19 +54,6 @@
       "developerName": "Aliyun SDK",
       "developerEmail": "aliyunsdk@aliyun.com"
     }
-  },
-  "releases": {
-    "java": "com.aliyun:vcs20200515:1.0.0",
-    "go": "github.com/alibabacloud-go/Vcs-20200515/client:v1.0.0",
-    "csharp": "AlibabaCloud.SDK.Vcs20200515:1.0.0",
-    "ts": "@alicloud/vcs20200515:1.0.0",
-    "php": "alibabacloud/vcs-20200515:1.0.1",
-    "python": "alibabacloud_sdk_vcs20200515:1.0.0"
-  },
-  "libraries": {
-    "RPC": "alibabacloud:RPC:*",
-    "Util": "alibabacloud:Util:*",
-    "EndpointUtil": "alibabacloud:EndpointUtil:*"
   },
   "csharp": {
     "className": "Client",
@@ -56,8 +77,6 @@
       }
     }
   },
-  "python": {
-    "package": "alibabacloud_vcs20200515",
-    "clientName": "client"
-  }
+  "productId": "Vcs",
+  "apiVersions": "20200515"
 }

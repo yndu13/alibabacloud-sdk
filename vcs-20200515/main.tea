@@ -1,5 +1,10 @@
-import Util;
+import OSS;
+import OpenPlatform;
+import RPCUtil;
 import RPC;
+import OSSUtil;
+import Util;
+import FileForm;
 import EndpointUtil;
 
 extends RPC;
@@ -9,627 +14,3505 @@ init(config: RPC.Config){
   @endpointRule = 'regional';
   
   checkConfig(config);
-  @endpoint = getEndpoint(@productId, @regionId, @endpointRule, @network, @suffix, @endpointMap, @endpoint);
+  @endpoint = getEndpoint('vcs', @regionId, @endpointRule, @network, @suffix, @endpointMap, @endpoint);
 }
 
-model GetFaceOptionsRequest = {
-  corpId?: string(name='CorpId', description='corpId'),
+model ListVehicleTagDistributeRequest = {
+  corpId: string(name='CorpId'),
+  pageNumber: long(name='PageNumber'),
+  pageSize: long(name='PageSize'),
+  endTime: string(name='EndTime'),
+  startTime: string(name='StartTime'),
+  tagCode: string(name='TagCode'),
 }
 
-model GetFaceOptionsResponse = {
-  code: string(name='Code', description='code'),
-  message: string(name='Message', description='message'),
-  requestId: string(name='RequestId', description='requestId'),
+model ListVehicleTagDistributeResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  pageNumber: long(name='PageNumber'),
+  pageSize: long(name='PageSize'),
+  totalCount: long(name='TotalCount'),
+  totalPage: long(name='TotalPage'),
   data: [
     {
-      key: string(name='Key', description='key'),
-      name: string(name='Name', description='name'),
-      optionList: [
-        {
-          key: string(name='Key', description='key'),
-          name: string(name='Name', description='name'),
-        }
-      ](name='OptionList', description='optionList'),
+      corpId: string(name='CorpId'),
+      tagValue: string(name='TagValue'),
+      metrics: string(name='Metrics'),
     }
-  ](name='Data', description='data'),
+  ](name='Data'),
 }
 
-async function getFaceOptionsWithOptions(request: GetFaceOptionsRequest, runtime: Util.RuntimeOptions): GetFaceOptionsResponse {
+async function listVehicleTagDistribute(request: ListVehicleTagDistributeRequest, runtime: Util.RuntimeOptions): ListVehicleTagDistributeResponse {
   Util.validateModel(request);
-  return doRequest('GetFaceOptions', 'HTTPS', 'POST', '2020-05-15', 'AK', null, request, runtime);
+  return doRequest('ListVehicleTagDistribute', 'HTTPS', 'POST' , '2020-05-15', 'AK,APP', null, request, runtime);
 }
 
-async function getFaceOptions(request: GetFaceOptionsRequest): GetFaceOptionsResponse {
-  var runtime = new Util.RuntimeOptions{};
-  return getFaceOptionsWithOptions(request, runtime);
+model ListPersonTagDistributeRequest = {
+  corpId: string(name='CorpId'),
+  pageNumber: long(name='PageNumber'),
+  pageSize: long(name='PageSize'),
+  endTime: string(name='EndTime'),
+  startTime: string(name='StartTime'),
+  tagCode: string(name='TagCode'),
 }
 
-model GetBodyOptionsRequest = {
-  corpId?: string(name='CorpId', description='corpId'),
-}
-
-model GetBodyOptionsResponse = {
-  code: string(name='Code', description='code'),
-  message: string(name='Message', description='message'),
-  requestId: string(name='RequestId', description='requestId'),
+model ListPersonTagDistributeResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  pageNumber: long(name='PageNumber'),
+  pageSize: long(name='PageSize'),
+  totalCount: long(name='TotalCount'),
+  totalPage: long(name='TotalPage'),
   data: [
     {
-      key: string(name='Key', description='key'),
-      name: string(name='Name', description='name'),
-      optionList: [
-        {
-          key: string(name='Key', description='key'),
-          name: string(name='Name', description='name'),
-        }
-      ](name='OptionList', description='optionList'),
+      corpId: string(name='CorpId'),
+      tagValue: string(name='TagValue'),
+      value: string(name='Value'),
     }
-  ](name='Data', description='data'),
+  ](name='Data'),
 }
 
-async function getBodyOptionsWithOptions(request: GetBodyOptionsRequest, runtime: Util.RuntimeOptions): GetBodyOptionsResponse {
+async function listPersonTagDistribute(request: ListPersonTagDistributeRequest, runtime: Util.RuntimeOptions): ListPersonTagDistributeResponse {
   Util.validateModel(request);
-  return doRequest('GetBodyOptions', 'HTTPS', 'POST', '2020-05-15', 'AK', null, request, runtime);
+  return doRequest('ListPersonTagDistribute', 'HTTPS', 'POST' , '2020-05-15', 'AK,APP', null, request, runtime);
 }
 
-async function getBodyOptions(request: GetBodyOptionsRequest): GetBodyOptionsResponse {
-  var runtime = new Util.RuntimeOptions{};
-  return getBodyOptionsWithOptions(request, runtime);
+model ListSubscribeDeviceRequest = {
+  pageNum: integer(name='PageNum'),
+  pageSize: integer(name='PageSize'),
 }
 
-model StopMonitorRequest = {
-  taskId?: string(name='TaskId', description='taskId'),
-}
-
-model StopMonitorResponse = {
-  code: string(name='Code', description='code'),
-  data: string(name='Data', description='data'),
-  message: string(name='Message', description='message'),
-  requestId: string(name='RequestId', description='requestId'),
-}
-
-async function stopMonitorWithOptions(request: StopMonitorRequest, runtime: Util.RuntimeOptions): StopMonitorResponse {
-  Util.validateModel(request);
-  return doRequest('StopMonitor', 'HTTPS', 'POST', '2020-05-15', 'AK', null, request, runtime);
-}
-
-async function stopMonitor(request: StopMonitorRequest): StopMonitorResponse {
-  var runtime = new Util.RuntimeOptions{};
-  return stopMonitorWithOptions(request, runtime);
-}
-
-model SearchBodyRequest = {
-  corpId: string(name='CorpId', description='corpId'),
-  gbId?: string(name='GbId', description='gbId'),
-  startTimeStamp: long(name='StartTimeStamp', description='startTimestamp'),
-  endTimeStamp: long(name='EndTimeStamp', description='endTimestamp'),
-  pageNo: integer(name='PageNo', description='pageNo'),
-  pageSize: integer(name='PageSize', description='pageSize'),
-  optionList?: map[string]any(name='OptionList', description='optionList_json'),
-}
-
-model SearchBodyResponse = {
-  code: string(name='Code', description='code'),
-  message: string(name='Message', description='message'),
-  requestId: string(name='RequestId', description='requestId'),
+model ListSubscribeDeviceResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
   data: {
-    pageNo: integer(name='PageNo', description='pageNo'),
-    pageSize: integer(name='PageSize', description='pageSize'),
-    totalCount: integer(name='TotalCount', description='totalCount'),
-    totalPage: integer(name='TotalPage', description='totalPage'),
+    totalCount: integer(name='TotalCount'),
+    subscribeList: [
+      {
+        userId: string(name='UserId'),
+        deviceId: string(name='DeviceId'),
+        pushConfig: string(name='PushConfig'),
+        createTime: string(name='CreateTime'),
+        updateTime: string(name='UpdateTime'),
+      }
+    ](name='SubscribeList'),
+  }(name='Data'),
+}
+
+async function listSubscribeDevice(request: ListSubscribeDeviceRequest, runtime: Util.RuntimeOptions): ListSubscribeDeviceResponse {
+  Util.validateModel(request);
+  return doRequest('ListSubscribeDevice', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model UnsubscribeSpaceEventRequest = {
+  spaceId: string(name='SpaceId'),
+}
+
+model UnsubscribeSpaceEventResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+}
+
+async function unsubscribeSpaceEvent(request: UnsubscribeSpaceEventRequest, runtime: Util.RuntimeOptions): UnsubscribeSpaceEventResponse {
+  Util.validateModel(request);
+  return doRequest('UnsubscribeSpaceEvent', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model SubscribeSpaceEventRequest = {
+  spaceId: string(name='SpaceId'),
+  pushConfig: string(name='PushConfig'),
+}
+
+model SubscribeSpaceEventResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+}
+
+async function subscribeSpaceEvent(request: SubscribeSpaceEventRequest, runtime: Util.RuntimeOptions): SubscribeSpaceEventResponse {
+  Util.validateModel(request);
+  return doRequest('SubscribeSpaceEvent', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model UnsubscribeDeviceEventRequest = {
+  deviceId: string(name='DeviceId'),
+}
+
+model UnsubscribeDeviceEventResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+}
+
+async function unsubscribeDeviceEvent(request: UnsubscribeDeviceEventRequest, runtime: Util.RuntimeOptions): UnsubscribeDeviceEventResponse {
+  Util.validateModel(request);
+  return doRequest('UnsubscribeDeviceEvent', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model SubscribeDeviceEventRequest = {
+  deviceId: string(name='DeviceId'),
+  pushConfig: string(name='PushConfig'),
+}
+
+model SubscribeDeviceEventResponse = {
+  requestId: string(name='RequestId'),
+  code: string(name='Code'),
+  message: string(name='Message'),
+}
+
+async function subscribeDeviceEvent(request: SubscribeDeviceEventRequest, runtime: Util.RuntimeOptions): SubscribeDeviceEventResponse {
+  Util.validateModel(request);
+  return doRequest('SubscribeDeviceEvent', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model ListPersonTraceDetailsRequest = {
+  corpId?: string(name='CorpId'),
+  pageNumber: long(name='PageNumber'),
+  pageSize: long(name='PageSize'),
+  endTime: string(name='EndTime'),
+  personId?: string(name='PersonId'),
+  startTime: string(name='StartTime'),
+  subId?: string(name='SubId'),
+  dataSourceId?: string(name='DataSourceId'),
+}
+
+model ListPersonTraceDetailsResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  pageNumber: long(name='PageNumber'),
+  pageSize: long(name='PageSize'),
+  totalCount: long(name='TotalCount'),
+  totalPage: long(name='TotalPage'),
+  data: [
+    {
+      pageNumber: long(name='PageNumber'),
+      pageSize: long(name='PageSize'),
+      totalCount: long(name='TotalCount'),
+      totalPage: long(name='TotalPage'),
+      targetPicUrlPath: string(name='TargetPicUrlPath'),
+      dataSourceId: string(name='DataSourceId'),
+      personId: string(name='PersonId'),
+      picUrlPath: string(name='PicUrlPath'),
+      rightBottomY: string(name='RightBottomY'),
+      rightBottomX: string(name='RightBottomX'),
+      shotTime: string(name='ShotTime'),
+      corpId: string(name='CorpId'),
+      subId: string(name='SubId'),
+      leftTopY: string(name='LeftTopY'),
+      leftTopX: string(name='LeftTopX'),
+    }
+  ](name='Data'),
+}
+
+async function listPersonTraceDetails(request: ListPersonTraceDetailsRequest, runtime: Util.RuntimeOptions): ListPersonTraceDetailsResponse {
+  Util.validateModel(request);
+  return doRequest('ListPersonTraceDetails', 'HTTPS', 'POST' , '2020-05-15', 'AK,APP', null, request, runtime);
+}
+
+model RemoveDeviceRequest = {
+  deviceCode?: string(name='DeviceCode'),
+  id?: long(name='Id'),
+}
+
+model RemoveDeviceResponse = {
+  requestId: string(name='RequestId'),
+  code: string(name='Code'),
+  message: string(name='Message'),
+  data: string(name='Data'),
+}
+
+async function removeDevice(request: RemoveDeviceRequest, runtime: Util.RuntimeOptions): RemoveDeviceResponse {
+  Util.validateModel(request);
+  return doRequest('RemoveDevice', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model SearchObjectRequest = {
+  corpId: string(name='CorpId'),
+  objectType: string(name='ObjectType'),
+  startTime: long(name='StartTime'),
+  endTime: long(name='EndTime'),
+  pageNumber: integer(name='PageNumber'),
+  pageSize: integer(name='PageSize'),
+  deviceList?: map[string]any(name='DeviceList'),
+  picUrl?: string(name='PicUrl'),
+  conditions?: map[string]any(name='Conditions'),
+  algorithmType?: string(name='AlgorithmType'),
+  imagePath?: map[string]any(name='ImagePath'),
+}
+
+model SearchObjectResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: {
+    pageNumber: integer(name='PageNumber'),
+    pageSize: integer(name='PageSize'),
+    totalCount: integer(name='TotalCount'),
+    totalPage: integer(name='TotalPage'),
     records: [
       {
-        gbId: string(name='GbId', description='deviceGbId'),
-        imageUrl: string(name='ImageUrl', description='imageUrl'),
-        leftTopX: float(name='LeftTopX', description='leftTopX'),
-        leftTopY: float(name='LeftTopY', description='leftTopY'),
-        rightBottomX: float(name='RightBottomX', description='rightBtmX'),
-        rightBottomY: float(name='RightBottomY', description='rightBtmY'),
-        score: float(name='Score', description='score'),
-        targetImageUrl: string(name='TargetImageUrl', description='targetImageUrl'),
+        compareResult: string(name='CompareResult'),
+        deviceID: string(name='DeviceID'),
+        shotTime: long(name='ShotTime'),
+        leftTopX: integer(name='LeftTopX'),
+        leftTopY: integer(name='LeftTopY'),
+        rightBtmX: integer(name='RightBtmX'),
+        rightBtmY: integer(name='RightBtmY'),
+        score: float(name='Score'),
+        sourceID: string(name='SourceID'),
+        sourceImagePath: string(name='SourceImagePath'),
+        sourceImageUrl: string(name='SourceImageUrl'),
+        targetImagePath: string(name='TargetImagePath'),
+        targetImageUrl: string(name='TargetImageUrl'),
       }
-    ](name='Records', description='records'),
-  }(name='Data', description='data'),
+    ](name='Records'),
+  }(name='Data'),
 }
 
-async function searchBodyWithOptions(request: SearchBodyRequest, runtime: Util.RuntimeOptions): SearchBodyResponse {
+async function searchObject(request: SearchObjectRequest, runtime: Util.RuntimeOptions): SearchObjectResponse {
   Util.validateModel(request);
-  return doRequest('SearchBody', 'HTTPS', 'POST', '2020-05-15', 'AK', null, request, runtime);
+  return doRequest('SearchObject', 'HTTP', 'POST' , '2020-05-15', 'AK', null, request, runtime);
 }
 
-async function searchBody(request: SearchBodyRequest): SearchBodyResponse {
-  var runtime = new Util.RuntimeOptions{};
-  return searchBodyWithOptions(request, runtime);
+model GetMonitorListRequest = {
+  corpId: string(name='CorpId'),
+  pageNo: integer(name='PageNo'),
+  pageSize: integer(name='PageSize'),
 }
 
-model AddMonitorRequest = {
-  corpId?: string(name='CorpId', description='corpId'),
-  monitorType?: string(name='MonitorType', description='taskType'),
-  description?: string(name='Description', description='remark'),
-  batchIndicator?: integer(name='BatchIndicator', description='createNewTable'),
-}
-
-model AddMonitorResponse = {
-  requestId: string(name='RequestId', description='requestId'),
-  code: string(name='Code', description='code'),
-  message: string(name='Message', description='message'),
+model GetMonitorListResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
   data: {
-    taskId: string(name='TaskId', description='taskId'),
-  }(name='Data', description='data'),
-}
-
-async function addMonitorWithOptions(request: AddMonitorRequest, runtime: Util.RuntimeOptions): AddMonitorResponse {
-  Util.validateModel(request);
-  return doRequest('AddMonitor', 'HTTPS', 'POST', '2020-05-15', 'AK', null, request, runtime);
-}
-
-async function addMonitor(request: AddMonitorRequest): AddMonitorResponse {
-  var runtime = new Util.RuntimeOptions{};
-  return addMonitorWithOptions(request, runtime);
-}
-
-model GetMonitorResultRequest = {
-  corpId: string(name='CorpId', description='corpId'),
-  taskId: string(name='TaskId', description='taskId'),
-  minRecordId?: string(name='MinRecordId', description='minId'),
-  startTime?: long(name='StartTime', description='startTime'),
-  endTime?: long(name='EndTime', description='endTime'),
-}
-
-model GetMonitorResultResponse = {
-  code: string(name='Code', description='code'),
-  message: string(name='Message', description='message'),
-  requestId: string(name='RequestId', description='requestId'),
-  data: {
-    maxId: string(name='MaxId', description='maxId'),
+    pageNo: integer(name='PageNo'),
+    pageSize: integer(name='PageSize'),
+    totalCount: integer(name='TotalCount'),
+    totalPage: integer(name='TotalPage'),
     records: [
       {
-        rightBottomY: string(name='RightBottomY', description='yxjyzb'),
-        rightBottomX: string(name='RightBottomX', description='yxjxzb'),
-        leftUpY: string(name='LeftUpY', description='zsjyzb'),
-        leftUpX: string(name='LeftUpX', description='zsjxzb'),
-        gbId: string(name='GbId', description='sxtid'),
-        score: string(name='Score', description='xsd'),
-        picUrl: string(name='PicUrl', description='cjtid'),
-        shotTime: string(name='ShotTime', description='bdsj'),
-        monitorPicUrl: string(name='MonitorPicUrl', description='bktid'),
+        taskId: string(name='TaskId'),
+        status: string(name='Status'),
+        monitorType: string(name='MonitorType'),
+        ruleName: string(name='RuleName'),
+        algorithmVendor: string(name='AlgorithmVendor'),
+        createDate: string(name='CreateDate'),
+        modifiedDate: string(name='ModifiedDate'),
+        deviceList: string(name='DeviceList'),
+        attributes: string(name='Attributes'),
+        ruleExpression: string(name='RuleExpression'),
+        notifierType: string(name='NotifierType'),
+        notifierExtra: string(name='NotifierExtra'),
+        description: string(name='Description'),
+        expression: string(name='Expression'),
+        imageMatch: string(name='ImageMatch'),
       }
-    ](name='Records', description='vcsRealMatchResultDOS'),
-  }(name='Data', description='data'),
+    ](name='Records'),
+  }(name='Data'),
 }
 
-async function getMonitorResultWithOptions(request: GetMonitorResultRequest, runtime: Util.RuntimeOptions): GetMonitorResultResponse {
+async function getMonitorList(request: GetMonitorListRequest, runtime: Util.RuntimeOptions): GetMonitorListResponse {
   Util.validateModel(request);
-  return doRequest('GetMonitorResult', 'HTTPS', 'POST', '2020-05-15', 'AK', null, request, runtime);
+  return doRequest('GetMonitorList', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
 }
 
-async function getMonitorResult(request: GetMonitorResultRequest): GetMonitorResultResponse {
-  var runtime = new Util.RuntimeOptions{};
-  return getMonitorResultWithOptions(request, runtime);
+model TestJavaAddRequest = {
 }
 
-model UpdateMonitorRequest = {
-  corpId?: string(name='CorpId', description='corpId'),
-  taskId?: string(name='TaskId', description='taskId'),
-  ruleName?: string(name='RuleName', description='ruleName'),
-  deviceOperateType?: string(name='DeviceOperateType', description='cameraOperType'),
-  deviceList?: string(name='DeviceList', description='cameraIdList'),
-  picOperateType?: string(name='PicOperateType', description='picOperType'),
-  picList?: string(name='PicList', description='picList'),
-  attributeOperateType?: string(name='AttributeOperateType', description='attrOperType'),
-  attributeName?: string(name='AttributeName', description='attrName'),
-  attributeValueList?: string(name='AttributeValueList', description='attrValueList'),
-  description?: string(name='Description', description='remark'),
-  ruleExpression?: string(name='RuleExpression', description='rawExpression'),
-}
-
-model UpdateMonitorResponse = {
-  code: string(name='Code', description='code'),
-  data: string(name='Data', description='data'),
-  message: string(name='Message', description='message'),
-  requestId: string(name='RequestId', description='requestId'),
-}
-
-async function updateMonitorWithOptions(request: UpdateMonitorRequest, runtime: Util.RuntimeOptions): UpdateMonitorResponse {
-  Util.validateModel(request);
-  return doRequest('UpdateMonitor', 'HTTPS', 'POST', '2020-05-15', 'AK', null, request, runtime);
-}
-
-async function updateMonitor(request: UpdateMonitorRequest): UpdateMonitorResponse {
-  var runtime = new Util.RuntimeOptions{};
-  return updateMonitorWithOptions(request, runtime);
-}
-
-model GetDeviceVideoUrlRequest = {
-  corpId: string(name='CorpId', description='corpId'),
-  gbId?: string(name='GbId', description='gbId'),
-  startTime?: long(name='StartTime', description='startTimestamp'),
-  endTime?: long(name='EndTime', description='endTimestamp'),
-}
-
-model GetDeviceVideoUrlResponse = {
-  code: string(name='Code', description='code'),
-  message: string(name='Message', description='message'),
-  requestId: string(name='RequestId', description='requestId'),
-  url: string(name='Url', description='data'),
-}
-
-async function getDeviceVideoUrlWithOptions(request: GetDeviceVideoUrlRequest, runtime: Util.RuntimeOptions): GetDeviceVideoUrlResponse {
-  Util.validateModel(request);
-  return doRequest('GetDeviceVideoUrl', 'HTTPS', 'POST', '2020-05-15', 'AK', null, request, runtime);
-}
-
-async function getDeviceVideoUrl(request: GetDeviceVideoUrlRequest): GetDeviceVideoUrlResponse {
-  var runtime = new Util.RuntimeOptions{};
-  return getDeviceVideoUrlWithOptions(request, runtime);
-}
-
-model GetInventoryRequest = {
-  commodityCode?: string(name='CommodityCode', description='commodityCode'),
-}
-
-model GetInventoryResponse = {
-  success: boolean(name='Success', description='Success'),
+model TestJavaAddResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  success: boolean(name='Success'),
   data: {
     resultObject: [
       {
-        buyerId: string(name='BuyerId', description='buyerId'),
-        commodityCode: string(name='CommodityCode', description='commodityCode'),
-        currentInventory: string(name='CurrentInventory', description='currentInventory'),
-        validEndTime: string(name='ValidEndTime', description='gmtValidEndTime'),
-        validStartTime: string(name='ValidStartTime', description='gmtValidStartTime'),
-        instanceId: string(name='InstanceId', description='instanceId'),
-        inventoryId: string(name='InventoryId', description='inventoryId'),
+        categoryId: string(name='CategoryId'),
+        categoryName: string(name='CategoryName'),
+        displayIndex: integer(name='DisplayIndex'),
+        level: integer(name='Level'),
+        match: boolean(name='Match'),
+        parentCategoryId: string(name='ParentCategoryId'),
       }
-    ](name='ResultObject', description='resultObject'),
-  }(name='Data', description='Data'),
+    ](name='ResultObject'),
+  }(name='Data'),
 }
 
-async function getInventoryWithOptions(request: GetInventoryRequest, runtime: Util.RuntimeOptions): GetInventoryResponse {
+async function testJavaAdd(request: TestJavaAddRequest, runtime: Util.RuntimeOptions): TestJavaAddResponse {
   Util.validateModel(request);
-  return doRequest('GetInventory', 'HTTPS', 'POST', '2020-05-15', 'AK', null, request, runtime);
+  return doRequest('TestJavaAdd', 'HTTPS', 'POST' , '2020-05-15', 'Anonymous', null, request, runtime);
 }
 
-async function getInventory(request: GetInventoryRequest): GetInventoryResponse {
-  var runtime = new Util.RuntimeOptions{};
-  return getInventoryWithOptions(request, runtime);
+model TestJavaAddzyqRequest = {
 }
 
-model RecognizeImageRequest = {
-  corpId: string(name='CorpId', description='corpId'),
-  picContent: string(name='PicContent', description='picContent'),
-  picFormat: string(name='PicFormat', description='picFormat'),
-}
-
-model RecognizeImageResponse = {
-  code: string(name='Code', description='code'),
-  message: string(name='Message', description='message'),
-  requestId: string(name='RequestId', description='requestId'),
+model TestJavaAddzyqResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  success: boolean(name='Success'),
   data: {
-    bodyList: [
+    resultObject: [
       {
-        feature: string(name='Feature', description='feature'),
-        fileName: string(name='FileName', description='fileName'),
-        imageBaseSixFour: string(name='ImageBaseSixFour', description='imgBase64'),
-        leftTopX: string(name='LeftTopX', description='leftTopX'),
-        leftTopY: string(name='LeftTopY', description='leftTopY'),
-        localFeature: string(name='LocalFeature', description='localFeature'),
-        respiratorColor: string(name='RespiratorColor', description='respiratorColor'),
-        rightBottomX: string(name='RightBottomX', description='rightBtmX'),
-        rightBottomY: string(name='RightBottomY', description='rightBtmY'),
+        categoryId: string(name='CategoryId'),
+        categoryName: string(name='CategoryName'),
+        displayIndex: integer(name='DisplayIndex'),
+        level: integer(name='Level'),
+        match: boolean(name='Match'),
+        parentCategoryId: string(name='ParentCategoryId'),
       }
-    ](name='BodyList', description='bodyList'),
-    faceList: [
-      {
-        feature: string(name='Feature', description='feature'),
-        fileName: string(name='FileName', description='fileName'),
-        imageBaseSixFour: string(name='ImageBaseSixFour', description='imgBase64'),
-        leftTopX: string(name='LeftTopX', description='leftTopX'),
-        leftTopY: string(name='LeftTopY', description='leftTopY'),
-        localFeature: string(name='LocalFeature', description='localFeature'),
-        respiratorColor: string(name='RespiratorColor', description='respiratorColor'),
-        rightBottomX: string(name='RightBottomX', description='rightBtmX'),
-        rightBottomY: string(name='RightBottomY', description='rightBtmY'),
-      }
-    ](name='FaceList', description='faceList'),
-  }(name='Data', description='data'),
+    ](name='ResultObject'),
+  }(name='Data'),
 }
 
-async function recognizeImageWithOptions(request: RecognizeImageRequest, runtime: Util.RuntimeOptions): RecognizeImageResponse {
+async function testJavaAddzyq(request: TestJavaAddzyqRequest, runtime: Util.RuntimeOptions): TestJavaAddzyqResponse {
   Util.validateModel(request);
-  return doRequest('RecognizeImage', 'HTTPS', 'POST', '2020-05-15', 'AK', null, request, runtime);
+  return doRequest('TestJavaAddzyq', 'HTTPS', 'POST' , '2020-05-15', 'Anonymous', null, request, runtime);
 }
 
-async function recognizeImage(request: RecognizeImageRequest): RecognizeImageResponse {
-  var runtime = new Util.RuntimeOptions{};
-  return recognizeImageWithOptions(request, runtime);
+model TestPopAddRequest = {
+  requestId?: string(name='RequestId'),
 }
 
-model ListCorpsRequest = {
-  pageNumber: integer(name='PageNumber', description='pageNo'),
-  pageSize: integer(name='PageSize', description='pageSize'),
-}
-
-model ListCorpsResponse = {
-  code: string(name='Code', description='code'),
-  message: string(name='Message', description='message'),
-  requestId: string(name='RequestId', description='requestId'),
+model TestPopAddResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  success: boolean(name='Success'),
   data: {
-    pageNumber: integer(name='PageNumber', description='pageNo'),
-    pageSize: integer(name='PageSize', description='pageSize'),
-    totalCount: integer(name='TotalCount', description='totalCount'),
-    totalPage: integer(name='TotalPage', description='totalPage'),
+    resultObject: {
+      bodyCnt: long(name='BodyCnt'),
+      deviceCnt: integer(name='DeviceCnt'),
+      eventCnt: long(name='EventCnt'),
+      faceCnt: long(name='FaceCnt'),
+      groupCnt: integer(name='GroupCnt'),
+      motorCnt: long(name='MotorCnt'),
+      noMotorCnt: long(name='NoMotorCnt'),
+      purchaseCnt: integer(name='PurchaseCnt'),
+    }(name='ResultObject'),
+  }(name='Data'),
+}
+
+async function testPopAdd(request: TestPopAddRequest, runtime: Util.RuntimeOptions): TestPopAddResponse {
+  Util.validateModel(request);
+  return doRequest('TestPopAdd', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model TestOpenApiAddRequest = {
+}
+
+model TestOpenApiAddResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  success: boolean(name='Success'),
+  data: {
+    resultObject: [
+      {
+        categoryId: string(name='CategoryId'),
+        categoryName: string(name='CategoryName'),
+        displayIndex: integer(name='DisplayIndex'),
+        level: integer(name='Level'),
+        match: boolean(name='Match'),
+        parentCategoryId: string(name='ParentCategoryId'),
+      }
+    ](name='ResultObject'),
+  }(name='Data'),
+}
+
+async function testOpenApiAdd(request: TestOpenApiAddRequest, runtime: Util.RuntimeOptions): TestOpenApiAddResponse {
+  Util.validateModel(request);
+  return doRequest('TestOpenApiAdd', 'HTTPS', 'POST' , '2020-05-15', 'Anonymous', null, request, runtime);
+}
+
+model ListDeviceGroupsRequest = {
+  deviceCodeList?: string(name='DeviceCodeList'),
+  corpIdList?: string(name='CorpIdList'),
+  name?: string(name='Name'),
+  isPage: integer(name='IsPage'),
+  pageNum: integer(name='PageNum'),
+  pageSize: integer(name='PageSize'),
+  group?: string(name='Group'),
+}
+
+model ListDeviceGroupsResponse = {
+  requestId: string(name='RequestId'),
+  code: string(name='Code'),
+  message: string(name='Message'),
+  data: [
+    {
+      totalCount: string(name='TotalCount'),
+      list: [
+        {
+          deviceGroup: string(name='DeviceGroup'),
+          deviceName: string(name='DeviceName'),
+          deviceCode: string(name='DeviceCode'),
+          bitRate: string(name='BitRate'),
+          codingFormat: string(name='CodingFormat'),
+          resolvingPower: string(name='ResolvingPower'),
+          dataSourceType: string(name='DataSourceType'),
+          regionName: string(name='RegionName'),
+          regionId: string(name='RegionId'),
+          installAddress: string(name='InstallAddress'),
+          deviceSn: string(name='DeviceSn'),
+          deviceStatus: string(name='DeviceStatus'),
+          deviceStreamStatus: string(name='DeviceStreamStatus'),
+          deviceComputeStatus: string(name='DeviceComputeStatus'),
+        }
+      ](name='List'),
+    }
+  ](name='Data'),
+}
+
+async function listDeviceGroups(request: ListDeviceGroupsRequest, runtime: Util.RuntimeOptions): ListDeviceGroupsResponse {
+  Util.validateModel(request);
+  return doRequest('ListDeviceGroups', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model ListDeviceLabelsRequest = {
+  name?: string(name='Name'),
+}
+
+model ListDeviceLabelsResponse = {
+  requestId: string(name='RequestId'),
+  code: string(name='Code'),
+  message: string(name='Message'),
+  data: [
+    {
+      deviceCode: string(name='DeviceCode'),
+      deviceName: string(name='DeviceName'),
+    }
+  ](name='Data'),
+}
+
+async function listDeviceLabels(request: ListDeviceLabelsRequest, runtime: Util.RuntimeOptions): ListDeviceLabelsResponse {
+  Util.validateModel(request);
+  return doRequest('ListDeviceLabels', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model LablesRequest = {
+  deviceCode: string(name='DeviceCode'),
+}
+
+model LablesResponse = {
+  requestId: string(name='RequestId'),
+  code: string(name='Code'),
+  message: string(name='Message'),
+  data: [
+    {
+      id: string(name='Id'),
+      type: string(name='Type'),
+      deviceCode: string(name='DeviceCode'),
+      labelName: string(name='LabelName'),
+      labelValue: string(name='LabelValue'),
+    }
+  ](name='Data'),
+}
+
+async function lables(request: LablesRequest, runtime: Util.RuntimeOptions): LablesResponse {
+  Util.validateModel(request);
+  return doRequest('Lables', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model GetDeviceExportRequest = {
+  isPage?: integer(name='IsPage'),
+  pageSize?: integer(name='PageSize'),
+  pageNum?: integer(name='PageNum'),
+  searcher?: string(name='Searcher'),
+  deviceGroupNameSearcher?: string(name='DeviceGroupNameSearcher'),
+  regionSearcher?: string(name='RegionSearcher'),
+  streamStatusSearcher?: string(name='StreamStatusSearcher'),
+  deviceStatusSearcher?: string(name='DeviceStatusSearcher'),
+  comptureStatusSercher?: string(name='ComptureStatusSercher'),
+  dataSourceType?: string(name='DataSourceType'),
+  corpIdList?: string(name='CorpIdList'),
+}
+
+model GetDeviceExportResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: string(name='Data'),
+}
+
+async function getDeviceExport(request: GetDeviceExportRequest, runtime: Util.RuntimeOptions): GetDeviceExportResponse {
+  Util.validateModel(request);
+  return doRequest('GetDeviceExport', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model ListRegionNameRequest = {
+}
+
+model ListRegionNameResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: [
+    {
+      regionName: string(name='RegionName'),
+    }
+  ](name='Data'),
+}
+
+async function listRegionName(request: ListRegionNameRequest, runtime: Util.RuntimeOptions): ListRegionNameResponse {
+  Util.validateModel(request);
+  return doRequest('ListRegionName', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model ListLableRequest = {
+}
+
+model ListLableResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: [
+    {
+      type: string(name='Type'),
+      name: string(name='Name'),
+      list: [
+        {
+          type: string(name='Type'),
+          value: string(name='Value'),
+          id: string(name='Id'),
+        }
+      ](name='List'),
+    }
+  ](name='Data'),
+}
+
+async function listLable(request: ListLableRequest, runtime: Util.RuntimeOptions): ListLableResponse {
+  Util.validateModel(request);
+  return doRequest('ListLable', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model GetLablesRequest = {
+  deviceCode: string(name='DeviceCode'),
+}
+
+model GetLablesResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: [
+    {
+      deviceCode: string(name='DeviceCode'),
+      id: string(name='Id'),
+      labelName: string(name='LabelName'),
+      labelValue: string(name='LabelValue'),
+      type: string(name='Type'),
+    }
+  ](name='Data'),
+}
+
+async function getLables(request: GetLablesRequest, runtime: Util.RuntimeOptions): GetLablesResponse {
+  Util.validateModel(request);
+  return doRequest('GetLables', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model GetDeviceVideoDataRequest = {
+  deviceCode: string(name='DeviceCode'),
+  protocol: string(name='Protocol'),
+  startTime: string(name='StartTime'),
+  endTime: string(name='EndTime'),
+}
+
+model GetDeviceVideoDataResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  success: boolean(name='Success'),
+  requestId: string(name='RequestId'),
+  data: {
+    outProtocol: string(name='OutProtocol'),
+    url: string(name='Url'),
+  }(name='Data'),
+}
+
+async function getDeviceVideoData(request: GetDeviceVideoDataRequest, runtime: Util.RuntimeOptions): GetDeviceVideoDataResponse {
+  Util.validateModel(request);
+  return doRequest('GetDeviceVideoData', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model GetDeviceLiveDataRequest = {
+  deviceCode: string(name='DeviceCode'),
+  protocol: string(name='Protocol'),
+}
+
+model GetDeviceLiveDataResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  success: boolean(name='Success'),
+  requestId: string(name='RequestId'),
+  data: {
+    outProtocol: string(name='OutProtocol'),
+    url: string(name='Url'),
+  }(name='Data'),
+}
+
+async function getDeviceLiveData(request: GetDeviceLiveDataRequest, runtime: Util.RuntimeOptions): GetDeviceLiveDataResponse {
+  Util.validateModel(request);
+  return doRequest('GetDeviceLiveData', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model DeleteGraphParamersForDeviceRequest = {
+  screenId: string(name='ScreenId'),
+  graphId: integer(name='GraphId'),
+}
+
+model DeleteGraphParamersForDeviceResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  success: boolean(name='Success'),
+  requestId: string(name='RequestId'),
+}
+
+async function deleteGraphParamersForDevice(request: DeleteGraphParamersForDeviceRequest, runtime: Util.RuntimeOptions): DeleteGraphParamersForDeviceResponse {
+  Util.validateModel(request);
+  return doRequest('DeleteGraphParamersForDevice', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model SaveGraphParamersForDeviceRequest = {
+  externalId: integer(name='ExternalId'),
+  parameterType: string(name='ParameterType'),
+  parameterData: string(name='ParameterData'),
+  algorithmTypes: string(name='AlgorithmTypes'),
+  locateId: integer(name='LocateId'),
+}
+
+model SaveGraphParamersForDeviceResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: [
+    {
+      parameterId: integer(name='ParameterId'),
+      externalId: integer(name='ExternalId'),
+      parameterType: string(name='ParameterType'),
+      invalid: integer(name='Invalid'),
+      parameterData: string(name='ParameterData'),
+    }
+  ](name='Data'),
+}
+
+async function saveGraphParamersForDevice(request: SaveGraphParamersForDeviceRequest, runtime: Util.RuntimeOptions): SaveGraphParamersForDeviceResponse {
+  Util.validateModel(request);
+  return doRequest('SaveGraphParamersForDevice', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model DeleteLableRequest = {
+  id: long(name='Id'),
+}
+
+model DeleteLableResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  data: string(name='Data'),
+  requestId: string(name='RequestId'),
+}
+
+async function deleteLable(request: DeleteLableRequest, runtime: Util.RuntimeOptions): DeleteLableResponse {
+  Util.validateModel(request);
+  return doRequest('DeleteLable', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model UpdateBaseInfoRequest = {
+  name?: string(name='Name'),
+  installAddress?: string(name='InstallAddress'),
+  ip?: string(name='Ip'),
+  corpId?: string(name='CorpId'),
+  lonAndLat?: string(name='LonAndLat'),
+  deviceCode: string(name='DeviceCode'),
+}
+
+model UpdateBaseInfoResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  data: long(name='Data'),
+  requestId: string(name='RequestId'),
+}
+
+async function updateBaseInfo(request: UpdateBaseInfoRequest, runtime: Util.RuntimeOptions): UpdateBaseInfoResponse {
+  Util.validateModel(request);
+  return doRequest('UpdateBaseInfo', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model GetPersonListTestRequest = {
+  pageNumber: long(name='PageNumber'),
+  pageSize: long(name='PageSize'),
+  faceUrl?: string(name='FaceUrl'),
+  corpIdList?: map[string]any(name='CorpIdList'),
+  faceMatchingRateThreshold?: string(name='FaceMatchingRateThreshold'),
+  corpId?: string(name='CorpId'),
+  personIdList?: [ string ](name='PersonIdList'),
+}
+
+model GetPersonListTestResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: {
+    pageNumber: long(name='PageNumber'),
+    pageSize: long(name='PageSize'),
+    totalCount: long(name='TotalCount'),
     records: [
       {
-        corpId: string(name='CorpId', description='corpId'),
-        corpName: string(name='CorpName', description='corpName'),
-        description: string(name='Description', description='description'),
-        createDate: string(name='CreateDate', description='gmtCreate'),
-        parentCorpId: string(name='ParentCorpId', description='parentCorpId'),
-        appName: string(name='AppName', description='isvName'),
-        deviceCount: integer(name='DeviceCount', description='deviceCount'),
+        faceUrl: string(name='FaceUrl'),
+        firstShotTime: long(name='FirstShotTime'),
+        personId: string(name='PersonId'),
+        searchMatchingRate: string(name='SearchMatchingRate'),
+        propertyTagList: [
+          {
+            code: string(name='Code'),
+            tagCodeName: string(name='TagCodeName'),
+            tagName: string(name='TagName'),
+            value: string(name='Value'),
+          }
+        ](name='PropertyTagList'),
       }
-    ](name='Records', description='records'),
-  }(name='Data', description='data'),
+    ](name='Records'),
+  }(name='Data'),
 }
 
-async function listCorpsWithOptions(request: ListCorpsRequest, runtime: Util.RuntimeOptions): ListCorpsResponse {
+async function getPersonListTest(request: GetPersonListTestRequest, runtime: Util.RuntimeOptions): GetPersonListTestResponse {
   Util.validateModel(request);
-  return doRequest('ListCorps', 'HTTPS', 'POST', '2020-05-15', 'AK,APP', null, request, runtime);
+  return doRequest('GetPersonListTest', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
 }
 
-async function listCorps(request: ListCorpsRequest): ListCorpsResponse {
-  var runtime = new Util.RuntimeOptions{};
-  return listCorpsWithOptions(request, runtime);
+model GetProfileDetailRequest = {
+  corpId?: string(name='CorpId'),
+  isvSubId: string(name='IsvSubId'),
+  profileId: long(name='ProfileId'),
+}
+
+model GetProfileDetailResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: {
+    liveAddress: string(name='LiveAddress'),
+    sceneType: string(name='SceneType'),
+    bizId: string(name='BizId'),
+    faceUrl: string(name='FaceUrl'),
+    gender: string(name='Gender'),
+    idNumber: string(name='IdNumber'),
+    isvSubId: string(name='IsvSubId'),
+    phoneNo: string(name='PhoneNo'),
+    plateNo: string(name='PlateNo'),
+    catalogId: integer(name='CatalogId'),
+    profileId: integer(name='ProfileId'),
+    name: string(name='Name'),
+    personId: string(name='PersonId'),
+  }(name='Data'),
+}
+
+async function getProfileDetail(request: GetProfileDetailRequest, runtime: Util.RuntimeOptions): GetProfileDetailResponse {
+  Util.validateModel(request);
+  return doRequest('GetProfileDetail', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model UnbindPersonRequest = {
+  corpId?: string(name='CorpId'),
+  isvSubId: string(name='IsvSubId'),
+  profileId: long(name='ProfileId'),
+}
+
+model UnbindPersonResponse = {
+  code: string(name='Code'),
+  data: boolean(name='Data'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+}
+
+async function unbindPerson(request: UnbindPersonRequest, runtime: Util.RuntimeOptions): UnbindPersonResponse {
+  Util.validateModel(request);
+  return doRequest('UnbindPerson', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model GetCatalogListRequest = {
+  corpId?: string(name='CorpId'),
+  isvSubId: string(name='IsvSubId'),
+}
+
+model GetCatalogListResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: [
+    {
+      isvSubId: string(name='IsvSubId'),
+      parentCatalogId: long(name='ParentCatalogId'),
+      profileCount: long(name='ProfileCount'),
+      catalogId: long(name='CatalogId'),
+      catalogName: string(name='CatalogName'),
+    }
+  ](name='Data'),
+}
+
+async function getCatalogList(request: GetCatalogListRequest, runtime: Util.RuntimeOptions): GetCatalogListResponse {
+  Util.validateModel(request);
+  return doRequest('GetCatalogList', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model UpdateProfileRequest = {
+  corpId?: string(name='CorpId'),
+  isvSubId: string(name='IsvSubId'),
+  name?: string(name='Name'),
+  catalogId: long(name='CatalogId'),
+  idNumber?: string(name='IdNumber'),
+  faceUrl?: string(name='FaceUrl'),
+  liveAddress?: string(name='LiveAddress'),
+  gender?: integer(name='Gender'),
+  plateNo?: string(name='PlateNo'),
+  phoneNo?: string(name='PhoneNo'),
+  sceneType?: string(name='SceneType'),
+  bizId?: string(name='BizId'),
+  profileId: long(name='ProfileId'),
+}
+
+model UpdateProfileResponse = {
+  code: string(name='Code'),
+  data: string(name='Data'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+}
+
+async function updateProfile(request: UpdateProfileRequest, runtime: Util.RuntimeOptions): UpdateProfileResponse {
+  Util.validateModel(request);
+  return doRequest('UpdateProfile', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model GetProfileListRequest = {
+  corpId?: string(name='CorpId'),
+  isvSubId: string(name='IsvSubId'),
+  name?: string(name='Name'),
+  catalogId?: long(name='CatalogId'),
+  idNumber?: string(name='IdNumber'),
+  faceUrl?: string(name='FaceUrl'),
+  liveAddress?: string(name='LiveAddress'),
+  gender?: integer(name='Gender'),
+  plateNo?: string(name='PlateNo'),
+  phoneNo?: string(name='PhoneNo'),
+  sceneType?: string(name='SceneType'),
+  bizId?: string(name='BizId'),
+  pageNumber: long(name='PageNumber'),
+  pageSize: long(name='PageSize'),
+  personIdList?: map[string]any(name='PersonIdList'),
+  profileIdList?: map[string]any(name='ProfileIdList'),
+  matchingRateThreshold?: string(name='MatchingRateThreshold'),
+  faceImageId?: string(name='FaceImageId'),
+}
+
+model GetProfileListResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: {
+    pageNumber: long(name='PageNumber'),
+    pageSize: long(name='PageSize'),
+    success: boolean(name='Success'),
+    total: long(name='Total'),
+    records: [
+      {
+        sceneType: string(name='SceneType'),
+        bizId: string(name='BizId'),
+        faceUrl: string(name='FaceUrl'),
+        gender: string(name='Gender'),
+        idNumber: string(name='IdNumber'),
+        isvSubId: string(name='IsvSubId'),
+        searchMatchingRate: string(name='SearchMatchingRate'),
+        personId: string(name='PersonId'),
+        catalogId: integer(name='CatalogId'),
+        profileId: integer(name='ProfileId'),
+        name: string(name='Name'),
+      }
+    ](name='Records'),
+  }(name='Data'),
+}
+
+async function getProfileList(request: GetProfileListRequest, runtime: Util.RuntimeOptions): GetProfileListResponse {
+  Util.validateModel(request);
+  return doRequest('GetProfileList', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model BindPersonRequest = {
+  corpId?: string(name='CorpId'),
+  isvSubId: string(name='IsvSubId'),
+  personMatchingRate: string(name='PersonMatchingRate'),
+  personId: string(name='PersonId'),
+  profileId: long(name='ProfileId'),
+}
+
+model BindPersonResponse = {
+  code: string(name='Code'),
+  data: boolean(name='Data'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+}
+
+async function bindPerson(request: BindPersonRequest, runtime: Util.RuntimeOptions): BindPersonResponse {
+  Util.validateModel(request);
+  return doRequest('BindPerson', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model UpdateProfileCatalogRequest = {
+  corpId?: string(name='CorpId'),
+  isvSubId: string(name='IsvSubId'),
+  catalogId: long(name='CatalogId'),
+  catalogName: string(name='CatalogName'),
+}
+
+model UpdateProfileCatalogResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: {
+    isvSubId: string(name='IsvSubId'),
+    parentCatalogId: string(name='ParentCatalogId'),
+    profileCount: long(name='ProfileCount'),
+    catalogId: long(name='CatalogId'),
+    catalogName: string(name='CatalogName'),
+  }(name='Data'),
+}
+
+async function updateProfileCatalog(request: UpdateProfileCatalogRequest, runtime: Util.RuntimeOptions): UpdateProfileCatalogResponse {
+  Util.validateModel(request);
+  return doRequest('UpdateProfileCatalog', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model DeleteProfileRequest = {
+  corpId?: string(name='CorpId'),
+  isvSubId: string(name='IsvSubId'),
+  profileId: long(name='ProfileId'),
+}
+
+model DeleteProfileResponse = {
+  code: string(name='Code'),
+  data: boolean(name='Data'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+}
+
+async function deleteProfile(request: DeleteProfileRequest, runtime: Util.RuntimeOptions): DeleteProfileResponse {
+  Util.validateModel(request);
+  return doRequest('DeleteProfile', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model DeleteProfileCatalogRequest = {
+  corpId?: string(name='CorpId'),
+  isvSubId: string(name='IsvSubId'),
+  catalogId: string(name='CatalogId'),
+}
+
+model DeleteProfileCatalogResponse = {
+  code: string(name='Code'),
+  data: boolean(name='Data'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+}
+
+async function deleteProfileCatalog(request: DeleteProfileCatalogRequest, runtime: Util.RuntimeOptions): DeleteProfileCatalogResponse {
+  Util.validateModel(request);
+  return doRequest('DeleteProfileCatalog', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model GetPersonListRequest = {
+  pageNumber: long(name='PageNumber'),
+  pageSize: long(name='PageSize'),
+  faceUrl?: string(name='FaceUrl'),
+  corpIdList?: map[string]any(name='CorpIdList'),
+  faceMatchingRateThreshold?: string(name='FaceMatchingRateThreshold'),
+  corpId?: string(name='CorpId'),
+  personIdList?: map[string]any(name='PersonIdList'),
+}
+
+model GetPersonListResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: {
+    pageNumber: long(name='PageNumber'),
+    pageSize: long(name='PageSize'),
+    totalCount: long(name='TotalCount'),
+    records: [
+      {
+        faceUrl: string(name='FaceUrl'),
+        firstShotTime: long(name='FirstShotTime'),
+        personId: string(name='PersonId'),
+        searchMatchingRate: string(name='SearchMatchingRate'),
+        lastShotTime: long(name='LastShotTime'),
+        propertyTagList: [
+          {
+            code: string(name='Code'),
+            tagCodeName: string(name='TagCodeName'),
+            tagName: string(name='TagName'),
+            value: string(name='Value'),
+          }
+        ](name='PropertyTagList'),
+      }
+    ](name='Records'),
+  }(name='Data'),
+}
+
+async function getPersonList(request: GetPersonListRequest, runtime: Util.RuntimeOptions): GetPersonListResponse {
+  Util.validateModel(request);
+  return doRequest('GetPersonList', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model BindCorpGroupRequest = {
+  corpId: string(name='CorpId'),
+  corpGroupId: string(name='CorpGroupId'),
+}
+
+model BindCorpGroupResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  success: boolean(name='Success'),
+}
+
+async function bindCorpGroup(request: BindCorpGroupRequest, runtime: Util.RuntimeOptions): BindCorpGroupResponse {
+  Util.validateModel(request);
+  return doRequest('BindCorpGroup', 'HTTP', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model UnbindCorpGroupRequest = {
+  corpId: string(name='CorpId'),
+  corpGroupId: string(name='CorpGroupId'),
+}
+
+model UnbindCorpGroupResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  success: boolean(name='Success'),
+}
+
+async function unbindCorpGroup(request: UnbindCorpGroupRequest, runtime: Util.RuntimeOptions): UnbindCorpGroupResponse {
+  Util.validateModel(request);
+  return doRequest('UnbindCorpGroup', 'HTTP', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model CreateUserRequest = {
+  corpId?: string(name='CorpId'),
+  isvSubId: string(name='IsvSubId'),
+  userName: string(name='UserName'),
+  userGroupId: long(name='UserGroupId'),
+  idNumber?: string(name='IdNumber'),
+  faceImageUrl?: string(name='FaceImageUrl'),
+  address?: string(name='Address'),
+  age?: integer(name='Age'),
+  gender?: integer(name='Gender'),
+  plateNo?: string(name='PlateNo'),
+  phoneNo?: string(name='PhoneNo'),
+  attachment?: string(name='Attachment'),
+  bizId?: string(name='BizId'),
+  creator: string(name='Creator'),
+}
+
+model CreateUserResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  creator: string(name='Creator'),
+  data: {
+    userId: integer(name='UserId'),
+    isvSubId: string(name='IsvSubId'),
+    userName: string(name='UserName'),
+    userGroupId: integer(name='UserGroupId'),
+    idNumber: string(name='IdNumber'),
+    faceImageUrl: string(name='FaceImageUrl'),
+    address: string(name='Address'),
+    age: string(name='Age'),
+    gender: string(name='Gender'),
+    plateNo: string(name='PlateNo'),
+    phoneNo: string(name='PhoneNo'),
+    attachment: string(name='Attachment'),
+    bizId: string(name='BizId'),
+  }(name='Data'),
+}
+
+async function createUser(request: CreateUserRequest, runtime: Util.RuntimeOptions): CreateUserResponse {
+  Util.validateModel(request);
+  return doRequest('CreateUser', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model ListUsersRequest = {
+  corpId?: string(name='CorpId'),
+  isvSubId: string(name='IsvSubId'),
+  userName?: string(name='UserName'),
+  userGroupId?: long(name='UserGroupId'),
+  idNumber?: string(name='IdNumber'),
+  faceImageUrl?: string(name='FaceImageUrl'),
+  address?: string(name='Address'),
+  age?: integer(name='Age'),
+  gender?: integer(name='Gender'),
+  plateNo?: string(name='PlateNo'),
+  phoneNo?: string(name='PhoneNo'),
+  attachment?: string(name='Attachment'),
+  bizId?: string(name='BizId'),
+  pageNumber: long(name='PageNumber'),
+  pageSize: long(name='PageSize'),
+  personList?: map[string]any(name='PersonList'),
+  userList?: map[string]any(name='UserList'),
+  matchingRateThreshold?: string(name='MatchingRateThreshold'),
+}
+
+model ListUsersResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: {
+    pageNumber: long(name='PageNumber'),
+    pageSize: long(name='PageSize'),
+    success: long(name='Success'),
+    total: long(name='Total'),
+    records: [
+      {
+        userGroupId: integer(name='UserGroupId'),
+        age: string(name='Age'),
+        attachment: string(name='Attachment'),
+        bizId: string(name='BizId'),
+        faceImageUrl: string(name='FaceImageUrl'),
+        gender: string(name='Gender'),
+        idNumber: string(name='IdNumber'),
+        userId: integer(name='UserId'),
+        userName: string(name='UserName'),
+        isvSubId: string(name='IsvSubId'),
+        matchingRate: string(name='MatchingRate'),
+        personId: string(name='PersonId'),
+      }
+    ](name='Records'),
+  }(name='Data'),
+}
+
+async function listUsers(request: ListUsersRequest, runtime: Util.RuntimeOptions): ListUsersResponse {
+  Util.validateModel(request);
+  return doRequest('ListUsers', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model UpdateUserGroupRequest = {
+  corpId?: string(name='CorpId'),
+  isvSubId: string(name='IsvSubId'),
+  userGroupId: long(name='UserGroupId'),
+  userGroupName: string(name='UserGroupName'),
+}
+
+model UpdateUserGroupResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: {
+    userGroupId: long(name='UserGroupId'),
+    isvSubId: string(name='IsvSubId'),
+    userGroupName: string(name='UserGroupName'),
+    userCount: long(name='UserCount'),
+    parentUserGroupId: string(name='ParentUserGroupId'),
+  }(name='Data'),
+}
+
+async function updateUserGroup(request: UpdateUserGroupRequest, runtime: Util.RuntimeOptions): UpdateUserGroupResponse {
+  Util.validateModel(request);
+  return doRequest('UpdateUserGroup', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model ListUserGroupsRequest = {
+  corpId?: string(name='CorpId'),
+  isvSubId: string(name='IsvSubId'),
+}
+
+model ListUserGroupsResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: [
+    {
+      creator: string(name='Creator'),
+      userGroupName: string(name='UserGroupName'),
+      isvSubId: string(name='IsvSubId'),
+      userGroupId: long(name='UserGroupId'),
+      userCount: long(name='UserCount'),
+      createTime: string(name='CreateTime'),
+      updateTime: string(name='UpdateTime'),
+      parentUserGroupId: long(name='ParentUserGroupId'),
+    }
+  ](name='Data'),
+}
+
+async function listUserGroups(request: ListUserGroupsRequest, runtime: Util.RuntimeOptions): ListUserGroupsResponse {
+  Util.validateModel(request);
+  return doRequest('ListUserGroups', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model DeleteUserRequest = {
+  corpId?: string(name='CorpId'),
+  isvSubId: string(name='IsvSubId'),
+  userId: long(name='UserId'),
+}
+
+model DeleteUserResponse = {
+  code: string(name='Code'),
+  data: boolean(name='Data'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+}
+
+async function deleteUser(request: DeleteUserRequest, runtime: Util.RuntimeOptions): DeleteUserResponse {
+  Util.validateModel(request);
+  return doRequest('DeleteUser', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model DeleteUserGroupRequest = {
+  corpId?: string(name='CorpId'),
+  isvSubId: string(name='IsvSubId'),
+  userGroupId: string(name='UserGroupId'),
+}
+
+model DeleteUserGroupResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: boolean(name='Data'),
+}
+
+async function deleteUserGroup(request: DeleteUserGroupRequest, runtime: Util.RuntimeOptions): DeleteUserGroupResponse {
+  Util.validateModel(request);
+  return doRequest('DeleteUserGroup', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model BindUserRequest = {
+  corpId?: string(name='CorpId'),
+  isvSubId: string(name='IsvSubId'),
+  matchingRate: string(name='MatchingRate'),
+  personId: string(name='PersonId'),
+  userId: long(name='UserId'),
+}
+
+model BindUserResponse = {
+  code: string(name='Code'),
+  data: boolean(name='Data'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+}
+
+async function bindUser(request: BindUserRequest, runtime: Util.RuntimeOptions): BindUserResponse {
+  Util.validateModel(request);
+  return doRequest('BindUser', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model UpdateUserRequest = {
+  corpId?: string(name='CorpId'),
+  isvSubId: string(name='IsvSubId'),
+  userName?: string(name='UserName'),
+  userGroupId: long(name='UserGroupId'),
+  idNumber?: string(name='IdNumber'),
+  faceImageUrl?: string(name='FaceImageUrl'),
+  faceImageContent?: string(name='FaceImageContent'),
+  address?: string(name='Address'),
+  age?: integer(name='Age'),
+  gender?: integer(name='Gender'),
+  plateNo?: string(name='PlateNo'),
+  phoneNo?: string(name='PhoneNo'),
+  attachment?: string(name='Attachment'),
+  bizId?: string(name='BizId'),
+  userId: integer(name='UserId'),
+}
+
+model UpdateUserResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: string(name='Data'),
+}
+
+async function updateUser(request: UpdateUserRequest, runtime: Util.RuntimeOptions): UpdateUserResponse {
+  Util.validateModel(request);
+  return doRequest('UpdateUser', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model GetUserDetailRequest = {
+  corpId?: string(name='CorpId'),
+  isvSubId: string(name='IsvSubId'),
+  userId: long(name='UserId'),
+  needFaceDetail?: boolean(name='NeedFaceDetail'),
+}
+
+model GetUserDetailResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: {
+    address: string(name='Address'),
+    age: string(name='Age'),
+    attachment: string(name='Attachment'),
+    bizId: string(name='BizId'),
+    faceImageUrl: string(name='FaceImageUrl'),
+    gender: string(name='Gender'),
+    idNumber: string(name='IdNumber'),
+    phoneNo: string(name='PhoneNo'),
+    plateNo: string(name='PlateNo'),
+    userGroupId: integer(name='UserGroupId'),
+    userId: integer(name='UserId'),
+    userName: string(name='UserName'),
+    isvSubId: string(name='IsvSubId'),
+  }(name='Data'),
+}
+
+async function getUserDetail(request: GetUserDetailRequest, runtime: Util.RuntimeOptions): GetUserDetailResponse {
+  Util.validateModel(request);
+  return doRequest('GetUserDetail', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model AddUserGroupRequest = {
+  corpId: string(name='CorpId'),
+  pageNumber: integer(name='PageNumber'),
+  pageSize: integer(name='PageSize'),
+  startTime: string(name='StartTime'),
+  endTime: string(name='EndTime'),
+  aggregateType: string(name='AggregateType'),
+  tagCode: string(name='TagCode'),
+  timeAggregateType: string(name='TimeAggregateType'),
+}
+
+model AddUserGroupResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  pageNo: string(name='PageNo'),
+  pageSize: string(name='PageSize'),
+  requestId: string(name='RequestId'),
+  success: string(name='Success'),
+  totalCount: string(name='TotalCount'),
+  data: [
+    {
+      corpId: string(name='CorpId'),
+      dayId: string(name='DayId'),
+      deviceId: string(name='DeviceId'),
+      groupId: string(name='GroupId'),
+      hourId: string(name='HourId'),
+      personId: string(name='PersonId'),
+      tagCode: string(name='TagCode'),
+      tagMetrics: string(name='TagMetrics'),
+    }
+  ](name='Data'),
+}
+
+async function addUserGroup(request: AddUserGroupRequest, runtime: Util.RuntimeOptions): AddUserGroupResponse {
+  Util.validateModel(request);
+  return doRequest('AddUserGroup', 'HTTPS', 'POST' , '2020-05-15', 'AK,APP', null, request, runtime);
+}
+
+model CreateUserGroupRequest = {
+  corpId?: string(name='CorpId'),
+  isvSubId: string(name='IsvSubId'),
+  userGroupName: string(name='UserGroupName'),
+  parentUserGroupId?: long(name='ParentUserGroupId'),
+}
+
+model CreateUserGroupResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: {
+    userGroupName: string(name='UserGroupName'),
+    isvSubId: string(name='IsvSubId'),
+    userGroupId: long(name='UserGroupId'),
+  }(name='Data'),
+}
+
+async function createUserGroup(request: CreateUserGroupRequest, runtime: Util.RuntimeOptions): CreateUserGroupResponse {
+  Util.validateModel(request);
+  return doRequest('CreateUserGroup', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model DescribeTestRequest = {
+  name: string(name='Name'),
+}
+
+model DescribeTestResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+}
+
+async function describeTest(request: DescribeTestRequest, runtime: Util.RuntimeOptions): DescribeTestResponse {
+  Util.validateModel(request);
+  return doRequest('DescribeTest', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model ListPersonVisitCountRequest = {
+  corpId: string(name='CorpId'),
+  pageNumber: integer(name='PageNumber'),
+  pageSize: integer(name='PageSize'),
+  startTime: string(name='StartTime'),
+  endTime: string(name='EndTime'),
+  aggregateType: string(name='AggregateType'),
+  tagCode: string(name='TagCode'),
+  timeAggregateType: string(name='TimeAggregateType'),
+  minVal?: integer(name='MinVal'),
+  maxVal?: integer(name='MaxVal'),
+  countType?: string(name='CountType'),
+}
+
+model ListPersonVisitCountResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  pageNo: string(name='PageNo'),
+  pageSize: string(name='PageSize'),
+  requestId: string(name='RequestId'),
+  success: string(name='Success'),
+  totalCount: string(name='TotalCount'),
+  data: [
+    {
+      corpId: string(name='CorpId'),
+      deviceId: string(name='DeviceId'),
+      groupId: string(name='GroupId'),
+      personId: string(name='PersonId'),
+      tagCode: string(name='TagCode'),
+      tagMetrics: string(name='TagMetrics'),
+      hourId: string(name='HourId'),
+      dayId: string(name='DayId'),
+    }
+  ](name='Data'),
+}
+
+async function listPersonVisitCount(request: ListPersonVisitCountRequest, runtime: Util.RuntimeOptions): ListPersonVisitCountResponse {
+  Util.validateModel(request);
+  return doRequest('ListPersonVisitCount', 'HTTPS', 'POST' , '2020-05-15', 'AK,APP', null, request, runtime);
+}
+
+model GetDeviceVideoSectionsRequest = {
+  corpId?: string(name='CorpId'),
+  deviceId: string(name='DeviceId'),
+  startTime: long(name='StartTime'),
+  endTime: long(name='EndTime'),
+  pageSize: integer(name='PageSize'),
+  pageNum: integer(name='PageNum'),
+}
+
+model GetDeviceVideoSectionsResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  pageSize: integer(name='PageSize'),
+  pageNum: integer(name='PageNum'),
+  pageCount: integer(name='PageCount'),
+  data: [
+    {
+      startTime: long(name='StartTime'),
+      endTime: long(name='EndTime'),
+    }
+  ](name='Data'),
+}
+
+async function getDeviceVideoSections(request: GetDeviceVideoSectionsRequest, runtime: Util.RuntimeOptions): GetDeviceVideoSectionsResponse {
+  Util.validateModel(request);
+  return doRequest('GetDeviceVideoSections', 'HTTP', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model DescribeDevicesRequest = {
+  pageNum: integer(name='PageNum'),
+  pageSize: integer(name='PageSize'),
+  corpIdList: string(name='CorpIdList'),
+}
+
+model DescribeDevicesResponse = {
+  requestId: string(name='RequestId'),
+  message: string(name='Message'),
+  code: string(name='Code'),
+  data: {
+    totalCount: integer(name='TotalCount'),
+    pageSize: integer(name='PageSize'),
+    totalPage: integer(name='TotalPage'),
+    pageNum: integer(name='PageNum'),
+    records: [
+      {
+        inProtocol: string(name='InProtocol'),
+        status: string(name='Status'),
+        deviceType: string(name='DeviceType'),
+        corpId: string(name='CorpId'),
+        deviceAddress: string(name='DeviceAddress'),
+        deviceId: string(name='DeviceId'),
+        createTime: string(name='CreateTime'),
+        latitude: string(name='Latitude'),
+        vendor: string(name='Vendor'),
+        longitude: string(name='Longitude'),
+        deviceName: string(name='DeviceName'),
+      }
+    ](name='Records'),
+  }(name='Data'),
+}
+
+async function describeDevices(request: DescribeDevicesRequest, runtime: Util.RuntimeOptions): DescribeDevicesResponse {
+  Util.validateModel(request);
+  return doRequest('DescribeDevices', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model GetFaceModelResultRequest = {
+  pictureId: string(name='PictureId'),
+  pictureContent?: string(name='PictureContent'),
+  pictureUrl?: string(name='PictureUrl'),
+}
+
+model GetFaceModelResultResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: {
+    records: [
+      {
+        mustacheStyle: string(name='MustacheStyle'),
+        faceStyle: string(name='FaceStyle'),
+        capStyle: integer(name='CapStyle'),
+        skinColor: integer(name='SkinColor'),
+        rightBottomY: float(name='RightBottomY'),
+        rightBottomX: float(name='RightBottomX'),
+        hairStyle: integer(name='HairStyle'),
+        genderCode: integer(name='GenderCode'),
+        respiratorColor: integer(name='RespiratorColor'),
+        ethicCode: integer(name='EthicCode'),
+        ageLowerLimit: integer(name='AgeLowerLimit'),
+        leftTopY: float(name='LeftTopY'),
+        leftTopX: float(name='LeftTopX'),
+        hairColor: integer(name='HairColor'),
+        ageUpLimit: integer(name='AgeUpLimit'),
+        glassStyle: integer(name='GlassStyle'),
+        glassColor: integer(name='GlassColor'),
+        capColor: integer(name='CapColor'),
+        capColorReliability: string(name='CapColorReliability'),
+        respiratorColorReliability: string(name='RespiratorColorReliability'),
+        ethicCodeReliability: string(name='EthicCodeReliability'),
+        genderCodeReliability: string(name='GenderCodeReliability'),
+        glassColorReliability: string(name='GlassColorReliability'),
+        skinColorReliability: string(name='SkinColorReliability'),
+        mustacheStyleReliability: string(name='MustacheStyleReliability'),
+        capStyleReliability: string(name='CapStyleReliability'),
+        faceStyleReliability: string(name='FaceStyleReliability'),
+        glassStyleReliability: string(name='GlassStyleReliability'),
+        ageUpLimitReliability: string(name='AgeUpLimitReliability'),
+        hairStyleReliability: string(name='HairStyleReliability'),
+        ageLowerLimitReliability: string(name='AgeLowerLimitReliability'),
+        hairColorReliability: string(name='HairColorReliability'),
+        featureData: [ float ](name='FeatureData'),
+      }
+    ](name='Records'),
+  }(name='Data'),
+}
+
+async function getFaceModelResult(request: GetFaceModelResultRequest, runtime: Util.RuntimeOptions): GetFaceModelResultResponse {
+  Util.validateModel(request);
+  return doRequest('GetFaceModelResult', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model ListEventAlgorithmDetailsRequest = {
+  corpId: string(name='CorpId'),
+  eventType: string(name='EventType'),
+  dataSourceId?: string(name='DataSourceId'),
+  startTime: string(name='StartTime'),
+  endTime: string(name='EndTime'),
+  pageNumber: integer(name='PageNumber'),
+  pageSize: integer(name='PageSize'),
+  sourceId?: string(name='SourceId'),
+  recordId?: string(name='RecordId'),
+  eventValue?: string(name='EventValue'),
+  extendValue?: string(name='ExtendValue'),
+}
+
+model ListEventAlgorithmDetailsResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  pageNumber: integer(name='PageNumber'),
+  pageSize: integer(name='PageSize'),
+  requestId: string(name='RequestId'),
+  success: string(name='Success'),
+  totalCount: integer(name='TotalCount'),
+  data: [
+    {
+      corpId: string(name='CorpId'),
+      dataSourceId: string(name='DataSourceId'),
+      eventType: string(name='EventType'),
+      eventValue: string(name='EventValue'),
+      extendValue: string(name='ExtendValue'),
+      extraExtendValue: string(name='ExtraExtendValue'),
+      faceCount: string(name='FaceCount'),
+      leftTopX: string(name='LeftTopX'),
+      leftTopY: string(name='LeftTopY'),
+      picUrlPath: string(name='PicUrlPath'),
+      pointX: string(name='PointX'),
+      pointY: string(name='PointY'),
+      recordId: string(name='RecordId'),
+      rightBottomX: string(name='RightBottomX'),
+      rightBottomY: string(name='RightBottomY'),
+      shotTime: string(name='ShotTime'),
+      sourceId: string(name='SourceId'),
+      targetPicUrlPath: string(name='TargetPicUrlPath'),
+    }
+  ](name='Data'),
+}
+
+async function listEventAlgorithmDetails(request: ListEventAlgorithmDetailsRequest, runtime: Util.RuntimeOptions): ListEventAlgorithmDetailsResponse {
+  Util.validateModel(request);
+  return doRequest('ListEventAlgorithmDetails', 'HTTPS', 'POST' , '2020-05-15', 'AK,APP', null, request, runtime);
+}
+
+model ListCorpGroupMetricsRequest = {
+  startTime: string(name='StartTime'),
+  tagCode: string(name='TagCode'),
+  endTime: string(name='EndTime'),
+  groupId: string(name='GroupId'),
+  pageNumber: string(name='PageNumber'),
+  pageSize: string(name='PageSize'),
+  deviceId?: string(name='DeviceId'),
+  corpId?: string(name='CorpId'),
+  userGroup?: string(name='UserGroup'),
+  deviceGroup?: string(name='DeviceGroup'),
+}
+
+model ListCorpGroupMetricsResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  pageNumber: integer(name='PageNumber'),
+  pageSize: integer(name='PageSize'),
+  totalCount: integer(name='TotalCount'),
+  success: string(name='Success'),
+  data: [
+    {
+      dateId: string(name='DateId'),
+      tagMetrics: string(name='TagMetrics'),
+      tagCode: string(name='TagCode'),
+      tagValue: string(name='TagValue'),
+      corpGroupId: string(name='CorpGroupId'),
+      corpId: string(name='CorpId'),
+      deviceGroupId: string(name='DeviceGroupId'),
+      deviceId: string(name='DeviceId'),
+      userGroupId: string(name='UserGroupId'),
+      personID: string(name='PersonID'),
+    }
+  ](name='Data'),
+}
+
+async function listCorpGroupMetrics(request: ListCorpGroupMetricsRequest, runtime: Util.RuntimeOptions): ListCorpGroupMetricsResponse {
+  Util.validateModel(request);
+  return doRequest('ListCorpGroupMetrics', 'HTTP', 'POST' , '2020-05-15', 'AK,APP', null, request, runtime);
+}
+
+model ListCorpMetricsRequest = {
+  corpId: string(name='CorpId'),
+  tagCode: string(name='TagCode'),
+  startTime: string(name='StartTime'),
+  endTime: string(name='EndTime'),
+  pageNumber: string(name='PageNumber'),
+  pageSize: string(name='PageSize'),
+  userGroupList?: string(name='UserGroupList'),
+  deviceGroupList?: string(name='DeviceGroupList'),
+  deviceIdList?: string(name='DeviceIdList'),
+}
+
+model ListCorpMetricsResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  pageNumber: integer(name='PageNumber'),
+  pageSize: integer(name='PageSize'),
+  requestId: string(name='RequestId'),
+  success: string(name='Success'),
+  totalCount: integer(name='TotalCount'),
+  data: [
+    {
+      corpId: string(name='CorpId'),
+      tagCode: string(name='TagCode'),
+      tagMetrics: string(name='TagMetrics'),
+      tagValue: string(name='TagValue'),
+      deviceGroupId: string(name='DeviceGroupId'),
+      deviceId: string(name='DeviceId'),
+      userGroupId: string(name='UserGroupId'),
+      personId: string(name='PersonId'),
+      dateId: string(name='DateId'),
+    }
+  ](name='Data'),
+}
+
+async function listCorpMetrics(request: ListCorpMetricsRequest, runtime: Util.RuntimeOptions): ListCorpMetricsResponse {
+  Util.validateModel(request);
+  return doRequest('ListCorpMetrics', 'HTTP', 'POST' , '2020-05-15', 'AK,APP', null, request, runtime);
+}
+
+model ListPersonTraceRequest = {
+  startTime: string(name='StartTime'),
+  corpId?: string(name='CorpId'),
+  pageNumber: string(name='PageNumber'),
+  pageSize: string(name='PageSize'),
+  endTime: string(name='EndTime'),
+  dataSourceId?: string(name='DataSourceId'),
+  personId?: string(name='PersonId'),
+  groupId: string(name='GroupId'),
+}
+
+model ListPersonTraceResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  success: string(name='Success'),
+  totalCount: integer(name='TotalCount'),
+  pageSize: integer(name='PageSize'),
+  pageNumber: integer(name='PageNumber'),
+  data: [
+    {
+      date: string(name='Date'),
+      lastTime: string(name='LastTime'),
+      startTime: string(name='StartTime'),
+      endSourceImage: string(name='EndSourceImage'),
+      deviceId: string(name='DeviceId'),
+      startTargetImage: string(name='StartTargetImage'),
+      groupId: string(name='GroupId'),
+      personId: string(name='PersonId'),
+      startSourceImage: string(name='StartSourceImage'),
+      corpId: string(name='CorpId'),
+      endTargetImage: string(name='EndTargetImage'),
+    }
+  ](name='Data'),
+}
+
+async function listPersonTrace(request: ListPersonTraceRequest, runtime: Util.RuntimeOptions): ListPersonTraceResponse {
+  Util.validateModel(request);
+  return doRequest('ListPersonTrace', 'HTTP', 'POST' , '2020-05-15', 'AK,APP', null, request, runtime);
+}
+
+model ListCorpGroupsRequest = {
+  corpId: string(name='CorpId'),
+  pageNumber: long(name='PageNumber'),
+  pageSize: long(name='PageSize'),
+}
+
+model ListCorpGroupsResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: {
+    pageNumber: long(name='PageNumber'),
+    pageSize: long(name='PageSize'),
+    totalCount: long(name='TotalCount'),
+    totalPage: long(name='TotalPage'),
+    records: [ string ](name='Records'),
+  }(name='Data'),
+}
+
+async function listCorpGroups(request: ListCorpGroupsRequest, runtime: Util.RuntimeOptions): ListCorpGroupsResponse {
+  Util.validateModel(request);
+  return doRequest('ListCorpGroups', 'HTTP', 'POST' , '2020-05-15', 'AK,APP', null, request, runtime);
+}
+
+model CreateCorpGroupRequest = {
+  corpId: string(name='CorpId'),
+  groupId: string(name='GroupId'),
+}
+
+model CreateCorpGroupResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  success: boolean(name='Success'),
+}
+
+async function createCorpGroup(request: CreateCorpGroupRequest, runtime: Util.RuntimeOptions): CreateCorpGroupResponse {
+  Util.validateModel(request);
+  return doRequest('CreateCorpGroup', 'HTTP', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model DeleteCorpGroupRequest = {
+  corpId: string(name='CorpId'),
+  groupId: string(name='GroupId'),
+}
+
+model DeleteCorpGroupResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  success: boolean(name='Success'),
+}
+
+async function deleteCorpGroup(request: DeleteCorpGroupRequest, runtime: Util.RuntimeOptions): DeleteCorpGroupResponse {
+  Util.validateModel(request);
+  return doRequest('DeleteCorpGroup', 'HTTP', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model InvokeMotorModelRequest = {
+  picId: string(name='PicId'),
+  corpId: string(name='CorpId'),
+  picPath?: string(name='PicPath'),
+  picUrl?: string(name='PicUrl'),
+}
+
+model InvokeMotorModelResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: {
+    structList: string(name='StructList'),
+  }(name='Data'),
+}
+
+async function invokeMotorModel(request: InvokeMotorModelRequest, runtime: Util.RuntimeOptions): InvokeMotorModelResponse {
+  Util.validateModel(request);
+  return doRequest('InvokeMotorModel', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model FindDataSourceRequest = {
+  corpId: string(name='CorpId'),
+  dataSourceCode: string(name='DataSourceCode'),
+}
+
+model FindDataSourceResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  data: {
+    dataSourceCode: string(name='DataSourceCode'),
+    dataSourceName: string(name='DataSourceName'),
+    dataSourceType: string(name='DataSourceType'),
+    description: string(name='Description'),
+  }(name='Data'),
+}
+
+async function findDataSource(request: FindDataSourceRequest, runtime: Util.RuntimeOptions): FindDataSourceResponse {
+  Util.validateModel(request);
+  return doRequest('FindDataSource', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model BatchUploadFileRequest = {
+  fileList: [
+    {
+      fileType: string(name='FileType'),
+      fileKeyId?: string(name='FileKeyId'),
+      file?: string(name='File'),
+      fileName: string(name='FileName'),
+      fileAliasName?: string(name='FileAliasName'),
+      corpId: string(name='CorpId'),
+      dataSourceCode: string(name='DataSourceCode'),
+      sourcePictureId?: string(name='SourcePictureId'),
+      fileSize: long(name='FileSize'),
+      sourceId?: string(name='SourceId'),
+    }
+  ](name='FileList'),
+}
+
+model BatchUploadFileResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  data: [ string ] (name='Data'),
+}
+
+async function batchUploadFile(request: BatchUploadFileRequest, runtime: Util.RuntimeOptions): BatchUploadFileResponse {
+  Util.validateModel(request);
+  return doRequest('BatchUploadFile', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model ListDataSourceRequest = {
+  dataSourceType?: string(name='DataSourceType'),
+  dataSourceKey?: string(name='DataSourceKey'),
+  isPage: string(name='IsPage'),
+  pageNum?: string(name='PageNum'),
+  pageSize?: string(name='PageSize'),
+  corpId: string(name='CorpId'),
+}
+
+model ListDataSourceResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  totalCount: long(name='TotalCount'),
+  data: [
+    {
+      dataSourceCode: string(name='DataSourceCode'),
+      dataSourceName: string(name='DataSourceName'),
+      createTime: long(name='CreateTime'),
+      ossPath: string(name='OssPath'),
+      dataSourceType: string(name='DataSourceType'),
+    }
+  ](name='Data'),
+}
+
+async function listDataSource(request: ListDataSourceRequest, runtime: Util.RuntimeOptions): ListDataSourceResponse {
+  Util.validateModel(request);
+  return doRequest('ListDataSource', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model SaveVideoSummaryTaskVideoRequest = {
+  corpId: string(name='CorpId'),
+  taskId: long(name='TaskId'),
+  saveVideo: boolean(name='SaveVideo'),
+}
+
+model SaveVideoSummaryTaskVideoResponse = {
+  code: string(name='Code'),
+  data: string(name='Data'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+}
+
+async function saveVideoSummaryTaskVideo(request: SaveVideoSummaryTaskVideoRequest, runtime: Util.RuntimeOptions): SaveVideoSummaryTaskVideoResponse {
+  Util.validateModel(request);
+  return doRequest('SaveVideoSummaryTaskVideo', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model ListConfiguredVSourceDatasRequest = {
+  taskCode: string(name='TaskCode'),
+  analysisObject?: string(name='AnalysisObject'),
+  corpId?: string(name='CorpId'),
+}
+
+model ListConfiguredVSourceDatasResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: [
+    {
+      corpName: string(name='CorpName'),
+      dsId: string(name='DsId'),
+      dsName: string(name='DsName'),
+      nameSpace: string(name='NameSpace'),
+      topic: string(name='Topic'),
+    }
+  ](name='Data'),
+}
+
+async function listConfiguredVSourceDatas(request: ListConfiguredVSourceDatasRequest, runtime: Util.RuntimeOptions): ListConfiguredVSourceDatasResponse {
+  Util.validateModel(request);
+  return doRequest('ListConfiguredVSourceDatas', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model ListVSourceDatasRequest = {
+  taskCode?: string(name='TaskCode'),
+  analysisObject: string(name='AnalysisObject'),
+  corpId?: string(name='CorpId'),
+}
+
+model ListVSourceDatasResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: [
+    {
+      dsId: string(name='DsId'),
+      dsName: string(name='DsName'),
+      corpName: string(name='CorpName'),
+      nameSpace: string(name='NameSpace'),
+      topic: string(name='Topic'),
+    }
+  ](name='Data'),
+}
+
+async function listVSourceDatas(request: ListVSourceDatasRequest, runtime: Util.RuntimeOptions): ListVSourceDatasResponse {
+  Util.validateModel(request);
+  return doRequest('ListVSourceDatas', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model ReportDeviceCapacityRequest = {
+  longitude?: string(name='Longitude'),
+  latitude?: string(name='Latitude'),
+  audioFormat?: string(name='AudioFormat'),
+  presetNum?: string(name='PresetNum'),
+  PTZCapacity?: string(name='PTZCapacity'),
+  deviceSn: string(name='DeviceSn'),
+  streamCapacities: [
+    {
+      encodeFormat: string(name='EncodeFormat'),
+      resolution: string(name='Resolution'),
+      maxFrameRate: string(name='MaxFrameRate'),
+      maxStream: string(name='MaxStream'),
+      bitrateRange: string(name='BitrateRange'),
+      govLengthRange: string(name='GovLengthRange'),
+    }
+  ](name='StreamCapacities'),
+  deviceTimeStamp: string(name='DeviceTimeStamp'),
+}
+
+model ReportDeviceCapacityResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  retryInterval: string(name='RetryInterval'),
+}
+
+async function reportDeviceCapacity(request: ReportDeviceCapacityRequest, runtime: Util.RuntimeOptions): ReportDeviceCapacityResponse {
+  Util.validateModel(request);
+  return doRequest('ReportDeviceCapacity', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model GetDeviceConfigRequest = {
+  deviceSn: string(name='DeviceSn'),
+  deviceTimeStamp: string(name='DeviceTimeStamp'),
+}
+
+model GetDeviceConfigResponse = {
+  audioEnable: boolean(name='AudioEnable'),
+  audioFormat: string(name='AudioFormat'),
+  bitRate: string(name='BitRate'),
+  code: string(name='Code'),
+  deviceAddress: string(name='DeviceAddress'),
+  deviceName: string(name='DeviceName'),
+  encodeFormat: string(name='EncodeFormat'),
+  frameRate: string(name='FrameRate'),
+  govLength: integer(name='GovLength'),
+  latitude: string(name='Latitude'),
+  longitude: string(name='Longitude'),
+  message: string(name='Message'),
+  OSDTimeEnable: string(name='OSDTimeEnable'),
+  OSDTimeType: string(name='OSDTimeType'),
+  OSDTimeX: string(name='OSDTimeX'),
+  OSDTimeY: string(name='OSDTimeY'),
+  requestId: string(name='RequestId'),
+  resolution: string(name='Resolution'),
+  retryInterval: string(name='RetryInterval'),
+  deviceId: string(name='DeviceId'),
+  userName: string(name='UserName'),
+  passWord: string(name='PassWord'),
+  protocol: string(name='Protocol'),
+  serverId: string(name='ServerId'),
+  serverPort: string(name='ServerPort'),
+  serverIp: string(name='ServerIp'),
+  OSDList: [
+    {
+      text: string(name='Text'),
+      leftTopX: string(name='LeftTopX'),
+      leftTopY: string(name='LeftTopY'),
+    }
+  ](name='OSDList'),
+}
+
+async function getDeviceConfig(request: GetDeviceConfigRequest, runtime: Util.RuntimeOptions): GetDeviceConfigResponse {
+  Util.validateModel(request);
+  return doRequest('GetDeviceConfig', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model UpdateDataSourceRequest = {
+  corpId: string(name='CorpId'),
+  dataSourceName?: string(name='DataSourceName'),
+  dataSourceType?: string(name='DataSourceType'),
+  description?: string(name='Description'),
+  dataSourceCode: string(name='DataSourceCode'),
+}
+
+model UpdateDataSourceResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  data: integer(name='Data'),
+}
+
+async function updateDataSource(request: UpdateDataSourceRequest, runtime: Util.RuntimeOptions): UpdateDataSourceResponse {
+  Util.validateModel(request);
+  return doRequest('UpdateDataSource', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model DelStatRequest = {
+  statId?: string(name='StatId'),
+}
+
+model DelStatResponse = {
+  requestId: string(name='RequestId'),
+}
+
+async function delStat(request: DelStatRequest, runtime: Util.RuntimeOptions): DelStatResponse {
+  Util.validateModel(request);
+  return doRequest('DelStat', 'HTTPS', 'POST' , '2020-05-15', 'Anonymous', null, request, runtime);
+}
+
+model CreateStatRequest = {
+  aliyunUid?: string(name='AliyunUid'),
+  purchaseCnt?: string(name='PurchaseCnt'),
+  groupCnt?: string(name='GroupCnt'),
+  deviceCnt?: string(name='DeviceCnt'),
+}
+
+model CreateStatResponse = {
+  requestId: string(name='RequestId'),
+}
+
+async function createStat(request: CreateStatRequest, runtime: Util.RuntimeOptions): CreateStatResponse {
+  Util.validateModel(request);
+  return doRequest('CreateStat', 'HTTPS', 'POST' , '2020-05-15', 'Anonymous', null, request, runtime);
+}
+
+model RegisterDeviceRequest = {
+  deviceSn: string(name='DeviceSn'),
+  deviceId?: string(name='DeviceId'),
+  serverId?: string(name='ServerId'),
+  deviceTimeStamp: string(name='DeviceTimeStamp'),
+}
+
+model RegisterDeviceResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  retryInterval: string(name='RetryInterval'),
+}
+
+async function registerDevice(request: RegisterDeviceRequest, runtime: Util.RuntimeOptions): RegisterDeviceResponse {
+  Util.validateModel(request);
+  return doRequest('RegisterDevice', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model ListEventAlgorithmResultsRequest = {
+  corpId: string(name='CorpId'),
+  eventType: string(name='EventType'),
+  dataSourceId?: string(name='DataSourceId'),
+  startTime: string(name='StartTime'),
+  endTime: string(name='EndTime'),
+  pageNumber: string(name='PageNumber'),
+  pageSize: integer(name='PageSize'),
+  sourceId?: string(name='SourceId'),
+  recordId?: string(name='RecordId'),
+  eventValue?: string(name='EventValue'),
+  extendValue?: string(name='ExtendValue'),
+}
+
+model ListEventAlgorithmResultsResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  pageNumber: integer(name='PageNumber'),
+  pageSize: integer(name='PageSize'),
+  requestId: string(name='RequestId'),
+  success: string(name='Success'),
+  totalCount: integer(name='TotalCount'),
+  data: [
+    {
+      corpId: string(name='CorpId'),
+      dataSourceId: string(name='DataSourceId'),
+      eventType: string(name='EventType'),
+      eventValue: string(name='EventValue'),
+      extendValue: string(name='ExtendValue'),
+      extraExtendValue: string(name='ExtraExtendValue'),
+      faceCount: string(name='FaceCount'),
+      leftTopX: string(name='LeftTopX'),
+      leftTopY: string(name='LeftTopY'),
+      picUrlPath: string(name='PicUrlPath'),
+      pointX: string(name='PointX'),
+      pointY: string(name='PointY'),
+      recordId: string(name='RecordId'),
+      rightBottomX: string(name='RightBottomX'),
+      rightBottomY: string(name='RightBottomY'),
+      shotTime: string(name='ShotTime'),
+      sourceId: string(name='SourceId'),
+      targetPicUrlPath: string(name='TargetPicUrlPath'),
+    }
+  ](name='Data'),
+}
+
+async function listEventAlgorithmResults(request: ListEventAlgorithmResultsRequest, runtime: Util.RuntimeOptions): ListEventAlgorithmResultsResponse {
+  Util.validateModel(request);
+  return doRequest('ListEventAlgorithmResults', 'HTTPS', 'POST' , '2020-05-15', 'AK,APP', null, request, runtime);
+}
+
+model ListBodyAlgorithmResultsRequest = {
+  corpId: string(name='CorpId'),
+  algorithmType: string(name='AlgorithmType'),
+  dataSourceId?: string(name='DataSourceId'),
+  startTime: string(name='StartTime'),
+  endTime: string(name='EndTime'),
+  pageNumber: string(name='PageNumber'),
+  pageSize: string(name='PageSize'),
+  capStyle?: string(name='CapStyle'),
+}
+
+model ListBodyAlgorithmResultsResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: {
+    pageNumber: integer(name='PageNumber'),
+    pageSize: integer(name='PageSize'),
+    totalCount: integer(name='TotalCount'),
+    totalPage: integer(name='TotalPage'),
+    records: [
+      {
+        capStyle: string(name='CapStyle'),
+        corpId: string(name='CorpId'),
+        dataSourceId: string(name='DataSourceId'),
+        personId: string(name='PersonId'),
+        genderCode: string(name='GenderCode'),
+        hairStyle: string(name='HairStyle'),
+        leftTopX: float(name='LeftTopX'),
+        leftTopY: float(name='LeftTopY'),
+        maxAge: string(name='MaxAge'),
+        minAge: string(name='MinAge'),
+        picUrlPath: string(name='PicUrlPath'),
+        rightBottomX: float(name='RightBottomX'),
+        rightBottomY: float(name='RightBottomY'),
+        shotTime: string(name='ShotTime'),
+        targetPicUrlPath: string(name='TargetPicUrlPath'),
+        coatLength: string(name='CoatLength'),
+        coatStyle: string(name='CoatStyle'),
+        trousersLength: string(name='TrousersLength'),
+        trousersStyle: string(name='TrousersStyle'),
+        coatColor: string(name='CoatColor'),
+        trousersColor: string(name='TrousersColor'),
+        sourceId: string(name='SourceId'),
+      }
+    ](name='Records'),
+  }(name='Data'),
+}
+
+async function listBodyAlgorithmResults(request: ListBodyAlgorithmResultsRequest, runtime: Util.RuntimeOptions): ListBodyAlgorithmResultsResponse {
+  Util.validateModel(request);
+  return doRequest('ListBodyAlgorithmResults', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model CreateVideoComposeTaskRequest = {
+  corpId: string(name='CorpId'),
+  bucketName: string(name='BucketName'),
+  domainName?: string(name='DomainName'),
+  imageFileNames: string(name='ImageFileNames'),
+  audioFileName: string(name='AudioFileName'),
+  imageParameters: string(name='ImageParameters'),
+  videoFormat?: string(name='VideoFormat'),
+  videoFrameRate?: integer(name='VideoFrameRate'),
+}
+
+model CreateVideoComposeTaskResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  domainName: string(name='DomainName'),
+  bucketName: string(name='BucketName'),
+}
+
+async function createVideoComposeTask(request: CreateVideoComposeTaskRequest, runtime: Util.RuntimeOptions): CreateVideoComposeTaskResponse {
+  Util.validateModel(request);
+  return doRequest('CreateVideoComposeTask', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model GetVideoComposeResultRequest = {
+  corpId: string(name='CorpId'),
+  taskRequestId: string(name='TaskRequestId'),
+}
+
+model GetVideoComposeResultResponse = {
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  videoUrl: string(name='VideoUrl'),
+  code: string(name='Code'),
+  status: string(name='Status'),
+}
+
+async function getVideoComposeResult(request: GetVideoComposeResultRequest, runtime: Util.RuntimeOptions): GetVideoComposeResultResponse {
+  Util.validateModel(request);
+  return doRequest('GetVideoComposeResult', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model DeleteDataSourceRequest = {
+  corpId: string(name='CorpId'),
+  dataSourceCode: string(name='DataSourceCode'),
+}
+
+model DeleteDataSourceResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  data: integer(name='Data'),
+}
+
+async function deleteDataSource(request: DeleteDataSourceRequest, runtime: Util.RuntimeOptions): DeleteDataSourceResponse {
+  Util.validateModel(request);
+  return doRequest('DeleteDataSource', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model UploadFileRequest = {
+  fileType: string(name='FileType'),
+  MD5?: string(name='MD5'),
+  corpId?: string(name='CorpId'),
+  fileContent?: string(name='FileContent'),
+  fileName: string(name='FileName'),
+  fileAliasName?: string(name='FileAliasName'),
+  dataSourceId: string(name='DataSourceId'),
+  filePath?: string(name='FilePath'),
+}
+
+model UploadFileResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: {
+    records: [
+      {
+        ossPath: string(name='OssPath'),
+        sourceId: string(name='SourceId'),
+      }
+    ](name='Records'),
+  }(name='Data'),
+}
+
+async function uploadFile(request: UploadFileRequest, runtime: Util.RuntimeOptions): UploadFileResponse {
+  Util.validateModel(request);
+  return doRequest('UploadFile', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model UploadFileAdvanceRequest = {
+  filePathObject: readable(name='FilePathObject'),
+  fileType: string(name='FileType'),
+  MD5?: string(name='MD5'),
+  corpId?: string(name='CorpId'),
+  fileContent?: string(name='FileContent'),
+  fileName: string(name='FileName'),
+  fileAliasName?: string(name='FileAliasName'),
+  dataSourceId: string(name='DataSourceId'),
+}
+
+async function uploadFileAdvance(request: UploadFileAdvanceRequest, runtime: Util.RuntimeOptions): UploadFileResponse {
+  // Step 0: init client
+  var accessKeyId = @credential.getAccessKeyId();
+  var accessKeySecret = @credential.getAccessKeySecret();
+  var authConfig = new RPC.Config{
+    accessKeyId = accessKeyId,
+    accessKeySecret = accessKeySecret,
+    type = 'access_key',
+    endpoint = 'openplatform.aliyuncs.com',
+    protocol = @protocol,
+    regionId = @regionId,
+  };
+  var authClient = new OpenPlatform(authConfig);
+  var authRequest = new OpenPlatform.AuthorizeFileUploadRequest{
+    product = 'Vcs',
+    regionId = @regionId,
+  };
+  var authResponse = new OpenPlatform.AuthorizeFileUploadResponse{};
+  var ossConfig = new OSS.Config{
+    accessKeySecret = accessKeySecret,
+    type = 'access_key',
+    protocol = @protocol,
+    regionId = @regionId,
+  };
+  var ossClient : OSS = null;
+
+  var fileObj = new FileForm.FileField{};
+  var ossHeader = new OSS.PostObjectRequest.header{};
+  var uploadRequest = new OSS.PostObjectRequest{};
+  var ossRuntime = new OSSUtil.RuntimeOptions{};
+  RPCUtil.convert(runtime, ossRuntime);
+  var uploadFilereq = new UploadFileRequest{};
+  RPCUtil.convert(request, uploadFilereq);
+  authResponse = authClient.authorizeFileUploadWithOptions(authRequest, runtime);
+  ossConfig.accessKeyId = authResponse.accessKeyId;
+  ossConfig.endpoint = RPCUtil.getEndpoint(authResponse.endpoint, authResponse.useAccelerate, @endpointType);
+  ossClient = new OSS(ossConfig);
+
+  fileObj = new FileForm.FileField{
+    filename = authResponse.objectKey,
+    content = request.filePathObject,
+    contentType = '',
+  };
+  ossHeader = new OSS.PostObjectRequest.header{
+    accessKeyId = authResponse.accessKeyId,
+    policy = authResponse.encodedPolicy,
+    signature = authResponse.signature,
+    key = authResponse.objectKey,
+    file = fileObj,
+    successActionStatus = '201',
+  };
+  uploadRequest = new OSS.PostObjectRequest{
+    bucketName = authResponse.bucket,
+    header = ossHeader,
+  };
+  ossClient.postObject(uploadRequest, ossRuntime);
+  uploadFilereq.filePath = `http://${authResponse.bucket}.${authResponse.endpoint}/${authResponse.objectKey}`;
+  var uploadFileResp = uploadFile(uploadFilereq, runtime);
+  return uploadFileResp;
+}
+
+model DeleteVideoSummaryTaskRequest = {
+  corpId: string(name='CorpId'),
+  taskId: string(name='TaskId'),
+}
+
+model DeleteVideoSummaryTaskResponse = {
+  code: string(name='Code'),
+  data: string(name='Data'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+}
+
+async function deleteVideoSummaryTask(request: DeleteVideoSummaryTaskRequest, runtime: Util.RuntimeOptions): DeleteVideoSummaryTaskResponse {
+  Util.validateModel(request);
+  return doRequest('DeleteVideoSummaryTask', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model GetVideoSummaryTaskResultRequest = {
+  corpId: string(name='CorpId'),
+  taskId: string(name='TaskId'),
+}
+
+model GetVideoSummaryTaskResultResponse = {
+  code: string(name='Code'),
+  data: string(name='Data'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+}
+
+async function getVideoSummaryTaskResult(request: GetVideoSummaryTaskResultRequest, runtime: Util.RuntimeOptions): GetVideoSummaryTaskResultResponse {
+  Util.validateModel(request);
+  return doRequest('GetVideoSummaryTaskResult', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model CreateVideoSummaryTaskRequest = {
+  corpId: string(name='CorpId'),
+  deviceId: string(name='DeviceId'),
+  startTimeStamp: long(name='StartTimeStamp'),
+  endTimeStamp: long(name='EndTimeStamp'),
+  optionList?: string(name='OptionList'),
+  liveVideoSummary?: string(name='LiveVideoSummary'),
+}
+
+model CreateVideoSummaryTaskResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: string(name='Data'),
+}
+
+async function createVideoSummaryTask(request: CreateVideoSummaryTaskRequest, runtime: Util.RuntimeOptions): CreateVideoSummaryTaskResponse {
+  Util.validateModel(request);
+  return doRequest('CreateVideoSummaryTask', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model AddDataSourceRequest = {
+  corpId: string(name='CorpId'),
+  dataSourceName: string(name='DataSourceName'),
+  dataSourceType: string(name='DataSourceType'),
+  description?: string(name='Description'),
+  fileRetentionDays?: integer(name='FileRetentionDays'),
+}
+
+model AddDataSourceResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  data: {
+    dataSourceId: string(name='DataSourceId'),
+    kafkaTopic: string(name='KafkaTopic'),
+    ossPath: string(name='OssPath'),
+  }(name='Data'),
+}
+
+async function addDataSource(request: AddDataSourceRequest, runtime: Util.RuntimeOptions): AddDataSourceResponse {
+  Util.validateModel(request);
+  return doRequest('AddDataSource', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model GetProductStatictisRequest = {
+}
+
+model GetProductStatictisResponse = {
+  success: boolean(name='Success'),
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: {
+    resultObject: [
+      {
+        itemName: string(name='ItemName'),
+        purchaseId: string(name='PurchaseId'),
+        validEndDate: long(name='ValidEndDate'),
+        commodityCode: string(name='CommodityCode'),
+        instanceId: string(name='InstanceId'),
+        algoType: string(name='AlgoType'),
+        usedSpecs: [
+          {
+            totalSpecValue: long(name='TotalSpecValue'),
+            usedSpecValue: long(name='UsedSpecValue'),
+            specCode: string(name='SpecCode'),
+          }
+        ](name='UsedSpecs'),
+      }
+    ](name='ResultObject'),
+  }(name='Data'),
+}
+
+async function getProductStatictis(request: GetProductStatictisRequest, runtime: Util.RuntimeOptions): GetProductStatictisResponse {
+  Util.validateModel(request);
+  return doRequest('GetProductStatictis', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model GetUserAssetRequest = {
+  requestId?: string(name='RequestId'),
+}
+
+model GetUserAssetResponse = {
+  success: boolean(name='Success'),
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: {
+    resultObject: {
+      purchaseCnt: integer(name='PurchaseCnt'),
+      groupCnt: integer(name='GroupCnt'),
+      deviceCnt: integer(name='DeviceCnt'),
+      motorCnt: long(name='MotorCnt'),
+      faceCnt: long(name='FaceCnt'),
+      bodyCnt: long(name='BodyCnt'),
+      noMotorCnt: long(name='NoMotorCnt'),
+      eventCnt: long(name='EventCnt'),
+    }(name='ResultObject'),
+  }(name='Data'),
+}
+
+async function getUserAsset(request: GetUserAssetRequest, runtime: Util.RuntimeOptions): GetUserAssetResponse {
+  Util.validateModel(request);
+  return doRequest('GetUserAsset', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model ListFaceAlgorithmResultsRequest = {
+  corpId: string(name='CorpId'),
+  algorithmType: string(name='AlgorithmType'),
+  dataSourceId?: string(name='DataSourceId'),
+  startTime: string(name='StartTime'),
+  endTime: string(name='EndTime'),
+  pageNumber: string(name='PageNumber'),
+  pageSize: string(name='PageSize'),
+}
+
+model ListFaceAlgorithmResultsResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: {
+    pageNumber: integer(name='PageNumber'),
+    pageSize: integer(name='PageSize'),
+    totalCount: integer(name='TotalCount'),
+    totalPage: integer(name='TotalPage'),
+    records: [
+      {
+        faceId: string(name='FaceId'),
+        corpId: string(name='CorpId'),
+        dataSourceId: string(name='DataSourceId'),
+        shotTime: string(name='ShotTime'),
+        genderCode: string(name='GenderCode'),
+        minAge: string(name='MinAge'),
+        maxAge: string(name='MaxAge'),
+        capStyle: string(name='CapStyle'),
+        hairStyle: string(name='HairStyle'),
+        leftTopX: float(name='LeftTopX'),
+        leftTopY: float(name='LeftTopY'),
+        rightBottomX: float(name='RightBottomX'),
+        rightBottomY: float(name='RightBottomY'),
+        picUrlPath: string(name='PicUrlPath'),
+        targetPicUrlPath: string(name='TargetPicUrlPath'),
+        sourceId: string(name='SourceId'),
+      }
+    ](name='Records'),
+  }(name='Data'),
+}
+
+async function listFaceAlgorithmResults(request: ListFaceAlgorithmResultsRequest, runtime: Util.RuntimeOptions): ListFaceAlgorithmResultsResponse {
+  Util.validateModel(request);
+  return doRequest('ListFaceAlgorithmResults', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model ListMotorAlgorithmResultsRequest = {
+  corpId: string(name='CorpId'),
+  algorithmType: string(name='AlgorithmType'),
+  dataSourceId?: string(name='DataSourceId'),
+  startTime: string(name='StartTime'),
+  endTime: string(name='EndTime'),
+  pageNumber: string(name='PageNumber'),
+  pageSize: string(name='PageSize'),
+  plateNumber?: string(name='PlateNumber'),
+}
+
+model ListMotorAlgorithmResultsResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: {
+    pageNumber: integer(name='PageNumber'),
+    pageSize: integer(name='PageSize'),
+    totalCount: integer(name='TotalCount'),
+    totalPage: integer(name='TotalPage'),
+    records: [
+      {
+        corpId: string(name='CorpId'),
+        dataSourceId: string(name='DataSourceId'),
+        leftTopX: float(name='LeftTopX'),
+        leftTopY: float(name='LeftTopY'),
+        motorId: string(name='MotorId'),
+        picUrlPath: string(name='PicUrlPath'),
+        plateNumber: string(name='PlateNumber'),
+        rightBottomX: float(name='RightBottomX'),
+        rightBottomY: float(name='RightBottomY'),
+        shotTime: string(name='ShotTime'),
+        targetPicUrlPath: string(name='TargetPicUrlPath'),
+        motorStyle: string(name='MotorStyle'),
+        motorModel: string(name='MotorModel'),
+        motorColor: string(name='MotorColor'),
+        motorClass: string(name='MotorClass'),
+        motorBrand: string(name='MotorBrand'),
+        plateColor: string(name='PlateColor'),
+        plateClass: string(name='PlateClass'),
+        safetyBelt: string(name='SafetyBelt'),
+        calling: string(name='Calling'),
+        sourceId: string(name='SourceId'),
+      }
+    ](name='Records'),
+  }(name='Data'),
+}
+
+async function listMotorAlgorithmResults(request: ListMotorAlgorithmResultsRequest, runtime: Util.RuntimeOptions): ListMotorAlgorithmResultsResponse {
+  Util.validateModel(request);
+  return doRequest('ListMotorAlgorithmResults', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model GetAlgorithmResultDetailRequest = {
+  corpId?: string(name='CorpId'),
+  algorithmType?: string(name='AlgorithmType'),
+  dataSourceId?: string(name='DataSourceId'),
+  startTime?: string(name='StartTime'),
+  endTime?: string(name='EndTime'),
+  pageNo?: string(name='PageNo'),
+  pageSize?: string(name='PageSize'),
+}
+
+model GetAlgorithmResultDetailResponse = {
+  code: string(name='Code'),
+  data: string(name='Data'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+}
+
+async function getAlgorithmResultDetail(request: GetAlgorithmResultDetailRequest, runtime: Util.RuntimeOptions): GetAlgorithmResultDetailResponse {
+  Util.validateModel(request);
+  return doRequest('GetAlgorithmResultDetail', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model CheckCgPopRequest = {
+}
+
+model CheckCgPopResponse = {
+  success: boolean(name='Success'),
+  code: string(name='Code'),
+  message: string(name='Message'),
+  data: {
+    resultObject: {
+      checkTime: string(name='checkTime'),
+      checkResult: string(name='checkResult'),
+    }(name='ResultObject'),
+  }(name='Data'),
+}
+
+async function checkCgPop(request: CheckCgPopRequest, runtime: Util.RuntimeOptions): CheckCgPopResponse {
+  Util.validateModel(request);
+  return doRequest('CheckCgPop', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model ListTagMetricsRequest = {
+  corpId: string(name='CorpId'),
+  tagCode: string(name='TagCode'),
+  aggregateType: string(name='AggregateType'),
+  startTime: string(name='StartTime'),
+  endTime: string(name='EndTime'),
+  pageNumber: string(name='PageNumber'),
+  pageSize: string(name='PageSize'),
+}
+
+model ListTagMetricsResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: {
+    pageNumber: integer(name='PageNumber'),
+    pageSize: integer(name='PageSize'),
+    totalCount: integer(name='TotalCount'),
+    totalPage: integer(name='TotalPage'),
+    records: [
+      {
+        dateTime: string(name='DateTime'),
+        tagCode: string(name='TagCode'),
+        tagMetric: string(name='TagMetric'),
+        tagValue: string(name='TagValue'),
+      }
+    ](name='Records'),
+  }(name='Data'),
+}
+
+async function listTagMetrics(request: ListTagMetricsRequest, runtime: Util.RuntimeOptions): ListTagMetricsResponse {
+  Util.validateModel(request);
+  return doRequest('ListTagMetrics', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model ListMetricsRequest = {
+  corpId: string(name='CorpId'),
+  tagCode: string(name='TagCode'),
+  aggregateType: string(name='AggregateType'),
+  startTime: string(name='StartTime'),
+  endTime: string(name='EndTime'),
+  pageNumber: string(name='PageNumber'),
+  pageSize: string(name='PageSize'),
+}
+
+model ListMetricsResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: {
+    pageNumber: integer(name='PageNumber'),
+    pageSize: integer(name='PageSize'),
+    totalCount: integer(name='TotalCount'),
+    totalPage: integer(name='TotalPage'),
+    records: [
+      {
+        dateTime: string(name='DateTime'),
+        tagCode: string(name='TagCode'),
+        tagValue: string(name='TagValue'),
+        tagMetric: string(name='TagMetric'),
+      }
+    ](name='Records'),
+  }(name='Data'),
+}
+
+async function listMetrics(request: ListMetricsRequest, runtime: Util.RuntimeOptions): ListMetricsResponse {
+  Util.validateModel(request);
+  return doRequest('ListMetrics', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model GetTagMetricsRequest = {
+  corpId: string(name='CorpId'),
+  tagCode: string(name='TagCode'),
+  aggregateType: string(name='AggregateType'),
+  startTime: string(name='StartTime'),
+  endTime: string(name='EndTime'),
+  pageNo: string(name='PageNo'),
+  pageSize: string(name='PageSize'),
+}
+
+model GetTagMetricsResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: {
+    pageNo: integer(name='PageNo'),
+    pageSize: integer(name='PageSize'),
+    totalPage: integer(name='TotalPage'),
+    totalCount: integer(name='TotalCount'),
+    records: [
+      {
+        dateTime: string(name='DateTime'),
+        tagCode: string(name='TagCode'),
+        tagValue: string(name='TagValue'),
+        tagMetric: string(name='TagMetric'),
+      }
+    ](name='Records'),
+  }(name='Data'),
+}
+
+async function getTagMetrics(request: GetTagMetricsRequest, runtime: Util.RuntimeOptions): GetTagMetricsResponse {
+  Util.validateModel(request);
+  return doRequest('GetTagMetrics', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model GetEventStatisticsRequest = {
+  corpId?: string(name='CorpId'),
+  eventTypeList?: string(name='EventTypeList'),
+  deviceList?: string(name='DeviceList'),
+  aggregateType?: string(name='AggregateType'),
+  startTime?: string(name='StartTime'),
+  endTime?: string(name='EndTime'),
+}
+
+model GetEventStatisticsResponse = {
+  code: string(name='Code'),
+  data: string(name='Data'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+}
+
+async function getEventStatistics(request: GetEventStatisticsRequest, runtime: Util.RuntimeOptions): GetEventStatisticsResponse {
+  Util.validateModel(request);
+  return doRequest('GetEventStatistics', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model RecognizeFaceQualityRequest = {
+  corpId?: string(name='CorpId'),
+  picContent?: string(name='PicContent'),
+  picFormat?: string(name='PicFormat'),
+  picUrl?: string(name='PicUrl'),
+}
+
+model RecognizeFaceQualityResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: {
+    qualityScore: string(name='QualityScore'),
+    description: string(name='Description'),
+    attributes: {
+      leftTopX: integer(name='LeftTopX'),
+      leftTopY: integer(name='LeftTopY'),
+      rightBottomX: integer(name='RightBottomX'),
+      rightBottomY: integer(name='RightBottomY'),
+      targetImageStoragePath: string(name='TargetImageStoragePath'),
+      faceStyle: string(name='FaceStyle'),
+      faceQuality: string(name='FaceQuality'),
+      faceScore: string(name='FaceScore'),
+    }(name='Attributes'),
+  }(name='Data'),
+}
+
+async function recognizeFaceQuality(request: RecognizeFaceQualityRequest, runtime: Util.RuntimeOptions): RecognizeFaceQualityResponse {
+  Util.validateModel(request);
+  return doRequest('RecognizeFaceQuality', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model ListCategoryRequest = {
+}
+
+model ListCategoryResponse = {
+  success: boolean(name='Success'),
+  message: string(name='Message'),
+  code: string(name='Code'),
+  requestId: string(name='RequestId'),
+  data: {
+    resultObject: [
+      {
+        categoryId: string(name='CategoryId'),
+        parentCategoryId: string(name='ParentCategoryId'),
+        categoryName: string(name='CategoryName'),
+        displayIndex: integer(name='DisplayIndex'),
+        level: integer(name='Level'),
+        match: boolean(name='Match'),
+      }
+    ](name='ResultObject'),
+  }(name='Data'),
+}
+
+async function listCategory(request: ListCategoryRequest, runtime: Util.RuntimeOptions): ListCategoryResponse {
+  Util.validateModel(request);
+  return doRequest('ListCategory', 'HTTPS', 'POST' , '2020-05-15', 'Anonymous', null, request, runtime);
+}
+
+model ListPersonsRequest = {
+  corpId: string(name='CorpId'),
+  pageNo: string(name='PageNo'),
+  pageSize: string(name='PageSize'),
+  tagCode?: string(name='TagCode'),
+  startTime?: string(name='StartTime'),
+  endTime?: string(name='EndTime'),
+  picUrl?: string(name='PicUrl'),
+  algorithmType?: string(name='AlgorithmType'),
+}
+
+model ListPersonsResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: {
+    pageNo: string(name='PageNo'),
+    pageSize: string(name='PageSize'),
+    totalCount: string(name='TotalCount'),
+    totalPage: string(name='TotalPage'),
+    records: [
+      {
+        firstAppearTime: string(name='FirstAppearTime'),
+        personId: string(name='PersonId'),
+        picUrl: string(name='PicUrl'),
+        tagList: [
+          {
+            tagCode: string(name='TagCode'),
+            tagName: string(name='TagName'),
+            tagValue: string(name='TagValue'),
+            tagValueId: string(name='TagValueId'),
+          }
+        ](name='TagList'),
+      }
+    ](name='Records'),
+  }(name='Data'),
+}
+
+async function listPersons(request: ListPersonsRequest, runtime: Util.RuntimeOptions): ListPersonsResponse {
+  Util.validateModel(request);
+  return doRequest('ListPersons', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model GetPersonDetailRequest = {
+  corpId?: string(name='CorpId'),
+  personID?: string(name='PersonID'),
+  algorithmType?: string(name='AlgorithmType'),
+}
+
+model GetPersonDetailResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: {
+    picUrl: string(name='PicUrl'),
+    personId: string(name='PersonId'),
+    tagList: [
+      {
+        tagCode: string(name='TagCode'),
+        tagName: string(name='TagName'),
+        tagValue: string(name='TagValue'),
+        tagValueId: string(name='TagValueId'),
+      }
+    ](name='TagList'),
+  }(name='Data'),
+}
+
+async function getPersonDetail(request: GetPersonDetailRequest, runtime: Util.RuntimeOptions): GetPersonDetailResponse {
+  Util.validateModel(request);
+  return doRequest('GetPersonDetail', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model GetBodyOptionsRequest = {
+  corpId?: string(name='CorpId'),
+}
+
+model GetBodyOptionsResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: [
+    {
+      key: string(name='Key'),
+      name: string(name='Name'),
+      optionList: [
+        {
+          key: string(name='Key'),
+          name: string(name='Name'),
+        }
+      ](name='OptionList'),
+    }
+  ](name='Data'),
+}
+
+async function getBodyOptions(request: GetBodyOptionsRequest, runtime: Util.RuntimeOptions): GetBodyOptionsResponse {
+  Util.validateModel(request);
+  return doRequest('GetBodyOptions', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model SearchBodyRequest = {
+  corpId: string(name='CorpId'),
+  gbId?: string(name='GbId'),
+  startTimeStamp: long(name='StartTimeStamp'),
+  endTimeStamp: long(name='EndTimeStamp'),
+  pageNo: integer(name='PageNo'),
+  pageSize: integer(name='PageSize'),
+  optionList?: map[string]any(name='OptionList'),
+}
+
+model SearchBodyResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: {
+    pageNo: integer(name='PageNo'),
+    pageSize: integer(name='PageSize'),
+    totalCount: integer(name='TotalCount'),
+    totalPage: integer(name='TotalPage'),
+    records: [
+      {
+        gbId: string(name='GbId'),
+        imageUrl: string(name='ImageUrl'),
+        leftTopX: float(name='LeftTopX'),
+        leftTopY: float(name='LeftTopY'),
+        rightBottomX: float(name='RightBottomX'),
+        rightBottomY: float(name='RightBottomY'),
+        score: float(name='Score'),
+        targetImageUrl: string(name='TargetImageUrl'),
+      }
+    ](name='Records'),
+  }(name='Data'),
+}
+
+async function searchBody(request: SearchBodyRequest, runtime: Util.RuntimeOptions): SearchBodyResponse {
+  Util.validateModel(request);
+  return doRequest('SearchBody', 'HTTP', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model GetDeviceVideoUrlRequest = {
+  corpId: string(name='CorpId'),
+  gbId?: string(name='GbId'),
+  startTime?: long(name='StartTime'),
+  endTime?: long(name='EndTime'),
+  deviceId?: string(name='DeviceId'),
+  outProtocol?: string(name='OutProtocol'),
+  expireTime?: string(name='ExpireTime'),
+  networkType?: string(name='NetworkType'),
+}
+
+model GetDeviceVideoUrlResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  url: string(name='Url'),
+  outProtocol: string(name='OutProtocol'),
+}
+
+async function getDeviceVideoUrl(request: GetDeviceVideoUrlRequest, runtime: Util.RuntimeOptions): GetDeviceVideoUrlResponse {
+  Util.validateModel(request);
+  return doRequest('GetDeviceVideoUrl', 'HTTP', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model GetFaceOptionsRequest = {
+  corpId?: string(name='CorpId'),
+}
+
+model GetFaceOptionsResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: [
+    {
+      key: string(name='Key'),
+      name: string(name='Name'),
+      optionList: [
+        {
+          key: string(name='Key'),
+          name: string(name='Name'),
+        }
+      ](name='OptionList'),
+    }
+  ](name='Data'),
+}
+
+async function getFaceOptions(request: GetFaceOptionsRequest, runtime: Util.RuntimeOptions): GetFaceOptionsResponse {
+  Util.validateModel(request);
+  return doRequest('GetFaceOptions', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model GetMonitorResultRequest = {
+  corpId: string(name='CorpId'),
+  taskId?: string(name='TaskId'),
+  minRecordId?: string(name='MinRecordId'),
+  startTime: long(name='StartTime'),
+  endTime: long(name='EndTime'),
+  algorithmVendor?: string(name='AlgorithmVendor'),
+}
+
+model GetMonitorResultResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: {
+    maxId: string(name='MaxId'),
+    records: [
+      {
+        rightBottomY: string(name='RightBottomY'),
+        rightBottomX: string(name='RightBottomX'),
+        leftUpY: string(name='LeftUpY'),
+        leftUpX: string(name='LeftUpX'),
+        gbId: string(name='GbId'),
+        score: string(name='Score'),
+        picUrl: string(name='PicUrl'),
+        shotTime: string(name='ShotTime'),
+        monitorPicUrl: string(name='MonitorPicUrl'),
+        targetPicUrl: string(name='TargetPicUrl'),
+      }
+    ](name='Records'),
+  }(name='Data'),
+}
+
+async function getMonitorResult(request: GetMonitorResultRequest, runtime: Util.RuntimeOptions): GetMonitorResultResponse {
+  Util.validateModel(request);
+  return doRequest('GetMonitorResult', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model UpdateMonitorRequest = {
+  corpId?: string(name='CorpId'),
+  taskId: string(name='TaskId'),
+  ruleName?: string(name='RuleName'),
+  deviceOperateType?: string(name='DeviceOperateType'),
+  deviceList?: string(name='DeviceList'),
+  picOperateType?: string(name='PicOperateType'),
+  picList?: string(name='PicList'),
+  attributeOperateType?: string(name='AttributeOperateType'),
+  attributeName?: string(name='AttributeName'),
+  attributeValueList?: string(name='AttributeValueList'),
+  description?: string(name='Description'),
+  ruleExpression?: string(name='RuleExpression'),
+  algorithmVendor: string(name='AlgorithmVendor'),
+}
+
+model UpdateMonitorResponse = {
+  code: string(name='Code'),
+  data: string(name='Data'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+}
+
+async function updateMonitor(request: UpdateMonitorRequest, runtime: Util.RuntimeOptions): UpdateMonitorResponse {
+  Util.validateModel(request);
+  return doRequest('UpdateMonitor', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model StopMonitorRequest = {
+  taskId: string(name='TaskId'),
+  algorithmVendor: string(name='AlgorithmVendor'),
+}
+
+model StopMonitorResponse = {
+  code: string(name='Code'),
+  data: string(name='Data'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+}
+
+async function stopMonitor(request: StopMonitorRequest, runtime: Util.RuntimeOptions): StopMonitorResponse {
+  Util.validateModel(request);
+  return doRequest('StopMonitor', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model AddMonitorRequest = {
+  corpId: string(name='CorpId'),
+  monitorType: string(name='MonitorType'),
+  description?: string(name='Description'),
+  batchIndicator?: integer(name='BatchIndicator'),
+  algorithmVendor: string(name='AlgorithmVendor'),
+}
+
+model AddMonitorResponse = {
+  requestId: string(name='RequestId'),
+  code: string(name='Code'),
+  message: string(name='Message'),
+  data: {
+    taskId: string(name='TaskId'),
+  }(name='Data'),
+}
+
+async function addMonitor(request: AddMonitorRequest, runtime: Util.RuntimeOptions): AddMonitorResponse {
+  Util.validateModel(request);
+  return doRequest('AddMonitor', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model GetInventoryRequest = {
+  commodityCode?: string(name='CommodityCode'),
+}
+
+model GetInventoryResponse = {
+  success: boolean(name='Success'),
+  requestId: string(name='RequestId'),
+  code: string(name='Code'),
+  message: string(name='Message'),
+  data: {
+    resultObject: [
+      {
+        inventoryId: string(name='InventoryId'),
+        instanceId: string(name='InstanceId'),
+        commodityCode: string(name='CommodityCode'),
+        currentInventory: string(name='CurrentInventory'),
+        usedInventory: string(name='UsedInventory'),
+        totalInventory: string(name='TotalInventory'),
+        buyerId: string(name='BuyerId'),
+        gmtValidStartTime: string(name='GmtValidStartTime'),
+        gmtValidEndTime: string(name='GmtValidEndTime'),
+      }
+    ](name='ResultObject'),
+  }(name='Data'),
+}
+
+async function getInventory(request: GetInventoryRequest, runtime: Util.RuntimeOptions): GetInventoryResponse {
+  Util.validateModel(request);
+  return doRequest('GetInventory', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
 }
 
 model UpdateCorpRequest = {
-  corpId?: string(name='CorpId', description='corpId'),
-  corpName?: string(name='CorpName', description='corpName'),
-  appName?: string(name='AppName', description='isvName'),
-  parentCorpId?: string(name='ParentCorpId', description='parentCorpId'),
-  description?: string(name='Description', description='description'),
+  corpId?: string(name='CorpId'),
+  corpName?: string(name='CorpName'),
+  appName?: string(name='AppName'),
+  parentCorpId?: string(name='ParentCorpId'),
+  description?: string(name='Description'),
+  isvSubId?: string(name='IsvSubId'),
+  iconPath?: string(name='IconPath'),
 }
 
 model UpdateCorpResponse = {
-  code: string(name='Code', description='code'),
-  message: string(name='Message', description='message'),
-  requestId: string(name='RequestId', description='requestId'),
-  data: string(name='Data', description='data'),
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: string(name='Data'),
 }
 
-async function updateCorpWithOptions(request: UpdateCorpRequest, runtime: Util.RuntimeOptions): UpdateCorpResponse {
+async function updateCorp(request: UpdateCorpRequest, runtime: Util.RuntimeOptions): UpdateCorpResponse {
   Util.validateModel(request);
-  return doRequest('UpdateCorp', 'HTTPS', 'POST', '2020-05-15', 'AK', null, request, runtime);
-}
-
-async function updateCorp(request: UpdateCorpRequest): UpdateCorpResponse {
-  var runtime = new Util.RuntimeOptions{};
-  return updateCorpWithOptions(request, runtime);
-}
-
-model UpdateDeviceRequest = {
-  gbId?: string(name='GbId', description='gbId'),
-  deviceName?: string(name='DeviceName', description='name'),
-  deviceType?: string(name='DeviceType', description='type'),
-  deviceAddress?: string(name='DeviceAddress', description='installAddress'),
-  deviceSite?: string(name='DeviceSite', description='installSite'),
-  deviceDirection?: string(name='DeviceDirection', description='installDirection'),
-  deviceResolution?: string(name='DeviceResolution', description='resolution'),
-  bitRate?: string(name='BitRate', description='bitRate'),
-  corpId?: string(name='CorpId', description='corpId'),
-  vendor?: string(name='Vendor', description='vendor'),
-}
-
-model UpdateDeviceResponse = {
-  code: string(name='Code', description='code'),
-  message: string(name='Message', description='message'),
-  requestId: string(name='RequestId', description='requestId'),
-  data: string(name='Data', description='data'),
-}
-
-async function updateDeviceWithOptions(request: UpdateDeviceRequest, runtime: Util.RuntimeOptions): UpdateDeviceResponse {
-  Util.validateModel(request);
-  return doRequest('UpdateDevice', 'HTTPS', 'POST', '2020-05-15', 'AK', null, request, runtime);
-}
-
-async function updateDevice(request: UpdateDeviceRequest): UpdateDeviceResponse {
-  var runtime = new Util.RuntimeOptions{};
-  return updateDeviceWithOptions(request, runtime);
-}
-
-model ListDevicesRequest = {
-  corpId?: string(name='CorpId', description='corpId'),
-  gbId?: string(name='GbId', description='gbId'),
-  deviceName?: string(name='DeviceName', description='name'),
-  pageNumber?: integer(name='PageNumber', description='pageNo'),
-  pageSize?: integer(name='PageSize', description='pageSize'),
-}
-
-model ListDevicesResponse = {
-  code: string(name='Code', description='code'),
-  message: string(name='Message', description='message'),
-  requestId: string(name='RequestId', description='requestId'),
-  data: {
-    pageNumber: integer(name='PageNumber', description='pageNo'),
-    pageSize: integer(name='PageSize', description='pageSize'),
-    totalCount: integer(name='TotalCount', description='totalCount'),
-    totalPage: integer(name='TotalPage', description='totalPage'),
-    records: [
-      {
-        accessProtocolType: string(name='AccessProtocolType', description='accessProtocolType'),
-        bitRate: string(name='BitRate', description='bitRate'),
-        coverImageUrl: string(name='CoverImageUrl', description='CoverImgUrl'),
-        gbId: string(name='GbId', description='gbId'),
-        deviceAddress: string(name='DeviceAddress', description='installAddress'),
-        deviceDirection: string(name='DeviceDirection', description='installDirection'),
-        deviceSite: string(name='DeviceSite', description='installSite'),
-        latitude: string(name='Latitude', description='latitude'),
-        longitude: string(name='Longitude', description='longitude'),
-        deviceName: string(name='DeviceName', description='name'),
-        resolution: string(name='Resolution', description='resolution'),
-        sipGBId: string(name='SipGBId', description='sipGbId'),
-        sipPassword: string(name='SipPassword', description='sipPassword'),
-        sipServerIp: string(name='SipServerIp', description='sipServerIp'),
-        sipServerPort: string(name='SipServerPort', description='sipServerPort'),
-        status: integer(name='Status', description='status'),
-        deviceType: string(name='DeviceType', description='type'),
-        vendor: string(name='Vendor', description='vendor'),
-        createTime: string(name='CreateTime', description='gmtCreate'),
-      }
-    ](name='Records', description='records'),
-  }(name='Data', description='data'),
-}
-
-async function listDevicesWithOptions(request: ListDevicesRequest, runtime: Util.RuntimeOptions): ListDevicesResponse {
-  Util.validateModel(request);
-  return doRequest('ListDevices', 'HTTPS', 'POST', '2020-05-15', 'AK', null, request, runtime);
-}
-
-async function listDevices(request: ListDevicesRequest): ListDevicesResponse {
-  var runtime = new Util.RuntimeOptions{};
-  return listDevicesWithOptions(request, runtime);
+  return doRequest('UpdateCorp', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
 }
 
 model GetDeviceLiveUrlRequest = {
-  corpId: string(name='CorpId', description='corpId'),
-  gbId?: string(name='GbId', description='gbId'),
+  deviceId?: string(name='DeviceId'),
+  streamType?: integer(name='StreamType'),
+  outProtocol?: string(name='OutProtocol'),
+  corpId?: string(name='CorpId'),
+  gbId?: string(name='GbId'),
 }
 
 model GetDeviceLiveUrlResponse = {
-  code: string(name='Code', description='code'),
-  url: string(name='Url', description='data'),
-  message: string(name='Message', description='message'),
-  requestId: string(name='RequestId', description='requestId'),
+  streamType: integer(name='StreamType'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  outProtocol: string(name='OutProtocol'),
+  code: string(name='Code'),
+  url: string(name='Url'),
 }
 
-async function getDeviceLiveUrlWithOptions(request: GetDeviceLiveUrlRequest, runtime: Util.RuntimeOptions): GetDeviceLiveUrlResponse {
+async function getDeviceLiveUrl(request: GetDeviceLiveUrlRequest, runtime: Util.RuntimeOptions): GetDeviceLiveUrlResponse {
   Util.validateModel(request);
-  return doRequest('GetDeviceLiveUrl', 'HTTPS', 'POST', '2020-05-15', 'AK', null, request, runtime);
-}
-
-async function getDeviceLiveUrl(request: GetDeviceLiveUrlRequest): GetDeviceLiveUrlResponse {
-  var runtime = new Util.RuntimeOptions{};
-  return getDeviceLiveUrlWithOptions(request, runtime);
+  return doRequest('GetDeviceLiveUrl', 'HTTP', 'POST' , '2020-05-15', 'AK', null, request, runtime);
 }
 
 model SearchFaceRequest = {
-  corpId: string(name='CorpId', description='corpId'),
-  gbId?: string(name='GbId', description='gbId'),
-  startTimeStamp: long(name='StartTimeStamp', description='startTimestamp'),
-  endTimeStamp: long(name='EndTimeStamp', description='endTimestamp'),
-  pageNo: integer(name='PageNo', description='pageNo'),
-  pageSize: integer(name='PageSize', description='pageSize'),
-  optionList?: map[string]any(name='OptionList', description='optionList_json'),
+  corpId: string(name='CorpId'),
+  gbId?: string(name='GbId'),
+  startTimeStamp: long(name='StartTimeStamp'),
+  endTimeStamp: long(name='EndTimeStamp'),
+  pageNo: integer(name='PageNo'),
+  pageSize: integer(name='PageSize'),
+  optionList?: map[string]any(name='OptionList'),
 }
 
 model SearchFaceResponse = {
-  code: string(name='Code', description='code'),
-  message: string(name='Message', description='message'),
-  requestId: string(name='RequestId', description='requestId'),
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
   data: {
-    pageNo: integer(name='PageNo', description='pageNo'),
-    pageSize: integer(name='PageSize', description='pageSize'),
-    totalCount: integer(name='TotalCount', description='totalCount'),
-    totalPage: integer(name='TotalPage', description='totalPage'),
+    pageNo: integer(name='PageNo'),
+    pageSize: integer(name='PageSize'),
+    totalCount: integer(name='TotalCount'),
+    totalPage: integer(name='TotalPage'),
     records: [
       {
-        gbId: string(name='GbId', description='deviceGbId'),
-        imageUrl: string(name='ImageUrl', description='imageUrl'),
-        leftTopX: float(name='LeftTopX', description='leftTopX'),
-        leftTopY: float(name='LeftTopY', description='leftTopY'),
-        rightBottomX: float(name='RightBottomX', description='rightBtmX'),
-        rightBottomY: float(name='RightBottomY', description='rightBtmY'),
-        score: float(name='Score', description='score'),
-        targetImageUrl: string(name='TargetImageUrl', description='targetImageUrl'),
+        gbId: string(name='GbId'),
+        imageUrl: string(name='ImageUrl'),
+        leftTopX: float(name='LeftTopX'),
+        leftTopY: float(name='LeftTopY'),
+        matchSuggestion: string(name='MatchSuggestion'),
+        rightBottomX: float(name='RightBottomX'),
+        rightBottomY: float(name='RightBottomY'),
+        score: float(name='Score'),
+        targetImageUrl: string(name='TargetImageUrl'),
+        sourceId: string(name='SourceId'),
       }
-    ](name='Records', description='records'),
-  }(name='Data', description='data'),
+    ](name='Records'),
+  }(name='Data'),
 }
 
-async function searchFaceWithOptions(request: SearchFaceRequest, runtime: Util.RuntimeOptions): SearchFaceResponse {
+async function searchFace(request: SearchFaceRequest, runtime: Util.RuntimeOptions): SearchFaceResponse {
   Util.validateModel(request);
-  return doRequest('SearchFace', 'HTTPS', 'POST', '2020-05-15', 'AK', null, request, runtime);
+  return doRequest('SearchFace', 'HTTP', 'POST' , '2020-05-15', 'AK', null, request, runtime);
 }
 
-async function searchFace(request: SearchFaceRequest): SearchFaceResponse {
-  var runtime = new Util.RuntimeOptions{};
-  return searchFaceWithOptions(request, runtime);
+model ListCorpsRequest = {
+  pageNumber: integer(name='PageNumber'),
+  pageSize: integer(name='PageSize'),
+  corpName?: string(name='CorpName'),
+}
+
+model ListCorpsResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: {
+    pageNumber: integer(name='PageNumber'),
+    pageSize: integer(name='PageSize'),
+    totalCount: integer(name='TotalCount'),
+    totalPage: integer(name='TotalPage'),
+    records: [
+      {
+        corpId: string(name='CorpId'),
+        corpName: string(name='CorpName'),
+        description: string(name='Description'),
+        createDate: string(name='CreateDate'),
+        parentCorpId: string(name='ParentCorpId'),
+        appName: string(name='AppName'),
+        deviceCount: integer(name='DeviceCount'),
+        isvSubId: string(name='IsvSubId'),
+        acuUsed: integer(name='AcuUsed'),
+        iconPath: string(name='IconPath'),
+      }
+    ](name='Records'),
+  }(name='Data'),
+}
+
+async function listCorps(request: ListCorpsRequest, runtime: Util.RuntimeOptions): ListCorpsResponse {
+  Util.validateModel(request);
+  return doRequest('ListCorps', 'HTTPS', 'POST' , '2020-05-15', 'AK,APP', null, request, runtime);
+}
+
+model RecognizeImageRequest = {
+  corpId: string(name='CorpId'),
+  picContent?: string(name='PicContent'),
+  picFormat: string(name='PicFormat'),
+  picUrl?: string(name='PicUrl'),
+}
+
+model RecognizeImageResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  data: {
+    bodyList: [
+      {
+        feature: string(name='Feature'),
+        fileName: string(name='FileName'),
+        imageBaseSixFour: string(name='ImageBaseSixFour'),
+        leftTopX: string(name='LeftTopX'),
+        leftTopY: string(name='LeftTopY'),
+        localFeature: string(name='LocalFeature'),
+        respiratorColor: string(name='RespiratorColor'),
+        rightBottomX: string(name='RightBottomX'),
+        rightBottomY: string(name='RightBottomY'),
+      }
+    ](name='BodyList'),
+    faceList: [
+      {
+        feature: string(name='Feature'),
+        fileName: string(name='FileName'),
+        imageBaseSixFour: string(name='ImageBaseSixFour'),
+        leftTopX: string(name='LeftTopX'),
+        leftTopY: string(name='LeftTopY'),
+        localFeature: string(name='LocalFeature'),
+        respiratorColor: string(name='RespiratorColor'),
+        rightBottomX: string(name='RightBottomX'),
+        rightBottomY: string(name='RightBottomY'),
+        quality: float(name='Quality'),
+        keyPointQuality: float(name='KeyPointQuality'),
+      }
+    ](name='FaceList'),
+  }(name='Data'),
+}
+
+async function recognizeImage(request: RecognizeImageRequest, runtime: Util.RuntimeOptions): RecognizeImageResponse {
+  Util.validateModel(request);
+  return doRequest('RecognizeImage', 'HTTP', 'POST' , '2020-05-15', 'AK', null, request, runtime);
+}
+
+model UpdateDeviceRequest = {
+  gbId?: string(name='GbId'),
+  deviceName?: string(name='DeviceName'),
+  deviceType?: string(name='DeviceType'),
+  deviceAddress?: string(name='DeviceAddress'),
+  deviceSite?: string(name='DeviceSite'),
+  deviceDirection?: string(name='DeviceDirection'),
+  deviceResolution?: string(name='DeviceResolution'),
+  bitRate?: string(name='BitRate'),
+  corpId?: string(name='CorpId'),
+  vendor?: string(name='Vendor'),
+}
+
+model UpdateDeviceResponse = {
+  requestId: string(name='RequestId'),
+  message: string(name='Message'),
+  data: string(name='Data'),
+  code: string(name='Code'),
+}
+
+async function updateDevice(request: UpdateDeviceRequest, runtime: Util.RuntimeOptions): UpdateDeviceResponse {
+  Util.validateModel(request);
+  return doRequest('UpdateDevice', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
 }
 
 model AddDeviceRequest = {
-  gbId?: string(name='GbId', description='gbId'),
-  deviceName?: string(name='DeviceName', description='name'),
-  deviceType?: string(name='DeviceType', description='type'),
-  deviceAddress?: string(name='DeviceAddress', description='installAddress'),
-  deviceSite?: string(name='DeviceSite', description='installSite'),
-  deviceDirection?: string(name='DeviceDirection', description='installDirection'),
-  deviceResolution?: string(name='DeviceResolution', description='resolution'),
-  bitRate?: string(name='BitRate', description='bitRate'),
-  corpId?: string(name='CorpId', description='corpId'),
-  vendor?: string(name='Vendor', description='vendor'),
+  gbId?: string(name='GbId'),
+  deviceName?: string(name='DeviceName'),
+  deviceType?: string(name='DeviceType'),
+  deviceAddress?: string(name='DeviceAddress'),
+  deviceSite?: string(name='DeviceSite'),
+  deviceDirection?: string(name='DeviceDirection'),
+  deviceResolution?: string(name='DeviceResolution'),
+  bitRate?: string(name='BitRate'),
+  corpId?: string(name='CorpId'),
+  vendor?: string(name='Vendor'),
 }
 
 model AddDeviceResponse = {
-  code: string(name='Code', description='code'),
-  message: string(name='Message', description='message'),
-  requestId: string(name='RequestId', description='requestId'),
-  data: string(name='Data', description='data'),
+  requestId: string(name='RequestId'),
+  message: string(name='Message'),
+  data: string(name='Data'),
+  code: string(name='Code'),
 }
 
-async function addDeviceWithOptions(request: AddDeviceRequest, runtime: Util.RuntimeOptions): AddDeviceResponse {
+async function addDevice(request: AddDeviceRequest, runtime: Util.RuntimeOptions): AddDeviceResponse {
   Util.validateModel(request);
-  return doRequest('AddDevice', 'HTTPS', 'POST', '2020-05-15', 'AK', null, request, runtime);
+  return doRequest('AddDevice', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
 }
 
-async function addDevice(request: AddDeviceRequest): AddDeviceResponse {
-  var runtime = new Util.RuntimeOptions{};
-  return addDeviceWithOptions(request, runtime);
+model ListDevicesRequest = {
+  corpId?: string(name='CorpId'),
+  gbId?: string(name='GbId'),
+  deviceName?: string(name='DeviceName'),
+  pageNumber?: integer(name='PageNumber'),
+  pageSize?: integer(name='PageSize'),
 }
 
-model CreateCorpRequest = {
-  corpName: string(name='CorpName', description='corpName'),
-  appName: string(name='AppName', description='isvName'),
-  parentCorpId?: string(name='ParentCorpId', description='parentCorpId'),
-  description?: string(name='Description', description='description'),
+model ListDevicesResponse = {
+  requestId: string(name='RequestId'),
+  message: string(name='Message'),
+  code: string(name='Code'),
+  data: {
+    totalCount: integer(name='TotalCount'),
+    pageSize: integer(name='PageSize'),
+    totalPage: integer(name='TotalPage'),
+    pageNumber: integer(name='PageNumber'),
+    records: [
+      {
+        status: integer(name='Status'),
+        accessProtocolType: string(name='AccessProtocolType'),
+        sipServerIp: string(name='SipServerIp'),
+        coverImageUrl: string(name='CoverImageUrl'),
+        createTime: string(name='CreateTime'),
+        latitude: string(name='Latitude'),
+        vendor: string(name='Vendor'),
+        longitude: string(name='Longitude'),
+        sipGBId: string(name='SipGBId'),
+        deviceDirection: string(name='DeviceDirection'),
+        sipPassword: string(name='SipPassword'),
+        deviceType: string(name='DeviceType'),
+        deviceAddress: string(name='DeviceAddress'),
+        gbId: string(name='GbId'),
+        bitRate: string(name='BitRate'),
+        deviceSite: string(name='DeviceSite'),
+        sipServerPort: string(name='SipServerPort'),
+        resolution: string(name='Resolution'),
+        deviceName: string(name='DeviceName'),
+      }
+    ](name='Records'),
+  }(name='Data'),
 }
 
-model CreateCorpResponse = {
-  code: string(name='Code', description='code'),
-  message: string(name='Message', description='message'),
-  requestId: string(name='RequestId', description='requestId'),
-  corpId: string(name='CorpId', description='data'),
-}
-
-async function createCorpWithOptions(request: CreateCorpRequest, runtime: Util.RuntimeOptions): CreateCorpResponse {
+async function listDevices(request: ListDevicesRequest, runtime: Util.RuntimeOptions): ListDevicesResponse {
   Util.validateModel(request);
-  return doRequest('CreateCorp', 'HTTPS', 'POST', '2020-05-15', 'AK', null, request, runtime);
-}
-
-async function createCorp(request: CreateCorpRequest): CreateCorpResponse {
-  var runtime = new Util.RuntimeOptions{};
-  return createCorpWithOptions(request, runtime);
+  return doRequest('ListDevices', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
 }
 
 model DeleteDeviceRequest = {
-  corpId?: string(name='CorpId', description='corpId'),
-  gbId?: string(name='GbId', description='gbId'),
+  corpId?: string(name='CorpId'),
+  gbId?: string(name='GbId'),
 }
 
 model DeleteDeviceResponse = {
-  requestId: string(name='RequestId', description='requestId'),
-  code: string(name='Code', description='code'),
-  data: string(name='Data', description='data'),
-  message: string(name='Message', description='message'),
+  requestId: string(name='RequestId'),
+  message: string(name='Message'),
+  data: string(name='Data'),
+  code: string(name='Code'),
 }
 
-async function deleteDeviceWithOptions(request: DeleteDeviceRequest, runtime: Util.RuntimeOptions): DeleteDeviceResponse {
+async function deleteDevice(request: DeleteDeviceRequest, runtime: Util.RuntimeOptions): DeleteDeviceResponse {
   Util.validateModel(request);
-  return doRequest('DeleteDevice', 'HTTPS', 'POST', '2020-05-15', 'AK', null, request, runtime);
+  return doRequest('DeleteDevice', 'HTTPS', 'POST' , '2020-05-15', 'AK', null, request, runtime);
 }
 
-async function deleteDevice(request: DeleteDeviceRequest): DeleteDeviceResponse {
-  var runtime = new Util.RuntimeOptions{};
-  return deleteDeviceWithOptions(request, runtime);
+model CreateCorpRequest = {
+  corpName: string(name='CorpName'),
+  appName: string(name='AppName'),
+  parentCorpId?: string(name='ParentCorpId'),
+  description?: string(name='Description'),
+  algorithmType?: string(name='AlgorithmType'),
+  isvSubId?: string(name='IsvSubId'),
+  iconPath?: string(name='IconPath'),
+}
+
+model CreateCorpResponse = {
+  code: string(name='Code'),
+  message: string(name='Message'),
+  requestId: string(name='RequestId'),
+  corpId: string(name='CorpId'),
+}
+
+async function createCorp(request: CreateCorpRequest, runtime: Util.RuntimeOptions): CreateCorpResponse {
+  Util.validateModel(request);
+  return doRequest('CreateCorp', 'HTTP', 'POST' , '2020-05-15', 'AK', null, request, runtime);
 }
 
 function getEndpoint(productId: string, regionId: string, endpointRule: string, network: string, suffix: string, endpointMap: map[string]string, endpoint: string) throws: string{
