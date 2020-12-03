@@ -1,4 +1,5 @@
 import Util;
+import RPCUtil;
 import RPC;
 import EndpointUtil;
 
@@ -32,6 +33,7 @@ init(config: RPC.Config){
     cn-hangzhou-test-306 = 'ft.aliyuncs.com',
     cn-hongkong-finance-pop = 'ft.aliyuncs.com',
     cn-huhehaote = 'ft.aliyuncs.com',
+    cn-huhehaote-nebula-1 = 'ft.aliyuncs.com',
     cn-qingdao = 'ft.aliyuncs.com',
     cn-qingdao-nebula = 'ft.aliyuncs.com',
     cn-shanghai-et15-b01 = 'ft.aliyuncs.com',
@@ -44,7 +46,9 @@ init(config: RPC.Config){
     cn-shenzhen-st4-d01 = 'ft.aliyuncs.com',
     cn-shenzhen-su18-b01 = 'ft.aliyuncs.com',
     cn-wuhan = 'ft.aliyuncs.com',
+    cn-wulanchabu = 'ft.aliyuncs.com',
     cn-yushanfang = 'ft.aliyuncs.com',
+    cn-zhangbei = 'ft.aliyuncs.com',
     cn-zhangbei-na61-b01 = 'ft.aliyuncs.com',
     cn-zhangjiakou-na62-a01 = 'ft.aliyuncs.com',
     cn-zhengzhou-nebula-1 = 'ft.aliyuncs.com',
@@ -64,14 +68,24 @@ model TestFlowStrategy01Request = {
   names?: map[string]any(name='Names'),
 }
 
+model TestFlowStrategy01ShrinkRequest = {
+  namesShrink?: string(name='Names'),
+}
+
 model TestFlowStrategy01Response = {
   requestId: string(name='RequestId'),
   list: [ string ] (name='List'),
   names: [ string ] (name='Names'),
 }
 
-async function testFlowStrategy01WithOptions(request: TestFlowStrategy01Request, runtime: Util.RuntimeOptions): TestFlowStrategy01Response {
-  Util.validateModel(request);
+async function testFlowStrategy01WithOptions(tmp: TestFlowStrategy01Request, runtime: Util.RuntimeOptions): TestFlowStrategy01Response {
+  Util.validateModel(tmp);
+  var request = new TestFlowStrategy01ShrinkRequest{};
+  RPCUtil.convert(tmp, request);
+  if (!Util.isUnset(tmp.names)) {
+    request.namesShrink = Util.toJSONString(tmp.names);
+  }
+
   return doRequest('TestFlowStrategy01', 'HTTPS', 'PUT', '2018-07-13', 'AK', null, request, runtime);
 }
 
@@ -87,13 +101,34 @@ model TestHttpApiRequest = {
   booleanParam?: boolean(name='BooleanParam'),
 }
 
+model TestHttpApiShrinkRequest = {
+  stringValueShrink?: string(name='StringValue'),
+  defaultValueShrink?: string(name='DefaultValue'),
+  otherParamShrink?: string(name='OtherParam'),
+  booleanParam?: boolean(name='BooleanParam'),
+}
+
 model TestHttpApiResponse = {
   params: string(name='Params'),
   serviceRpcSign: string(name='ServiceRpcSign'),
 }
 
-async function testHttpApiWithOptions(request: TestHttpApiRequest, runtime: Util.RuntimeOptions): TestHttpApiResponse {
-  Util.validateModel(request);
+async function testHttpApiWithOptions(tmp: TestHttpApiRequest, runtime: Util.RuntimeOptions): TestHttpApiResponse {
+  Util.validateModel(tmp);
+  var request = new TestHttpApiShrinkRequest{};
+  RPCUtil.convert(tmp, request);
+  if (!Util.isUnset(tmp.stringValue)) {
+    request.stringValueShrink = Util.toJSONString(tmp.stringValue);
+  }
+
+  if (!Util.isUnset(tmp.defaultValue)) {
+    request.defaultValueShrink = Util.toJSONString(tmp.defaultValue);
+  }
+
+  if (!Util.isUnset(tmp.otherParam)) {
+    request.otherParamShrink = Util.toJSONString(tmp.otherParam);
+  }
+
   return doRequest('TestHttpApi', 'HTTPS', 'POST', '2018-07-13', 'AK', null, request, runtime);
 }
 
@@ -252,8 +287,8 @@ model FtParamListRequest = {
   name?: string(name='Name'),
   disk?: [
     {
-      size: [ string ](name='Size'),
-      type: [ string ](name='Type'),
+      size?: [ string ](name='Size'),
+      type?: [ string ](name='Type'),
     }
   ](name='Disk'),
 }
